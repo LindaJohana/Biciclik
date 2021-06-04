@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Biciclik</string>
+    <string name="TextViewAcceso">Acceso</string>
+    <string name="TextViewSaludo">Hola! Que bueno verte de nuevo</string>
+    <string name="TextViewEmail">Email</string>
+    <string name="TextViewContraseña">Contraseña</string>
+    <string name="ButtonIngresar">Ingresar</string>
+    <string name="TextViewOlvideCont">Olvide mi contraseña?</string>
+    <string name="TextViewRegistro">Registro</string>
 </resources>
