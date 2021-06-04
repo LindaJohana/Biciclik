@@ -1,18 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="40dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        tools:src="@drawable/mariposa"
+        android:background="@drawable/mariposa"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        style="@style/estiloletranegra"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/TextViewAcceso" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/TextViewSaludo" />
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewEmail" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InputLayoutEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:hintEnabled="false">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputTextEmail"
+            style="@style/estiloAcent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="example@email.com"
+            android:gravity="left"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewContraseña" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InputLayoutCont"
+        style="@style/estiloAcent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:endIconMode="password_toggle"
+        app:hintEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputTextCont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="contraseña"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/ButtonIngresar"
+        app:backgroundTint="@color/azulO" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TextViewOlvideCont" />
+        <TextView
+            style="@style/EstiloLetra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/TextViewRegistro"
+            android:gravity="right"/>
+    </LinearLayout>
+
+</LinearLayout>
