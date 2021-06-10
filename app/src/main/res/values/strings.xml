@@ -7,4 +7,52 @@
     <string name="ButtonIngresar">Ingresar</string>
     <string name="TextViewOlvideCont">Olvide mi contraseña?</string>
     <string name="TextViewRegistro">Registro</string>
+    <string name="TextViewPaso13">Paso 1 de 3</string>
+    <string name="TextViewNombre">Nombre Completo</string>
+    <string name="TextInputNombre">Tu nombre y apellido</string>
+    <string name="TextViewTelefono">Teléfono</string>
+    <string name="TextInputTelefono">Tú numero celular</string>
+    <string name="TextInputEmailRegistro">Tu dirección de correo electrónico</string>
+    <string name="TextViewEmpresa">Empresa</string>
+    <string name="TextInputEmpresa">Selecciona tu empresa</string>
+    <string name="TextViewDireccion">Dirección</string>
+    <string name="TextInputDireccion">Tu dirección de residencia</string>
+    <string name="TextViewTienesCuenta">Ya tienes una cuenta?</string>
+    <string name="TextViewIngresa">Ingresa aqui</string>
+    <string name="TextViewRegistroE">Registro Exitoso</string>
+    <string name="TextViewTextoRegistro">Ya estás listo para comenzar a utilizar
+        Biciclick la mejor forma de moverse en la ciudad.</string>
+    <string name="TextViewTextoRegistro2">Acércate a un punto Biciclik</string>
+    <string name="ButtonVerPuntos">Ver puntos Biciclick</string>
+    <string name="ButtonYaEstoy">Ya estoy frente a una Bici</string>
+    <string name="TextViewTextoFoto">Ahora te pediremos 2 fotos para confirmar tu identidad</string>
+    <string name="TextViewSelfie">Tomate una foto selfie</string>
+    <string name="TextViewCedula">Toma una foto de tu cédula</string>
+    <string name="TextViewPaso23">Paso 2 de 3</string>
+    <string name="ButtonContinuar">Continuar</string>
+    <string name="TextViewPaso33">Paso 3 de 3</string>
+    <string name="TextViewCodigo">Ingresa el código que has recibido en tu celular</string>
+    <string name="Validacion">Estamos validando tu información, esto puede tomar unos minutos.</string>
+    <string name="textValidacion">si está tomando más tiempo o tienes alguna inquietud,
+    contactanos al...</string>
+    <string name="Terminos">Acepto los Terminos y condiciones y la poliica de privacidad.</string>
+    <string name="ButtonRecordarCont">Recordar contraseña</string>
+    <string name="HintEmail">example@email.com</string>
+    <string name="ButtonRecordar">Recordar</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
+
 </resources>

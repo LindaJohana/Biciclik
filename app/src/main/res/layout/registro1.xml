@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="40dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/estiloletranegra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/TextViewRegistro" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/TextViewPaso13" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right">
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:background="@drawable/mariposa" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewNombre"
+        android:layout_marginTop="12dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InputLayoutNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:hintEnabled="false">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputTextNombre"
+            style="@style/estiloAcent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/TextInputNombre"
+            android:paddingVertical="8dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/TextViewTelefono" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InputLayoutTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:hintEnabled="false">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputTextTelefono"
+            style="@style/estiloAcent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="@string/TextInputTelefono"
+            android:paddingVertical="8dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewEmail"
+        android:layout_marginTop="10dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InputLayoutEmailRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:hintEnabled="false">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputTextEmailRegistro"
+            style="@style/estiloAcent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/TextInputEmailRegistro"
+            android:paddingVertical="8dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewEmpresa"
+        android:layout_marginTop="10dp"/>
+
+
+    <com.androidbuts.multispinnerfilter.SingleSpinnerSearch
+        android:id="@+id/singleItemSelectionSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:hintText="Selcciona una Empresa" />
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewDireccion"
+        android:layout_marginTop="10dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InputLayoutDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:hintEnabled="false">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputTextDireccion"
+            style="@style/estiloAcent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:hint="@string/TextInputDireccion"
+            android:paddingVertical="8dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewContraseña"
+        android:layout_marginTop="10dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InputLayoutContraseña"
+        style="@style/estiloAcent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:endIconMode="password_toggle"
+        app:hintEnabled="false">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputTextCont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="contraseña"
+            android:inputType="textPassword"
+            android:paddingVertical="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonIngresar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/azulO"
+        android:text="@string/ButtonIngresar"
+        android:textColor="@color/white"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TextViewTienesCuenta" />
+        <TextView
+            style="@style/EstiloLetra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/TextViewIngresa"
+            android:gravity="right"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="40dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/estiloletranegra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/TextViewRegistro" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/TextViewPaso33" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right">
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:background="@drawable/mariposa" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewCodigo"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginVertical="32dp">
+
+        <EditText
+            android:id="@+id/digito1"
+            android:background="@drawable/borde"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:isScrollContainer="true"
+            android:layout_marginRight="10dp"
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/digito2"
+            android:background="@drawable/borde"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:isScrollContainer="true"
+            android:layout_marginRight="10dp"
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/digito3"
+            android:background="@drawable/borde"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:isScrollContainer="true"
+            android:layout_marginRight="10dp"
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/digito4"
+            android:background="@drawable/borde"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:isScrollContainer="true"
+            android:inputType="number"/>
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Validacion" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/pinas"
+        android:layout_marginVertical="40dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textValidacion" />
+</LinearLayout>
