@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="example@email.com"
+            android:hint="@string/HintEmail"
             android:gravity="left"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,22 +76,24 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
     <Button
+        android:id="@+id/ingresarAcceso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginVertical="32dp"
         android:text="@string/ButtonIngresar"
-        app:backgroundTint="@color/azulO" />
+        app:backgroundTint="@color/azulO"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/textViewOlvideC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/TextViewOlvideCont" />
         <TextView
             style="@style/EstiloLetra"
+            android:id="@+id/textViewRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/TextViewRegistro"

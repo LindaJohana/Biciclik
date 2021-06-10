@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="Principal">
+    <menu>
+        <item
+            android:id="@+id/inicio"
+            android:icon="@drawable/ic_inicio"
+            android:title="inicio">
+        </item>
+        <item
+            android:id="@+id/mapa"
+            android:icon="@drawable/ic_place"
+            android:title="mapa">
+        </item>
+        <item
+            android:id="@+id/bici"
+            android:icon="@drawable/ic_bici"
+            android:title="bici">
+        </item>
+        <item
+            android:id="@+id/perfil"
+            android:icon="@drawable/ic_person"
+            android:title="person">
+        </item>
+    </menu>
+</item>
+</menu>

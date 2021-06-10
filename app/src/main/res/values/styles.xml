@@ -3,6 +3,7 @@
     <style name="EstiloLetra">
         <item name="android:textColor">@color/rojo</item>
         <item name="android:textStyle">bold</item>
+        <item name="lineHeight">24dp</item>
     </style>
     <style name="estiloletranegra">
         <item name="android:textColor">@color/black</item>
@@ -12,4 +13,10 @@
     <style name="estiloAcent">
         <item name="colorAccent">@color/azulO</item>
     </style>
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/azulO</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/gris</item>
+    </style>
+
 </resources>
