@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:title="Principal">
+<item android:title="principal">
     <menu>
         <item
             android:id="@+id/inicio"
             android:icon="@drawable/ic_inicio"
-            android:title="inicio">
+            android:title="Inicio">
         </item>
         <item
             android:id="@+id/mapa"
             android:icon="@drawable/ic_place"
-            android:title="mapa">
+            android:title="Mapa">
         </item>
         <item
             android:id="@+id/bici"
             android:icon="@drawable/ic_bici"
-            android:title="bici">
+            android:title="Bici">
         </item>
         <item
             android:id="@+id/perfil"
             android:icon="@drawable/ic_person"
-            android:title="person">
+            android:title="Mi Perfil">
+        </item>
+        <item
+            android:id="@+id/llamar"
+            android:icon="@drawable/ic_call"
+            android:title="Llamar a Biciclick">
         </item>
     </menu>
 </item>

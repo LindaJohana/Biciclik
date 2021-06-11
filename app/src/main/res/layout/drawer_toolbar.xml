@@ -7,9 +7,14 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/azulO"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"
-        />
+        android:theme="@style/AppTheme.NoActionBar"
+        >
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="?attr/actionBarSize"
+            android:src="@drawable/mariposa" />
+
+    </androidx.appcompat.widget.Toolbar>
 
 
 </LinearLayout>
