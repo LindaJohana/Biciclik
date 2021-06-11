@@ -41,6 +41,7 @@
     <string name="ButtonRecordar">Recordar</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="server">https://biciclick.loducode.com</string>
 
 
     <string-array name="planets_array">
