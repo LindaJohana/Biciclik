@@ -1,9 +1,7 @@
 package com.example.biciclik;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -13,8 +11,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.view.View;
-
+import com.example.biciclik.Home.HomeActivity;
+import com.example.biciclik.Profile.ProfileActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class DrawerMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,7 +42,7 @@ public class DrawerMain extends AppCompatActivity implements NavigationView.OnNa
 
         fragmentManager=getSupportFragmentManager();
         fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container, new InicioActivity());
+        fragmentTransaction.add(R.id.container, new HomeActivity());
         fragmentTransaction.commit();
     }
 
@@ -54,15 +52,15 @@ public class DrawerMain extends AppCompatActivity implements NavigationView.OnNa
             menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container,new InicioActivity());
+            fragmentTransaction.replace(R.id.container,new HomeActivity());
             fragmentTransaction.commit();
         }if(menuItem.getItemId()==R.id.perfil){
-            lanzarRegistro(null);
+            menuItem.setChecked(true);
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container,new ProfileActivity());
+            fragmentTransaction.commit();
         }
         return false;
-    }
-    public void lanzarRegistro(View view){
-        Intent i = new Intent(this, Registro1.class );
-        startActivity(i);
     }
 }

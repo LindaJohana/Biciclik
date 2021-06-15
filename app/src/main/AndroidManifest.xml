@@ -6,6 +6,8 @@
 
     <uses-feature android:name="android.hardware.camera2"
         android:required="true"/>
+    <uses-feature android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".BaseContext.BaseContext"
@@ -25,12 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registro1"/>
-        <activity android:name=".RegistroExitoso"/>
-        <activity android:name=".RegistroFotos"/>
-        <activity android:name=".Registro3"/>
-        <activity android:name=".OlvidoContrasenaActivity"/>
+        <activity android:name=".Register1.Register1Activity"/>
+        <activity android:name=".RegisterSuccess"/>
+        <activity android:name=".Register2.Register2Activity"/>
+        <activity android:name=".Register3.Register3Activity"/>
+        <activity android:name=".ForgetPassword.ForgetPasswordActivity"/>
         <activity android:name=".DrawerMain" android:theme="@style/AppTheme.NoActionBar"/>
+
 <!--        <activity android:name=".InicioActivity"/>-->
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.biciclik;
+package com.example.biciclik.Register1;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,19 +12,21 @@ import android.widget.Toast;
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.androidbuts.multispinnerfilter.SingleSpinnerListener;
 import com.androidbuts.multispinnerfilter.SingleSpinnerSearch;
+import com.example.biciclik.R;
+import com.example.biciclik.Register2.Register2Activity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Registro1 extends Activity {
+public class Register1Activity extends Activity {
     SingleSpinnerSearch singleSpinnerSearch;
     private static final String TAG = "Registro";
     public Button ButtonIngresar;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro1);
+        setContentView(R.layout.register1);
         ButtonIngresar=(Button)findViewById(R.id.buttonIngresar);
         ButtonIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,12 +53,12 @@ public class Registro1 extends Activity {
             }
             @Override
             public void onClear() {
-                Toast.makeText(Registro1.this, "Cleared Selected Item", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register1Activity.this, "Cleared Selected Item", Toast.LENGTH_SHORT).show();
             }
         });
     }
     public void lanzarRegistroF(View view){
-        Intent i = new Intent(this, RegistroFotos.class );
+        Intent i = new Intent(this, Register2Activity.class );
         startActivity(i);
     }
 }

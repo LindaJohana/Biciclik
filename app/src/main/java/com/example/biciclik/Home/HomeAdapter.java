@@ -1,4 +1,4 @@
-package com.example.biciclik;
+package com.example.biciclik.Home;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,17 +9,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.biciclik.R;
 import com.example.biciclik.objects.PersonResponse;
 
 
 import java.util.ArrayList;
 
-public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.ViewHolder> {
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private ArrayList<PersonResponse> list;
     LayoutInflater inflater;
     Context my_context;
 
-    public InicioAdapter(Context context, ArrayList<PersonResponse> list){
+    public HomeAdapter(Context context, ArrayList<PersonResponse> list){
         this.inflater=LayoutInflater.from(context);
         this.list = list;
     }
@@ -27,7 +28,7 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 //        View view = inflater.inflate(R.layout.inicio_adapter,parent, false);
-        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.inicio_adapter, null,false);
+        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.home_adapter, null,false);
         ViewHolder viewHolders = new ViewHolder(view);
         my_context = parent.getContext();
         return viewHolders;
