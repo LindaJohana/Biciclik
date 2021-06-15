@@ -18,5 +18,9 @@
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/gris</item>
     </style>
+    <style name="estiloletra">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
