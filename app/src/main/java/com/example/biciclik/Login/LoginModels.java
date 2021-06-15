@@ -20,9 +20,9 @@ public class LoginModels implements LoginInterfaces.models {
     }
 
     @Override
-    public void getTokenModel() {
+    public void getTokenModel(LoginInterfaces.presenters presenter) {
         if(localData.getAccess().equals("") == false){
-
+            request.validateToken(presenter, localData.getRefresh(),localData.getAccess());
         }
     }
 }

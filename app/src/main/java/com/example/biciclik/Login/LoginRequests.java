@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class LoginRequests implements LoginInterfaces.requests{
+public class LoginRequests implements LoginInterfaces.requests {
     private RequestQueue queue;
     private Gson gson;
     LocalDataInterface localData;
@@ -84,5 +84,84 @@ public class LoginRequests implements LoginInterfaces.requests{
 //        stringRequest.setRetryPolicy(policy);
         queue.add(stringRequest);
 
+    }
+
+    @Override
+    public void validateToken(LoginInterfaces.presenters presenter, String refresh, String access) {
+        String url = BaseContext.getContext().getString(R.string.server) + "/api/token/verify/";
+
+        HashMap params = new HashMap();
+        params.put("token", access);
+
+        JSONObject jsonBody = new JSONObject(params);
+        Log.e("validate access", jsonBody.toString());
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response Login", response.toString());
+                        presenter.onSuccessLogin();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                refreshToken(presenter, refresh);
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap();
+//                headers.put("Authorization", "Token " + localData.getToken());
+                return headers;
+            }
+        };
+        stringRequest.setShouldCache(false);
+//        stringRequest.setRetryPolicy(policy);
+        queue.add(stringRequest);
+    }
+
+    @Override
+    public void refreshToken(LoginInterfaces.presenters presenter, String refresh) {
+        String url = BaseContext.getContext().getString(R.string.server) + "/api/token/refresh/";
+
+        HashMap params = new HashMap();
+        params.put("refresh", refresh);
+
+        JSONObject jsonBody = new JSONObject(params);
+        Log.e("refreshToken", jsonBody.toString());
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response Longin", response.toString());
+                        TokenResponse objects = null;
+                        try {
+                            objects = gson.fromJson(new String(response.toString().getBytes("UTF-8")),
+                                    TokenResponse.class);
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                            objects = gson.fromJson(response.toString(), TokenResponse.class);
+                        }
+                        localData.SaveToken(refresh, objects.getAccess());
+                        presenter.onSuccessLogin();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                localData.LogOutApp();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap();
+//                headers.put("Authorization", "Token " + localData.getToken());
+                return headers;
+            }
+        };
+        stringRequest.setShouldCache(false);
+//        stringRequest.setRetryPolicy(policy);
+        queue.add(stringRequest);
     }
 }

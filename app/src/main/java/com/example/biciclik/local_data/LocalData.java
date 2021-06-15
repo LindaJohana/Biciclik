@@ -10,7 +10,8 @@ public class LocalData implements LocalDataInterface {
     public void LogOutApp() {
         String token = "";
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
-        preferences.edit().putString("TOKEN", "").apply();
+        preferences.edit().putString("REFRESH", "").apply();
+        preferences.edit().putString("ACCESS", "").apply();
     }
 
     @Override
