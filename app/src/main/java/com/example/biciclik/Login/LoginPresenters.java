@@ -28,6 +28,6 @@ public class LoginPresenters implements LoginInterfaces.presenters {
 
     @Override
     public void getToken() {
-
+        model.getTokenModel(this);
     }
 }

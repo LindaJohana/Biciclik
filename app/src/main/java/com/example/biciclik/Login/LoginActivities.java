@@ -29,6 +29,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initObjects();
+        verifyToken();
 
 //        TextViewRegistro=findViewById(R.id.textViewRegistro);
         TextViewRegistro.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +104,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
     }
 
     public void verifyToken(){
-
+        presenter.getToken();
     }
 
 }
