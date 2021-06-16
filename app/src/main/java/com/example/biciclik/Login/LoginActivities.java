@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.DrawerMain;
-import com.example.biciclik.OlvidoContrasenaActivity;
+import com.example.biciclik.ForgetPassword.ForgetPasswordActivity;
 import com.example.biciclik.R;
-import com.example.biciclik.Registro1;
+import com.example.biciclik.Register1.Register1Activity;
 import com.example.biciclik.objects.LoginData;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -78,11 +78,11 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
     }
 
     public void lanzarRegistro(){
-        Intent i = new Intent(BaseContext.getContext(), Registro1.class );
+        Intent i = new Intent(BaseContext.getContext(), Register1Activity.class );
         startActivity(i);
     }
     public void lanzarOlvideC(View view){
-        Intent i = new Intent(BaseContext.getContext(), OlvidoContrasenaActivity.class );
+        Intent i = new Intent(BaseContext.getContext(), ForgetPasswordActivity.class );
         startActivity(i);
     }
 

@@ -45,6 +45,7 @@
     <string name="TextViewInicio">Inicio - Uso Biciclick</string>
     <string name="TextViewViajesgraph">Viajes de Mes</string>
     <string name="TextViewTopE">Top Empresa</string>
+    <string name="TextViewPerfil">Mi Perfil</string>
 
 
     <string-array name="planets_array">

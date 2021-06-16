@@ -1,6 +1,5 @@
-package com.example.biciclik;
+package com.example.biciclik.Home;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,20 +11,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.biciclik.R;
 import com.example.biciclik.objects.PersonResponse;
 import com.github.mikephil.charting.charts.PieChart;
 
 import java.util.ArrayList;
 
-public class InicioActivity extends Fragment {
+public class HomeActivity extends Fragment {
     private PieChart pieChart;
-    private InicioAdapter inicioAdapter;
+    private HomeAdapter inicioAdapter;
     RecyclerView recyclerView;
     ArrayList<PersonResponse> listPersons;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.inicio,container,false);
+        View view = inflater.inflate(R.layout.home,container,false);
         listPersons=new ArrayList<PersonResponse>();
         recyclerView=(RecyclerView) view.findViewById(R.id.recyclershippings);
 
@@ -44,7 +44,7 @@ public class InicioActivity extends Fragment {
         this.listPersons.addAll(notes);
     }*/
     public void mostrar(){
-        inicioAdapter = new InicioAdapter(getContext(), listPersons);
+        inicioAdapter = new HomeAdapter(getContext(), listPersons);
         recyclerView.setAdapter(inicioAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }

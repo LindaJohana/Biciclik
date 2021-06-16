@@ -1,4 +1,4 @@
-package com.example.biciclik;
+package com.example.biciclik.Register2;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,25 +8,24 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.URLSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import com.example.biciclik.R;
+import com.example.biciclik.Register3.Register3Activity;
 
-public class RegistroFotos extends Activity {
+public class Register2Activity extends Activity {
     TextView TextSelfie, TextCedula;
     ImageView Imageselfie, Imagecedula;
     Button ButtonContinuar;
     TextView Terminos;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro_fotos);
+        setContentView(R.layout.register2);
         Terminos=findViewById(R.id.terminos);
         //Terminos.setMovementMethod(LinkMovementMethod.getInstance());
         SpannableString texto= new SpannableString("Acepto los terminos y condiciones y la Politica de privacidad.");
@@ -90,7 +89,7 @@ public class RegistroFotos extends Activity {
     }
 
     public void lanzarRegistro3(View view){
-        Intent i = new Intent(this, Registro3.class );
+        Intent i = new Intent(this, Register3Activity.class );
         startActivity(i);
     }
 }

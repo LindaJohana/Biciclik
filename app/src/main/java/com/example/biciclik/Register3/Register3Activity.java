@@ -1,4 +1,4 @@
-package com.example.biciclik;
+package com.example.biciclik.Register3;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,16 +6,18 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Registro3 extends Activity {
+import com.example.biciclik.R;
+import com.example.biciclik.RegisterSuccess;
+
+public class Register3Activity extends Activity {
     EditText D1, D2, D3, D4;
     TextView Resul;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro3);
+        setContentView(R.layout.register3);
         D1=findViewById(R.id.digito1);
         D2=findViewById(R.id.digito2);
         D3=findViewById(R.id.digito3);
@@ -46,7 +48,7 @@ public class Registro3 extends Activity {
         }
     }
     public void lanzarExitoso(View view){
-        Intent i = new Intent(this, RegistroExitoso.class );
+        Intent i = new Intent(this, RegisterSuccess.class );
         startActivity(i);
     }
 }
