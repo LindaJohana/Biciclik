@@ -60,6 +60,12 @@ public class DrawerMain extends AppCompatActivity implements NavigationView.OnNa
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new ProfileActivity());
             fragmentTransaction.commit();
+        }if(menuItem.getItemId()==R.id.perfil){
+            menuItem.setChecked(true);
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container,new ProfileActivity());
+            fragmentTransaction.commit();
         }
         return false;
     }

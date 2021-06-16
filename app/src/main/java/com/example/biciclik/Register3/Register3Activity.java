@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.biciclik.R;
-import com.example.biciclik.RegisterSuccess;
+import com.example.biciclik.RegisterSuccess.RegisterSuccess;
 
 public class Register3Activity extends Activity {
     EditText D1, D2, D3, D4;

@@ -46,6 +46,17 @@
     <string name="TextViewViajesgraph">Viajes de Mes</string>
     <string name="TextViewTopE">Top Empresa</string>
     <string name="TextViewPerfil">Mi Perfil</string>
+    <string name="TextViewViaje">Tu Viaje</string>
+    <string name="TextViewPuntoI">Punto de Inicio</string>
+    <string name="TextViewHoraI">Hora de Inicio</string>
+    <string name="TextViewTiempo">Tiempo Transcurrido</string>
+    <string name="TextViewDestino">Destino</string>
+    <string name="TextViewPuntoE">Punto de Entrega</string>
+    <string name="TextViewHoraE">Hora de Entrega</string>
+    <string name="TextViewAhorro">Ahorro Económico</string>
+    <string name="TextViewHuella">Huella de Carbono</string>
+    <string name="ButtonOk">OK</string>
+    <string name="ButtonNo">No he terminado mi viaje</string>
 
 
     <string-array name="planets_array">

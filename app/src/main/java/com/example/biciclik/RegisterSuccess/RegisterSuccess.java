@@ -1,7 +1,9 @@
-package com.example.biciclik;
+package com.example.biciclik.RegisterSuccess;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.example.biciclik.R;
 
 public class RegisterSuccess extends Activity {
 
