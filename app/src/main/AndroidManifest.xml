@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register1.Register1Activity"/>
-        <activity android:name=".RegisterSuccess"/>
+        <activity android:name=".RegisterSuccess.RegisterSuccess"/>
         <activity android:name=".Register2.Register2Activity"/>
         <activity android:name=".Register3.Register3Activity"/>
         <activity android:name=".ForgetPassword.ForgetPasswordActivity"/>
