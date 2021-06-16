@@ -57,6 +57,10 @@
     <string name="TextViewHuella">Huella de Carbono</string>
     <string name="ButtonOk">OK</string>
     <string name="ButtonNo">No he terminado mi viaje</string>
+    <string name="TextViewTomarB">Tomar Bici</string>
+    <string name="TextViewInstuciones">Instrucciones</string>
+    <string name="TextViewDesbloquear">Desbloquear Candado</string>
+    <string name="TextVierLeer">Leer QR</string>
 
 
     <string-array name="planets_array">

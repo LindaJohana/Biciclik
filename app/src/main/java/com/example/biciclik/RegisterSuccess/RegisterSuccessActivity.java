@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.biciclik.R;
 
-public class RegisterSuccess extends Activity {
+public class RegisterSuccessActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

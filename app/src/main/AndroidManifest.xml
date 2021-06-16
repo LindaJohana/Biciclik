@@ -27,10 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register1.Register1Activity"/>
-        <activity android:name=".RegisterSuccess.RegisterSuccess"/>
-        <activity android:name=".Register2.Register2Activity"/>
-        <activity android:name=".Register3.Register3Activity"/>
+        <activity android:name=".Register.Register1Activity"/>
+        <activity android:name=".RegisterSuccess.RegisterSuccessActivity"/>
+        <activity android:name=".Register.Register2Activity"/>
+        <activity android:name=".Register.Register3Activity"/>
         <activity android:name=".ForgetPassword.ForgetPasswordActivity"/>
         <activity android:name=".DrawerMain" android:theme="@style/AppTheme.NoActionBar"/>
 

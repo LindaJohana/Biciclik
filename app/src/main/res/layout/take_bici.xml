@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="40dp">
+
+    <TextView
+        style="@style/estiloletra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewTomarB"
+        android:gravity="right"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <View
+        android:id="@+id/dividerB1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewInstuciones"
+        android:layout_marginVertical="16dp"/>
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/Youtube_player_view"
+        app:videoId="aw_cmzF_uZY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:autoPlay="false"
+        app:showYouTubeButton="true" />
+
+    <TextView
+        style="@style/estiloletra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewDesbloquear"
+        android:gravity="right"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <View
+        android:id="@+id/dividerB2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
+    <Button
+        android:id="@+id/buttonQR"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/ic_camera"
+        android:text="@string/TextVierLeer"
+        android:backgroundTint="@color/rojo"
+        android:layout_marginVertical="24dp"/>
+
+    <TextView
+        style="@style/estiloletra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewViaje"
+        android:gravity="right"
+        android:layout_marginBottom="8dp"/>
+
+    <View
+        android:id="@+id/dividerB3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="8dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/maps"/>
+
+        <TextView
+            android:id="@+id/txtPuntoI"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:text="@string/TextViewPuntoI"
+            android:layout_marginHorizontal="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_gravity="center"
+            android:paddingRight="8dp">
+            <TextView
+                android:id="@+id/txtPuntoIR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="-"
+                android:gravity="right" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:id="@+id/dividerV2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="8dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_event"/>
+
+        <TextView
+            android:id="@+id/txtHoraI"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:text="@string/TextViewHoraI"
+            android:layout_marginHorizontal="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_gravity="center"
+            android:paddingRight="8dp">
+            <TextView
+                android:id="@+id/txtHoraIR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="-"
+                android:gravity="right" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:id="@+id/dividerV3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="8dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_time"/>
+
+        <TextView
+            android:id="@+id/txtTiempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:text="@string/TextViewTiempo"
+            android:layout_marginHorizontal="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_gravity="center"
+            android:paddingRight="8dp">
+            <TextView
+                android:id="@+id/txtTiempoR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="-"
+                android:gravity="right" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

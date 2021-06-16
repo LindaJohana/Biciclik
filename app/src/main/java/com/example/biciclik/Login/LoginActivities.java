@@ -14,7 +14,7 @@ import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.DrawerMain;
 import com.example.biciclik.ForgetPassword.ForgetPasswordActivity;
 import com.example.biciclik.R;
-import com.example.biciclik.Register1.Register1Activity;
+import com.example.biciclik.Register.Register1Activity;
 import com.example.biciclik.objects.LoginData;
 import com.google.android.material.textfield.TextInputEditText;
 
