@@ -57,6 +57,16 @@
     <string name="TextViewHuella">Huella de Carbono</string>
     <string name="ButtonOk">OK</string>
     <string name="ButtonNo">No he terminado mi viaje</string>
+    <string name="TextViewTomarB">Tomar Bici</string>
+    <string name="TextViewInstuciones">Instrucciones</string>
+    <string name="TextViewDesbloquear">Desbloquear Candado</string>
+    <string name="TextVierLeer">Leer QR</string>
+    <string name="TextViewDest">Destino de tu Viaje</string>
+    <string name="TextViewDestV">Para poder medir tu ahorro económico y tu
+        huella de carbono, cuentanos cual es tu destino de viaje</string>
+    <string name="HintEscribe">Escribe la Ubicación</string>
+    <string name="TextViewEntregar">Entregar Bici</string>
+    <string name="ButtonTerminar">Terminar Viaje</string>
 
 
     <string-array name="planets_array">

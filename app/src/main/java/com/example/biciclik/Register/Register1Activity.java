@@ -1,4 +1,4 @@
-package com.example.biciclik.Register1;
+package com.example.biciclik.Register;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +13,6 @@ import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.androidbuts.multispinnerfilter.SingleSpinnerListener;
 import com.androidbuts.multispinnerfilter.SingleSpinnerSearch;
 import com.example.biciclik.R;
-import com.example.biciclik.Register2.Register2Activity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

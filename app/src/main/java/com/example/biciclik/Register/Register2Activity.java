@@ -1,4 +1,4 @@
-package com.example.biciclik.Register2;
+package com.example.biciclik.Register;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.biciclik.R;
-import com.example.biciclik.Register3.Register3Activity;
 
 public class Register2Activity extends Activity {
     TextView TextSelfie, TextCedula;

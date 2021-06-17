@@ -1,4 +1,4 @@
-package com.example.biciclik.Register3;
+package com.example.biciclik.Register;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.biciclik.R;
-import com.example.biciclik.RegisterSuccess.RegisterSuccess;
+import com.example.biciclik.RegisterSuccess.RegisterSuccessActivity;
 
 public class Register3Activity extends Activity {
     EditText D1, D2, D3, D4;
@@ -48,7 +48,7 @@ public class Register3Activity extends Activity {
         }
     }
     public void lanzarExitoso(View view){
-        Intent i = new Intent(this, RegisterSuccess.class );
+        Intent i = new Intent(this, RegisterSuccessActivity.class );
         startActivity(i);
     }
 }
