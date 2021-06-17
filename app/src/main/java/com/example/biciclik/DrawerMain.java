@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.biciclik.Home.HomeActivity;
+import com.example.biciclik.Maps.Map1Activity;
 import com.example.biciclik.Profile.ProfileActivity;
 import com.example.biciclik.TakeBici.TakeBiciActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -66,6 +67,13 @@ public class DrawerMain extends AppCompatActivity implements NavigationView.OnNa
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new TakeBiciActivity());
+            fragmentTransaction.commit();
+        }
+        if(menuItem.getItemId()==R.id.mapa){
+            menuItem.setChecked(true);
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container,new Map1Activity());
             fragmentTransaction.commit();
         }
         return false;
