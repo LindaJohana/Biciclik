@@ -61,6 +61,12 @@
     <string name="TextViewInstuciones">Instrucciones</string>
     <string name="TextViewDesbloquear">Desbloquear Candado</string>
     <string name="TextVierLeer">Leer QR</string>
+    <string name="TextViewDest">Destino de tu Viaje</string>
+    <string name="TextViewDestV">Para poder medir tu ahorro económico y tu
+        huella de carbono, cuentanos cual es tu destino de viaje</string>
+    <string name="HintEscribe">Escribe la Ubicación</string>
+    <string name="TextViewEntregar">Entregar Bici</string>
+    <string name="ButtonTerminar">Terminar Viaje</string>
 
 
     <string-array name="planets_array">
