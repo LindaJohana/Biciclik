@@ -9,13 +9,12 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.biciclik.R;
-import com.example.biciclik.Trip.Trip1Fragment;
+import com.example.biciclik.Trip1Fragment;
 import com.example.biciclik.objects.PuntosResponse;
 
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ public class Map1Activity extends Fragment {
     private static final String TAG = "Map";
     private Maps1Adapter maps1Adapter;
     RecyclerView recyclerPuntos;
-    Button Bensayis;
     FragmentTransaction transaction;
     Fragment fragmenttrip;
     ArrayList<PuntosResponse> listPuntos;
@@ -35,14 +33,8 @@ public class Map1Activity extends Fragment {
         setListPuntos();
         mostrar();
         fragmenttrip=new Trip1Fragment();
-        Bensayis=view.findViewById(R.id.ensayis);
         getChildFragmentManager().beginTransaction().commit();
-        Bensayis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    mostrarFragment();
-            }
-        });
+//        mostrarFragment();
         return view;
     }
     public void setListPuntos(){
@@ -59,7 +51,7 @@ public class Map1Activity extends Fragment {
         recyclerPuntos.setAdapter(maps1Adapter);
         recyclerPuntos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
-    public void mostrarFragment(){
+    /*public void mostrarFragment(){
         try {
             transaction=getChildFragmentManager().beginTransaction();
             transaction.add(R.id.contenedorFragments, fragmenttrip);
@@ -68,5 +60,5 @@ public class Map1Activity extends Fragment {
         }catch (Exception excepcion){
             Log.e(TAG, "error");
         }
-    }
+    }*/
 }
