@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.SpannableString;
@@ -22,10 +23,15 @@ public class Register2Activity extends Activity {
     ImageView Imageselfie, Imagecedula;
     Button ButtonContinuar;
     TextView Terminos;
+    private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA"};
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register2);
         Terminos=findViewById(R.id.terminos);
+        int requestCode = 200;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(permissions, requestCode);
+        }
         //Terminos.setMovementMethod(LinkMovementMethod.getInstance());
         SpannableString texto= new SpannableString("Acepto los terminos y condiciones y la Politica de privacidad.");
         ButtonContinuar=findViewById(R.id.buttonContinuar);

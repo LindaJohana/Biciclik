@@ -28,6 +28,11 @@
             android:icon="@drawable/ic_call"
             android:title="Llamar a Biciclick">
         </item>
+        <item
+            android:id="@+id/cerrar"
+            android:icon="@drawable/ic_walk"
+            android:title="Cerrar Sesion">
+        </item>
     </menu>
 </item>
 </menu>
