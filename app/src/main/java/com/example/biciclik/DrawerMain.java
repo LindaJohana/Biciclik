@@ -2,6 +2,7 @@ package com.example.biciclik;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,6 @@ public class DrawerMain extends AppCompatActivity implements NavigationView.OnNa
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
-    ImageView ImageClose;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
@@ -35,8 +35,6 @@ public class DrawerMain extends AppCompatActivity implements NavigationView.OnNa
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
-        ImageClose=findViewById(R.id.imageClose);
-
 
         //onlcick navgation
         navigationView.setNavigationItemSelectedListener(this);
@@ -52,35 +50,44 @@ public class DrawerMain extends AppCompatActivity implements NavigationView.OnNa
         fragmentTransaction.commit();
     }
 
+    MenuItem mPreviousMenuItem;
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        menuItem.setCheckable(true);
+        menuItem.setChecked(true);
+        if (mPreviousMenuItem != null) {
+            mPreviousMenuItem.setChecked(false);
+        }
+        mPreviousMenuItem = menuItem;
         if(menuItem.getItemId()==R.id.inicio){
-            menuItem.setChecked(true);
+            //menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new HomeActivity());
             fragmentTransaction.commit();
-        }if(menuItem.getItemId()==R.id.perfil){
-            menuItem.setChecked(true);
+        }
+        if(menuItem.getItemId()==R.id.perfil){
+            //menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new ProfileActivity());
             fragmentTransaction.commit();
-        }if(menuItem.getItemId()==R.id.bici){
-            menuItem.setChecked(true);
+        }
+        if(menuItem.getItemId()==R.id.bici){
+            //menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new TakeBiciActivity());
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.mapa){
-            menuItem.setChecked(true);
-            closeOptionsMenu();
+            //menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new Map1Activity());
             fragmentTransaction.commit();
         }
+        drawerLayout.closeDrawers();
         return false;
     }
 }
