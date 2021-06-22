@@ -67,6 +67,8 @@
     <string name="HintEscribe">Escribe la Ubicación</string>
     <string name="TextViewEntregar">Entregar Bici</string>
     <string name="ButtonTerminar">Terminar Viaje</string>
+    <string name="TextViewMap">Mapa Puntos Biciclick</string>
+    <string name="TextViewDist">Distancia</string>
 
 
     <string-array name="planets_array">
@@ -79,6 +81,9 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
