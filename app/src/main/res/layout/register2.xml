@@ -35,9 +35,9 @@
             android:gravity="right">
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:background="@drawable/mariposa" />
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:background="@drawable/logo_biciclick" />
         </LinearLayout>
     </LinearLayout>
     <TextView
@@ -50,7 +50,7 @@
         android:id="@+id/imageselfie"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:background="@drawable/selfie"
+        android:src="@drawable/selfie"
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"/>
     <TextView
@@ -69,7 +69,7 @@
         android:id="@+id/imagecedula"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:background="@drawable/cedula"
+        android:src="@drawable/cedula"
         android:layout_gravity="center"
         android:layout_marginVertical="8dp"/>
 

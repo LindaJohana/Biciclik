@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.biciclik.R;
 import com.example.biciclik.RegisterSuccess.RegisterSuccessActivity;
 
-public class Register3Activity extends Activity {
+public class Register3Activity extends Activity implements RegisterInterfaces.activities3 {
     EditText D1, D2, D3, D4;
     TextView Resul;
     protected void onCreate(Bundle savedInstanceState){

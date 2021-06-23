@@ -18,7 +18,7 @@ import com.blikoon.qrcodescanner.QrCodeActivity;
 import com.example.biciclik.R;
 import com.google.zxing.qrcode.encoder.QRCode;
 
-public class TakeBiciActivity extends Fragment{
+public class TakeBiciActivity extends Fragment implements TakeBiciInterfaces.activities{
     private static final String TAG = "destino";
     Button ButtonQR;
     FragmentTransaction transaction;

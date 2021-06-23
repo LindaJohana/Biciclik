@@ -36,7 +36,7 @@ import com.google.android.gms.common.util.Hex;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends Fragment {
+public class HomeActivity extends Fragment implements HomeInterfaces.activities{
     public PieChart pieChart1;
     public PieChart pieChart2;
     public PieChart pieChart3;

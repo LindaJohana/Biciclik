@@ -7,7 +7,6 @@ public interface LoginInterfaces {
         void setLogin();
         void setErrorLogin(String message);
         void lanzarPerfil();
-
     }
     interface presenters{
         void setLogin(LoginData login);

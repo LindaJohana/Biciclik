@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.example.biciclik.R;
 
-public class Register2Activity extends Activity {
+public class Register2Activity extends Activity implements RegisterInterfaces.activities2{
     TextView TextSelfie, TextCedula;
     ImageView Imageselfie, Imagecedula;
     Button ButtonContinuar;
