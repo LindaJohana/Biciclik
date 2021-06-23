@@ -46,14 +46,15 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
+        inicio();
 
+    }
+    public void inicio(){
         fragmentManager=getSupportFragmentManager();
         fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container, new HomeActivity());
         fragmentTransaction.commit();
     }
-
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -64,10 +65,10 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         }
         mPreviousMenuItem = menuItem;
         if(menuItem.getItemId()==R.id.inicio){
-            //menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new HomeActivity());
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.perfil){
@@ -75,6 +76,7 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new ProfileActivity());
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.bici){
@@ -82,6 +84,7 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new TakeBiciActivity());
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.mapa){
@@ -89,11 +92,13 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new MapsActivity());
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.cerrar){
             logOut();
             Intent i = new Intent(this, LoginActivities.class );
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
         }
         drawerLayout.closeDrawers();

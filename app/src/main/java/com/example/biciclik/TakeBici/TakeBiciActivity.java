@@ -2,6 +2,7 @@ package com.example.biciclik.TakeBici;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.blikoon.qrcodescanner.QrCodeActivity;
@@ -24,13 +26,19 @@ public class TakeBiciActivity extends Fragment implements TakeBiciInterfaces.act
     FragmentTransaction transaction;
     Fragment fragmentTrip1;
     private static final int REQUEST_CODE_QR=20;
+    private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA"};
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.take_bici, container, false);
+        initObjects(view);
+        int requestCode = 200;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(permissions, requestCode);
+        }
         /*YouTubePlayerView YouTubePlayerView = view.findViewById ( R . id . Youtube_player_view);
         getLifecycle () . addObserver (YouTubePlayerView);*/
         fragmentTrip1=new TakeBici2Fragment();
-        ButtonQR=view.findViewById(R.id.buttonQR);
+
         getChildFragmentManager().beginTransaction().commit();
         ButtonQR.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,18 +50,29 @@ public class TakeBiciActivity extends Fragment implements TakeBiciInterfaces.act
 
         return view;
     }
+
+    public void initObjects(View view){
+        ButtonQR=view.findViewById(R.id.buttonQR);
+    }
+
     public void leerQR(){
         Intent i=new Intent(getContext(), QrCodeActivity.class);
         startActivityForResult(i, REQUEST_CODE_QR);
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data){
+
         if (resultCode!= Activity.RESULT_OK){
             Toast.makeText(getContext(), "No se pudo obtener una respuesta", Toast.LENGTH_SHORT).show();
-            String resultado = data.getStringExtra("com.blikoon.qrcodescanner.error_decoding_image");
-            if (resultado != null) {
-                Toast.makeText(getContext(), "No se pudo escanear el código QR", Toast.LENGTH_SHORT).show();
+            if (data==null){
+
+            }else {
+                String resultado = data.getStringExtra("com.blikoon.qrcodescanner.error_decoding_image");
+                if (resultado != null) {
+                    Toast.makeText(getContext(), "No se pudo escanear el código QR", Toast.LENGTH_SHORT).show();
+                }
+                return;
             }
-            return;
+
         }
         if (requestCode == REQUEST_CODE_QR) {
             if (data != null) {

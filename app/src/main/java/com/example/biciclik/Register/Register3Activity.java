@@ -18,10 +18,8 @@ public class Register3Activity extends Activity implements RegisterInterfaces.ac
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register3);
-        D1=findViewById(R.id.digito1);
-        D2=findViewById(R.id.digito2);
-        D3=findViewById(R.id.digito3);
-        D4=findViewById(R.id.digito4);
+        initObjects();
+
         D4.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -38,6 +36,12 @@ public class Register3Activity extends Activity implements RegisterInterfaces.ac
 
             }
         });
+    }
+    public void initObjects(){
+        D1=findViewById(R.id.digito1);
+        D2=findViewById(R.id.digito2);
+        D3=findViewById(R.id.digito3);
+        D4=findViewById(R.id.digito4);
     }
     public void Verificar(){
         String texto;
