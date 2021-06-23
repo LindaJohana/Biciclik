@@ -1,4 +1,4 @@
-package com.example.biciclik;
+package com.example.biciclik.Maps;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -40,10 +40,12 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
      */
     @Override
     public void onMapReady(GoogleMap map) {
-        LatLng latLng = new LatLng(-33.852, 151.211);
+        LatLng latLng = new LatLng(4.1409,-73.6283 );
+        LatLng latLng2 = new LatLng(4.1498,-73.6242 );
         float zoom = 13;
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
         map.addMarker(new MarkerOptions().position(latLng));
+        map.addMarker(new MarkerOptions().position(latLng2));
     }
     /*public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
