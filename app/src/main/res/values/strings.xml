@@ -1,4 +1,5 @@
 <resources>
+    <string name="cicla">&#xf200;</string>
     <string name="app_name">Biciclik</string>
     <string name="TextViewAcceso">Acceso</string>
     <string name="TextViewSaludo">Hola! Que bueno verte de nuevo</string>

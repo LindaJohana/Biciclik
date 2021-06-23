@@ -10,10 +10,16 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-feature
-        android:name="android.hardware.camera2"
+        android:name="android.hardware.camera.any"
         android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
     <uses-feature android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android"/>
@@ -40,10 +46,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
@@ -61,8 +63,9 @@
         <activity android:name=".Register.Register3Activity" />
         <activity android:name=".ForgetPassword.ForgetPasswordActivity" />
         <activity
-            android:name=".DrawerMain"
+            android:name=".DrawerMain.DrawerActivities"
             android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

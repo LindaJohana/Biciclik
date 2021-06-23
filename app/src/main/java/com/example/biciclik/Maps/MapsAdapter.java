@@ -9,19 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.biciclik.Home.HomeAdapter;
 import com.example.biciclik.R;
-import com.example.biciclik.objects.PersonResponse;
 import com.example.biciclik.objects.PuntosResponse;
 
 import java.util.ArrayList;
 
-public class Maps1Adapter extends RecyclerView.Adapter<Maps1Adapter.ViewHolder> {
+public class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.ViewHolder> {
     private ArrayList<PuntosResponse> list;
     LayoutInflater inflater;
     Context my_context;
 
-    public Maps1Adapter(Context context, ArrayList<PuntosResponse> list) {
+    public MapsAdapter(Context context, ArrayList<PuntosResponse> list) {
         this.inflater=LayoutInflater.from(context);
         this.list = list;
     }
@@ -37,7 +35,7 @@ public class Maps1Adapter extends RecyclerView.Adapter<Maps1Adapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Maps1Adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MapsAdapter.ViewHolder holder, int position) {
         PuntosResponse puntos=list.get(position);
         holder.TxtPuntoM.setText(puntos.getPunto());
         holder.TxtPuntoIM.setText(puntos.getDistancia()+" KM");

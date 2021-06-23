@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.biciclik.BaseContext.BaseContext;
-import com.example.biciclik.DrawerMain;
+import com.example.biciclik.DrawerMain.DrawerActivities;
 import com.example.biciclik.ForgetPassword.ForgetPasswordActivity;
 import com.example.biciclik.R;
 import com.example.biciclik.Register.Register1Activity;
@@ -99,7 +99,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
 
     @Override
     public void lanzarPerfil() {
-        Intent i = new Intent(BaseContext.getContext(), DrawerMain.class );
+        Intent i = new Intent(BaseContext.getContext(), DrawerActivities.class );
         startActivity(i);
     }
 

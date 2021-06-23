@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Register1Activity extends Activity {
+public class Register1Activity extends Activity implements RegisterInterfaces.activities1 {
     SingleSpinnerSearch singleSpinnerSearch;
     private static final String TAG = "Registro";
     public Button ButtonIngresar;

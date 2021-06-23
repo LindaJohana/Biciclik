@@ -1,12 +1,14 @@
 package com.example.biciclik.Maps;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,12 +17,12 @@ import com.example.biciclik.objects.PuntosResponse;
 
 import java.util.ArrayList;
 
-public class Map1Activity extends Fragment {
+public class MapsActivity extends Fragment implements MapsInterfaces.activities {
     private static final String TAG = "Map";
-    private Maps1Adapter maps1Adapter;
+    private MapsAdapter mapsAdapter;
     RecyclerView recyclerPuntos;
-/*    FragmentTransaction transaction;
-    Fragment fragmenttrip;*/
+    FragmentTransaction transaction;
+    Fragment mapsActivity;
     ArrayList<PuntosResponse> listPuntos;
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map1, container, false);
@@ -28,9 +30,9 @@ public class Map1Activity extends Fragment {
         recyclerPuntos=(RecyclerView) view.findViewById(R.id.recyclerPuntos);
         setListPuntos();
         mostrar();
-//        fragmenttrip=new Trip1Fragment();
+        mapsActivity=new Maps();
         getChildFragmentManager().beginTransaction().commit();
-//        mostrarFragment();
+        mostrarFragment();
         return view;
     }
     public void setListPuntos(){
@@ -43,18 +45,18 @@ public class Map1Activity extends Fragment {
         this.listPersons.addAll(notes);
     }*/
     public void mostrar(){
-        maps1Adapter = new Maps1Adapter(getContext(), listPuntos);
-        recyclerPuntos.setAdapter(maps1Adapter);
+        mapsAdapter = new MapsAdapter(getContext(), listPuntos);
+        recyclerPuntos.setAdapter(mapsAdapter);
         recyclerPuntos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
-    /*public void mostrarFragment(){
+    public void mostrarFragment(){
         try {
             transaction=getChildFragmentManager().beginTransaction();
-            transaction.add(R.id.contenedorFragments, fragmenttrip);
+            transaction.add(R.id.contenedorFragments,mapsActivity);
             transaction.addToBackStack(null);
             transaction.commit();
         }catch (Exception excepcion){
             Log.e(TAG, "error");
         }
-    }*/
+    }
 }
