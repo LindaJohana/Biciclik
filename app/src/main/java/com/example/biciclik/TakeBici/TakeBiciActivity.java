@@ -1,6 +1,7 @@
 package com.example.biciclik.TakeBici;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,29 +18,43 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.blikoon.qrcodescanner.QrCodeActivity;
+import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.R;
 import com.google.zxing.qrcode.encoder.QRCode;
+import com.omni.support.ble.BleModuleHelper;
+import com.omni.support.ble.core.ISessionCall;
+import com.omni.support.ble.core.SessionCallback;
+import com.omni.support.ble.rover.CommandManager;
+import com.omni.support.ble.session.sub.Bike3In1Session;
+
 
 public class TakeBiciActivity extends Fragment implements TakeBiciInterfaces.activities{
+
     private static final String TAG = "destino";
     Button ButtonQR;
     FragmentTransaction transaction;
     Fragment fragmentTrip1;
     private static final int REQUEST_CODE_QR=20;
-    private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA"};
+    private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA","android.permission.BLUETOOTH","android.permission.BLUETOOTH_ADMIN"};
+    private Bike3In1Session session;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.take_bici, container, false);
         initObjects(view);
         int requestCode = 200;
+        BleModuleHelper.INSTANCE.init(this.getActivity().getApplication());//java
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
         }
-        /*YouTubePlayerView YouTubePlayerView = view.findViewById ( R . id . Youtube_player_view);
-        getLifecycle () . addObserver (YouTubePlayerView);*/
         fragmentTrip1=new TakeBici2Fragment();
-
         getChildFragmentManager().beginTransaction().commit();
+        session = new Bike3In1Session.Builder()
+                .address("88:BF:E4:BC:6C:D8")//Replace your mac address
+                .deviceKey("yOTmK50z")
+                .deviceType("A1")
+                .updateKey("Vgz7")
+                .build();
         ButtonQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,16 +63,24 @@ public class TakeBiciActivity extends Fragment implements TakeBiciInterfaces.act
             }
         });
 
+
+
+
+
+
+
         return view;
     }
 
     public void initObjects(View view){
         ButtonQR=view.findViewById(R.id.buttonQR);
+
     }
 
     public void leerQR(){
-        Intent i=new Intent(getContext(), QrCodeActivity.class);
-        startActivityForResult(i, REQUEST_CODE_QR);
+        /*Intent i=new Intent(getContext(), QrCodeActivity.class);
+        startActivityForResult(i, REQUEST_CODE_QR);*/
+
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data){
 

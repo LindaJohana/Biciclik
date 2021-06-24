@@ -5,6 +5,7 @@ buildscript {
         mavenCentral()
         maven { url 'https://jitpack.io'}
         jcenter()
+        maven { url 'http://local.omnibike.net:8090/repository/omni-public/'}
 
     }
     dependencies {
@@ -23,6 +24,8 @@ allprojects {
 
         maven { url 'https://jitpack.io'}
         jcenter()
+
+        maven { url 'http://local.omnibike.net:8090/repository/omni-public/'}
 
     }
 }
