@@ -44,6 +44,11 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileActivity extends Fragment implements ProfileInterfaces.activities{
     CircleImageView FotoPerfil;
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA"};
+    String carpeta_principal="misImagenesApp";
+    String carpeta_imagen="biciclick";
+    String directorio_imagen=carpeta_principal+carpeta_imagen;
+    String path;
+    File fileImage;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile, container, false);
@@ -81,11 +86,6 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
         });
         alertOptiones.show();
     }
-    String carpeta_principal="misImagenesApp";
-    String carpeta_imagen="biciclick";
-    String directorio_imagen=carpeta_principal+carpeta_imagen;
-    String path;
-    File fileImage;
 
     public final int REQUEST_IMAGE_CAPTURE = 1;
     public final int REQUEST_IMAGE = 2;
@@ -116,53 +116,5 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
         intent.setType("image/");
         startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE);
     }
-    /*public void saveImage(Bitmap imageBitmap){
-        OutputStream fos=null;
-        File file=null;
-        //version
-        *//*ContentResolver resolver=getContentResolver();
-        ContentValues values=new ContentValues();
-        String fileName=System.currentTimeMillis()+"image_example";
-        values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
-        values.put(MediaStore.Images.Media.IS_PENDING, 1);
-        Uri collection = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
-        Uri imageUri=resolver.insert(collection, values);
-        try {
-            fos=resolver.openOutputStream(imageUri);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        values.clear();
-        values.put(MediaStore.Images.Media.IS_PENDING, 0);
-        resolver.update(imageUri, values, null, null);*//*
-        String imageDir=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
-        String fileName=System.currentTimeMillis()  +"jpg";
-        file =new File(imageDir, fileName);
-        try {
-            fos=new FileOutputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100,fos);
-        if(file!=null){
-            MediaScannerConnection.scanFile(getContext(), new String[]{file.toString()},null,null);
-        }
-    }*/
-
-    /*public void CreatePhoto() {
-        File miFile = new File(Environment.getExternalStorageDirectory(), directorio_imagen);
-        boolean isCreate = miFile.exists();
-        if(isCreate==false){
-            isCreate=miFile.mkdirs();
-        }
-        if (isCreate==true){
-            Long consecutivo=System.currentTimeMillis()/1000;
-            String nombre=consecutivo.toString()+".jpg";
-            path=Environment.getExternalStorageDirectory()+File.separator+directorio_imagen+File.separator+nombre;
-            fileImage=new File(path);
-
-        }
-    }*/
 
 }
