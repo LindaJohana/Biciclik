@@ -18,6 +18,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -46,25 +49,39 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA"};
     String carpeta_principal="misImagenesApp";
     String carpeta_imagen="biciclick";
-    String directorio_imagen=carpeta_principal+carpeta_imagen;
-    String path;
-    File fileImage;
+    EditText nombre, telefono, email, direccion;
+    TextView empresa;
+    Button buttonGuardar;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile, container, false);
-
+        initObjects(view);
         int requestCode = 200;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
         }
-        FotoPerfil=view.findViewById(R.id.fotoPerfil);
         FotoPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cargarImagen();
             }
         });
+        buttonGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                guardarCambios();
+            }
+        });
         return view;
+    }
+    public void initObjects(View view){
+        FotoPerfil=view.findViewById(R.id.fotoPerfil);
+        nombre=view.findViewById(R.id.edNombre);
+        telefono=view.findViewById(R.id.edTelefono);
+        email=view.findViewById(R.id.edEmail);
+        direccion=view.findViewById(R.id.edDireccion);
+        empresa=view.findViewById(R.id.tvEmpresa);
+        buttonGuardar=view.findViewById(R.id.buttonCambios);
     }
     public void cargarImagen(){
         final CharSequence[] opciones={"Tomar foto", "Cargar foto","Cancelar"};
@@ -115,6 +132,9 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/");
         startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE);
+    }
+    public void guardarCambios(){
+
     }
 
 }
