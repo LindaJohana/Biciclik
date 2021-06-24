@@ -52,7 +52,7 @@
     <string name="TextViewHoraI">Hora de Inicio</string>
     <string name="TextViewTiempo">Tiempo Transcurrido</string>
     <string name="TextViewDestino">Destino</string>
-    <string name="TextViewPuntoE">Punto de Entrega</string>
+    <string name="TextViewPuntoE">Punto Entrega</string>
     <string name="TextViewHoraE">Hora de Entrega</string>
     <string name="TextViewAhorro">Ahorro Económico</string>
     <string name="TextViewHuella">Huella de Carbono</string>
@@ -70,6 +70,8 @@
     <string name="ButtonTerminar">Terminar Viaje</string>
     <string name="TextViewMap">Mapa Puntos Biciclick</string>
     <string name="TextViewDist">Distancia</string>
+    <string name="ButtonCambios">Guardar Cambios</string>
+    <string name="HintPunto">Seleccione Punto</string>
 
 
     <string-array name="planets_array">

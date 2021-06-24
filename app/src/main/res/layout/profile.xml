@@ -15,11 +15,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"/>
 
-    <View
-        android:id="@+id/dividerI1"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="?android:attr/listDivider" />
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fotoPerfil"
         android:layout_width="80dp"
@@ -33,81 +28,66 @@
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/TextViewNombre"
-        android:layout_marginTop="12dp"/>
-    <TextView
+        android:text="@string/TextViewNombre" />
+    <EditText
+        android:id="@+id/edNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="holi"/>
-    <View
-        android:id="@+id/dividerP1"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="?android:attr/listDivider" />
+        android:inputType="textPersonName"/>
     <TextView
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/TextViewTelefono"
-        android:layout_marginTop="12dp"/>
-    <TextView
+        android:layout_marginTop="8dp"/>
+    <EditText
+        android:id="@+id/edTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="holi"/>
-    <View
-        android:id="@+id/dividerP2"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="?android:attr/listDivider" />
+        android:inputType="phone" />
     <TextView
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/TextViewEmail"
-        android:layout_marginTop="12dp"/>
-    <TextView
+        android:layout_marginTop="8dp"/>
+    <EditText
+        android:id="@+id/edEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="holi"/>
-    <View
-        android:id="@+id/dividerP3"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="?android:attr/listDivider" />
+        android:inputType="textEmailAddress"
+        />
     <TextView
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/TextViewEmpresa"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="8dp"/>
     <TextView
+        android:id="@+id/tvEmpresa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="holi"/>
-    <View
-        android:id="@+id/dividerP4"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="?android:attr/listDivider" />
     <TextView
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/TextViewDireccion"
-        android:layout_marginTop="12dp"/>
-    <TextView
+        android:layout_marginTop="8dp"/>
+    <EditText
+        android:id="@+id/edDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="holi"/>
-    <View
-        android:id="@+id/dividerP5"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="?android:attr/listDivider" />
+        android:inputType="textPostalAddress"/>
+    <Button
+        android:id="@+id/buttonCambios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ButtonCambios"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/rojo"
+        android:layout_marginVertical="8dp"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
