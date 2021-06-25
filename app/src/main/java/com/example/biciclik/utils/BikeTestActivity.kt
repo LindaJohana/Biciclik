@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentTransaction
 import com.blikoon.qrcodescanner.QrCodeActivity
 import com.example.biciclik.R
 import com.example.biciclik.TakeBici.TakeBici2Fragment
-import com.example.biciclik.TakeBici.TakeBiciActivity
 import com.omni.support.ble.BleModuleHelper
 import com.omni.support.ble.core.*
 import com.omni.support.ble.protocol.bike.model.BLInfoResult

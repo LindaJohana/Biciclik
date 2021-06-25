@@ -17,7 +17,6 @@ import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.Maps.MapsActivity;
 import com.example.biciclik.Profile.ProfileActivity;
 import com.example.biciclik.R;
-import com.example.biciclik.TakeBici.TakeBiciActivity;
 import com.example.biciclik.utils.BikeTestActivity;
 import com.google.android.material.navigation.NavigationView;
 
