@@ -1,62 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="30dp">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/estiloletra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/TextViewTomarB"
+                android:gravity="right"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <View
+                android:id="@+id/dividerB1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/TextViewInstuciones"
+                android:layout_marginVertical="16dp"/>
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/Youtube_player_view"
+                app:videoId="aw_cmzF_uZY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="true" />
+
+            <TextView
+                style="@style/estiloletra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/TextViewDesbloquear"
+                android:gravity="right"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <View
+                android:id="@+id/dividerB2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider" />
+            <Button
+                android:id="@+id/buttonQR"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_camera"
+                android:text="@string/TextVierLeer"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/rojo"
+                android:layout_marginVertical="24dp"/>
+
+            <TextView
+                android:id="@+id/prueba1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <FrameLayout
+                android:id="@+id/contenedorFragmentTrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/btn_connect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn_connect"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="29dp"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/btn_disconnect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn_disconnect"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="29dp"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/btn_unlock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn_unlock"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="29dp"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/btn_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn_info"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="29dp"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/btn_shutdown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn_shutdown"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="29dp"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/btn_get_log"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="btn_get_log"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="29dp"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="connect"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_disconnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="disconnect"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_unlock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="unlock"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="info"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_shutdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="shutdown"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_get_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="get_log"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+</LinearLayout>
