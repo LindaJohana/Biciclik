@@ -17,7 +17,7 @@ import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.Maps.MapsActivity;
 import com.example.biciclik.Profile.ProfileActivity;
 import com.example.biciclik.R;
-import com.example.biciclik.TakeBici.TakeBiciActivity;
+import com.example.biciclik.utils.BikeTestActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class DrawerActivities extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerInterfaces.activities {
@@ -83,7 +83,7 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             //menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container,new TakeBiciActivity());
+            fragmentTransaction.replace(R.id.container,new BikeTestActivity());
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }

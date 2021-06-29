@@ -24,6 +24,10 @@
     <uses-feature android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android"/>
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".BaseContext.BaseContext"
         android:allowBackup="true"
@@ -50,10 +54,16 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+<!--        <activity android:name=".Login.LoginActivities">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity android:name=".Login.LoginActivities">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:paddingHorizontal="30dp"
-    android:paddingTop="40dp">
+    android:padding="30dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -68,6 +68,7 @@
                 android:textColor="@color/white"
                 android:backgroundTint="@color/rojo"
                 android:layout_marginVertical="24dp"/>
+
             <TextView
                 android:id="@+id/prueba1"
                 android:layout_width="wrap_content"
@@ -80,7 +81,69 @@
 
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
 
+        <Button
+            android:id="@+id/btn_connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="connect"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_disconnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="disconnect"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_unlock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="unlock"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="info"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_shutdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="shutdown"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_get_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="get_log"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="29dp"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
 
 </LinearLayout>
