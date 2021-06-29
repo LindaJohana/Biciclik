@@ -18,10 +18,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
 
 public class Register2Activity extends Activity implements RegisterInterfaces.activities2{
-    TextView TextSelfie, TextCedula;
+    TextView TextSelfie, TextCedula, TextViewRegistro;
     ImageView Imageselfie, Imagecedula;
     Button ButtonContinuar;
     TextView Terminos;
@@ -61,6 +62,12 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                 lanzarRegistro3(null);
             }
         });
+        TextViewRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lanzarLogin(null);
+            }
+        });
         //url de los terminos y condiciones
         texto.setSpan(new URLSpan("https://programmerclick.com/article/4125913791/"), 11, 33,0);
         texto.setSpan(new ForegroundColorSpan(Color.parseColor("#E74C3C")),11,33,0);
@@ -76,6 +83,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         TextCedula=findViewById(R.id.textCedula);
         Imageselfie=findViewById(R.id.imageselfie);
         Imagecedula=findViewById(R.id.imagecedula);
+        TextViewRegistro=findViewById(R.id.textViewRegistro2);
     }
 
     public void cargarImagen(int num){
@@ -137,6 +145,10 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
 
     public void lanzarRegistro3(View view){
         Intent i = new Intent(this, Register3Activity.class );
+        startActivity(i);
+    }
+    public void lanzarLogin(View view){
+        Intent i = new Intent(this, LoginActivities.class );
         startActivity(i);
     }
 }
