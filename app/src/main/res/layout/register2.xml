@@ -125,7 +125,7 @@
             android:text="@string/TextViewTienesCuenta" />
         <TextView
             style="@style/EstiloLetra"
-            android:id="@+id/textViewRegistro"
+            android:id="@+id/textViewRegistro2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/TextViewIngresa"

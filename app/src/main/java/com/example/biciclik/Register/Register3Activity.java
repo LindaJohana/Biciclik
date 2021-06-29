@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
 import com.example.biciclik.RegisterSuccess.RegisterSuccessActivity;
 

@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.androidbuts.multispinnerfilter.SingleSpinnerListener;
 import com.androidbuts.multispinnerfilter.SingleSpinnerSearch;
+import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
 
 import java.util.ArrayList;
@@ -22,11 +24,12 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
     SingleSpinnerSearch singleSpinnerSearch;
     private static final String TAG = "Registro";
     public Button ButtonIngresar;
+    public TextView TextIngresa;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register1);
-        ButtonIngresar=(Button)findViewById(R.id.buttonIngresar);
+        initObjects();
         ButtonIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +45,6 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
             h.setSelected(false);
             listArray0.add(h);
         }
-        singleSpinnerSearch = findViewById(R.id.singleItemSelectionSpinner);
         singleSpinnerSearch.setSearchEnabled(true);
         singleSpinnerSearch.setSearchHint("Select your mood");
         singleSpinnerSearch.setItems(listArray0, new SingleSpinnerListener() {
@@ -55,9 +57,24 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
                 Toast.makeText(Register1Activity.this, "Cleared Selected Item", Toast.LENGTH_SHORT).show();
             }
         });
+        TextIngresa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lanzarLogin(null);
+            }
+        });
+    }
+    public void initObjects(){
+        ButtonIngresar=(Button)findViewById(R.id.buttonIngresar);
+        TextIngresa=findViewById(R.id.textIngresa);
+        singleSpinnerSearch = findViewById(R.id.singleItemSelectionSpinner);
     }
     public void lanzarRegistroF(View view){
         Intent i = new Intent(this, Register2Activity.class );
+        startActivity(i);
+    }
+    public void lanzarLogin(View view){
+        Intent i = new Intent(this, LoginActivities.class );
         startActivity(i);
     }
 }
