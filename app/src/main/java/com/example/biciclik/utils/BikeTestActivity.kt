@@ -28,12 +28,12 @@ import com.omni.support.ble.session.sub.Bike3In1Session
 class BikeTestActivity : Fragment() {
     private lateinit var session: Bike3In1Session
     private lateinit var btn_leerQr: Button
-    private lateinit var btn_connect: Button
+    /*private lateinit var btn_connect: Button
     private lateinit var btn_disconnect: Button
     private lateinit var btn_unlock: Button
     private lateinit var btn_info: Button
     private lateinit var btn_shutdown: Button
-    private lateinit var btn_get_log: Button
+    private lateinit var btn_get_log: Button*/
     var REQUEST_CODE_QR=20
     var transaction: FragmentTransaction? = null
     lateinit var fragmentTrip1: TakeBici2Fragment
@@ -73,6 +73,7 @@ class BikeTestActivity : Fragment() {
             }
 
             override fun onConnected() {
+                unlock()
             }
 
             override fun onDisconnected() {
@@ -102,17 +103,16 @@ class BikeTestActivity : Fragment() {
         })
 
         btn_leerQr=view.findViewById<Button>(R.id.buttonQR)
-        btn_connect = view.findViewById<Button>(R.id.btn_connect)
+        /*btn_connect = view.findViewById<Button>(R.id.btn_connect)
         btn_disconnect = view.findViewById<Button>(R.id.btn_disconnect)
         btn_unlock = view.findViewById<Button>(R.id.btn_unlock)
         btn_info = view.findViewById<Button>(R.id.btn_info)
         btn_shutdown = view.findViewById<Button>(R.id.btn_shutdown)
-        btn_get_log = view.findViewById<Button>(R.id.btn_get_log)
+        btn_get_log = view.findViewById<Button>(R.id.btn_get_log)*/
         fragmentTrip1 = TakeBici2Fragment()
 
-        initListener()
+        //initListener()
         btn_leerQr.setOnClickListener {
-            session.connect()
             leerQR()
         }
         return view
@@ -133,15 +133,15 @@ class BikeTestActivity : Fragment() {
                     Toast.makeText(context, "No se pudo escanear el código QR", Toast.LENGTH_SHORT).show()
                 }
                 return
-
             }
+            session.disConnect()
         }
         if (requestCode == REQUEST_CODE_QR) {
             if (data != null) {
                 val lectura = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult")
                 Toast.makeText(context, "Leído: $lectura", Toast.LENGTH_SHORT).show()
                 if(lectura=="66155000612"){
-                    unlock()
+                    session.connect()
                     mostrarFragmentT()
                 }
             }
@@ -157,6 +157,9 @@ class BikeTestActivity : Fragment() {
                             IResp<Boolean>
                     ) {
                         val isSuccess = data.getResult() ?: false
+                        if(isSuccess) {
+                            session.disConnect()
+                        }
                         Toast.makeText(context, if (isSuccess)
                             "Successfully unlocked" else "Failed to unlock", Toast.LENGTH_SHORT
                         )
@@ -176,7 +179,7 @@ class BikeTestActivity : Fragment() {
                 })
     }
 
-    fun initListener() {
+    /*fun initListener() {
 
         // connection
         btn_connect.setOnClickListener {
@@ -283,7 +286,7 @@ class BikeTestActivity : Fragment() {
                     }
                 })
         }
-    }
+    }*/
     fun mostrarFragmentT() {
         val TAG:String = "MyActivity"
         try {
