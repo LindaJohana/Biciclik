@@ -65,7 +65,8 @@
             android:isScrollContainer="true"
             android:layout_marginRight="10dp"
             android:padding="20sp"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLength="1"/>
 
         <EditText
             android:id="@+id/digito2"
@@ -74,6 +75,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/borde"
             android:inputType="number"
+            android:maxLength="1"
             android:isScrollContainer="true"
             android:padding="20sp" />
         <EditText
@@ -84,7 +86,8 @@
             android:isScrollContainer="true"
             android:layout_marginRight="10dp"
             android:padding="20sp"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLength="1"/>
         <EditText
             android:id="@+id/digito4"
             android:background="@drawable/borde"
@@ -92,7 +95,8 @@
             android:layout_height="80dp"
             android:isScrollContainer="true"
             android:padding="20sp"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLength="1"/>
 
     </LinearLayout>
 
