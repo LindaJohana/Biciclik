@@ -111,7 +111,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         });
         alertOptiones.show();
     }
-
     private void abrircamara1(){
         Intent i=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(i.resolveActivity(getPackageManager())!=null){
@@ -142,7 +141,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             Imagecedula.setImageBitmap(imageBitmap);
         }
     }
-
     public void lanzarRegistro3(View view){
         Intent i = new Intent(this, Register3Activity.class );
         startActivity(i);
