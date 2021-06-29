@@ -2,6 +2,7 @@ package com.example.biciclik.DrawerMain;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -46,13 +47,28 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
-        inicio();
+        Bundle extras = getIntent().getExtras();
+        if (extras!=null) {
+            if (extras.containsKey("bike")) {
+                Bici();
+            }
+            if (extras.containsKey("home")) {
+                inicio();
+            }
+        }
 
     }
     public void inicio(){
+        Log.e("kndsdn","ksdskk");
         fragmentManager=getSupportFragmentManager();
         fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container, new HomeActivity());
+        fragmentTransaction.commit();
+    }
+    public void Bici(){
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.container, new BikeTestActivity());
         fragmentTransaction.commit();
     }
 

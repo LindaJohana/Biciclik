@@ -24,6 +24,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
     TextInputEditText InputTextEmail,InputTextCont;
     LoginPresenters presenter;
     LoginData login;
+    String home=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +102,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
     public void lanzarPerfil() {
         Intent i = new Intent(BaseContext.getContext(), DrawerActivities.class );
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        i.putExtra("home",home);
         startActivity(i);
     }
 
