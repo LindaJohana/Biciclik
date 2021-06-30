@@ -16,23 +16,28 @@ public class CustomErrorResponse {
         String decodedDataUsingUTF8;
         try {
             if (error.networkResponse.data != null){
-                Log.d("LOGIN", error.networkResponse.data.toString());
                 decodedDataUsingUTF8 = new String(error.networkResponse.data, "UTF-8");
-                Log.d("LOGIN", decodedDataUsingUTF8);
+                Log.d("ERROR", decodedDataUsingUTF8);
                 JSONObject answer = new JSONObject(decodedDataUsingUTF8);
                 if (answer.has("message")) {
                     String response_user = "";
-                    JSONObject message = answer.getJSONObject("message");
-                    JSONArray key = message.names();
-                    for (int i = 0; i < key.length(); i++) {
-                        String keys = key.getString(i);
-                        String value = message.getString(keys);
-                        if (keys.equals("non_field_errors")) {
-                            response_user += value.toString();
-                        } else {
-                            response_user += (keys.toString() + ": " + value.toString());
+                    try{
+                        JSONObject message = answer.getJSONObject("message");
+                        JSONArray key = message.names();
+                        for (int i = 0; i < key.length(); i++) {
+                            String keys = key.getString(i);
+                            String value = message.getString(keys);
+                            if (keys.equals("non_field_errors")) {
+                                response_user += value.toString();
+                            } else {
+                                response_user += (keys.toString() + ": " + value.toString());
+                            }
                         }
+                    }catch (Exception e){
+                        String message = answer.getString("message");
+                        response_user = message;
                     }
+
                     return response_user;
                 } else {
                     JSONArray key = answer.names();
