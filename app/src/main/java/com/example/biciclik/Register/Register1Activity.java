@@ -1,5 +1,6 @@
 package com.example.biciclik.Register;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.androidbuts.multispinnerfilter.SingleSpinnerListener;
 import com.androidbuts.multispinnerfilter.SingleSpinnerSearch;
 import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
+import com.example.biciclik.objects.CompanyData;
 import com.example.biciclik.objects.Register1Data;
 import com.example.biciclik.objects.UserData;
 
@@ -34,11 +36,14 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
     UserData userData;
     public EditText InputTextNombre, InputTextTelefono, InputTextEmailRegistro, InputTextDireccion, InputTextCont;
     RegisterPresenters presenter;
+    ArrayList<CompanyData> companies;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register1);
         initObjects();
+        presenter.getCompanyPresenters();
         ButtonIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +84,47 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
                 //lanzarRegistroF(null);
             }
         });
-        final List<String> list = Arrays.asList(getResources().getStringArray(R.array.planets_array));
+        TextIngresa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lanzarLogin(null);
+            }
+        });
+    }
+    public void initObjects(){
+        ButtonIngresar=(Button)findViewById(R.id.buttonIngresar);
+        TextIngresa=findViewById(R.id.textIngresa);
+        singleSpinnerSearch = findViewById(R.id.singleItemSelectionSpinner);
+        InputTextNombre=findViewById(R.id.inputTextNombre);
+        InputTextTelefono=findViewById(R.id.inputTextTelefono);
+        InputTextEmailRegistro=findViewById(R.id.inputTextEmailRegistro);
+        InputTextDireccion=findViewById(R.id.inputTextDireccion);
+        InputTextCont=findViewById(R.id.inputTextCont);
+        presenter=new RegisterPresenters(this, null);
+        companies = new ArrayList<CompanyData>();
+    }
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
+    }
+    public void lanzarRegistroF(View view){
+        Intent i = new Intent(this, Register2Activity.class );
+        startActivity(i);
+    }
+
+    @SuppressLint("WrongConstant")
+    public void setError(String message) {
+        Toast.makeText(getBaseContext(), message, 5000).show();
+    }
+
+    @Override
+    public void setcompany(ArrayList<CompanyData> company) {
+        companies=company;
+    }
+
+    @Override
+    public void addItemsOnSpinner(String[] names) {
+        final List<String> list = Arrays.asList(names);
         final List<KeyPairBoolData> listArray0 = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             KeyPairBoolData h = new KeyPairBoolData();
@@ -101,32 +146,8 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
                 Toast.makeText(Register1Activity.this, "Cleared Selected Item", Toast.LENGTH_SHORT).show();
             }
         });
-        TextIngresa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lanzarLogin(null);
-            }
-        });
     }
-    public void initObjects(){
-        ButtonIngresar=(Button)findViewById(R.id.buttonIngresar);
-        TextIngresa=findViewById(R.id.textIngresa);
-        singleSpinnerSearch = findViewById(R.id.singleItemSelectionSpinner);
-        InputTextNombre=findViewById(R.id.inputTextNombre);
-        InputTextTelefono=findViewById(R.id.inputTextTelefono);
-        InputTextEmailRegistro=findViewById(R.id.inputTextEmailRegistro);
-        InputTextDireccion=findViewById(R.id.inputTextDireccion);
-        InputTextCont=findViewById(R.id.inputTextCont);
-        presenter=new RegisterPresenters(this, null);
-    }
-    private boolean validarEmail(String email) {
-        Pattern pattern = Patterns.EMAIL_ADDRESS;
-        return pattern.matcher(email).matches();
-    }
-    public void lanzarRegistroF(View view){
-        Intent i = new Intent(this, Register2Activity.class );
-        startActivity(i);
-    }
+
     public void lanzarLogin(View view){
         Intent i = new Intent(this, LoginActivities.class );
         startActivity(i);

@@ -23,6 +23,16 @@ public class LocalData implements LocalDataInterface {
     }
 
     @Override
+    public String getToken() {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        final String token = preferences.getString("TOKEN", null);
+        if (token != null) {
+            return token;
+        }
+        return "";
+    }
+
+    @Override
     public String getRefresh() {
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
         final String refresh = preferences.getString("REFRESH", null);

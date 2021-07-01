@@ -39,4 +39,9 @@ public class RegisterModels implements RegisterInterfaces.models{
         Log.e("Model2", "Model2");
         request.register1Request(presenter);
     }
+
+    @Override
+    public void getCompanyModel(RegisterInterfaces.presenters presenter) {
+        request.getCompanyRequest(presenter);
+    }
 }
