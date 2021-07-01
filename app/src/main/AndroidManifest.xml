@@ -75,6 +75,16 @@
         <activity
             android:name=".DrawerMain.DrawerActivities"
             android:theme="@style/AppTheme.NoActionBar" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.biciclik.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_path"/>
+        </provider>
 
 
     </application>

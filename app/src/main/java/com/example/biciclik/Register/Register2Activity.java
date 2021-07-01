@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
@@ -20,9 +21,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.FileProvider;
+
 import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
 import com.example.biciclik.objects.Register2Data;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Register2Activity extends Activity implements RegisterInterfaces.activities2{
     TextView TextSelfie, TextCedula, TextViewRegistro;
@@ -129,8 +137,21 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         Intent i=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(i.resolveActivity(getPackageManager())!=null){
             if (num==1){
-                startActivityForResult(i, REQUEST_PHOTO1);
-                return;
+                File photoFile = null;
+                try {
+                    photoFile = createImage();
+                } catch (IOException ex) {
+                }
+                if (photoFile != null) {
+                    Uri photoURI = FileProvider.getUriForFile(this,
+                            "com.example.biciclik.provider",
+                            photoFile);
+                    i.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                    startActivityForResult(i, REQUEST_PHOTO1);
+                    return;
+                }
+                //startActivityForResult(i, REQUEST_PHOTO1);
+                //return;
             }
             if (num==2){
                 startActivityForResult(i, REQUEST_PHOTO2);
@@ -191,6 +212,21 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             Uri miPath=data.getData();
             Imagencedulaback.setImageURI(miPath);
         }
+    }
+    String currentPhotoPath;
+
+    public File createImage() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = this.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+        // Save a file: path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+        return image;
     }
     public void lanzarRegistro3(View view){
         Intent i = new Intent(this, Register3Activity.class );
