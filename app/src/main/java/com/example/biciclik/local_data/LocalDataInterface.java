@@ -5,4 +5,5 @@ public interface LocalDataInterface {
     void SaveToken(String refresh, String Access);
     String getRefresh();
     String getAccess();
+    void register(String data, String key);
 }

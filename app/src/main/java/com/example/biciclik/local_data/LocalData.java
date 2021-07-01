@@ -41,4 +41,19 @@ public class LocalData implements LocalDataInterface {
         }
         return "";
     }
+
+    @Override
+    public void register(String data, String key) {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putString(key, data).apply();
+    }
+
+    public String getRegister(String key) {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        final String data = preferences.getString(key, null);
+        if (data != null) {
+            return data;
+        }
+        return "";
+    }
 }

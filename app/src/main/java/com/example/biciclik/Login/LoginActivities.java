@@ -89,7 +89,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
 
 
     public void setLogin(){
-        login = new LoginData(InputTextEmail.getText().toString(),InputTextCont.getText().toString() );
+        login = new LoginData(InputTextEmail.getText().toString(),InputTextCont.getText().toString());
         presenter.setLogin(login);
     }
 

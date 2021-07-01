@@ -56,7 +56,7 @@
         app:boxBackgroundColor="@color/white"
         app:hintEnabled="false">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputTextNombre"
+            android:id="@+id/inputTextNombre"
             style="@style/estiloAcent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
         app:boxBackgroundColor="@color/white"
         app:hintEnabled="false">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputTextTelefono"
+            android:id="@+id/inputTextTelefono"
             style="@style/estiloAcent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
         app:boxBackgroundColor="@color/white"
         app:hintEnabled="false">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputTextEmailRegistro"
+            android:id="@+id/inputTextEmailRegistro"
             style="@style/estiloAcent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
         app:boxBackgroundColor="@color/white"
         app:hintEnabled="false">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputTextDireccion"
+            android:id="@+id/inputTextDireccion"
             style="@style/estiloAcent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
         app:endIconMode="password_toggle"
         app:hintEnabled="false">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputTextCont"
+            android:id="@+id/inputTextCont"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="contraseña"

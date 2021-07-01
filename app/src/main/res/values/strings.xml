@@ -28,7 +28,7 @@
     <string name="ButtonYaEstoy">Ya estoy frente a una Bici</string>
     <string name="TextViewTextoFoto">Ahora te pediremos 2 fotos para confirmar tu identidad</string>
     <string name="TextViewSelfie">Tomate una foto selfie</string>
-    <string name="TextViewCedula">Toma una foto de tu cédula</string>
+    <string name="TextViewCedula">Toma una foto de tu cédula.</string>
     <string name="TextViewPaso23">Paso 2 de 3</string>
     <string name="ButtonContinuar">Continuar</string>
     <string name="TextViewPaso33">Paso 3 de 3</string>
