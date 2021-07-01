@@ -47,6 +47,8 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA"};
     RegisterPresenters presenter;
     Register2Data register2Data;
+    String currentPhotoPath,UrlSelfie,UrlFront,UrlBack;
+
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register2);
@@ -146,7 +148,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                     Uri photoURI = FileProvider.getUriForFile(this,
                             "com.example.biciclik.provider",
                             photoFile);
-                    i.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+//                    i.putExtra("path_image", photoURI.toString());
                     startActivityForResult(i, REQUEST_PHOTO1);
                     return;
                 }
@@ -164,8 +166,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         }
     }
     public void subirFoto(int num){
-        Intent intent=new Intent(Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/");
         if (num==1){
             startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE1);
@@ -186,6 +187,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             Imageselfie.setImageBitmap(imageBitmap);
+            UrlSelfie = currentPhotoPath;
             return;
         }
         if (requestCode == REQUEST_PHOTO2 && resultCode == RESULT_OK) {
@@ -213,7 +215,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             Imagencedulaback.setImageURI(miPath);
         }
     }
-    String currentPhotoPath;
+
 
     public File createImage() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -239,7 +241,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
 
     @Override
     public void register2() {
-        register2Data=new Register2Data(Imageselfie.toString(), Imagecedulafront.toString(), Imagencedulaback.toString());
+        register2Data=new Register2Data(UrlSelfie, UrlFront, UrlBack);
         Log.e("Register2", "Register2");
         presenter.register2Presenters(register2Data);
     }
