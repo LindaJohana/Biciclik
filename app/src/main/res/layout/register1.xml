@@ -47,7 +47,7 @@
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/TextViewNombre"
+        android:text="@string/TextViewFirtsName"
         android:layout_marginTop="12dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/InputLayoutNombre"
@@ -56,12 +56,34 @@
         app:boxBackgroundColor="@color/white"
         app:hintEnabled="false">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputTextNombre"
+            android:id="@+id/inputTextFirtsName"
             style="@style/estiloAcent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="@string/TextInputNombre"
+            android:hint="@string/TextInputFirtsName"
+            android:paddingVertical="8dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewSecondName"
+        android:layout_marginTop="12dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InputLayoutSecondName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:hintEnabled="false">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputTextSecondName"
+            style="@style/estiloAcent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/TextInputSecondName"
             android:paddingVertical="8dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 

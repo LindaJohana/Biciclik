@@ -28,7 +28,7 @@
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/TextViewNombre" />
+        android:text="@string/TextViewName" />
     <EditText
         android:id="@+id/edNombre"
         android:layout_width="match_parent"

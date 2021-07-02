@@ -34,7 +34,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
     public TextView TextIngresa;
     Register1Data register1Data;
     UserData userData;
-    public EditText InputTextNombre, InputTextTelefono, InputTextEmailRegistro, InputTextDireccion, InputTextCont;
+    public EditText InputFirtsName, InputTextTelefono, InputTextEmailRegistro, InputTextDireccion, InputTextCont;
     RegisterPresenters presenter;
     ArrayList<CompanyData> companies;
 
@@ -47,9 +47,9 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         ButtonIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(InputTextNombre.getText().toString().isEmpty()){
-                    InputTextNombre.setError("Campo Vacio");
-                    InputTextNombre.requestFocus();
+                if(InputFirtsName.getText().toString().isEmpty()){
+                    InputFirtsName.setError("Campo Vacio");
+                    InputFirtsName.requestFocus();
                     return;
                 }
                 if (InputTextTelefono.getText().toString().isEmpty()){
@@ -95,7 +95,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         ButtonIngresar=(Button)findViewById(R.id.buttonIngresar);
         TextIngresa=findViewById(R.id.textIngresa);
         singleSpinnerSearch = findViewById(R.id.singleItemSelectionSpinner);
-        InputTextNombre=findViewById(R.id.inputTextNombre);
+        InputFirtsName =findViewById(R.id.inputTextFirtsName);
         InputTextTelefono=findViewById(R.id.inputTextTelefono);
         InputTextEmailRegistro=findViewById(R.id.inputTextEmailRegistro);
         InputTextDireccion=findViewById(R.id.inputTextDireccion);
@@ -155,7 +155,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
 
     @Override
     public void register1() {
-        userData=new UserData(InputTextNombre.getText().toString(),
+        userData=new UserData(InputFirtsName.getText().toString(),
                 InputTextCont.getText().toString(),InputTextEmailRegistro.getText().toString());
         register1Data= new Register1Data(InputTextTelefono.getText().toString(),
                 singleSpinnerSearch.getSelectedItem().toString(), InputTextDireccion.getText().toString());

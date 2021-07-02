@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
@@ -156,12 +157,34 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                 //return;
             }
             if (num==2){
-                startActivityForResult(i, REQUEST_PHOTO2);
-                return;
+                File photoFile = null;
+                try {
+                    photoFile = createImage();
+                } catch (IOException ex) {
+                }
+                if (photoFile != null) {
+                    Uri photoURI = FileProvider.getUriForFile(this,
+                            "com.example.biciclik.provider",
+                            photoFile);
+//                    i.putExtra("path_image", photoURI.toString());
+                    startActivityForResult(i, REQUEST_PHOTO2);
+                    return;
+                }
             }
             if (num==3){
-                startActivityForResult(i, REQUEST_PHOTO3);
-                return;
+                File photoFile = null;
+                try {
+                    photoFile = createImage();
+                } catch (IOException ex) {
+                }
+                if (photoFile != null) {
+                    Uri photoURI = FileProvider.getUriForFile(this,
+                            "com.example.biciclik.provider",
+                            photoFile);
+//                    i.putExtra("path_image", photoURI.toString());
+                    startActivityForResult(i, REQUEST_PHOTO3);
+                    return;
+                }
             }
         }
     }
@@ -194,12 +217,14 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             Imagecedulafront.setImageBitmap(imageBitmap);
+            UrlFront=currentPhotoPath;
             return;
         }
         if (requestCode == REQUEST_PHOTO3 && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             Imagencedulaback.setImageBitmap(imageBitmap);
+            UrlBack=currentPhotoPath;
             return;
         }
         if (requestCode == REQUEST_IMAGE1 && resultCode == RESULT_OK){
@@ -244,5 +269,8 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         register2Data=new Register2Data(UrlSelfie, UrlFront, UrlBack);
         Log.e("Register2", "Register2");
         presenter.register2Presenters(register2Data);
+    }
+    public void setError(String message) {
+        Toast.makeText(getBaseContext(), message, 500-0).show();
     }
 }

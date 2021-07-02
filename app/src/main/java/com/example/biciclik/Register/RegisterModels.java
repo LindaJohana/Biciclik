@@ -27,7 +27,7 @@ public class RegisterModels implements RegisterInterfaces.models{
         localData.register(register1Data.getCompany().toString(), "COMPANY");
         localData.register(register1Data.getAddress().toString(), "ADDRESS");
         Log.e("Model1", "Model1");
-        presenter.devuelvisP();
+        presenter.toRegister2();
 
     }
 

@@ -26,17 +26,21 @@ public interface RegisterInterfaces {
 
     interface activities2{
         void register2();
+        void setError(String message);
+        void lanzarRegistro3(View view);
     }
     interface activities3{
-
+        void lanzarExitoso(View view);
     }
     interface presenters{
         void register1Presenters(UserData userData, Register1Data register1Data);
         void register2Presenters(Register2Data register2Data);
-        void devuelvisP();
+        void toRegister2();
         void getCompanyPresenters();
         void setCompaniesPresenters(ArrayList<CompanyData> companies);
-        void onErrorPresenter(String message);
+        void onErrorPresenterCompany(String message);
+        void onErrorPresenterRegister(String message);
+        void onSuccessRegister();
     }
     interface models{
         void register1Model(UserData userData, Register1Data register1Data, presenters presenter);

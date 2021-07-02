@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class RegisterPresenters implements RegisterInterfaces.presenters{
     RegisterInterfaces.activities1 view1;
     RegisterInterfaces.activities2 view2;
+    RegisterInterfaces.activities3 view3;
     RegisterModels model;
 
     public RegisterPresenters(RegisterInterfaces.activities1 view1, RegisterInterfaces.activities2 view2) {
@@ -35,7 +36,7 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     }
 
     @Override
-    public void devuelvisP() {
+    public void toRegister2() {
         view1.lanzarRegistroF(null);
     }
 
@@ -56,7 +57,18 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     }
 
     @Override
-    public void onErrorPresenter(String message) {
+    public void onErrorPresenterCompany(String message) {
         view1.setError(message);
+    }
+
+    @Override
+    public void onErrorPresenterRegister(String message) {
+        view2.setError(message);
+    }
+
+
+    @Override
+    public void onSuccessRegister() {
+        view2.lanzarRegistro3(null);
     }
 }
