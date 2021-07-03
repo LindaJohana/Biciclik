@@ -37,7 +37,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
     public TextView TextIngresa;
     Register1Data register1Data;
     UserData userData;
-    public EditText InputFirtsName, InputTextTelefono, InputTextEmailRegistro, InputTextDireccion, InputTextCont;
+    public EditText InputFirtsName, InputSecondName, InputTextTelefono, InputTextEmailRegistro, InputTextDireccion, InputTextCont;
     RegisterPresenters presenter;
     ArrayList<CompanyData> companies;
     private String id_company;
@@ -100,6 +100,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         TextIngresa=findViewById(R.id.textIngresa);
         singleSpinnerSearch = findViewById(R.id.singleItemSelectionSpinner);
         InputFirtsName =findViewById(R.id.inputTextFirtsName);
+        InputSecondName=findViewById(R.id.inputTextSecondName);
         InputTextTelefono=findViewById(R.id.inputTextTelefono);
         InputTextEmailRegistro=findViewById(R.id.inputTextEmailRegistro);
         InputTextDireccion=findViewById(R.id.inputTextDireccion);
@@ -155,7 +156,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
 
     @Override
     public void register1() {
-        userData=new UserData(InputFirtsName.getText().toString(),
+        userData=new UserData(InputFirtsName.getText().toString()+" "+InputSecondName.getText().toString(),
                 InputTextCont.getText().toString(),InputTextEmailRegistro.getText().toString());
         register1Data= new Register1Data(InputTextTelefono.getText().toString(),
                 id_company, InputTextDireccion.getText().toString());

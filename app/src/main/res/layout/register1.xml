@@ -139,7 +139,7 @@
         android:layout_marginTop="10dp"/>
 
 
-    <com.androidbuts.multispinnerfilter.SingleSpinnerSearch
+    <com.androidbuts.multispinnerfilter.SpinnerCustom
         android:id="@+id/singleItemSelectionSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -10,7 +10,7 @@ import com.example.biciclik.R;
 
 import java.util.List;
 
-public abstract class SpinnerCustom extends SingleSpinnerSearch  {
+public abstract class SpinnerCustom extends SingleSpinnerSearch {
 
     private List<KeyPairBoolDataCustom> items;
     private SpinnerListener listener;
