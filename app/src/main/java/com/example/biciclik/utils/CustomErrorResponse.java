@@ -2,7 +2,8 @@ package com.example.biciclik.utils;
 
 import android.util.Log;
 
-import com.android.volley.error.VolleyError;
+
+import com.example.biciclik.objects.TokenResponse;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,15 +11,15 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
+import retrofit2.Response;
+
 public class CustomErrorResponse {
 
-    public String returnMessageError(VolleyError error){
+    public String returnMessageError(String error){
         String decodedDataUsingUTF8;
         try {
-            if (error.networkResponse.data != null){
-                decodedDataUsingUTF8 = new String(error.networkResponse.data, "UTF-8");
-                Log.d("ERROR", decodedDataUsingUTF8);
-                JSONObject answer = new JSONObject(decodedDataUsingUTF8);
+            if (error != null){
+                JSONObject answer = new JSONObject(error);
                 if (answer.has("message")) {
                     String response_user = "";
                     try{
@@ -54,7 +55,7 @@ public class CustomErrorResponse {
                     return response_user;
                 }
             }
-        } catch (JSONException | UnsupportedEncodingException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
 
         }

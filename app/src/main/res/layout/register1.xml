@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="40dp">
+    android:padding="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/TextViewFirtsName"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="8dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/InputLayoutNombre"
         android:layout_width="match_parent"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:hint="@string/TextInputFirtsName"
-            android:paddingVertical="8dp"/>
+            android:paddingVertical="4dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:hint="@string/TextInputSecondName"
-            android:paddingVertical="8dp"/>
+            android:paddingVertical="4dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:hint="@string/TextInputTelefono"
-            android:paddingVertical="8dp"/>
+            android:paddingVertical="4dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -128,7 +128,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="@string/TextInputEmailRegistro"
-            android:paddingVertical="8dp"/>
+            android:paddingVertical="4dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -165,7 +165,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:hint="@string/TextInputDireccion"
-            android:paddingVertical="8dp"/>
+            android:paddingVertical="4dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -188,14 +188,14 @@
             android:layout_height="wrap_content"
             android:hint="contraseña"
             android:inputType="textPassword"
-            android:paddingVertical="10dp"/>
+            android:paddingVertical="8dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonIngresar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/azulO"
         android:text="@string/ButtonIngresar"
         android:textColor="@color/white"/>
@@ -203,7 +203,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="4dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

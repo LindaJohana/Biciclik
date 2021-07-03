@@ -2,14 +2,17 @@ package com.example.biciclik.Register;
 
 import android.util.Log;
 
+import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.example.biciclik.RegisterSuccess.RegisterSuccessActivity;
 import com.example.biciclik.objects.CompanyData;
 import com.example.biciclik.objects.CompanyResponse;
 import com.example.biciclik.objects.Register1Data;
 import com.example.biciclik.objects.Register2Data;
 import com.example.biciclik.objects.UserData;
+import com.example.biciclik.utils.KeyPairBoolDataCustom;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RegisterPresenters implements RegisterInterfaces.presenters{
     RegisterInterfaces.activities1 view1;
@@ -48,12 +51,16 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     @Override
     public void setCompaniesPresenters(ArrayList<CompanyData> companies) {
         view1.setcompany(companies);
-        String[] stringArray = new String[companies.size()];
+        List<KeyPairBoolDataCustom> listArray0 = new ArrayList<>();
         for (int i = 0; i < companies.size(); i++) {
             CompanyData company = companies.get(i);
-            stringArray[i] = company.getName();
+            KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
+            h.setId(company.getId());
+            h.setName(company.getName());
+            h.setSelected(false);
+            listArray0.add(h);
         }
-        view1.addItemsOnSpinner(stringArray);
+        view1.addItemsOnSpinner(listArray0);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.example.biciclik.Login;
 
-import com.example.biciclik.objects.LoginData;
+import com.example.biciclik.objects.LoginResponse;
 
 public interface LoginInterfaces {
     interface activities{
@@ -9,19 +9,20 @@ public interface LoginInterfaces {
         void lanzarPerfil();
     }
     interface presenters{
-        void setLogin(LoginData login);
+        void setLogin(LoginResponse login);
         void onErrorLogin(String message);
         void onSuccessLogin();
         void getToken();
 
     }
     interface models{
-        void setLogin(LoginData login, presenters presenter);
+        void setLogin(LoginResponse login, presenters presenter);
         void getTokenModel(presenters presenter);
-    }
-    interface requests {
-        void setLogin(LoginData login, presenters presenter);
-        void validateToken(presenters presenter, String refresh, String access);
         void refreshToken(presenters presenter, String refresh);
     }
+    /*interface requests {
+        void setLogin(LoginResponse login, presenters presenter);
+        void validateToken(presenters presenter, String refresh, String access);
+        void refreshToken(presenters presenter, String refresh);
+    }*/
 }

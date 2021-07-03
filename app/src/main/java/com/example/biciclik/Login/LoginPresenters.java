@@ -1,6 +1,6 @@
 package com.example.biciclik.Login;
 
-import com.example.biciclik.objects.LoginData;
+import com.example.biciclik.objects.LoginResponse;
 
 public class LoginPresenters implements LoginInterfaces.presenters {
     private LoginInterfaces.activities view;
@@ -12,7 +12,7 @@ public class LoginPresenters implements LoginInterfaces.presenters {
     }
 
     @Override
-    public void setLogin(LoginData login) {
+    public void setLogin(LoginResponse login) {
         model.setLogin(login, this);
     }
 

@@ -21,6 +21,9 @@ import com.example.biciclik.R;
 import com.example.biciclik.objects.CompanyData;
 import com.example.biciclik.objects.Register1Data;
 import com.example.biciclik.objects.UserData;
+import com.example.biciclik.utils.KeyPairBoolDataCustom;
+import com.example.biciclik.utils.SpinnerCustom;
+import com.example.biciclik.utils.SpinnerListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +31,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Register1Activity extends Activity implements RegisterInterfaces.activities1 {
-    SingleSpinnerSearch singleSpinnerSearch;
+    SpinnerCustom singleSpinnerSearch;
     private static final String TAG = "Registro";
     public Button ButtonIngresar;
     public TextView TextIngresa;
@@ -37,6 +40,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
     public EditText InputFirtsName, InputTextTelefono, InputTextEmailRegistro, InputTextDireccion, InputTextCont;
     RegisterPresenters presenter;
     ArrayList<CompanyData> companies;
+    private String id_company;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -102,6 +106,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         InputTextCont=findViewById(R.id.inputTextCont);
         presenter=new RegisterPresenters(this, null);
         companies = new ArrayList<CompanyData>();
+        id_company="";
     }
     private boolean validarEmail(String email) {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
@@ -122,30 +127,25 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         companies=company;
     }
 
+
+
     @Override
-    public void addItemsOnSpinner(String[] names) {
-        final List<String> list = Arrays.asList(names);
-        final List<KeyPairBoolData> listArray0 = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            KeyPairBoolData h = new KeyPairBoolData();
-            h.setId(i + 1);
-            h.setName(list.get(i));
-            h.setSelected(false);
-            listArray0.add(h);
-        }
+    public void addItemsOnSpinner(List<KeyPairBoolDataCustom> names) {
         singleSpinnerSearch.setSearchEnabled(true);
         singleSpinnerSearch.setSearchHint("Seleccione su Empresa");
+        singleSpinnerSearch.setItemsCustom(names, new SpinnerListener() {
 
-        singleSpinnerSearch.setItems(listArray0, new SingleSpinnerListener() {
             @Override
-            public void onItemsSelected(KeyPairBoolData selectedItem) {
-                Log.i(TAG, "Selected Item : " + selectedItem.getName());
+            public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
+                id_company=selectedItem.getId();
             }
+
             @Override
             public void onClear() {
-                Toast.makeText(Register1Activity.this, "Cleared Selected Item", Toast.LENGTH_SHORT).show();
+
             }
         });
+
     }
 
     public void lanzarLogin(View view){
@@ -158,7 +158,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         userData=new UserData(InputFirtsName.getText().toString(),
                 InputTextCont.getText().toString(),InputTextEmailRegistro.getText().toString());
         register1Data= new Register1Data(InputTextTelefono.getText().toString(),
-                singleSpinnerSearch.getSelectedItem().toString(), InputTextDireccion.getText().toString());
+                id_company, InputTextDireccion.getText().toString());
         Log.e("Register1", "Register1");
         presenter.register1Presenters(userData,register1Data);
     }

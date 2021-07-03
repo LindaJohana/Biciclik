@@ -15,7 +15,7 @@ import com.example.biciclik.DrawerMain.DrawerActivities;
 import com.example.biciclik.ForgetPassword.ForgetPasswordActivity;
 import com.example.biciclik.R;
 import com.example.biciclik.Register.Register1Activity;
-import com.example.biciclik.objects.LoginData;
+import com.example.biciclik.objects.LoginResponse;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivities extends AppCompatActivity implements LoginInterfaces.activities {
@@ -23,7 +23,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
     public Button ButtonAcceso;
     TextInputEditText InputTextEmail,InputTextCont;
     LoginPresenters presenter;
-    LoginData login;
+    LoginResponse login;
     String home=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
 
 
     public void setLogin(){
-        login = new LoginData(InputTextEmail.getText().toString(),InputTextCont.getText().toString());
+        login = new LoginResponse(InputTextEmail.getText().toString(),InputTextCont.getText().toString());
         presenter.setLogin(login);
     }
 

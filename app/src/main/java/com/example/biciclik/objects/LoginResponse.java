@@ -3,7 +3,7 @@ package com.example.biciclik.objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginData {
+public class LoginResponse {
     @SerializedName("user")
     @Expose
     private String user;
@@ -12,7 +12,7 @@ public class LoginData {
     @Expose
     private String password;
 
-    public LoginData(String user, String password) {
+    public LoginResponse(String user, String password) {
         this.user = user;
         this.password = password;
     }
