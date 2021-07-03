@@ -134,7 +134,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
     public void addItemsOnSpinner(List<KeyPairBoolDataCustom> names) {
         singleSpinnerSearch.setSearchEnabled(true);
         singleSpinnerSearch.setSearchHint("Seleccione su Empresa");
-        singleSpinnerSearch.setItemsCustom(names, new SpinnerListener() {
+        singleSpinnerSearch.setItems(names, new SpinnerListener() {
 
             @Override
             public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {

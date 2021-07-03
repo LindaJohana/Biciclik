@@ -3,6 +3,7 @@ package com.example.biciclik.utils;
 public class KeyPairBoolDataCustom {
     private String id;
     private String name;
+    private String extra;
     private boolean isSelected;
     private Object object;
 
@@ -12,6 +13,14 @@ public class KeyPairBoolDataCustom {
     public KeyPairBoolDataCustom(String name, boolean isSelected) {
         this.name = name;
         this.isSelected = isSelected;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 
     public String getId() {

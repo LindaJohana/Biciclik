@@ -56,6 +56,7 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
             CompanyData company = companies.get(i);
             KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
             h.setId(company.getId());
+            h.setExtra("lo que sea");
             h.setName(company.getName());
             h.setSelected(false);
             listArray0.add(h);
