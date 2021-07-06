@@ -70,7 +70,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
                     InputTextEmailRegistro.setError("Email no válido");
                     return;
                 }
-                if (singleSpinnerSearch.getSelectedItems().isEmpty()){
+                if (singleSpinnerSearch.getSelectedItemsCustom().isEmpty()){
                     Toast.makeText(getBaseContext(), "Campo Empresa Vacio", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -156,8 +156,8 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
 
     @Override
     public void register1() {
-        userData=new UserData(InputFirtsName.getText().toString()+" "+InputSecondName.getText().toString(),
-                InputTextCont.getText().toString(),InputTextEmailRegistro.getText().toString());
+        userData=new UserData(InputTextEmailRegistro.getText().toString(), InputFirtsName.getText().toString(),
+                InputSecondName.getText().toString(),InputTextCont.getText().toString(),InputTextEmailRegistro.getText().toString());
         register1Data= new Register1Data(InputTextTelefono.getText().toString(),
                 id_company, InputTextDireccion.getText().toString());
         Log.e("Register1", "Register1");

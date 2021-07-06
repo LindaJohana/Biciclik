@@ -16,7 +16,7 @@ import retrofit2.Response;
 public class CustomErrorResponse {
 
     public String returnMessageError(String error){
-        String decodedDataUsingUTF8;
+
         try {
             if (error != null){
                 JSONObject answer = new JSONObject(error);

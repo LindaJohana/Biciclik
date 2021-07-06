@@ -3,6 +3,8 @@ package com.example.biciclik.objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.File;
+
 public class Register2Data {
     @SerializedName("selfie")
     @Expose
@@ -14,7 +16,7 @@ public class Register2Data {
 
     @SerializedName("documentBackPhoto")
     @Expose
-    private String documentBackPhoto;
+    private String  documentBackPhoto;
 
     public Register2Data(String selfie, String documentFrontPhoto, String documentBackPhoto) {
         this.selfie = selfie;

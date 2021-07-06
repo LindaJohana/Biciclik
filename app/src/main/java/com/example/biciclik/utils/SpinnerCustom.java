@@ -90,6 +90,27 @@ public class SpinnerCustom extends SingleSpinnerSearch implements DialogInterfac
         setAdapter(adapterSpinner);
     }
 
+
+    public List<KeyPairBoolDataCustom> getSelectedItemsCustom() {
+        List<KeyPairBoolDataCustom> selectedItems = new ArrayList<>();
+        for (KeyPairBoolDataCustom item : items) {
+            if (item.isSelected()) {
+                selectedItems.add(item);
+            }
+        }
+        return selectedItems;
+    }
+
+    public List<String> getSelectedIdsCustom() {
+        List<String> selectedItemsIds = new ArrayList<>();
+        for (KeyPairBoolDataCustom item : items) {
+            if (item.isSelected()) {
+                selectedItemsIds.add(item.getId());
+            }
+        }
+        return selectedItemsIds;
+    }
+
     @Override
     public void onCancel(DialogInterface dialog) {
         // refresh text on spinner

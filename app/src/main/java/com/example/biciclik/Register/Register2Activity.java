@@ -49,6 +49,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
     RegisterPresenters presenter;
     Register2Data register2Data;
     String currentPhotoPath,UrlSelfie,UrlFront,UrlBack;
+    File sel=null;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -143,6 +144,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                 File photoFile = null;
                 try {
                     photoFile = createImage();
+                    sel=photoFile;
                 } catch (IOException ex) {
                 }
                 if (photoFile != null) {
