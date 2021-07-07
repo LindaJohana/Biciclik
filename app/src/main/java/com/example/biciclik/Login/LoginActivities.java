@@ -80,7 +80,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
     }
 
     public void lanzarRegistro(){
-        Intent i = new Intent(BaseContext.getContext(), Register3Activity.class );
+        Intent i = new Intent(BaseContext.getContext(), Register1Activity.class );
         startActivity(i);
     }
     public void lanzarOlvideC(View view){

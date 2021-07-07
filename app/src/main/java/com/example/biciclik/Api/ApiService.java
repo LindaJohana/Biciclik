@@ -15,6 +15,7 @@ import java.util.Map;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -26,6 +27,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface ApiService {
@@ -56,12 +58,15 @@ public interface ApiService {
     );
 
     @Multipart
-//    //@Headers({ "Content-Type: multipart/form-data;charset=UTF-8"})
-//    @Headers({ "Content-Type: application/json"})
     @POST("api/user/")
-    Call<UserResponse> sendInfo(
+//    @Headers("content-type: multipart/form-data;")
+    Call<ResponseBody> sendInfo(
             //@Part UserData user,
-            @PartMap Map<String, String> user,
+            @Part("user.username") RequestBody username,
+            @Part("user.firts_name") RequestBody firtsname,
+            @Part("user.last_name") RequestBody lastname,
+            @Part("user.password") RequestBody password,
+            @Part("user.email") RequestBody email,
             @Part("phone_number") RequestBody phone_number,
             @Part("company") RequestBody company,
             @Part("address") RequestBody address,
@@ -69,6 +74,7 @@ public interface ApiService {
             @Part MultipartBody.Part document_front_photo,
             @Part MultipartBody.Part document_back_photo
     );
+
     @FormUrlEncoded
     @POST("api/user/verify-token/")
     Call<MessageResponse>tokenVerify(
