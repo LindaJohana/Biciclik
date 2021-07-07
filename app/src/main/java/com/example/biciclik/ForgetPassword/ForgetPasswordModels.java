@@ -1,5 +1,7 @@
 package com.example.biciclik.ForgetPassword;
 
+import android.util.Log;
+
 import com.example.biciclik.Api.ForgetPasswordAdapter;
 import com.example.biciclik.objects.EmailData;
 import com.example.biciclik.objects.MessageResponse;
@@ -24,7 +26,7 @@ public class ForgetPasswordModels implements ForgetPasswordInterfaces.models{
 
     @Override
     public void sendEmailModel(EmailData email, ForgetPasswordInterfaces.presenters presenter) {
-        Call<MessageResponse> call = forgetAdapter.getApiService().sendEmail(email.getUser());
+        Call<MessageResponse> call = forgetAdapter.getApiService().recoverPassword(email.getUsername());
         call.enqueue(new Callback<MessageResponse>() {
             @Override
             public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
@@ -47,6 +49,5 @@ public class ForgetPasswordModels implements ForgetPasswordInterfaces.models{
 
             }
         });
-        //request.sendEmailRequest(email, presenter);
     }
 }

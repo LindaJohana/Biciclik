@@ -4,19 +4,19 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class EmailData {
-    @SerializedName("user")
+    @SerializedName("username")
     @Expose
-    private String user;
+    private String username;
 
-    public EmailData(String user) {
-        this.user = user;
+    public EmailData(String username) {
+        this.username = username;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

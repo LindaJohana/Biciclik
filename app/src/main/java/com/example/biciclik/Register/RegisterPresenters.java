@@ -20,9 +20,11 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     RegisterInterfaces.activities3 view3;
     RegisterModels model;
 
-    public RegisterPresenters(RegisterInterfaces.activities1 view1, RegisterInterfaces.activities2 view2) {
+    public RegisterPresenters(RegisterInterfaces.activities1 view1,
+                              RegisterInterfaces.activities2 view2, RegisterInterfaces.activities3 view3) {
         this.view1 = view1;
         this.view2= view2;
+        this.view3=view3;
         this.model=new RegisterModels();
     }
 
@@ -78,5 +80,20 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     @Override
     public void onSuccessRegister() {
         view2.lanzarRegistro3(null);
+    }
+
+    @Override
+    public void verifyPresenter(String token) {
+        model.verifyModel(token, this);
+    }
+
+    @Override
+    public void onErrorPresenterCod(String message) {
+        view3.setError(message);
+    }
+
+    @Override
+    public void onSuccessCod() {
+        view3.lanzarExitoso(null);
     }
 }

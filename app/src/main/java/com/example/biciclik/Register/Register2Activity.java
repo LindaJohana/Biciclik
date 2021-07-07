@@ -110,7 +110,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         Imagecedulafront=findViewById(R.id.imagecedulafront);
         Imagencedulaback=findViewById(R.id.imagecedulaback);
         TextViewRegistro=findViewById(R.id.textViewRegistro2);
-        presenter=new RegisterPresenters(null, this);
+        presenter=new RegisterPresenters(null, this, null);
     }
 
     public void cargarImagen(int num){
