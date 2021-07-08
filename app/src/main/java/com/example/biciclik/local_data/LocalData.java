@@ -15,6 +15,14 @@ public class LocalData implements LocalDataInterface {
     }
 
     @Override
+    public void CreateUser() {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putString("SELFIE", "").apply();
+        preferences.edit().putString("DOCUMENT_FROT_PHOTO", "").apply();
+        preferences.edit().putString("DOCUMENT_BACK_PHOTO", "").apply();
+    }
+
+    @Override
     public void SaveToken(String refresh, String access) {
         String token = "Some token From Server";
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);

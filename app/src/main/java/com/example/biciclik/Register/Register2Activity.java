@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -26,9 +27,12 @@ import androidx.core.content.FileProvider;
 
 import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
+import com.example.biciclik.local_data.LocalData;
 import com.example.biciclik.objects.Register2Data;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,6 +54,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
     Register2Data register2Data;
     String currentPhotoPath,UrlSelfie,UrlFront,UrlBack;
     File sel=null;
+    LocalData localData;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -111,6 +116,25 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         Imagencedulaback=findViewById(R.id.imagecedulaback);
         TextViewRegistro=findViewById(R.id.textViewRegistro2);
         presenter=new RegisterPresenters(null, this, null);
+        localData=new LocalData();
+        if (!localData.getRegister("SELFIE").equals("")){
+            File fileSelfie = new File(localData.getRegister("SELFIE"));
+            File fileFront = new File(localData.getRegister("DOCUMENT_FRONT_PHOTO"));
+            File fileBack = new File(localData.getRegister("DOCUMENT_BACK_PHOTO"));
+
+            String filePath1 = fileSelfie.getPath();
+            Bitmap bitmap1 = BitmapFactory.decodeFile(filePath1);
+            Imageselfie.setImageBitmap(bitmap1);
+            UrlSelfie = fileSelfie.getAbsolutePath();
+            String filePath2 = fileFront.getPath();
+            Bitmap bitmap2 = BitmapFactory.decodeFile(filePath2);
+            Imagecedulafront.setImageBitmap(bitmap2);
+            UrlFront = fileFront.getAbsolutePath();
+            String filePath3 = fileBack.getPath();
+            Bitmap bitmap3 = BitmapFactory.decodeFile(filePath3);
+            Imagencedulaback.setImageBitmap(bitmap3);
+            UrlBack = fileBack.getAbsolutePath();
+        }
     }
 
     public void cargarImagen(int num){
@@ -212,6 +236,15 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             Imageselfie.setImageBitmap(imageBitmap);
+            try (FileOutputStream out = new FileOutputStream(currentPhotoPath)){
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                out.flush();
+                out.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             UrlSelfie = currentPhotoPath;
             return;
         }
@@ -219,6 +252,15 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             Imagecedulafront.setImageBitmap(imageBitmap);
+            try (FileOutputStream out = new FileOutputStream(currentPhotoPath)){
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                out.flush();
+                out.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             UrlFront=currentPhotoPath;
             return;
         }
@@ -226,6 +268,15 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             Imagencedulaback.setImageBitmap(imageBitmap);
+            try (FileOutputStream out = new FileOutputStream(currentPhotoPath)){
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                out.flush();
+                out.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             UrlBack=currentPhotoPath;
             return;
         }
@@ -254,7 +305,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                 storageDir      /* directory */
         );
         // Save a file: path for use with ACTION_VIEW intents
-        currentPhotoPath = image.getAbsolutePath();
+        currentPhotoPath = image.getPath();
         return image;
     }
     public void lanzarRegistro3(View view){
@@ -273,6 +324,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         presenter.register2Presenters(register2Data);
     }
     public void setError(String message) {
-        Toast.makeText(getBaseContext(), message, 500-0).show();
+        Toast.makeText(getBaseContext(), message, 900-0).show();
+        finish();
     }
 }
