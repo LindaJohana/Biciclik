@@ -11,12 +11,14 @@ import com.example.biciclik.objects.UserResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -46,6 +48,7 @@ public interface ApiService {
     @GET("api/company/")
     Call<CompanyResponse> companies(
     );
+
     @FormUrlEncoded
     @POST("api/recover_password/")
     Call<MessageResponse> sendEmail(
@@ -53,15 +56,27 @@ public interface ApiService {
     );
 
     @Multipart
-    @Headers({ "Content-Type: multipart/form-data;charset=UTF-8"})
+//    //@Headers({ "Content-Type: multipart/form-data;charset=UTF-8"})
+//    @Headers({ "Content-Type: application/json"})
     @POST("api/user/")
     Call<UserResponse> sendInfo(
-            @PartMap HashMap<String, Object> user,
+            //@Part UserData user,
+            @PartMap Map<String, String> user,
             @Part("phone_number") RequestBody phone_number,
             @Part("company") RequestBody company,
             @Part("address") RequestBody address,
             @Part MultipartBody.Part selfie,
             @Part MultipartBody.Part document_front_photo,
             @Part MultipartBody.Part document_back_photo
+    );
+    @FormUrlEncoded
+    @POST("api/user/verify-token/")
+    Call<MessageResponse>tokenVerify(
+            @Field("token") String token
+    );
+    @FormUrlEncoded
+    @POST("api/recover_password/")
+    Call<MessageResponse>recoverPassword(
+            @Field("username") String username
     );
 }

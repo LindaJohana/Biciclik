@@ -33,6 +33,8 @@ public interface RegisterInterfaces {
     }
     interface activities3{
         void lanzarExitoso(View view);
+        void verify();
+        void setError(String message);
     }
     interface presenters{
         void register1Presenters(UserData userData, Register1Data register1Data);
@@ -43,11 +45,15 @@ public interface RegisterInterfaces {
         void onErrorPresenterCompany(String message);
         void onErrorPresenterRegister(String message);
         void onSuccessRegister();
+        void verifyPresenter(String token);
+        void onErrorPresenterCod(String message);
+        void onSuccessCod();
     }
     interface models{
         void register1Model(UserData userData, Register1Data register1Data, presenters presenter);
         void register2Model(Register2Data register2Data, presenters presenter);
         void getCompanyModel(presenters presenter);
+        void verifyModel(String token, presenters presenters);
 
     }
     interface requests{

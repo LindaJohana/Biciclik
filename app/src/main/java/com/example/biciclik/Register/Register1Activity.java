@@ -105,7 +105,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         InputTextEmailRegistro=findViewById(R.id.inputTextEmailRegistro);
         InputTextDireccion=findViewById(R.id.inputTextDireccion);
         InputTextCont=findViewById(R.id.inputTextCont);
-        presenter=new RegisterPresenters(this, null);
+        presenter=new RegisterPresenters(this, null, null);
         companies = new ArrayList<CompanyData>();
         id_company="";
     }

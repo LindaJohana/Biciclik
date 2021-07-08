@@ -15,6 +15,7 @@ import com.example.biciclik.DrawerMain.DrawerActivities;
 import com.example.biciclik.ForgetPassword.ForgetPasswordActivity;
 import com.example.biciclik.R;
 import com.example.biciclik.Register.Register1Activity;
+import com.example.biciclik.Register.Register3Activity;
 import com.example.biciclik.objects.LoginResponse;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -79,7 +80,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
     }
 
     public void lanzarRegistro(){
-        Intent i = new Intent(BaseContext.getContext(), Register1Activity.class );
+        Intent i = new Intent(BaseContext.getContext(), Register3Activity.class );
         startActivity(i);
     }
     public void lanzarOlvideC(View view){
