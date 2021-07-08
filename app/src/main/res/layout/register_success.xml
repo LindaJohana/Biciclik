@@ -44,6 +44,7 @@
         android:text="@string/ButtonVerPuntos"
         android:textColor="@color/white" />
     <Button
+        android:id="@+id/buttonEstoy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/rojo"
