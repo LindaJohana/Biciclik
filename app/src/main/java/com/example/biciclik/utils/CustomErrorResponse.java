@@ -38,7 +38,8 @@ public class CustomErrorResponse {
                         String message = answer.getString("message");
                         response_user = message;
                     }
-
+                    response_user = response_user.replace("['", "");
+                    response_user=response_user.replace("']", "");
                     return response_user;
                 } else {
                     JSONArray key = answer.names();
@@ -52,6 +53,8 @@ public class CustomErrorResponse {
                             response_user += (keys.toString() + ": " + value.toString());
                         }
                     }
+                    response_user=response_user.replace("['", "");
+                    response_user=response_user.replace("']", "");
                     return response_user;
                 }
             }

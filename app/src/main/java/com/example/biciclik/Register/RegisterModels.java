@@ -76,40 +76,58 @@ public class RegisterModels implements RegisterInterfaces.models{
 
     @Override
     public void register2Model(Register2Data register2Data, RegisterInterfaces.presenters presenter) {
-        localData.register(register2Data.getSelfie().toString(), "SELFIE");
-        localData.register(register2Data.getDocumentFrontPhoto().toString(), "DOCUMENT_FRONT_PHOTO");
-        localData.register(register2Data.getDocumentBackPhoto().toString(), "DOCUMENT_BACK_PHOTO");
-        Log.e("Model2", "Model2");
+
+        localData.register(register2Data.getSelfie(),"SELFIE");
+        localData.register(register2Data.getDocumentFrontPhoto(), "DOCUMENT_FRONT_PHOTO");
+        localData.register(register2Data.getDocumentBackPhoto(), "DOCUMENT_BACK_PHOTO");
 
         File fileSelfie = new File(localData.getRegister("SELFIE"));
         File fileFront = new File(localData.getRegister("DOCUMENT_FRONT_PHOTO"));
         File fileBack = new File(localData.getRegister("DOCUMENT_BACK_PHOTO"));
-        RequestBody requestFileSelfie = RequestBody.create(MediaType.parse("multipart/form-data"), fileSelfie);
-        RequestBody requestFileFront = RequestBody.create(MediaType.parse("multipart/form-data"), fileFront);
-        RequestBody requestFileBack = RequestBody.create(MediaType.parse("multipart/form-data"), fileBack);
-        MultipartBody.Part bodySelfie = MultipartBody.Part.createFormData("selfie", fileSelfie.getName(), requestFileSelfie);
-        MultipartBody.Part bodyFront = MultipartBody.Part.createFormData("document_front_photo", fileFront.getName(), requestFileFront);
-        MultipartBody.Part bodyBack = MultipartBody.Part.createFormData("document_back_photo", fileBack.getName(), requestFileBack);
 
-        Log.e("NO ESTA LLEGANFO", localData.getRegister("USER"));
-        RequestBody username = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("USER"));
-        RequestBody firtsname = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("FIRTSNAME"));
-        RequestBody lastname = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("LASTNAME"));
-        RequestBody password = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("PASSWORD"));
-        RequestBody email = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("EMAIL"));
-        RequestBody phone = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("PHONE"));
-        RequestBody company = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("COMPANY"));
-        RequestBody address = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("ADDRESS"));
+        final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        request.addFormDataPart("user.username", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("USER")));
+        request.addFormDataPart("user.firts_name", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("FIRTS_NAME")));
+        request.addFormDataPart("user.last_name", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("LAST_NAME")));
+        request.addFormDataPart("user.password", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("PASSWORD")));
+        request.addFormDataPart("user.email", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("EMAIL")));
+        request.addFormDataPart("phone_number", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("PHONE")));
+        request.addFormDataPart("company", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("COMPANY")));
+        request.addFormDataPart("selfie",fileSelfie.getName(),RequestBody.create(MediaType.parse("image/*"), fileSelfie));
+        request.addFormDataPart("document_front_photo",fileFront.getName(),RequestBody.create(MediaType.parse("image/*"), fileFront));
+        request.addFormDataPart("document_back_photo",fileBack.getName(),RequestBody.create(MediaType.parse("image/*"), fileBack));
+//        // Single Image
+//        builder.addFormDataPart("files",file1.getName(),RequestBody.create(MediaType.parse("image/*"), file1));
+//        // Multiple Images
+//        for (int i = 0; i <filePaths.size() ; i++) {
+//            File file = new File(filePaths.get(i));
+//            RequestBody requestImage = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//            builder.addFormDataPart("event_images[]", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+//        }
 
+        MultipartBody body=request.build();
 
-
-        Call<ResponseBody> call = RegisterAdapter.getApiService2().sendInfo(username, firtsname, lastname, password, email,
-                phone, company, address, bodySelfie, bodyFront, bodyBack);
+        Call<ResponseBody> call = RegisterAdapter.getApiService2().sendInfo(body);
         try {
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     Log.d("tag", "onResponse: " + response.message().toString());
+                    if (response.isSuccessful()){
+                        ResponseBody objects_list = null;
+                        objects_list=response.body();
+                        localData.CreateUser();
+                        presenter.onSuccessRegister();
+                    }else {
+                        CustomErrorResponse custom_error = new CustomErrorResponse();
+                        String response_user = "Intentalo nuevamente";
+                        try {
+                            response_user = custom_error.returnMessageError(response.errorBody().string());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        presenter.onErrorPresenterRegister(response_user);
+                    }
                 }
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
@@ -119,32 +137,6 @@ public class RegisterModels implements RegisterInterfaces.models{
         } catch (Exception e) {
             Log.d("tag", "onCreate: " + e.getMessage());
         }
-//        Call<ResponseBody> call = registerAdapter.getApiService().sendInfo(username, firtsname, lastname, password, email,
-//                phone, company, address, bodySelfie, bodyFront, bodyBack);
-//        call.enqueue(new Callback<ResponseBody>() {
-//                         @Override
-//                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                             if (response.isSuccessful()){
-//                                 UserResponse objects_list = null;
-////                                 objects_list=response.body();
-//                                 presenter.onSuccessRegister();
-//                             }else {
-//                                 CustomErrorResponse custom_error = new CustomErrorResponse();
-//                                 String response_user = "Intentalo nuevamente";
-//                                 try {
-//                                     response_user = custom_error.returnMessageError(response.errorBody().string());
-//                                 } catch (IOException e) {
-//                                     e.printStackTrace();
-//                                 }
-//                                 presenter.onErrorPresenterRegister(response_user);
-//                             }
-//                         }
-//
-//                         @Override
-//                         public void onFailure(Call<ResponseBody> call, Throwable t) {
-//
-//                         }
-//                     });
     }
 
     @Override

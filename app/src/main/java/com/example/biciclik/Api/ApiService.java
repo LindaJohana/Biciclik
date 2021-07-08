@@ -57,22 +57,23 @@ public interface ApiService {
             @Field("username") String username
     );
 
-    @Multipart
+
     @POST("api/user/")
 //    @Headers("content-type: multipart/form-data;")
     Call<ResponseBody> sendInfo(
             //@Part UserData user,
-            @Part("user.username") RequestBody username,
-            @Part("user.firts_name") RequestBody firtsname,
-            @Part("user.last_name") RequestBody lastname,
-            @Part("user.password") RequestBody password,
-            @Part("user.email") RequestBody email,
-            @Part("phone_number") RequestBody phone_number,
-            @Part("company") RequestBody company,
-            @Part("address") RequestBody address,
-            @Part MultipartBody.Part selfie,
-            @Part MultipartBody.Part document_front_photo,
-            @Part MultipartBody.Part document_back_photo
+            @Body MultipartBody file
+//            @Part("user.username") RequestBody username,
+//            @Part("user.firts_name") RequestBody firtsname,
+//            @Part("user.last_name") RequestBody lastname,
+//            @Part("user.password") RequestBody password,
+//            @Part("user.email") RequestBody email,
+//            @Part("phone_number") RequestBody phone_number,
+//            @Part("company") RequestBody company,
+//            @Part("address") RequestBody address,
+//            @Part MultipartBody.Part selfie,
+//            @Part MultipartBody.Part document_front_photo,
+//            @Part MultipartBody.Part document_back_photo
     );
 
     @FormUrlEncoded

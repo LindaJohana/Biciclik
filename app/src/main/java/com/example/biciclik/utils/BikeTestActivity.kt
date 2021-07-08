@@ -299,7 +299,6 @@ class BikeTestActivity : Fragment() {
         }
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         session.disConnect()
