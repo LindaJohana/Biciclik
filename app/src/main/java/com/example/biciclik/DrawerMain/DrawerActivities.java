@@ -55,11 +55,21 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             if (extras.containsKey("home")) {
                 inicio();
             }
+            if (extras.containsKey("points")){
+                points();
+            }
         }
 
     }
+
+    private void points() {
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.container, new MapsActivity());
+        fragmentTransaction.commit();
+    }
+
     public void inicio(){
-        Log.e("kndsdn","ksdskk");
         fragmentManager=getSupportFragmentManager();
         fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container, new HomeActivity());

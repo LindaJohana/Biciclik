@@ -6,6 +6,9 @@ import android.os.FileUtils;
 import android.util.Log;
 
 import com.example.biciclik.Api.RegisterAdapter;
+import com.example.biciclik.Api.RegisterAdapter2;
+import com.example.biciclik.BaseContext.BaseContext;
+import com.example.biciclik.R;
 import com.example.biciclik.local_data.LocalData;
 import com.example.biciclik.objects.CompanyData;
 import com.example.biciclik.objects.CompanyResponse;
@@ -16,6 +19,8 @@ import com.example.biciclik.objects.TokenResponse;
 import com.example.biciclik.objects.UserData;
 import com.example.biciclik.objects.UserResponse;
 import com.example.biciclik.utils.CustomErrorResponse;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,13 +29,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.PartMap;
 
 public class RegisterModels implements RegisterInterfaces.models{
@@ -38,12 +48,14 @@ public class RegisterModels implements RegisterInterfaces.models{
     //private RegisterRequests request;
     LocalData localData;
     RegisterAdapter registerAdapter;
+    RegisterAdapter2 registerAdapter2;
 
     public RegisterModels() {
         this.model = model;
         //this.request = new RegisterRequests();
         this.localData=new LocalData();
         this.registerAdapter=new RegisterAdapter();
+
     }
 
     @Override
@@ -68,16 +80,6 @@ public class RegisterModels implements RegisterInterfaces.models{
         localData.register(register2Data.getDocumentFrontPhoto().toString(), "DOCUMENT_FRONT_PHOTO");
         localData.register(register2Data.getDocumentBackPhoto().toString(), "DOCUMENT_BACK_PHOTO");
         Log.e("Model2", "Model2");
-        //request.register1Request(presenter);
-        Map<String, String> params = new HashMap<>();
-        params.put("username", localData.getRegister("USER"));
-        params.put("firts_name", localData.getRegister("FIRTS_NAME"));
-        params.put("last_name", localData.getRegister("LAST_NAME"));
-        params.put("password", localData.getRegister("PASSWORD"));
-        params.put("email", localData.getRegister("EMAIL"));
-//
-//        UserData user=new UserData(localData.getRegister("USER"), localData.getRegister("FIRTS_NAME"),
-//                localData.getRegister("LAST_NAME"), localData.getRegister("PASSWORD"), localData.getRegister("EMAIL"));
 
         File fileSelfie = new File(localData.getRegister("SELFIE"));
         File fileFront = new File(localData.getRegister("DOCUMENT_FRONT_PHOTO"));
@@ -85,39 +87,64 @@ public class RegisterModels implements RegisterInterfaces.models{
         RequestBody requestFileSelfie = RequestBody.create(MediaType.parse("multipart/form-data"), fileSelfie);
         RequestBody requestFileFront = RequestBody.create(MediaType.parse("multipart/form-data"), fileFront);
         RequestBody requestFileBack = RequestBody.create(MediaType.parse("multipart/form-data"), fileBack);
-        MultipartBody.Part bodySelfie = MultipartBody.Part.createFormData("picture", fileSelfie.getName(), requestFileSelfie);
-        MultipartBody.Part bodyFront = MultipartBody.Part.createFormData("picture", fileFront.getName(), requestFileFront);
-        MultipartBody.Part bodyBack = MultipartBody.Part.createFormData("picture", fileBack.getName(), requestFileBack);
+        MultipartBody.Part bodySelfie = MultipartBody.Part.createFormData("selfie", fileSelfie.getName(), requestFileSelfie);
+        MultipartBody.Part bodyFront = MultipartBody.Part.createFormData("document_front_photo", fileFront.getName(), requestFileFront);
+        MultipartBody.Part bodyBack = MultipartBody.Part.createFormData("document_back_photo", fileBack.getName(), requestFileBack);
 
-        RequestBody phone = RequestBody.create(okhttp3.MultipartBody.FORM, localData.getRegister("PHONE"));
-        RequestBody company = RequestBody.create(okhttp3.MultipartBody.FORM, localData.getRegister("COMPANY"));
-        RequestBody address = RequestBody.create(okhttp3.MultipartBody.FORM, localData.getRegister("ADDRESS"));
-        Call<UserResponse> call = registerAdapter.getApiService().sendInfo(params, phone,
-                company, address, bodySelfie, bodyFront, bodyBack);
-        call.enqueue(new Callback<UserResponse>() {
-                         @Override
-                         public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                             if (response.isSuccessful()){
-                                 UserResponse objects_list = null;
-                                 objects_list=response.body();
-                                 presenter.onSuccessRegister();
-                             }else {
-                                 CustomErrorResponse custom_error = new CustomErrorResponse();
-                                 String response_user = "Intentalo nuevamente";
-                                 try {
-                                     response_user = custom_error.returnMessageError(response.errorBody().string());
-                                 } catch (IOException e) {
-                                     e.printStackTrace();
-                                 }
-                                 presenter.onErrorPresenterRegister(response_user);
-                             }
-                         }
+        Log.e("NO ESTA LLEGANFO", localData.getRegister("USER"));
+        RequestBody username = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("USER"));
+        RequestBody firtsname = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("FIRTSNAME"));
+        RequestBody lastname = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("LASTNAME"));
+        RequestBody password = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("PASSWORD"));
+        RequestBody email = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("EMAIL"));
+        RequestBody phone = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("PHONE"));
+        RequestBody company = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("COMPANY"));
+        RequestBody address = RequestBody.create(MediaType.parse("text/plain"), localData.getRegister("ADDRESS"));
 
-                         @Override
-                         public void onFailure(Call<UserResponse> call, Throwable t) {
 
-                         }
-                     });
+
+        Call<ResponseBody> call = RegisterAdapter.getApiService2().sendInfo(username, firtsname, lastname, password, email,
+                phone, company, address, bodySelfie, bodyFront, bodyBack);
+        try {
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    Log.d("tag", "onResponse: " + response.message().toString());
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Log.d("tag", "onResponse: " + t.getMessage());
+                }
+            });
+        } catch (Exception e) {
+            Log.d("tag", "onCreate: " + e.getMessage());
+        }
+//        Call<ResponseBody> call = registerAdapter.getApiService().sendInfo(username, firtsname, lastname, password, email,
+//                phone, company, address, bodySelfie, bodyFront, bodyBack);
+//        call.enqueue(new Callback<ResponseBody>() {
+//                         @Override
+//                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                             if (response.isSuccessful()){
+//                                 UserResponse objects_list = null;
+////                                 objects_list=response.body();
+//                                 presenter.onSuccessRegister();
+//                             }else {
+//                                 CustomErrorResponse custom_error = new CustomErrorResponse();
+//                                 String response_user = "Intentalo nuevamente";
+//                                 try {
+//                                     response_user = custom_error.returnMessageError(response.errorBody().string());
+//                                 } catch (IOException e) {
+//                                     e.printStackTrace();
+//                                 }
+//                                 presenter.onErrorPresenterRegister(response_user);
+//                             }
+//                         }
+//
+//                         @Override
+//                         public void onFailure(Call<ResponseBody> call, Throwable t) {
+//
+//                         }
+//                     });
     }
 
     @Override
@@ -149,7 +176,6 @@ public class RegisterModels implements RegisterInterfaces.models{
 
     @Override
     public void verifyModel(String token, RegisterInterfaces.presenters presenters) {
-        Log.e("Modelllll", token);
         Call<MessageResponse> call=registerAdapter.getApiService().tokenVerify(token);
         call.enqueue(new Callback<MessageResponse>() {
             @Override
