@@ -160,7 +160,6 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
                 InputSecondName.getText().toString(),InputTextCont.getText().toString(),InputTextEmailRegistro.getText().toString());
         register1Data= new Register1Data(InputTextTelefono.getText().toString(),
                 id_company, InputTextDireccion.getText().toString());
-        Log.e("Register1", "Register1");
         presenter.register1Presenters(userData,register1Data);
     }
 }
