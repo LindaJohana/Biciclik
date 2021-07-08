@@ -52,7 +52,6 @@ public class LoginModels implements LoginInterfaces.models {
             }
             @Override
             public void onFailure(Call<TokenResponse> call, Throwable t) {
-                Log.e("onResutErrorPostLogin","No se puede enviar la publicación a la API");
             }
         });
     }
@@ -65,10 +64,8 @@ public class LoginModels implements LoginInterfaces.models {
                 @Override
                 public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                     if (response.isSuccessful()){
-                        Log.e("HOLIIIIIIIII","HOLIIIIIIIIIIII");
                         presenter.onSuccessLogin();
                     }else {
-                        Log.e("ERRORRRRRR0","errrrorrrr");
                         refreshToken(presenter, localData.getRefresh());
                     }
                 }

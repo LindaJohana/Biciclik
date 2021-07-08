@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.FileUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.biciclik.Api.RegisterAdapter;
 import com.example.biciclik.Api.RegisterAdapter2;
@@ -39,9 +40,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.PartMap;
 
 public class RegisterModels implements RegisterInterfaces.models{
     private RegisterInterfaces.models model;
@@ -187,7 +185,6 @@ public class RegisterModels implements RegisterInterfaces.models{
             }
             @Override
             public void onFailure(Call<MessageResponse> call, Throwable t) {
-                Log.e("MALOMALITOMALO", ":( ");
             }
         });
     }

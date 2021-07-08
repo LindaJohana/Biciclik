@@ -19,12 +19,14 @@ import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
+import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
 import com.example.biciclik.local_data.LocalData;
@@ -42,6 +44,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
     ImageView Imageselfie, Imagecedulafront, Imagencedulaback;
     Button ButtonContinuar;
     TextView Terminos;
+    CheckBox checkbox;
     public final int REQUEST_IMAGE1 = 11;
     public final int REQUEST_IMAGE2 = 22;
     public final int REQUEST_IMAGE3 = 33;
@@ -55,6 +58,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
     String currentPhotoPath,UrlSelfie,UrlFront,UrlBack;
     File sel=null;
     LocalData localData;
+    BaseContext baseContext;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -89,6 +93,22 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         ButtonContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (UrlSelfie.isEmpty()){
+                    Toast.makeText(getBaseContext(),"Agregar Selfie",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (UrlFront.isEmpty()){
+                    Toast.makeText(getBaseContext(),"Agregar foto frontal de la cedula",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (UrlBack.isEmpty()){
+                    Toast.makeText(getBaseContext(),"Agregar foto del respaldo de la cedula",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!checkbox.isChecked()){
+                    Toast.makeText(getBaseContext(),"Aceptar Terminos y Condiciones",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 register2();
             }
         });
@@ -116,6 +136,9 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         Imagencedulaback=findViewById(R.id.imagecedulaback);
         TextViewRegistro=findViewById(R.id.textViewRegistro2);
         presenter=new RegisterPresenters(null, this, null);
+        UrlSelfie="";
+        UrlFront="";
+        UrlBack="";
         localData=new LocalData();
         if (!localData.getRegister("SELFIE").equals("")){
             File fileSelfie = new File(localData.getRegister("SELFIE"));
@@ -135,6 +158,8 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             Imagencedulaback.setImageBitmap(bitmap3);
             UrlBack = fileBack.getAbsolutePath();
         }
+        baseContext = new BaseContext();
+        checkbox=findViewById(R.id.checkbox);
     }
 
     public void cargarImagen(int num){
@@ -309,6 +334,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         return image;
     }
     public void lanzarRegistro3(View view){
+        Toast.makeText(getBaseContext(), "Usuario Creado Correctamente", Toast.LENGTH_LONG).show();
         Intent i = new Intent(this, Register3Activity.class );
         startActivity(i);
     }
@@ -320,7 +346,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
     @Override
     public void register2() {
         register2Data=new Register2Data(UrlSelfie, UrlFront, UrlBack);
-        Log.e("Register2", "Register2");
         presenter.register2Presenters(register2Data);
     }
     public void setError(String message) {

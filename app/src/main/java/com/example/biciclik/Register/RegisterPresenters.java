@@ -30,13 +30,11 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
 
     @Override
     public void register1Presenters(UserData userData, Register1Data register1Data) {
-        Log.e("Presenter1", "Presenter");
         model.register1Model(userData, register1Data, this);
     }
 
     @Override
     public void register2Presenters(Register2Data register2Data) {
-        Log.e("Presenter2", "Presenter2");
         model.register2Model(register2Data, this);
     }
 
