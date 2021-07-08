@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,26 +16,57 @@ import com.example.biciclik.RegisterSuccess.RegisterSuccessActivity;
 
 public class Register3Activity extends Activity implements RegisterInterfaces.activities3 {
     EditText D1, D2, D3, D4;
-    TextView Resul;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register3);
         initObjects();
 
+        D1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                D2.requestFocus();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        D2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                D3.requestFocus();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        D3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                D4.requestFocus();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
         D4.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Verificar();
             }
-
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
     }
