@@ -65,13 +65,26 @@
         android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
 
-    <ImageView
-        android:id="@+id/imagecedula"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/cedula"
-        android:layout_gravity="center"
-        android:layout_marginVertical="8dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/imagecedulafront"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/cedula"
+            android:layout_gravity="center"
+            android:layout_marginVertical="8dp"/>
+        <ImageView
+            android:id="@+id/imagecedulaback"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/cedula"
+            android:layout_gravity="center"
+            android:layout_marginVertical="8dp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textCedula"

@@ -23,6 +23,16 @@ public class LocalData implements LocalDataInterface {
     }
 
     @Override
+    public String getToken() {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        final String token = preferences.getString("TOKEN", null);
+        if (token != null) {
+            return token;
+        }
+        return "";
+    }
+
+    @Override
     public String getRefresh() {
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
         final String refresh = preferences.getString("REFRESH", null);
@@ -38,6 +48,21 @@ public class LocalData implements LocalDataInterface {
         final String access = preferences.getString("ACCESS", null);
         if (access != null) {
             return access;
+        }
+        return "";
+    }
+
+    @Override
+    public void register(String data, String key) {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putString(key, data).apply();
+    }
+
+    public String getRegister(String key) {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        final String data = preferences.getString(key, null);
+        if (data != null) {
+            return data;
         }
         return "";
     }

@@ -2,7 +2,8 @@ package com.example.biciclik.utils;
 
 import android.util.Log;
 
-import com.android.volley.error.VolleyError;
+
+import com.example.biciclik.objects.TokenResponse;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,29 +11,34 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
+import retrofit2.Response;
+
 public class CustomErrorResponse {
 
-    public String returnMessageError(VolleyError error){
-        String decodedDataUsingUTF8;
+    public String returnMessageError(String error){
+
         try {
-            if (error.networkResponse.data != null){
-                Log.d("LOGIN", error.networkResponse.data.toString());
-                decodedDataUsingUTF8 = new String(error.networkResponse.data, "UTF-8");
-                Log.d("LOGIN", decodedDataUsingUTF8);
-                JSONObject answer = new JSONObject(decodedDataUsingUTF8);
+            if (error != null){
+                JSONObject answer = new JSONObject(error);
                 if (answer.has("message")) {
                     String response_user = "";
-                    JSONObject message = answer.getJSONObject("message");
-                    JSONArray key = message.names();
-                    for (int i = 0; i < key.length(); i++) {
-                        String keys = key.getString(i);
-                        String value = message.getString(keys);
-                        if (keys.equals("non_field_errors")) {
-                            response_user += value.toString();
-                        } else {
-                            response_user += (keys.toString() + ": " + value.toString());
+                    try{
+                        JSONObject message = answer.getJSONObject("message");
+                        JSONArray key = message.names();
+                        for (int i = 0; i < key.length(); i++) {
+                            String keys = key.getString(i);
+                            String value = message.getString(keys);
+                            if (keys.equals("non_field_errors")) {
+                                response_user += value.toString();
+                            } else {
+                                response_user += (keys.toString() + ": " + value.toString());
+                            }
                         }
+                    }catch (Exception e){
+                        String message = answer.getString("message");
+                        response_user = message;
                     }
+
                     return response_user;
                 } else {
                     JSONArray key = answer.names();
@@ -49,7 +55,7 @@ public class CustomErrorResponse {
                     return response_user;
                 }
             }
-        } catch (JSONException | UnsupportedEncodingException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
 
         }
