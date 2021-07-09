@@ -9,12 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.R;
 import com.example.biciclik.objects.PersonResponse;
 import com.example.biciclik.objects.ResultsResponse;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private ArrayList<ResultsResponse> list;
@@ -38,6 +42,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ResultsResponse person = list.get(position);
+        Picasso.with(BaseContext.getContext()).load(person.getUser_detail().getSelfie()).into(holder.imageSelfieT);
         holder.TxtNombre.setText(person.getUser_detail().getUser().getFirst_name() + " " + person.getUser_detail().getUser().getLast_name());
         holder.TxtViajes.setText("5"+" Viajes");
     }
@@ -48,10 +53,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView TxtNombre, TxtViajes;
+        CircleImageView imageSelfieT;
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             TxtNombre=itemView.findViewById(R.id.txtNombre);
             TxtViajes=itemView.findViewById(R.id.txtViajes);
+            imageSelfieT=itemView.findViewById(R.id.imageSelfieT);
         }
     }
 }
