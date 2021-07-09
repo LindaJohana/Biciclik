@@ -1,6 +1,7 @@
 package com.example.biciclik.DrawerMain;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -67,6 +68,7 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container, new MapsActivity());
         fragmentTransaction.commit();
+
     }
 
     public void inicio(){
@@ -120,6 +122,11 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             fragmentTransaction.replace(R.id.container,new MapsActivity());
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+        }
+        if(menuItem.getItemId()==R.id.llamar){
+            String phoneNo="321456";
+            String dial = "tel:" + phoneNo;
+            startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
         }
         if(menuItem.getItemId()==R.id.cerrar){
             logOut();

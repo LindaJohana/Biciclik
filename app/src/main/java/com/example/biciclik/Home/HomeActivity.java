@@ -2,6 +2,7 @@ package com.example.biciclik.Home;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,10 +46,15 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
     private HomeAdapter inicioAdapter;
     RecyclerView recyclerView;
     ArrayList<PersonResponse> listPersons;
+    private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA", "android.permission.CALL_PHONE"};
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.home,container,false);
+        int requestCode = 200;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(permissions, requestCode);
+        }
         listPersons=new ArrayList<PersonResponse>();
         recyclerView=(RecyclerView) view.findViewById(R.id.recyclershippings);
         pieChart1 = view.findViewById(R.id.piechart1);
