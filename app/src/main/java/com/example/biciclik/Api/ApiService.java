@@ -5,6 +5,8 @@ import com.example.biciclik.objects.CompanyData;
 import com.example.biciclik.objects.CompanyResponse;
 import com.example.biciclik.objects.LoginResponse;
 import com.example.biciclik.objects.MessageResponse;
+import com.example.biciclik.objects.ResultsResponse;
+import com.example.biciclik.objects.ResultsTopHome;
 import com.example.biciclik.objects.TokenResponse;
 import com.example.biciclik.objects.UserData;
 import com.example.biciclik.objects.UserResponse;
@@ -22,6 +24,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -61,19 +64,7 @@ public interface ApiService {
     @POST("api/user/")
 //    @Headers("content-type: multipart/form-data;")
     Call<ResponseBody> sendInfo(
-            //@Part UserData user,
             @Body MultipartBody file
-//            @Part("user.username") RequestBody username,
-//            @Part("user.firts_name") RequestBody firtsname,
-//            @Part("user.last_name") RequestBody lastname,
-//            @Part("user.password") RequestBody password,
-//            @Part("user.email") RequestBody email,
-//            @Part("phone_number") RequestBody phone_number,
-//            @Part("company") RequestBody company,
-//            @Part("address") RequestBody address,
-//            @Part MultipartBody.Part selfie,
-//            @Part MultipartBody.Part document_front_photo,
-//            @Part MultipartBody.Part document_back_photo
     );
 
     @FormUrlEncoded
@@ -86,4 +77,10 @@ public interface ApiService {
     Call<MessageResponse>recoverPassword(
             @Field("username") String username
     );
+
+    @GET("api/travel/")
+    Call<ResultsTopHome>topCompanyTrip(
+            @Query("limit") String limit
+    );
+
 }

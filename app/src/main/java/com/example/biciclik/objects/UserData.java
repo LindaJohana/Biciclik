@@ -47,6 +47,16 @@ public class UserData {
         this.date_joined = date_joined;
     }
 
+    public UserData(String id, String last_login, String username, String first_name, String last_name, String email, String date_joined) {
+        this.id = id;
+        this.last_login = last_login;
+        this.username = username;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.date_joined = date_joined;
+    }
+
     public UserData(String username, String first_name, String last_name, String password, String email) {
         this.username = username;
         this.first_name=first_name;
