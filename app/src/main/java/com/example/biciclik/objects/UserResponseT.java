@@ -3,7 +3,7 @@ package com.example.biciclik.objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserResponse {
+public class UserResponseT {
     @SerializedName("id")
     @Expose
     private String id;
@@ -15,10 +15,6 @@ public class UserResponse {
     @SerializedName("phone_number")
     @Expose
     private String phone_number;
-
-    @SerializedName("company")
-    @Expose
-    private CompanyData company;
 
     @SerializedName("address")
     @Expose
@@ -48,12 +44,22 @@ public class UserResponse {
     @Expose
     private String verified;
 
+    @SerializedName("token")
+    @Expose
+    private String token;
 
-    public UserResponse(String id, UserData user, String phone_number, CompanyData company, String address, String selfie, String document_front_photo, String document_back_photo, int economic_savings, int carbon_footprint, String verified) {
+    @SerializedName("company")
+    @Expose
+    private String company;
+
+    @SerializedName("company_detail")
+    @Expose
+    private CompanyData company_detail;
+
+    public UserResponseT(String id, UserData user, String phone_number, String address, String selfie, String document_front_photo, String document_back_photo, int economic_savings, int carbon_footprint, String verified, String token, String company, CompanyData company_detail) {
         this.id = id;
         this.user = user;
         this.phone_number = phone_number;
-        this.company = company;
         this.address = address;
         this.selfie = selfie;
         this.document_front_photo = document_front_photo;
@@ -61,6 +67,9 @@ public class UserResponse {
         this.economic_savings = economic_savings;
         this.carbon_footprint = carbon_footprint;
         this.verified = verified;
+        this.token = token;
+        this.company = company;
+        this.company_detail = company_detail;
     }
 
     public String getId() {
@@ -85,14 +94,6 @@ public class UserResponse {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
-    }
-
-    public CompanyData getCompany() {
-        return company;
-    }
-
-    public void setCompany(CompanyData company) {
-        this.company = company;
     }
 
     public String getAddress() {
@@ -149,5 +150,29 @@ public class UserResponse {
 
     public void setVerified(String verified) {
         this.verified = verified;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public CompanyData getCompany_detail() {
+        return company_detail;
+    }
+
+    public void setCompany_detail(CompanyData company_detail) {
+        this.company_detail = company_detail;
     }
 }

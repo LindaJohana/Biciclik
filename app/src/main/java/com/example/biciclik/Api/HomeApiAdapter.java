@@ -1,7 +1,13 @@
 package com.example.biciclik.Api;
 
+import android.widget.Toast;
+
 import com.example.biciclik.BaseContext.BaseContext;
+import com.example.biciclik.Home.HomePresenters;
 import com.example.biciclik.R;
+import com.example.biciclik.local_data.LocalData;
+import com.example.biciclik.objects.TokenResponse;
+import com.example.biciclik.utils.Token;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -11,10 +17,13 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RegisterAdapter {
+public class HomeApiAdapter {
     private static ApiService API_SERVICE;
     public static ApiService getApiService(){
         HttpLoggingInterceptor logging=new HttpLoggingInterceptor();
@@ -36,17 +45,16 @@ public class RegisterAdapter {
 
         return API_SERVICE;
     }
-
     public static ApiService getApiService2(){
-
+        LocalData localData=new LocalData();
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
         okHttpClientBuilder
                 .addInterceptor(new Interceptor() {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {
                         Request request = chain.request();
-                        Request.Builder newRequest = request.newBuilder().header("Authorization", "mytoken");
-                        return chain.proceed(newRequest.build());
+                        Request.Builder newRequest = request.newBuilder();
+                        return chain.proceed(newRequest.addHeader("Authorization", "Bearer "+localData.getAccess()).build());
                     }
                 });
         Gson gson = new GsonBuilder()
@@ -62,6 +70,5 @@ public class RegisterAdapter {
         }
         return API_SERVICE;
     }
-
 
 }

@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.R;
 import com.example.biciclik.objects.PersonResponse;
+import com.example.biciclik.objects.ResultsResponse;
 import com.example.biciclik.utils.FontManager;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
@@ -47,6 +48,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
     RecyclerView recyclerView;
     ArrayList<PersonResponse> listPersons;
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA", "android.permission.CALL_PHONE"};
+    HomePresenters presenter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
@@ -55,6 +57,8 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
         }
+        presenter=new HomePresenters(this);
+        presenter.TopCompanyPresenter();
         listPersons=new ArrayList<PersonResponse>();
         recyclerView=(RecyclerView) view.findViewById(R.id.recyclershippings);
         pieChart1 = view.findViewById(R.id.piechart1);
@@ -70,10 +74,9 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         loadPieChartData(pieChart1, 0.7f, 0.3f, 0xFF66FFCC);
         loadPieChartData(pieChart2, 0.5f, 0.5f, 0xFFE74C3C);
         loadPieChartData(pieChart3,0.9f, 0.1f, 0xFF3399FF);
-        setListPersons();
-        mostrar();
         barChart=view.findViewById(R.id.barChart);
         setupBar();
+
         return view;
     }
     private void setupBar(){
@@ -167,17 +170,12 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
 
         pieChart.animateY(1400, Easing.EaseInOutQuad);
     }
-    public void setListPersons(){
-        listPersons.add(new PersonResponse("Linda", "Patarroyo", 8));
-        listPersons.add(new PersonResponse("johana", "Patarroyo", 127));
-        listPersons.add(new PersonResponse("acero", "Patarroyo", 28));
-    }
     /*public void setListPersons(ArrayList<PersonResponse> notes){
         this.listPersons.clear();
         this.listPersons.addAll(notes);
     }*/
-    public void mostrar(){
-        inicioAdapter = new HomeAdapter(getContext(), listPersons);
+    public void TopCompanyPersons(ArrayList<ResultsResponse> results){
+        inicioAdapter = new HomeAdapter(getContext(), results);
         recyclerView.setAdapter(inicioAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }

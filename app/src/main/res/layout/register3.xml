@@ -43,60 +43,68 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        style="@style/EstiloLetra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/TextViewCodigo"
-        android:layout_marginTop="16dp"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginVertical="32dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <EditText
-            android:id="@+id/digito1"
-            android:background="@drawable/borde"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:isScrollContainer="true"
-            android:layout_marginRight="10dp"
-            android:padding="20sp"
-            android:inputType="number"
-            android:maxLength="1"/>
+        <TextView
+            style="@style/EstiloLetra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/TextViewCodigo"
+            android:layout_marginTop="16dp"/>
 
-        <EditText
-            android:id="@+id/digito2"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/borde"
-            android:inputType="number"
-            android:maxLength="1"
-            android:isScrollContainer="true"
-            android:padding="20sp" />
-        <EditText
-            android:id="@+id/digito3"
-            android:background="@drawable/borde"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:isScrollContainer="true"
-            android:layout_marginRight="10dp"
-            android:padding="20sp"
-            android:inputType="number"
-            android:maxLength="1"/>
-        <EditText
-            android:id="@+id/digito4"
-            android:background="@drawable/borde"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:isScrollContainer="true"
-            android:padding="20sp"
-            android:inputType="number"
-            android:maxLength="1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginVertical="32dp">
+
+            <EditText
+                android:id="@+id/digito1"
+                android:background="@drawable/borde"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:isScrollContainer="true"
+                android:layout_marginRight="10dp"
+                android:padding="20sp"
+                android:inputType="number"
+                android:maxLength="1"/>
+
+            <EditText
+                android:id="@+id/digito2"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/borde"
+                android:inputType="number"
+                android:maxLength="1"
+                android:isScrollContainer="true"
+                android:padding="20sp" />
+            <EditText
+                android:id="@+id/digito3"
+                android:background="@drawable/borde"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:isScrollContainer="true"
+                android:layout_marginRight="10dp"
+                android:padding="20sp"
+                android:inputType="number"
+                android:maxLength="1"/>
+            <EditText
+                android:id="@+id/digito4"
+                android:background="@drawable/borde"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:isScrollContainer="true"
+                android:padding="20sp"
+                android:inputType="number"
+                android:maxLength="1"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -104,6 +112,7 @@
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="@string/Validacion" />
 
     <ImageView
@@ -111,11 +120,13 @@
         android:layout_height="100dp"
         android:background="@drawable/pinas"
         android:layout_marginVertical="40dp"
+        android:visibility="gone"
         android:layout_gravity="center"/>
 
     <TextView
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="@string/textValidacion" />
 </LinearLayout>

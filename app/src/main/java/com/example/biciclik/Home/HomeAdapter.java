@@ -11,18 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.biciclik.R;
 import com.example.biciclik.objects.PersonResponse;
+import com.example.biciclik.objects.ResultsResponse;
 
 
 import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
-    private ArrayList<PersonResponse> list;
+    private ArrayList<ResultsResponse> list;
     LayoutInflater inflater;
     Context my_context;
 
-    public HomeAdapter(Context context, ArrayList<PersonResponse> list){
+    public HomeAdapter(Context context, ArrayList<ResultsResponse> results){
         this.inflater=LayoutInflater.from(context);
-        this.list = list;
+        this.list = results;
     }
     @NonNull
     @Override
@@ -36,9 +37,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        PersonResponse person = list.get(position);
-        holder.TxtNombre.setText(person.getName() + " " + person.getLast_name());
-        holder.TxtViajes.setText(person.getViajes()+" Viajes");
+        ResultsResponse person = list.get(position);
+        holder.TxtNombre.setText(person.getUser_detail().getUser().getFirst_name() + " " + person.getUser_detail().getUser().getLast_name());
+        holder.TxtViajes.setText("5"+" Viajes");
     }
 
     @Override
