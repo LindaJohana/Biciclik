@@ -28,6 +28,7 @@ import com.omni.support.ble.session.sub.Bike3In1Session
 class BikeTestActivity : Fragment() {
     private lateinit var session: Bike3In1Session
     private lateinit var btn_leerQr: Button
+    private lateinit var buttonShutdown: Button
     /*private lateinit var btn_connect: Button
     private lateinit var btn_disconnect: Button
     private lateinit var btn_unlock: Button
@@ -69,14 +70,16 @@ class BikeTestActivity : Fragment() {
 
         session.setListener(object : SimpleSessionListener() {
             override fun onConnecting() {
-
+                Log.e("conectando", "conectando")
             }
 
             override fun onConnected() {
+                Log.e("conecto", "conecto")
                 unlock()
             }
 
             override fun onDisconnected() {
+                Log.e("No conecto", "No conecto")
             }
 
             override fun onDeviceNoSupport() {
@@ -95,7 +98,7 @@ class BikeTestActivity : Fragment() {
                                     Log.d("=====", result.toString())
                                 }
                                 // Close lock reply
-                                session.call(CommandManager.blCommand.lockReply()).execute()
+//                                session.call(CommandManager.blCommand.lockReply()).execute()
                             }
                         })
             }
@@ -103,6 +106,7 @@ class BikeTestActivity : Fragment() {
         })
 
         btn_leerQr=view.findViewById<Button>(R.id.buttonQR)
+        buttonShutdown=view.findViewById<Button>(R.id.buttonShutdown)
         /*btn_connect = view.findViewById<Button>(R.id.btn_connect)
         btn_disconnect = view.findViewById<Button>(R.id.btn_disconnect)
         btn_unlock = view.findViewById<Button>(R.id.btn_unlock)
@@ -115,6 +119,7 @@ class BikeTestActivity : Fragment() {
         btn_leerQr.setOnClickListener {
             leerQR()
         }
+        buttonShutdown.setOnClickListener { shutdown() }
         return view
     }
 
@@ -141,6 +146,7 @@ class BikeTestActivity : Fragment() {
                 val lectura = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult")
                 Toast.makeText(context, "Leído: $lectura", Toast.LENGTH_SHORT).show()
                 if(lectura=="66155000612"){
+                    Log.e("holi", "Holiwi")
                     session.connect()
                     mostrarFragmentT()
                 }
@@ -158,6 +164,7 @@ class BikeTestActivity : Fragment() {
                     ) {
                         val isSuccess = data.getResult() ?: false
                         if(isSuccess) {
+                            Log.e("SUCCESS", "SUCCESS")
                             session.disConnect()
                         }
                         Toast.makeText(context, if (isSuccess)
@@ -172,121 +179,141 @@ class BikeTestActivity : Fragment() {
                     override fun onFailure(call: ISessionCall<Boolean>, e: Throwable) {
 
                         Toast.makeText(
-                                context, "", Toast.LENGTH_SHORT
+                                context, e.toString(), Toast.LENGTH_SHORT
                         )
 
                     }
                 })
     }
-
-    /*fun initListener() {
-
-        // connection
-        btn_connect.setOnClickListener {
-            session.connect()
-        }
-
-        // Disconnect
-        btn_disconnect.setOnClickListener {
-            session.disConnect()
-
-        }
-
-        //unlock
-        btn_unlock.setOnClickListener {
-            session.call(CommandManager.blCommand.unlock(0, System.currentTimeMillis() / 1000, 0))
-                .timeout(3000)
-                .enqueue(object : SessionCallback<Boolean> {
-                    override fun onSuccess(
-                        call: ISessionCall<Boolean>, data:
-                        IResp<Boolean>
-                    ) {
-                        val isSuccess = data.getResult() ?: false
-                        Toast.makeText(context, if (isSuccess)
-                                "Successfully unlocked" else "Failed to unlock", Toast.LENGTH_SHORT
-                        )
-                            .show()
-                        // Unlock reply
-                        session.call(CommandManager.blCommand.unlockReply()).execute()
-
+    fun shutdown(){
+        session.call(CommandManager.blCommand.shutdown())
+            .enqueue(object : SessionCallback<BLShutdownResult> {
+                override fun onSuccess(
+                    call: ISessionCall<BLShutdownResult>,
+                    data: IResp<BLShutdownResult>
+                ) {
+                    val result = data.getResult()
+                    if (result != null) {
+                        Log.d("=====", result.toString())
                     }
+                }
+                override fun onFailure(
+                    call: ISessionCall<BLShutdownResult>,
+                    e: Throwable
+                ) {
 
-                    override fun onFailure(call: ISessionCall<Boolean>, e: Throwable) {
+                }
+            })
+    }
 
-                        Toast.makeText(
-                            context, "", Toast.LENGTH_SHORT
-                        )
-
-                    }
-                })
-
-        }
-        //Get lock information
-        btn_info.setOnClickListener {
-            session.call(CommandManager.blCommand.getLockInfo())
-                .enqueue(object : SessionCallback<BLInfoResult> {
-                    override fun onSuccess(
-                        call: ISessionCall<BLInfoResult>,
-                        data: IResp<BLInfoResult>
-                    ) {
-                        val result = data.getResult()
-                        if (result != null) {
-                            Log.d("=====", result.toString())
-                        }
-                    }
-
-                    override fun onFailure(
-                        call: ISessionCall<BLInfoResult>, e:
-                        Throwable
-                    ) {
-
-                    }
-                })
-        }
-
-        //Shutdown
-        btn_shutdown.setOnClickListener {
-            session.call(CommandManager.blCommand.shutdown())
-                .enqueue(object : SessionCallback<BLShutdownResult> {
-                    override fun onSuccess(
-                        call: ISessionCall<BLShutdownResult>,
-                        data: IResp<BLShutdownResult>
-                    ) {
-                        val result = data.getResult()
-                        if (result != null) {
-                            Log.d("=====", result.toString())
-                        }
-                    }
-                    override fun onFailure(
-                        call: ISessionCall<BLShutdownResult>,
-                        e: Throwable
-                    ) {
-
-                    }
-                })
-        }
-
-        //Get log
-        btn_get_log.setOnClickListener {
-            session.call(CommandManager.blCommand.getLog())
-                .asyncTimeout(10000)
-                .asyncCall(object : AsyncCallback<String> {
-                    override fun onTimeout() {
-
-                    }
-                    override fun onStarted(success: Boolean) {
-                    }
-
-                    override fun onReceiving(call: ISessionCall<String>, data: IResp<String>) {
-
-                        Log.d("=====", "${data.getResult()}")
-                    }
-                    override fun onReceived() {
-
-                    }
-                })
-        }
-    }*/
+    fun initListener() {
+//
+//        // connection
+//        btn_connect.setOnClickListener {
+//            session.connect()
+//        }
+//
+//        // Disconnect
+//        btn_disconnect.setOnClickListener {
+//            session.disConnect()
+//
+//        }
+//
+//        //unlock
+//        btn_unlock.setOnClickListener {
+//            session.call(CommandManager.blCommand.unlock(0, System.currentTimeMillis() / 1000, 0))
+//                .timeout(3000)
+//                .enqueue(object : SessionCallback<Boolean> {
+//                    override fun onSuccess(
+//                        call: ISessionCall<Boolean>, data:
+//                        IResp<Boolean>
+//                    ) {
+//                        val isSuccess = data.getResult() ?: false
+//                        Toast.makeText(context, if (isSuccess)
+//                                "Successfully unlocked" else "Failed to unlock", Toast.LENGTH_SHORT
+//                        )
+//                            .show()
+//                        // Unlock reply
+//                        session.call(CommandManager.blCommand.unlockReply()).execute()
+//
+//                    }
+//
+//                    override fun onFailure(call: ISessionCall<Boolean>, e: Throwable) {
+//
+//                        Toast.makeText(
+//                            context, "", Toast.LENGTH_SHORT
+//                        )
+//
+//                    }
+//                })
+//
+//        }
+//        //Get lock information
+//        btn_info.setOnClickListener {
+//            session.call(CommandManager.blCommand.getLockInfo())
+//                .enqueue(object : SessionCallback<BLInfoResult> {
+//                    override fun onSuccess(
+//                        call: ISessionCall<BLInfoResult>,
+//                        data: IResp<BLInfoResult>
+//                    ) {
+//                        val result = data.getResult()
+//                        if (result != null) {
+//                            Log.d("=====", result.toString())
+//                        }
+//                    }
+//
+//                    override fun onFailure(
+//                        call: ISessionCall<BLInfoResult>, e:
+//                        Throwable
+//                    ) {
+//
+//                    }
+//                })
+//        }
+//
+//        //Shutdown
+//        btn_shutdown.setOnClickListener {
+//            session.call(CommandManager.blCommand.shutdown())
+//                .enqueue(object : SessionCallback<BLShutdownResult> {
+//                    override fun onSuccess(
+//                        call: ISessionCall<BLShutdownResult>,
+//                        data: IResp<BLShutdownResult>
+//                    ) {
+//                        val result = data.getResult()
+//                        if (result != null) {
+//                            Log.d("=====", result.toString())
+//                        }
+//                    }
+//                    override fun onFailure(
+//                        call: ISessionCall<BLShutdownResult>,
+//                        e: Throwable
+//                    ) {
+//
+//                    }
+//                })
+//        }
+//
+//        //Get log
+//        btn_get_log.setOnClickListener {
+//            session.call(CommandManager.blCommand.getLog())
+//                .asyncTimeout(10000)
+//                .asyncCall(object : AsyncCallback<String> {
+//                    override fun onTimeout() {
+//
+//                    }
+//                    override fun onStarted(success: Boolean) {
+//                    }
+//
+//                    override fun onReceiving(call: ISessionCall<String>, data: IResp<String>) {
+//
+//                        Log.d("=====", "${data.getResult()}")
+//                    }
+//                    override fun onReceived() {
+//
+//                    }
+//                })
+//        }
+    }
     fun mostrarFragmentT() {
         val TAG:String = "MyActivity"
         try {

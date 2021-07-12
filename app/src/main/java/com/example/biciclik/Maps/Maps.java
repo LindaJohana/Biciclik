@@ -2,11 +2,14 @@ package com.example.biciclik.Maps;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.biciclik.objects.PointData;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -14,6 +17,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.biciclik.databinding.ActivityMapsBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import java.util.ArrayList;
 
 public class Maps extends SupportMapFragment implements OnMapReadyCallback {
 
@@ -46,6 +52,15 @@ public class Maps extends SupportMapFragment implements OnMapReadyCallback {
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
         map.addMarker(new MarkerOptions().position(latLng));
         map.addMarker(new MarkerOptions().position(latLng2));
+        LocationServices.getFusedLocationProviderClient(getContext()).getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                map.setMyLocationEnabled(true);
+            }
+        });
+    }
+    public void puntos(ArrayList<PointData> puntos){
+
     }
     /*public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
