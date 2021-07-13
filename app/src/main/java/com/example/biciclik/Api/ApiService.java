@@ -5,6 +5,8 @@ import com.example.biciclik.objects.CompanyData;
 import com.example.biciclik.objects.CompanyResponse;
 import com.example.biciclik.objects.LoginResponse;
 import com.example.biciclik.objects.MessageResponse;
+import com.example.biciclik.objects.PointData;
+import com.example.biciclik.objects.PointsResponse;
 import com.example.biciclik.objects.ResultsResponse;
 import com.example.biciclik.objects.ResultsTopHome;
 import com.example.biciclik.objects.TokenResponse;
@@ -81,6 +83,14 @@ public interface ApiService {
     @GET("api/travel/")
     Call<ResultsTopHome>topCompanyTrip(
             @Query("limit") String limit
+    );
+
+    @GET("api/point/")
+    Call<PointsResponse>listMaps(
+    );
+    @GET("api/point/")
+    Call<PointData>point(
+            @Query("id") String id
     );
 
 }
