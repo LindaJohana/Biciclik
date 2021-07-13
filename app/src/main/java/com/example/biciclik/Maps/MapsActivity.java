@@ -51,9 +51,10 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
         presenter = new MapsPresenters(this);
         presenter.getListPointsPresenter();
         recyclerPuntos=(RecyclerView) view.findViewById(R.id.recyclerPuntos);
-        mapsActivity=new Maps();
-        getChildFragmentManager().beginTransaction().commit();
-        mostrarFragment();
+//        mapsActivity=new Maps();
+//        map=new Maps();
+//        getChildFragmentManager().beginTransaction().commit();
+//        mostrarFragment();
 
         return view;
     }
@@ -80,8 +81,11 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
 
     @Override
     public void setListPoints(ArrayList<PointData> results) {
-        map=new Maps();
-        map.puntos(results);
+        mapsActivity=new Maps(results);
+        map=new Maps(results);
+        getChildFragmentManager().beginTransaction().commit();
+        mostrarFragment();
+//        map.puntos(results);
         mapsAdapter = new MapsAdapter(getContext(), results);
         recyclerPuntos.setAdapter(mapsAdapter);
         recyclerPuntos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
