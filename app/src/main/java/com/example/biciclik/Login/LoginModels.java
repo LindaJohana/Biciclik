@@ -86,6 +86,7 @@ public class LoginModels implements LoginInterfaces.models {
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if (response.isSuccessful()){
                     localData.SaveToken(refresh,response.body().getAccess());
+                    Log.e("LOGINNNNNNN", "REFRESHtOKEN");
                     presenter.onSuccessLogin();
                 }else {
                     localData.LogOutApp();

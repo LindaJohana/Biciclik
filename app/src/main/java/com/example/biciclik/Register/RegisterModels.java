@@ -85,11 +85,12 @@ public class RegisterModels implements RegisterInterfaces.models{
 
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         request.addFormDataPart("user.username", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("USER")));
-        request.addFormDataPart("user.firts_name", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("FIRTS_NAME")));
+        request.addFormDataPart("user.first_name", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("FIRTS_NAME")));
         request.addFormDataPart("user.last_name", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("LAST_NAME")));
         request.addFormDataPart("user.password", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("PASSWORD")));
         request.addFormDataPart("user.email", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("EMAIL")));
         request.addFormDataPart("phone_number", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("PHONE")));
+        request.addFormDataPart("address", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("ADDRESS")));
         request.addFormDataPart("company", null, RequestBody.create(MediaType.parse("text/plain"),localData.getRegister("COMPANY")));
         request.addFormDataPart("selfie",fileSelfie.getName(),RequestBody.create(MediaType.parse("image/*"), fileSelfie));
         request.addFormDataPart("document_front_photo",fileFront.getName(),RequestBody.create(MediaType.parse("image/*"), fileFront));

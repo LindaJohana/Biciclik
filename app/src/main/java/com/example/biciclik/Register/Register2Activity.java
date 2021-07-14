@@ -174,10 +174,10 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                     abrircamara(num);
                     return;
                 }
-                if (opciones[i].equals("Cargar foto")){
-                    subirFoto(num);
-                    return;
-                }
+//                if (opciones[i].equals("Cargar foto")){
+//                    //subirFoto(num);
+//                    return;
+//                }
                 if (opciones[i].equals("Cancelar")){
                     dialog.dismiss();
                     return;
@@ -239,22 +239,22 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             }
         }
     }
-    public void subirFoto(int num){
-        Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/");
-        if (num==1){
-            startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE1);
-            return;
-        }
-        if (num==2){
-            startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE2);
-            return;
-        }
-        if (num==3){
-            startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE3);
-            return;
-        }
-    }
+//    public void subirFoto(int num){
+//        Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        intent.setType("image/");
+//        if (num==1){
+//            startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE1);
+//            return;
+//        }
+//        if (num==2){
+//            startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE2);
+//            return;
+//        }
+//        if (num==3){
+//            startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE3);
+//            return;
+//        }
+//    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_PHOTO1 && resultCode == RESULT_OK) {
@@ -305,18 +305,18 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             UrlBack=currentPhotoPath;
             return;
         }
-        if (requestCode == REQUEST_IMAGE1 && resultCode == RESULT_OK){
-            Uri miPath=data.getData();
-            Imageselfie.setImageURI(miPath);
-        }
-        if (requestCode == REQUEST_IMAGE2 && resultCode == RESULT_OK){
-            Uri miPath=data.getData();
-            Imagecedulafront.setImageURI(miPath);
-        }
-        if (requestCode == REQUEST_IMAGE3 && resultCode == RESULT_OK){
-            Uri miPath=data.getData();
-            Imagencedulaback.setImageURI(miPath);
-        }
+//        if (requestCode == REQUEST_IMAGE1 && resultCode == RESULT_OK){
+//            Uri miPath=data.getData();
+//            Imageselfie.setImageURI(miPath);
+//        }
+//        if (requestCode == REQUEST_IMAGE2 && resultCode == RESULT_OK){
+//            Uri miPath=data.getData();
+//            Imagecedulafront.setImageURI(miPath);
+//        }
+//        if (requestCode == REQUEST_IMAGE3 && resultCode == RESULT_OK){
+//            Uri miPath=data.getData();
+//            Imagencedulaback.setImageURI(miPath);
+//        }
     }
 
 

@@ -21,7 +21,7 @@ public class HomePresenters implements HomeInterfaces.presenters {
 
     @Override
     public void TopCompanyPresenter() {
-        token.refreshToken();
+
         model.TopCompanyModel(this);
     }
 

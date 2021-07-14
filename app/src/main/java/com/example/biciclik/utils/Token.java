@@ -1,5 +1,9 @@
 package com.example.biciclik.utils;
 
+import android.util.Log;
+
+import com.example.biciclik.Api.HomeApiAdapter;
+import com.example.biciclik.Api.LoginAdapter;
 import com.example.biciclik.Api.TokenApiAdapter;
 import com.example.biciclik.Home.HomePresenters;
 import com.example.biciclik.Login.LoginInterfaces;
@@ -12,14 +16,15 @@ import retrofit2.Response;
 
 public class Token {
     LocalData localData=new LocalData();
-    TokenApiAdapter tokenApiAdapter=new TokenApiAdapter();
+    LoginAdapter loginAdapter = new LoginAdapter();
     String flag="";
     public void refreshToken() {
-        Call<TokenResponse> call=tokenApiAdapter.getApiService2().refreshToken(localData.getRefresh());
+        Call<TokenResponse> call=loginAdapter.getApiService().refreshToken(localData.getRefresh());
         call.enqueue(new Callback<TokenResponse>() {
             @Override
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if (response.isSuccessful()){
+                    Log.e("TOKENNNNN", "REFRESHtOKEN");
                     localData.SaveToken(localData.getRefresh(),response.body().getAccess());
                 }else {
                     localData.LogOutApp();

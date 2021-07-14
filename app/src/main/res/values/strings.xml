@@ -75,6 +75,7 @@
     <string name="TextViewDist">Distancia</string>
     <string name="ButtonCambios">Guardar Cambios</string>
     <string name="HintPunto">Seleccione Punto</string>
+    <string name="expiroToken">Su sesio ha expirado, inicie sesion de nuevo</string>
 
 
     <string-array name="planets_array">

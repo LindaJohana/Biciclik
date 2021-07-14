@@ -7,6 +7,8 @@ import com.example.biciclik.objects.LoginResponse;
 import com.example.biciclik.objects.MessageResponse;
 import com.example.biciclik.objects.PointData;
 import com.example.biciclik.objects.PointsResponse;
+import com.example.biciclik.objects.ProfileData;
+import com.example.biciclik.objects.ProfileResponse;
 import com.example.biciclik.objects.ResultsResponse;
 import com.example.biciclik.objects.ResultsTopHome;
 import com.example.biciclik.objects.TokenResponse;
@@ -29,9 +31,11 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
@@ -91,6 +95,15 @@ public interface ApiService {
     @GET("api/point/")
     Call<PointData>point(
             @Query("id") String id
+    );
+    @GET("api/current_user")
+    Call<ProfileData>profile(
+    );
+    @PATCH("api/user/{id}/")
+    Call<ProfileData>update(
+            @Path("id") String id,
+//            @Body ProfileData profileData
+            @Body MultipartBody profile
     );
 
 }

@@ -22,15 +22,24 @@
         android:src="@drawable/pinas"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/gris"
-        android:layout_gravity="center"
-        android:layout_marginVertical="32dp"/>
+        android:layout_gravity="center"/>
     <TextView
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/TextViewName" />
+        android:text="@string/TextViewFirtsName" />
     <EditText
         android:id="@+id/edNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"/>
+    <TextView
+        style="@style/EstiloLetra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TextViewSecondName" />
+    <EditText
+        android:id="@+id/edLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"/>
