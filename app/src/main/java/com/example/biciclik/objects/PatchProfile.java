@@ -1,2 +1,4 @@
-package com.example.biciclik.objects;public class PatchProfile {
+package com.example.biciclik.objects;
+
+public class PatchProfile {
 }
