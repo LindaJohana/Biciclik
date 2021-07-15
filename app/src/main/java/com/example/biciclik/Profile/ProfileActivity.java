@@ -54,14 +54,12 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileActivity extends Fragment implements ProfileInterfaces.activities{
     CircleImageView FotoPerfil;
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA"};
-    String carpeta_principal="misImagenesApp";
-    String carpeta_imagen="biciclick";
     EditText nombre, telefono, email, direccion, edLastName;
     TextView empresa;
     Button buttonGuardar;
     ProfilePresenters presenter;
-    ProfileData changedData;
-    UserData changedUser;
+    ProfileData changedDataA;
+    UserData changedUserA;
     String currentPhotoPath, UrlSelfie;
     File sel=null;
 
@@ -178,9 +176,9 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
         return image;
     }
     public void guardarCambios(){
-        changedUser=new UserData(nombre.getText().toString(), edLastName.getText().toString(),email.getText().toString());
-        changedData=new ProfileData(changedUser, telefono.getText().toString(),direccion.getText().toString(), UrlSelfie);
-        presenter.updatePresenter(changedUser, changedData);
+        changedUserA=new UserData(nombre.getText().toString(), edLastName.getText().toString(),email.getText().toString());
+        changedDataA=new ProfileData(changedUserA, telefono.getText().toString(),direccion.getText().toString(), UrlSelfie);
+        presenter.updatePresenter(changedUserA, changedDataA);
     }
 
     @Override

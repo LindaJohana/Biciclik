@@ -1,13 +1,10 @@
 package com.example.biciclik.Profile;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.biciclik.Api.HomeApiAdapter;
 import com.example.biciclik.local_data.LocalData;
-import com.example.biciclik.objects.CompanyResponse;
 import com.example.biciclik.objects.ProfileData;
-import com.example.biciclik.objects.ProfileResponse;
 import com.example.biciclik.objects.UserData;
 import com.example.biciclik.utils.CustomErrorResponse;
 
@@ -25,8 +22,6 @@ public class ProfileModels implements ProfileInterfaces.models{
     private ProfileInterfaces.models model;
     private LocalData localData;
     private HomeApiAdapter homeApiAdapter;
-    private UserData userProfile;
-    private ProfileData dataProfile;
 
     public ProfileModels() {
         this.model = model;
@@ -75,7 +70,6 @@ public class ProfileModels implements ProfileInterfaces.models{
             request.addFormDataPart("selfie",fileSelfie.getName(),RequestBody.create(MediaType.parse("image/*"), fileSelfie));
         }
         MultipartBody body=request.build();
-        //dataProfile=new ProfileData(changedUser, changedData.getPhone_number(), changedData.getAddress(), fileSelfie.toString());
         Call<ProfileData> call = homeApiAdapter.getApiService2().update(localData.getRegister("ID"), body);
         call.enqueue(new Callback<ProfileData>() {
             @Override

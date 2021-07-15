@@ -1,40 +1,21 @@
 package com.example.biciclik.Register;
 
-import android.net.Uri;
-import android.os.Environment;
-import android.os.FileUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.biciclik.Api.RegisterAdapter;
-import com.example.biciclik.Api.RegisterAdapter2;
-import com.example.biciclik.BaseContext.BaseContext;
-import com.example.biciclik.R;
 import com.example.biciclik.local_data.LocalData;
-import com.example.biciclik.objects.CompanyData;
 import com.example.biciclik.objects.CompanyResponse;
 import com.example.biciclik.objects.MessageResponse;
 import com.example.biciclik.objects.Register1Data;
 import com.example.biciclik.objects.Register2Data;
-import com.example.biciclik.objects.TokenResponse;
 import com.example.biciclik.objects.UserData;
-import com.example.biciclik.objects.UserResponse;
 import com.example.biciclik.utils.CustomErrorResponse;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -43,14 +24,11 @@ import retrofit2.Response;
 
 public class RegisterModels implements RegisterInterfaces.models{
     private RegisterInterfaces.models model;
-    //private RegisterRequests request;
     LocalData localData;
     RegisterAdapter registerAdapter;
-    RegisterAdapter2 registerAdapter2;
 
     public RegisterModels() {
         this.model = model;
-        //this.request = new RegisterRequests();
         this.localData=new LocalData();
         this.registerAdapter=new RegisterAdapter();
 

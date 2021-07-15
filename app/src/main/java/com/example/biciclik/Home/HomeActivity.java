@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.R;
 import com.example.biciclik.objects.PersonResponse;
 import com.example.biciclik.objects.ResultsResponse;
+import com.example.biciclik.objects.TravelTopData;
 import com.example.biciclik.utils.FontManager;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
@@ -174,9 +176,14 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         this.listPersons.clear();
         this.listPersons.addAll(notes);
     }*/
-    public void TopCompanyPersons(ArrayList<ResultsResponse> results){
+    public void TopCompanyPersons(ArrayList<TravelTopData> results){
         inicioAdapter = new HomeAdapter(getContext(), results);
         recyclerView.setAdapter(inicioAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+    }
+
+    @Override
+    public void setErrorTravelTop(String message) {
+        Toast.makeText(BaseContext.getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

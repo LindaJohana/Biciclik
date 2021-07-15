@@ -1,11 +1,9 @@
 package com.example.biciclik.Home;
 
-import com.example.biciclik.Login.LoginInterfaces;
-import com.example.biciclik.Login.LoginModels;
 import com.example.biciclik.objects.ResultsResponse;
+import com.example.biciclik.objects.TravelTopData;
 import com.example.biciclik.utils.Token;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class HomePresenters implements HomeInterfaces.presenters {
@@ -21,12 +19,16 @@ public class HomePresenters implements HomeInterfaces.presenters {
 
     @Override
     public void TopCompanyPresenter() {
-
         model.TopCompanyModel(this);
     }
 
     @Override
-    public void onSuccessTopCompany(ArrayList<ResultsResponse> results) {
+    public void onSuccessTopCompany(ArrayList<TravelTopData> results) {
         view.TopCompanyPersons(results);
+    }
+
+    @Override
+    public void onErrorTravelTop(String message) {
+        view.setErrorTravelTop(message);
     }
 }

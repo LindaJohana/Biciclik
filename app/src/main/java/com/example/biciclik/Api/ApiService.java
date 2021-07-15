@@ -12,11 +12,14 @@ import com.example.biciclik.objects.ProfileResponse;
 import com.example.biciclik.objects.ResultsResponse;
 import com.example.biciclik.objects.ResultsTopHome;
 import com.example.biciclik.objects.TokenResponse;
+import com.example.biciclik.objects.TravelTopData;
+import com.example.biciclik.objects.TravelTopResponse;
 import com.example.biciclik.objects.UserData;
 import com.example.biciclik.objects.UserResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -84,25 +87,26 @@ public interface ApiService {
             @Field("username") String username
     );
 
-    @GET("api/travel/")
-    Call<ResultsTopHome>topCompanyTrip(
-            @Query("limit") String limit
+    @GET("api/travel/top/")
+    Call<ArrayList<TravelTopData>>travelTop(
     );
 
     @GET("api/point/")
     Call<PointsResponse>listMaps(
     );
+
     @GET("api/point/")
     Call<PointData>point(
             @Query("id") String id
     );
+
     @GET("api/current_user")
     Call<ProfileData>profile(
     );
+
     @PATCH("api/user/{id}/")
     Call<ProfileData>update(
             @Path("id") String id,
-//            @Body ProfileData profileData
             @Body MultipartBody profile
     );
 
