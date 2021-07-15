@@ -57,6 +57,7 @@
     <string name="TextViewDestino">Destino</string>
     <string name="TextViewPuntoE">Punto Entrega</string>
     <string name="TextViewHoraE">Hora de Entrega</string>
+    <string name="TextViewTrips">Viajes</string>
     <string name="TextViewAhorro">Ahorro Económico</string>
     <string name="TextViewHuella">Huella de Carbono</string>
     <string name="ButtonOk">OK</string>

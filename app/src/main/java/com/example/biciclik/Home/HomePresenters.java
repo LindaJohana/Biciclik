@@ -1,6 +1,6 @@
 package com.example.biciclik.Home;
 
-import com.example.biciclik.objects.ResultsResponse;
+import com.example.biciclik.objects.StatisticsData;
 import com.example.biciclik.objects.TravelTopData;
 import com.example.biciclik.utils.Token;
 
@@ -30,5 +30,35 @@ public class HomePresenters implements HomeInterfaces.presenters {
     @Override
     public void onErrorTravelTop(String message) {
         view.setErrorTravelTop(message);
+    }
+
+    @Override
+    public void TravelMonthPresenter() {
+        model.TravelMonthModel(this);
+    }
+
+    @Override
+    public void onSuccessTravelMonth(ArrayList<Integer> results) {
+        view.setupBar(results);
+    }
+
+    @Override
+    public void onErrorTravelMonth(String message) {
+        view.setErrorTravelMonth(message);
+    }
+
+    @Override
+    public void travelStatisticsPresenter() {
+        model.travelStatisticsModel(this);
+    }
+
+    @Override
+    public void onSuccessTravelStatistics(StatisticsData results) {
+        view.travelStatisticsResults(results);
+    }
+
+    @Override
+    public void onErrorTravelStatistics(String message) {
+        view.serErrorTravelStatistics(message);
     }
 }

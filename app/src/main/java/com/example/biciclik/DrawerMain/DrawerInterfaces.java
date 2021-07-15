@@ -4,13 +4,15 @@ public interface DrawerInterfaces {
     interface activities{
         void logOut();
     }
+    interface activitiesHeader{
+
+    }
     interface presenters{
         void logOutPresenters();
+        void profileHeaderPresenter();
     }
     interface models{
         void logOutModels(presenters presenter);
-    }
-    interface requests{
-
+        void profileHeaderModel(presenters presenter);
     }
 }
