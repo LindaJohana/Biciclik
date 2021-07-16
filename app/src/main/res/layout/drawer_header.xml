@@ -19,6 +19,7 @@
     </LinearLayout>-->
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/drawerSelfie"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/pinas"
@@ -29,19 +30,17 @@
 
     <TextView
         style="@style/estiloletranegra"
-        android:id="@+id/textViewUsuario"
+        android:id="@+id/textViewUsuarioD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="16dp"
-        android:textStyle="bold"
-        android:text="usuario"/>
+        android:textStyle="bold"/>
     <TextView
-        android:id="@+id/textViewCorreo"
+        android:id="@+id/textViewEmailD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="10dp"
-        android:textStyle="bold"
-        android:text="example@email.com"/>
+        android:textStyle="bold"/>
 </LinearLayout>

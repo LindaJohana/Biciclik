@@ -43,7 +43,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TravelTopData person = list.get(position);
-        Picasso.with(BaseContext.getContext()).load("https://biciclick.loducode.com"+"/media/"+person.getUser__selfie()).into(holder.imageSelfieT);
+        Picasso.with(BaseContext.getContext()).load(BaseContext.getContext().getString(R.string.server)+"/media/"+person.getUser__selfie()).into(holder.imageSelfieT);
         holder.TxtNombre.setText(person.getUser__user__first_name() + " " + person.getUser__user__last_name());
         holder.TxtViajes.setText(person.getTrips()+" Viajes");
     }
