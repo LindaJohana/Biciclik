@@ -31,7 +31,6 @@ public class RegisterModels implements RegisterInterfaces.models{
         this.model = model;
         this.localData=new LocalData();
         this.registerAdapter=new RegisterAdapter();
-
     }
 
     @Override

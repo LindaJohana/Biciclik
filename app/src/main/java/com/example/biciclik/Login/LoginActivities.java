@@ -33,22 +33,18 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         setContentView(R.layout.login);
         initObjects();
         verifyToken();
-
-//        TextViewRegistro=findViewById(R.id.textViewRegistro);
         TextViewRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 lanzarRegistro();
             }
         });
-//        TextViewOlvideC=findViewById(R.id.textViewOlvideC);
         TextViewOlvideC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 lanzarOlvideC(null);
             }
         });
-//        ButtonAcceso=findViewById(R.id.ingresarAcceso);
         ButtonAcceso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,8 +59,6 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
                 setLogin();
             }
         });
-        /*InputTextEmail=findViewById(R.id.inputTextEmail);
-        InputTextCont=findViewById(R.id.inputTextCont);*/
     }
 
     private void initObjects(){

@@ -76,9 +76,6 @@
         <activity
             android:name=".DrawerMain.DrawerActivities"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".DrawerMain.DrawerHeader"
-            android:theme="@style/AppTheme.NoActionBar" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.biciclik.provider"

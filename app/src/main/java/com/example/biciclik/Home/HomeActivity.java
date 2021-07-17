@@ -47,23 +47,17 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
     ArrayList<PersonResponse> listPersons;
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA", "android.permission.CALL_PHONE"};
     HomePresenters presenter;
+    int requestCode;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.home,container,false);
-        int requestCode = 200;
+        initObjects(view);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
         }
-        presenter=new HomePresenters(this);
         presenter.TopCompanyPresenter();
-        listPersons=new ArrayList<PersonResponse>();
-        recyclerView=(RecyclerView) view.findViewById(R.id.recyclershippings);
-        pieChart1 = view.findViewById(R.id.piechart1);
-        pieChart2 = view.findViewById(R.id.piechart2);
-        pieChart3 = view.findViewById(R.id.piechart3);
         Typeface iconFont = FontManager.getTypeface(BaseContext.getContext(), FontManager.FONTAWESOME);
-        barChart=view.findViewById(R.id.barChart);
         presenter.TravelMonthPresenter();
         loadPieChartData(pieChart1,0xFF66FFCC);
         loadPieChartData(pieChart2,0xFFE74C3C);
@@ -72,10 +66,20 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
 
         return view;
     }
+    private void initObjects(View view){
+        requestCode = 200;
+        presenter=new HomePresenters(this);
+        listPersons=new ArrayList<PersonResponse>();
+        recyclerView=(RecyclerView) view.findViewById(R.id.recyclershippings);
+        pieChart1 = view.findViewById(R.id.piechart1);
+        pieChart2 = view.findViewById(R.id.piechart2);
+        pieChart3 = view.findViewById(R.id.piechart3);
+        barChart=view.findViewById(R.id.barChart);
+    }
     public void setupBar(ArrayList<Integer> results){
         ArrayList<BarEntry> entries = new ArrayList<>();
         for (int i=0; i<results.size();i++){
-            entries.add(new BarEntry(i, results.get(i)));
+            entries.add(new BarEntry(i+1, results.get(i)));
         }
         BarDataSet bardataset = new BarDataSet(entries, "");
         Legend l=barChart.getLegend();
@@ -89,8 +93,10 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         barChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         barChart.getXAxis().setDrawLabels(true);
         barChart.setFitBars(true);
-        barChart.getAxisLeft().setDrawLabels(false);
+        barChart.getAxisLeft().setDrawLabels(true);
         barChart.getAxisRight().setDrawLabels(false);
+        barChart.setVisibleXRangeMaximum((float) 7.0);
+
 
         //barChart.setDrawGridBackground(false);
         barChart.getAxisLeft().setDrawGridLines(false);

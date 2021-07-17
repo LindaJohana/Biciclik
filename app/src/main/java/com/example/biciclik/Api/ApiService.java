@@ -1,6 +1,7 @@
 package com.example.biciclik.Api;
 
 
+import com.example.biciclik.objects.BikeData;
 import com.example.biciclik.objects.CompanyResponse;
 import com.example.biciclik.objects.MessageResponse;
 import com.example.biciclik.objects.PointData;
@@ -9,6 +10,7 @@ import com.example.biciclik.objects.ProfileData;
 import com.example.biciclik.objects.StatisticsData;
 import com.example.biciclik.objects.TokenResponse;
 import com.example.biciclik.objects.TravelTopData;
+import com.example.biciclik.objects.TripResponse;
 
 import java.util.ArrayList;
 
@@ -100,4 +102,17 @@ public interface ApiService {
             @Body MultipartBody profile
     );
 
+    @GET("api/bike/unlock/")
+    Call<BikeData> bikeUnlock(
+            @Query("mac") String mac
+    );
+    @FormUrlEncoded
+    @POST("api/travel/")
+    Call<TripResponse>createTrip(
+            @Field("user") String user,
+            @Field("bike") String bike,
+            @Field("start_point") String start_point,
+            @Field("start_date") String start_date,
+            @Field("status") String status
+    );
 }

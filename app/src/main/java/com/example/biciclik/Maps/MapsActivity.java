@@ -38,6 +38,7 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
     private String [] permissions = {"android.permission.ACCESS_COARSE_LOCATION","android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW"};
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map1, container, false);
+        initObjects(view);
         int requestCode = 200;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
@@ -46,27 +47,18 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
         locationRequest.setInterval(10000);
         locationRequest.setFastestInterval(5000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-        listPuntos=new ArrayList<PuntosResponse>();
-        presenter = new MapsPresenters(this);
         presenter.getListPointsPresenter();
-        recyclerPuntos=(RecyclerView) view.findViewById(R.id.recyclerPuntos);
 //        mapsActivity=new Maps();
 //        map=new Maps();
 //        getChildFragmentManager().beginTransaction().commit();
 //        mostrarFragment();
-
         return view;
     }
-//    public void setListPuntos(){
-//        listPuntos.add(new PuntosResponse("Punto 1",  8));
-//        listPuntos.add(new PuntosResponse("Punto 2", 127));
-//        listPuntos.add(new PuntosResponse("Punto 3",  28));
-//    }
-    /*public void setListPersons(ArrayList<PersonResponse> notes){
-        this.listPersons.clear();
-        this.listPersons.addAll(notes);
-    }*/
+    private void initObjects(View view){
+        listPuntos=new ArrayList<PuntosResponse>();
+        presenter = new MapsPresenters(this);
+        recyclerPuntos=(RecyclerView) view.findViewById(R.id.recyclerPuntos);
+    }
 
     public void mostrarFragment(){
         try {
