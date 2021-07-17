@@ -1,10 +1,15 @@
 package com.example.biciclik.TakeBici;
 
 import com.example.biciclik.objects.BikeData;
+import com.example.biciclik.objects.CompanyData;
 import com.example.biciclik.objects.CreateTripData;
+import com.example.biciclik.objects.PointData;
 import com.example.biciclik.objects.TripResponse;
+import com.example.biciclik.utils.KeyPairBoolDataCustom;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 public interface TakeBiciInterfaces {
     interface activities{
@@ -16,6 +21,7 @@ public interface TakeBiciInterfaces {
     interface fragment{
         void setData(String point, String  date);
         void lanzarLogin();
+        void showpoint(List<KeyPairBoolDataCustom> names);
     }
     interface presenters{
         void sendCodPresenter(String cod);
@@ -25,9 +31,12 @@ public interface TakeBiciInterfaces {
         void onErrorTrip(String message);
         void onSuccessTrip(TripResponse data);
         void codelogin();
+        void getDeliveryPoint();
+        void setDeliveryPoint(ArrayList<PointData> points);
     }
     interface models{
         void sendCodModel(presenters presenter, String cod);
         void createTripModel(presenters presenter);
+        void getDeliveryPointModel(presenters presenter);
     }
 }

@@ -8,7 +8,9 @@ import androidx.annotation.RequiresApi;
 import com.example.biciclik.Api.HomeApiAdapter;
 import com.example.biciclik.local_data.LocalData;
 import com.example.biciclik.objects.BikeData;
+import com.example.biciclik.objects.CompanyResponse;
 import com.example.biciclik.objects.CreateTripData;
+import com.example.biciclik.objects.PointsResponse;
 import com.example.biciclik.objects.TripResponse;
 import com.example.biciclik.utils.CustomErrorResponse;
 import com.example.biciclik.utils.DDate;
@@ -107,6 +109,28 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
 
             @Override
             public void onFailure(Call<TripResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void getDeliveryPointModel(TakeBiciInterfaces.presenters presenter) {
+        Call<PointsResponse> call=homeApiAdapter.getApiService2().getPoint();
+        call.enqueue(new Callback<PointsResponse>() {
+            @Override
+            public void onResponse(Call<PointsResponse> call, Response<PointsResponse> response) {
+                if (response.isSuccessful()){
+                    PointsResponse objects_list = null;
+                    objects_list=response.body();
+                    presenter.setDeliveryPoint(objects_list.getResults());
+                }else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PointsResponse> call, Throwable t) {
 
             }
         });

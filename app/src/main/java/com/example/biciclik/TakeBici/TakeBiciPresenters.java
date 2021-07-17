@@ -7,7 +7,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.biciclik.R;
 import com.example.biciclik.objects.BikeData;
+import com.example.biciclik.objects.CompanyData;
+import com.example.biciclik.objects.PointData;
 import com.example.biciclik.objects.TripResponse;
+import com.example.biciclik.utils.KeyPairBoolDataCustom;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TakeBiciPresenters implements TakeBiciInterfaces.presenters{
     private TakeBiciInterfaces.fragment viewF;
@@ -58,6 +64,27 @@ public class TakeBiciPresenters implements TakeBiciInterfaces.presenters{
     @Override
     public void codelogin() {
         viewF.lanzarLogin();
+    }
+
+    @Override
+    public void getDeliveryPoint() {
+        model.getDeliveryPointModel(this);
+    }
+
+    @Override
+    public void setDeliveryPoint(ArrayList<PointData> points) {
+//        viewF.showpoint(points);
+        List<KeyPairBoolDataCustom> listArray0 = new ArrayList<>();
+        for (int i = 0; i < points.size(); i++) {
+            PointData point = points.get(i);
+            KeyPairBoolDataCustom h = new KeyPairBoolDataCustom();
+            h.setId(point.getId());
+            h.setExtra("lo que sea");
+            h.setName(point.getName());
+            h.setSelected(false);
+            listArray0.add(h);
+        }
+        viewF.showpoint(listArray0);
     }
 
 }

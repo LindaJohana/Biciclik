@@ -360,6 +360,7 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
 
     override fun mostrarFragment(data:TripResponse) {
         btn_leerQr.setEnabled(false)
+//        btn_leerQr.setBackgroundColor(-0x777778)
         val TAG:String = "MyActivity"
         try {
             var bundle:Bundle = Bundle()

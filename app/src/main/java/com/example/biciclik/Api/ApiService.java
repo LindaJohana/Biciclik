@@ -115,4 +115,7 @@ public interface ApiService {
             @Field("start_date") String start_date,
             @Field("status") String status
     );
+    @GET("api/point/")
+    Call<PointsResponse>getPoint(
+    );
 }

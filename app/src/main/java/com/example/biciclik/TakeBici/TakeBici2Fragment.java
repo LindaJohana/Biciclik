@@ -27,17 +27,22 @@ import com.example.biciclik.R;
 import com.example.biciclik.Register.Register1Activity;
 import com.example.biciclik.objects.TripResponse;
 import com.example.biciclik.utils.BikeTestActivity;
+import com.example.biciclik.utils.KeyPairBoolDataCustom;
+import com.example.biciclik.utils.SpinnerCustom;
+import com.example.biciclik.utils.SpinnerListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fragment {
-    SingleSpinnerSearch singleSpinnerSearch;
+    SpinnerCustom singleSpinnerSearch;
     private static final String TAG = "TakeBici2";
     TextView txtPuntoIR;
     TextView txtHoraIR;
-    TextView txtTiempoR;
+    Chronometer txtTiempoR;
+    TakeBiciPresenters presenters;
+    private String pointName;
 
     @Nullable
     @Override
@@ -48,46 +53,45 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
         String point=bundle.getString("start_point");
         String date=bundle.getString("start_date");
         setData(point, date);
-        final List<String> list = Arrays.asList(getResources().getStringArray(R.array.planets_array));
-        final List<KeyPairBoolData> listArray0 = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            KeyPairBoolData h = new KeyPairBoolData();
-            h.setId(i + 1);
-            h.setName(list.get(i));
-            h.setSelected(false);
-            listArray0.add(h);
-        }
-        singleSpinnerSearch = view.findViewById(R.id.singleItemSelectionSpinner);
-        singleSpinnerSearch.setSearchEnabled(true);
-        singleSpinnerSearch.setSearchHint("Selecciona la ubicacion");
-        singleSpinnerSearch.setItems(listArray0, new SingleSpinnerListener() {
-            @Override
-            public void onItemsSelected(KeyPairBoolData selectedItem) {
-                Log.i(TAG, "Selected Item : " + selectedItem.getName());
-            }
-            @Override
-            public void onClear() {
-                Toast.makeText(getContext(), "Limpiar item", Toast.LENGTH_SHORT).show();
-            }
-        });
+        singleSpinnerSearch = (SpinnerCustom) view.findViewById(R.id.singleItemSelectionSpinner);
+        presenters.getDeliveryPoint();
+//        final List<String> list = Arrays.asList(getResources().getStringArray(R.array.planets_array));
+//        final List<KeyPairBoolData> listArray0 = new ArrayList<>();
+//        for (int i = 0; i < list.size(); i++) {
+//            KeyPairBoolData h = new KeyPairBoolData();
+//            h.setId(i + 1);
+//            h.setName(list.get(i));
+//            h.setSelected(false);
+//            listArray0.add(h);
+//        }
+//        singleSpinnerSearch.setSearchEnabled(true);
+//        singleSpinnerSearch.setSearchHint("Selecciona la ubicacion");
+//        singleSpinnerSearch.setItems(listArray0, new SingleSpinnerListener() {
+//            @Override
+//            public void onItemsSelected(KeyPairBoolData selectedItem) {
+//                Log.i(TAG, "Selected Item : " + selectedItem.getName());
+//            }
+//            @Override
+//            public void onClear() {
+//                Toast.makeText(getContext(), "Limpiar item", Toast.LENGTH_SHORT).show();
+//            }
+//        });
         return view;
     }
 
     private void initObjects(View view){
         txtPuntoIR = (TextView) view.findViewById(R.id.txtPuntoInicio);
         txtHoraIR = (TextView) view.findViewById(R.id.txtHoraInicio);
-        txtTiempoR = (TextView)view.findViewById(R.id.txtTiempoTrans);
+        txtTiempoR = (Chronometer) view.findViewById(R.id.txtTiempoTrans);
+        presenters=new TakeBiciPresenters(null, this);
+        pointName="";
     }
 
     @Override
     public void setData(String point, String date) {
-//        Chronometer cronometro = new Chronometer();
-//        cronometro.setBase(SystemClock.elapsedRealtime());
-//        cronometro.start();
-//        String registroActual=cronometro.getText().toString();
         txtPuntoIR.setText(point);
         txtHoraIR.setText(date);
-        txtTiempoR.setText("registroActual");
+        txtTiempoR.start();
     }
 
     @Override
@@ -95,5 +99,22 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
         Toast.makeText(BaseContext.getContext(), getString(R.string.expiroToken), Toast.LENGTH_SHORT).show();
         Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
         startActivity(i);
+    }
+
+    @Override
+    public void showpoint(List<KeyPairBoolDataCustom> names) {
+        singleSpinnerSearch.setSearchEnabled(true);
+        singleSpinnerSearch.setSearchHint("Selecciona la ubicacion");
+        singleSpinnerSearch.setItems(names, new SpinnerListener() {
+
+            @Override
+            public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
+                pointName=selectedItem.getId();
+            }
+            @Override
+            public void onClear() {
+
+            }
+        });
     }
 }
