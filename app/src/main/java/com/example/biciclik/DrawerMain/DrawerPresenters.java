@@ -1,16 +1,34 @@
 package com.example.biciclik.DrawerMain;
 
+import com.example.biciclik.Register.RegisterInterfaces;
+import com.example.biciclik.objects.ProfileData;
+
 public class DrawerPresenters implements DrawerInterfaces.presenters {
-    private DrawerInterfaces.activities view;
+    private DrawerInterfaces.activities view1;
     private DrawerModels model;
 
-    public DrawerPresenters(DrawerInterfaces.activities view) {
-        this.view = view;
+    public DrawerPresenters(DrawerInterfaces.activities view1) {
+        this.view1 = view1;
         this.model = new DrawerModels();
     }
 
     @Override
     public void logOutPresenters() {
         model.logOutModels(this);
+    }
+
+    @Override
+    public void profileHeaderPresenter() {
+        model.profileHeaderModel(this);
+    }
+
+    @Override
+    public void onSuccessProfileHeader(ProfileData data) {
+        view1.setProfileHeader(data);
+    }
+
+    @Override
+    public void codelogin() {
+        view1.lanzarLogin();
     }
 }

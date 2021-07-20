@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -14,13 +18,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.Home.HomeActivity;
 import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.Maps.MapsActivity;
 import com.example.biciclik.Profile.ProfileActivity;
 import com.example.biciclik.R;
+import com.example.biciclik.objects.ProfileData;
 import com.example.biciclik.utils.BikeTestActivity;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.http.Header;
+
+import static com.example.biciclik.BaseContext.BaseContext.getContext;
 
 public class DrawerActivities extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerInterfaces.activities {
     DrawerLayout drawerLayout;
@@ -31,6 +43,8 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
     FragmentTransaction fragmentTransaction;
     MenuItem mPreviousMenuItem;
     DrawerPresenters presenter;
+    CircleImageView drawerSelfie;
+    TextView textViewUsuario, textViewEmailD;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +54,14 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
+        LayoutInflater.from(getContext()).inflate(R.layout.drawer_header, navigationView);
+        drawerSelfie=findViewById(R.id.drawerSelfie);
+        textViewUsuario=findViewById(R.id.textViewUsuarioD);
+        textViewEmailD=findViewById(R.id.textViewEmailD);
 
         //onlcick navgation
         navigationView.setNavigationItemSelectedListener(this);
+        presenter.profileHeaderPresenter();
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -83,6 +102,7 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         fragmentTransaction.add(R.id.container, new BikeTestActivity());
         fragmentTransaction.commit();
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -144,5 +164,23 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
     @Override
     public void logOut() {
         presenter.logOutPresenters();
+    }
+
+    @Override
+    public void setProfileHeader(ProfileData data) {
+        textViewUsuario.setText(data.getUser().getFirst_name()+" "+data.getUser().getLast_name());
+        if (data.getSelfie().startsWith("http")){
+            Picasso.with(BaseContext.getContext()).load(data.getSelfie()).into(drawerSelfie);
+        }else {
+            Picasso.with(BaseContext.getContext()).load(getString(R.string.server)+data.getSelfie()).into(drawerSelfie);
+        }
+        textViewEmailD.setText(data.getUser().getEmail());
+    }
+
+    @Override
+    public void lanzarLogin() {
+        Toast.makeText(BaseContext.getContext(), getString(R.string.expiroToken), Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+        startActivity(i);
     }
 }

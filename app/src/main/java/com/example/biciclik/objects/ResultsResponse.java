@@ -30,7 +30,7 @@ public class ResultsResponse<user_detail> {
 
     @SerializedName("user_detail")
     @Expose
-    private UserResponseT user_detail;
+    private ProfileData user_detail;
 
     @SerializedName("bike")
     @Expose
@@ -40,7 +40,7 @@ public class ResultsResponse<user_detail> {
     @Expose
     private String status;
 
-    public ResultsResponse(String id, String created_at, String modified_at, String created_by, String modified_by, String user, UserResponseT user_detail, String bike, String status) {
+    public ResultsResponse(String id, String created_at, String modified_at, String created_by, String modified_by, String user, ProfileData user_detail, String bike, String status) {
         this.id = id;
         this.created_at = created_at;
         this.modified_at = modified_at;
@@ -100,11 +100,11 @@ public class ResultsResponse<user_detail> {
         this.user = user;
     }
 
-    public UserResponseT getUser_detail() {
+    public ProfileData getUser_detail() {
         return user_detail;
     }
 
-    public void setUser_detail(UserResponseT user_detail) {
+    public void setUser_detail(ProfileData user_detail) {
         this.user_detail = user_detail;
     }
 

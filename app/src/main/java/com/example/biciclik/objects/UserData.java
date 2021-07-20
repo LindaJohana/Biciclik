@@ -16,7 +16,7 @@ public class UserData {
     @Expose
     private String username;
 
-    @SerializedName("first_nanme")
+    @SerializedName("first_name")
     @Expose
     private String first_name;
 
@@ -62,6 +62,12 @@ public class UserData {
         this.first_name=first_name;
         this.last_name=last_name;
         this.password = password;
+        this.email = email;
+    }
+
+    public UserData(String first_name, String last_name, String email) {
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.email = email;
     }
 

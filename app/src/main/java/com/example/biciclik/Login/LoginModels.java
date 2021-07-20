@@ -9,19 +9,15 @@ import com.example.biciclik.objects.TokenResponse;
 import com.example.biciclik.utils.CustomErrorResponse;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Field;
-import retrofit2.http.POST;
 
 public class LoginModels implements LoginInterfaces.models {
     private LoginInterfaces.models model;
     private LoginAdapter loginAdapter;
     private LocalData localData;
-    LoginResponse loginResponse;
 
     public LoginModels() {
         this.model = model;
@@ -86,6 +82,7 @@ public class LoginModels implements LoginInterfaces.models {
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if (response.isSuccessful()){
                     localData.SaveToken(refresh,response.body().getAccess());
+                    Log.e("LOGINNNNNNN", "REFRESHtOKEN");
                     presenter.onSuccessLogin();
                 }else {
                     localData.LogOutApp();

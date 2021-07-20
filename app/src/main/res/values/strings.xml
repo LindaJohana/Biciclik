@@ -57,6 +57,7 @@
     <string name="TextViewDestino">Destino</string>
     <string name="TextViewPuntoE">Punto Entrega</string>
     <string name="TextViewHoraE">Hora de Entrega</string>
+    <string name="TextViewTrips">Viajes</string>
     <string name="TextViewAhorro">Ahorro Económico</string>
     <string name="TextViewHuella">Huella de Carbono</string>
     <string name="ButtonOk">OK</string>
@@ -75,6 +76,7 @@
     <string name="TextViewDist">Distancia</string>
     <string name="ButtonCambios">Guardar Cambios</string>
     <string name="HintPunto">Seleccione Punto</string>
+    <string name="expiroToken">Su sesio ha expirado, inicie sesion de nuevo</string>
 
 
     <string-array name="planets_array">

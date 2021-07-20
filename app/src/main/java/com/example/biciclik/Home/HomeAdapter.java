@@ -13,6 +13,7 @@ import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.R;
 import com.example.biciclik.objects.PersonResponse;
 import com.example.biciclik.objects.ResultsResponse;
+import com.example.biciclik.objects.TravelTopData;
 import com.squareup.picasso.Picasso;
 
 
@@ -21,11 +22,11 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
-    private ArrayList<ResultsResponse> list;
+    private ArrayList<TravelTopData> list;
     LayoutInflater inflater;
     Context my_context;
 
-    public HomeAdapter(Context context, ArrayList<ResultsResponse> results){
+    public HomeAdapter(Context context, ArrayList<TravelTopData> results){
         this.inflater=LayoutInflater.from(context);
         this.list = results;
     }
@@ -41,10 +42,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ResultsResponse person = list.get(position);
-        Picasso.with(BaseContext.getContext()).load(person.getUser_detail().getSelfie()).into(holder.imageSelfieT);
-        holder.TxtNombre.setText(person.getUser_detail().getUser().getFirst_name() + " " + person.getUser_detail().getUser().getLast_name());
-        holder.TxtViajes.setText("5"+" Viajes");
+        TravelTopData person = list.get(position);
+        Picasso.with(BaseContext.getContext()).load(BaseContext.getContext().getString(R.string.server)+"/media/"+person.getUser__selfie()).into(holder.imageSelfieT);
+        holder.TxtNombre.setText(person.getUser__user__first_name() + " " + person.getUser__user__last_name());
+        holder.TxtViajes.setText(person.getTrips()+" Viajes");
     }
 
     @Override

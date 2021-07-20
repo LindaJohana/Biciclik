@@ -1,11 +1,9 @@
 package com.example.biciclik.Home;
 
-import com.example.biciclik.Login.LoginInterfaces;
-import com.example.biciclik.Login.LoginModels;
-import com.example.biciclik.objects.ResultsResponse;
+import com.example.biciclik.objects.StatisticsData;
+import com.example.biciclik.objects.TravelTopData;
 import com.example.biciclik.utils.Token;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class HomePresenters implements HomeInterfaces.presenters {
@@ -21,12 +19,46 @@ public class HomePresenters implements HomeInterfaces.presenters {
 
     @Override
     public void TopCompanyPresenter() {
-        token.refreshToken();
         model.TopCompanyModel(this);
     }
 
     @Override
-    public void onSuccessTopCompany(ArrayList<ResultsResponse> results) {
+    public void onSuccessTopCompany(ArrayList<TravelTopData> results) {
         view.TopCompanyPersons(results);
+    }
+
+    @Override
+    public void onErrorTravelTop(String message) {
+        view.setErrorTravelTop(message);
+    }
+
+    @Override
+    public void TravelMonthPresenter() {
+        model.TravelMonthModel(this);
+    }
+
+    @Override
+    public void onSuccessTravelMonth(ArrayList<Integer> results) {
+        view.setupBar(results);
+    }
+
+    @Override
+    public void onErrorTravelMonth(String message) {
+        view.setErrorTravelMonth(message);
+    }
+
+    @Override
+    public void travelStatisticsPresenter() {
+        model.travelStatisticsModel(this);
+    }
+
+    @Override
+    public void onSuccessTravelStatistics(StatisticsData results) {
+        view.travelStatisticsResults(results);
+    }
+
+    @Override
+    public void onErrorTravelStatistics(String message) {
+        view.serErrorTravelStatistics(message);
     }
 }

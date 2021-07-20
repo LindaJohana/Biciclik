@@ -3,7 +3,7 @@ package com.example.biciclik.objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserResponseT {
+public class ProfileData {
     @SerializedName("id")
     @Expose
     private String id;
@@ -56,7 +56,14 @@ public class UserResponseT {
     @Expose
     private CompanyData company_detail;
 
-    public UserResponseT(String id, UserData user, String phone_number, String address, String selfie, String document_front_photo, String document_back_photo, int economic_savings, int carbon_footprint, String verified, String token, String company, CompanyData company_detail) {
+    public ProfileData(UserData user, String phone_number, String address, String selfie) {
+        this.user = user;
+        this.phone_number = phone_number;
+        this.address = address;
+        this.selfie = selfie;
+    }
+
+    public ProfileData(String id, UserData user, String phone_number, String address, String selfie, String document_front_photo, String document_back_photo, int economic_savings, int carbon_footprint, String verified, String token, String company, CompanyData company_detail) {
         this.id = id;
         this.user = user;
         this.phone_number = phone_number;
