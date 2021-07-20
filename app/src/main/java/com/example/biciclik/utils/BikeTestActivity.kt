@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -312,9 +313,9 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
             .deviceType("A1")
             .updateKey("Vgz7")
             .build()
-//        session.connect()
+        session.connect()
         //mientras pruebas
-        presenter.createTripPresenter()
+//        presenter.createTripPresenter()
 
         session.setListener(object : SimpleSessionListener() {
             override fun onConnecting() {
@@ -323,6 +324,9 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
 
             override fun onConnected() {
                 Log.e("conecto", "conecto")
+                Handler().postDelayed({
+                    unlock()
+                }, 2000)
 //                unlock()
             }
 

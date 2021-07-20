@@ -98,14 +98,6 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                     presenter.onSuccessTrip(objects_list);
                 }else {
                     Log.e("MODEL BIKE CREATE ERROR", "MODEL ERROR");
-//                    CustomErrorResponse custom_error = new CustomErrorResponse();
-//                    String response_user = "Intentalo nuevamente";
-//                    try {
-//                        response_user = custom_error.returnMessageError(response.errorBody().string());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    presenter.onErrorTrip(response_user);
                     if (response.raw().code()==401){
                         localData.LogOutApp();
                         presenter.codelogin();
