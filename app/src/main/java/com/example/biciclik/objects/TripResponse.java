@@ -48,7 +48,31 @@ public class TripResponse {
     @Expose
     private DeliveryPoint delivery_point;
 
-    public TripResponse(String id, String created_at, String modified_at, String created_by, String modified_by, ProfileData user, BikeData bike, PointData start_point, String start_date, String status, DeliveryPoint delivery_point) {
+    @SerializedName("time_elapsed")
+    @Expose
+    private String time_elapsed;
+
+    @SerializedName("destination")
+    @Expose
+    private String destination;
+
+    @SerializedName("delivery_date")
+    @Expose
+    private String delivery_date;
+
+    public TripResponse(String id, String created_at, String modified_at, String created_by, String modified_by, ProfileData user, BikeData bike, PointData start_point, String start_date) {
+        this.id = id;
+        this.created_at = created_at;
+        this.modified_at = modified_at;
+        this.created_by = created_by;
+        this.modified_by = modified_by;
+        this.user = user;
+        this.bike = bike;
+        this.start_point = start_point;
+        this.start_date = start_date;
+    }
+
+    public TripResponse(String id, String created_at, String modified_at, String created_by, String modified_by, ProfileData user, BikeData bike, PointData start_point, String start_date, String status, DeliveryPoint delivery_point, String time_elapsed, String destination, String delivery_date) {
         this.id = id;
         this.created_at = created_at;
         this.modified_at = modified_at;
@@ -60,6 +84,33 @@ public class TripResponse {
         this.start_date = start_date;
         this.status = status;
         this.delivery_point = delivery_point;
+        this.time_elapsed = time_elapsed;
+        this.destination = destination;
+        this.delivery_date = delivery_date;
+    }
+
+    public String getDelivery_date() {
+        return delivery_date;
+    }
+
+    public void setDelivery_date(String delivery_date) {
+        this.delivery_date = delivery_date;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public String getTime_elapsed() {
+        return time_elapsed;
+    }
+
+    public void setTime_elapsed(String time_elapsed) {
+        this.time_elapsed = time_elapsed;
     }
 
     public String getId() {

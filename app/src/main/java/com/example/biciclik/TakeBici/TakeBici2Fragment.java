@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,9 +23,14 @@ import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.androidbuts.multispinnerfilter.SingleSpinnerListener;
 import com.androidbuts.multispinnerfilter.SingleSpinnerSearch;
 import com.example.biciclik.BaseContext.BaseContext;
+import com.example.biciclik.Home.HomeActivity;
 import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
 import com.example.biciclik.Register.Register1Activity;
+import com.example.biciclik.Trip.TripActivity;
+import com.example.biciclik.local_data.LocalData;
+import com.example.biciclik.objects.CreateTripData;
+import com.example.biciclik.objects.PatchTrip;
 import com.example.biciclik.objects.TripResponse;
 import com.example.biciclik.utils.BikeTestActivity;
 import com.example.biciclik.utils.KeyPairBoolDataCustom;
@@ -40,9 +46,16 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
     private static final String TAG = "TakeBici2";
     TextView txtPuntoIR;
     TextView txtHoraIR;
+    TextView destinoT;
     Chronometer txtTiempoR;
     TakeBiciPresenters presenters;
     private String pointName;
+    Button buttonOkV;
+    LocalData localData;
+    private Long chronStateSave;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+    long pauseoffset;
 
     @Nullable
     @Override
@@ -52,7 +65,14 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
         Bundle bundle=this.getArguments();
         String point=bundle.getString("start_point");
         String date=bundle.getString("start_date");
-        setData(point, date);
+        String chrono=bundle.getString("chronometer");
+        if (chrono.equals("")){
+            Log.e("ONCREATE IF TAKE2", localData.getRegister("CHRONOMETER_S"));
+            setData(point, date, "");
+        }else {
+            Log.e("ONCREATE else TAKE2", localData.getRegister("CHRONOMETER_S"));
+            setData(point, date, chrono);
+        }
         singleSpinnerSearch = (SpinnerCustom) view.findViewById(R.id.singleItemSelectionSpinner);
         presenters.getDeliveryPoint();
 //        final List<String> list = Arrays.asList(getResources().getStringArray(R.array.planets_array));
@@ -76,6 +96,27 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
 //                Toast.makeText(getContext(), "Limpiar item", Toast.LENGTH_SHORT).show();
 //            }
 //        });
+        buttonOkV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTiempoR.stop();
+                pauseoffset = SystemClock.elapsedRealtime() - txtTiempoR.getBase();
+                localData.register(txtTiempoR.getText().toString(),"CHRONOMETER");
+//                chronStateSave= SystemClock.elapsedRealtime();
+//                localData.register(chronStateSave.toString(), "CHRONOMETER_S");
+                localData.register(String.valueOf(pauseoffset), "CHRONOMETER_S");
+//                Log.e("LOCALDATA", localData.getRegister("CHRONOMETER"));
+                Log.e("PAUSEOFFF", String.valueOf(pauseoffset));
+                localData.register(destinoT.getText().toString(), "DESTINO_TXT");
+                PatchTrip data=new PatchTrip(String.valueOf(pauseoffset), destinoT.getText().toString(), pointName);
+                presenters.setTripPresenter(data);
+                fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container,new TripActivity());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 
@@ -83,15 +124,31 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
         txtPuntoIR = (TextView) view.findViewById(R.id.txtPuntoInicio);
         txtHoraIR = (TextView) view.findViewById(R.id.txtHoraInicio);
         txtTiempoR = (Chronometer) view.findViewById(R.id.txtTiempoTrans);
+        destinoT = (TextView) view.findViewById(R.id.destinoT);
         presenters=new TakeBiciPresenters(null, this);
         pointName="";
+        buttonOkV = view.findViewById(R.id.ButtonOkV);
+        localData = new LocalData();
+        chronStateSave = 0L;
+        pauseoffset = 0L;
     }
 
     @Override
-    public void setData(String point, String date) {
+    public void setData(String point, String date, String time) {
         txtPuntoIR.setText(point);
         txtHoraIR.setText(date);
-        txtTiempoR.start();
+        if (time.equals("")){
+            Log.e("IF CHRONOMETER2", time);
+//            long systemCurrTime = SystemClock.elapsedRealtime();
+            txtTiempoR.setBase(SystemClock.elapsedRealtime()-pauseoffset);
+            txtTiempoR.start();
+        }else {
+            Log.e("ELSE CHRONOMETER2", time);
+            long intervalOnPause = (SystemClock.elapsedRealtime() - Long.parseLong(time));
+//            txtTiempoR.setBase( txtTiempoR.getBase() + intervalOnPause );
+            txtTiempoR.setBase(SystemClock.elapsedRealtime() - Long.parseLong(time));
+            txtTiempoR.start();
+        }
     }
 
     @Override
@@ -116,5 +173,10 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
 
             }
         });
+    }
+
+    @Override
+    public void setErrorSetTrip(String message) {
+        Toast.makeText(BaseContext.getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

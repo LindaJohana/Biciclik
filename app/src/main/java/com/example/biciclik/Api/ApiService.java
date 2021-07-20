@@ -118,4 +118,15 @@ public interface ApiService {
     @GET("api/point/")
     Call<PointsResponse>getPoint(
     );
+
+    @PATCH("api/travel/{id}/")
+    Call<TripResponse>updateTrip(
+            @Path("id") String id,
+            @Body MultipartBody trip
+    );
+
+    @GET("api/travel/{id}/")
+    Call<TripResponse>finalTrip(
+            @Path("id") String id
+    );
 }

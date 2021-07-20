@@ -3,6 +3,7 @@ package com.example.biciclik.TakeBici;
 import com.example.biciclik.objects.BikeData;
 import com.example.biciclik.objects.CompanyData;
 import com.example.biciclik.objects.CreateTripData;
+import com.example.biciclik.objects.PatchTrip;
 import com.example.biciclik.objects.PointData;
 import com.example.biciclik.objects.TripResponse;
 import com.example.biciclik.utils.KeyPairBoolDataCustom;
@@ -16,12 +17,13 @@ public interface TakeBiciInterfaces {
         void sesionCod(BikeData data);
         void setErrorCod(String message);
         void setErrorTrip(String message);
-        void mostrarFragment(TripResponse data);
+        void mostrarFragment(String date, String point, String time);
     }
     interface fragment{
-        void setData(String point, String  date);
+        void setData(String point, String  date, String time);
         void lanzarLogin();
         void showpoint(List<KeyPairBoolDataCustom> names);
+        void setErrorSetTrip(String message);
     }
     interface presenters{
         void sendCodPresenter(String cod);
@@ -33,10 +35,13 @@ public interface TakeBiciInterfaces {
         void codelogin();
         void getDeliveryPoint();
         void setDeliveryPoint(ArrayList<PointData> points);
+        void setTripPresenter(PatchTrip data);
+        void onErrorSetTrip(String message);
     }
     interface models{
         void sendCodModel(presenters presenter, String cod);
         void createTripModel(presenters presenter);
         void getDeliveryPointModel(presenters presenter);
+        void setTripModel(presenters presenter, PatchTrip data);
     }
 }

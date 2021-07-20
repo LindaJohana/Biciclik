@@ -1,5 +1,6 @@
 package com.example.biciclik.TakeBici;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.fragment.app.FragmentManager;
@@ -8,6 +9,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.biciclik.R;
 import com.example.biciclik.objects.BikeData;
 import com.example.biciclik.objects.CompanyData;
+import com.example.biciclik.objects.CreateTripData;
+import com.example.biciclik.objects.PatchTrip;
 import com.example.biciclik.objects.PointData;
 import com.example.biciclik.objects.TripResponse;
 import com.example.biciclik.utils.KeyPairBoolDataCustom;
@@ -57,7 +60,7 @@ public class TakeBiciPresenters implements TakeBiciInterfaces.presenters{
 
     @Override
     public void onSuccessTrip(TripResponse data) {
-        viewK.mostrarFragment(data);
+        viewK.mostrarFragment(data.getStart_date(), data.getStart_point().getName(), "");
 //        viewF.setData(data);
     }
 
@@ -85,6 +88,16 @@ public class TakeBiciPresenters implements TakeBiciInterfaces.presenters{
             listArray0.add(h);
         }
         viewF.showpoint(listArray0);
+    }
+
+    @Override
+    public void setTripPresenter(PatchTrip data) {
+        model.setTripModel(this, data);
+    }
+
+    @Override
+    public void onErrorSetTrip(String message) {
+        viewF.setErrorSetTrip(message);
     }
 
 }

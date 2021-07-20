@@ -19,6 +19,7 @@ import com.example.biciclik.R
 import com.example.biciclik.TakeBici.TakeBici2Fragment
 import com.example.biciclik.TakeBici.TakeBiciInterfaces
 import com.example.biciclik.TakeBici.TakeBiciPresenters
+import com.example.biciclik.local_data.LocalData
 import com.example.biciclik.objects.BikeData
 import com.example.biciclik.objects.TripResponse
 import com.omni.support.ble.BleModuleHelper
@@ -46,7 +47,7 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
     var transaction: FragmentTransaction? = null
     lateinit var fragmentTrip1: TakeBici2Fragment
     lateinit var presenter: TakeBiciPresenters
-
+    lateinit var localData: LocalData
 
     //val permiso= arrayOf("android.permission.BLUETOOTH", "android.permission.BLUETOOTH")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -67,7 +68,7 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode)
         }
-
+        localData= LocalData();
         btn_leerQr=view.findViewById<Button>(R.id.buttonQR)
         buttonShutdown=view.findViewById<Button>(R.id.buttonShutdown)
         /*btn_connect = view.findViewById<Button>(R.id.btn_connect)
@@ -77,13 +78,17 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
         btn_shutdown = view.findViewById<Button>(R.id.btn_shutdown)
         btn_get_log = view.findViewById<Button>(R.id.btn_get_log)*/
         fragmentTrip1 = TakeBici2Fragment()
-
         //initListener()
         btn_leerQr.setOnClickListener {
             leerQR()
         }
         buttonShutdown.setOnClickListener { shutdown() }
         presenter = TakeBiciPresenters(this, null)
+
+        if (!localData.getRegister("START_POINT").isEmpty()){
+            mostrarFragment(localData.getRegister("START_DATE"),localData.getRegister("START_POINT"), localData.getRegister("CHRONOMETER_S"))
+            localData.CreateTrip();
+        }
         return view
     }
 
@@ -358,14 +363,18 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
         Toast.makeText(BaseContext.getContext(), message, Toast.LENGTH_LONG).show()
     }
 
-    override fun mostrarFragment(data:TripResponse) {
+    override fun mostrarFragment(date:String, point:String, time:String) {
         btn_leerQr.setEnabled(false)
 //        btn_leerQr.setBackgroundColor(-0x777778)
         val TAG:String = "MyActivity"
         try {
             var bundle:Bundle = Bundle()
-            bundle.putString("start_point", data.start_point.name)
-            bundle.putString("start_date", data.start_date)
+            bundle.putString("start_point", point)
+            bundle.putString("start_date", date)
+            bundle.putString("chronometer", localData.getRegister("CHRONOMETER_S"))
+            localData.register(point,"START_POINT")
+            localData.register(date, "START_DATE")
+
             fragmentTrip1.arguments=bundle
             transaction = childFragmentManager.beginTransaction()
             transaction!!.replace(R.id.contenedorFragmentTrip, fragmentTrip1,null)
