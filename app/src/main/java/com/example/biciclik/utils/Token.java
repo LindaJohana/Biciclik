@@ -32,6 +32,7 @@ public class Token {
             }
             @Override
             public void onFailure(Call<TokenResponse> call, Throwable t) {
+                Log.e("FAIRULE TOKEN", t.toString());
             }
         });
     }

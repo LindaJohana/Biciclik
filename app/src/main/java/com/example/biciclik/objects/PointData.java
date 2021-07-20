@@ -83,6 +83,7 @@ public class PointData {
         this.available_bicis = available_bicis;
     }
 
+
     public String getId() {
         return id;
     }

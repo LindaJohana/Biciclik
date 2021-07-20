@@ -86,6 +86,7 @@ public class Maps extends SupportMapFragment implements OnMapReadyCallback {
         float zoom = 15;
 //        Zoom en el mapa
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(x, zoom));
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(x, zoom));
         for (int i=0;i< locations.size();i++){
             String[] parts = locations.get(i).split(",");
             String lat = parts[0];

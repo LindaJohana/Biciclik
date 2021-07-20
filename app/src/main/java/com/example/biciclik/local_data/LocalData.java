@@ -23,6 +23,21 @@ public class LocalData implements LocalDataInterface {
     }
 
     @Override
+    public void CreateBike() {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putString("IDBIKE", "").apply();
+        preferences.edit().putString("POINTBIKE", "").apply();
+        preferences.edit().putString("INITIATED", "").apply();
+    }
+    @Override
+    public void CreateTrip() {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putString("START_DATE", "").apply();
+        preferences.edit().putString("START_POINT", "").apply();
+        preferences.edit().putString("CHRONOMETER_S", "").apply();
+    }
+
+    @Override
     public void SaveToken(String refresh, String access) {
         String token = "Some token From Server";
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);

@@ -14,18 +14,26 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.blikoon.qrcodescanner.QrCodeActivity
+import com.example.biciclik.BaseContext.BaseContext
 import com.example.biciclik.R
 import com.example.biciclik.TakeBici.TakeBici2Fragment
+import com.example.biciclik.TakeBici.TakeBiciInterfaces
+import com.example.biciclik.TakeBici.TakeBiciPresenters
+import com.example.biciclik.local_data.LocalData
+import com.example.biciclik.objects.BikeData
+import com.example.biciclik.objects.TripResponse
 import com.omni.support.ble.BleModuleHelper
-import com.omni.support.ble.core.*
-import com.omni.support.ble.protocol.bike.model.BLInfoResult
+import com.omni.support.ble.core.IResp
+import com.omni.support.ble.core.ISessionCall
+import com.omni.support.ble.core.NotifyCallback
+import com.omni.support.ble.core.SessionCallback
 import com.omni.support.ble.protocol.bike.model.BLLockResult
 import com.omni.support.ble.protocol.bike.model.BLShutdownResult
 import com.omni.support.ble.rover.CommandManager
 import com.omni.support.ble.session.SimpleSessionListener
 import com.omni.support.ble.session.sub.Bike3In1Session
 
-class BikeTestActivity : Fragment() {
+class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
     private lateinit var session: Bike3In1Session
     private lateinit var btn_leerQr: Button
     private lateinit var buttonShutdown: Button
@@ -38,7 +46,8 @@ class BikeTestActivity : Fragment() {
     var REQUEST_CODE_QR=20
     var transaction: FragmentTransaction? = null
     lateinit var fragmentTrip1: TakeBici2Fragment
-
+    lateinit var presenter: TakeBiciPresenters
+    lateinit var localData: LocalData
 
     //val permiso= arrayOf("android.permission.BLUETOOTH", "android.permission.BLUETOOTH")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -59,52 +68,7 @@ class BikeTestActivity : Fragment() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode)
         }
-
-        session = Bike3In1Session.Builder()
-            .address("E3:1D:F1:0F:33:5B")//Replace your mac address
-            .deviceKey("yOTmK50z")
-            .deviceType("A1")
-            .updateKey("Vgz7")
-            .build()
-
-
-        session.setListener(object : SimpleSessionListener() {
-            override fun onConnecting() {
-                Log.e("conectando", "conectando")
-            }
-
-            override fun onConnected() {
-                Log.e("conecto", "conecto")
-                unlock()
-            }
-
-            override fun onDisconnected() {
-                Log.e("No conecto", "No conecto")
-            }
-
-            override fun onDeviceNoSupport() {
-            }
-
-            override fun onReady() {
-                // Lock monitor
-                session.call(CommandManager.blCommand.lock())
-                        .subscribe(object : NotifyCallback<BLLockResult> {
-                            override fun onSuccess(
-                                    call: ISessionCall<BLLockResult>,
-                                    data: IResp<BLLockResult>
-                            ) {
-                                val result = data.getResult()
-                                if (result != null) {
-                                    Log.d("=====", result.toString())
-                                }
-                                // Close lock reply
-//                                session.call(CommandManager.blCommand.lockReply()).execute()
-                            }
-                        })
-            }
-
-        })
-
+        localData= LocalData();
         btn_leerQr=view.findViewById<Button>(R.id.buttonQR)
         buttonShutdown=view.findViewById<Button>(R.id.buttonShutdown)
         /*btn_connect = view.findViewById<Button>(R.id.btn_connect)
@@ -114,12 +78,16 @@ class BikeTestActivity : Fragment() {
         btn_shutdown = view.findViewById<Button>(R.id.btn_shutdown)
         btn_get_log = view.findViewById<Button>(R.id.btn_get_log)*/
         fragmentTrip1 = TakeBici2Fragment()
-
         //initListener()
         btn_leerQr.setOnClickListener {
             leerQR()
         }
         buttonShutdown.setOnClickListener { shutdown() }
+        presenter = TakeBiciPresenters(this, null)
+
+        if (!localData.getRegister("START_POINT").isEmpty()){
+            mostrarFragment(localData.getRegister("START_DATE"),localData.getRegister("START_POINT"), localData.getRegister("CHRONOMETER_S"))
+        }
         return view
     }
 
@@ -139,17 +107,19 @@ class BikeTestActivity : Fragment() {
                 }
                 return
             }
-            session.disConnect()
+//            session.disConnect()
         }
         if (requestCode == REQUEST_CODE_QR) {
             if (data != null) {
                 val lectura = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult")
                 Toast.makeText(context, "Leído: $lectura", Toast.LENGTH_SHORT).show()
-                if(lectura=="66155000612"){
-                    Log.e("holi", "Holiwi")
-                    session.connect()
-                    mostrarFragmentT()
+//                if(lectura=="66155000612"){
+//                    Log.e("LEYO EL CODIGO", lectura)
+//                }
+                if (lectura != null) {
+                    Log.e("LEYO EL CODIGO",lectura)
                 }
+                presenter.sendCodPresenter(lectura)
             }
         }
     }
@@ -166,6 +136,8 @@ class BikeTestActivity : Fragment() {
                         if(isSuccess) {
                             Log.e("SUCCESS", "SUCCESS")
                             session.disConnect()
+                            //peticion crear-mostrar fragment
+                            presenter.createTripPresenter()
                         }
                         Toast.makeText(context, if (isSuccess)
                             "Successfully unlocked" else "Failed to unlock", Toast.LENGTH_SHORT
@@ -314,9 +286,95 @@ class BikeTestActivity : Fragment() {
 //                })
 //        }
     }
-    fun mostrarFragmentT() {
+//    fun mostrarFragmentT() {
+//        val TAG:String = "MyActivity"
+//        try {
+//            transaction = childFragmentManager.beginTransaction()
+//            transaction!!.replace(R.id.contenedorFragmentTrip, fragmentTrip1,null)
+//            transaction!!.addToBackStack(null)
+//            transaction!!.commit()
+//        } catch (excepcion: Exception) {
+//            Log.e(TAG, "error")
+//        }
+//    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        session.disConnect()
+    }
+
+    override fun sesionCod(data: BikeData) {
+        Log.e("ENTRO AL METODO", "SESIONCOD")
+        session = Bike3In1Session.Builder()
+                //"E3:1D:F1:0F:33:5B"
+            .address(data.getMac_lock())//Replace your mac address
+            .deviceKey("yOTmK50z")
+            .deviceType("A1")
+            .updateKey("Vgz7")
+            .build()
+//        session.connect()
+        //mientras pruebas
+        presenter.createTripPresenter()
+
+        session.setListener(object : SimpleSessionListener() {
+            override fun onConnecting() {
+                Log.e("conectando", "conectando")
+            }
+
+            override fun onConnected() {
+                Log.e("conecto", "conecto")
+//                unlock()
+            }
+
+            override fun onDisconnected() {
+                Log.e("No conecto", "No conecto")
+            }
+
+            override fun onDeviceNoSupport() {
+            }
+
+            override fun onReady() {
+                // Lock monitor
+                session.call(CommandManager.blCommand.lock())
+                    .subscribe(object : NotifyCallback<BLLockResult> {
+                        override fun onSuccess(
+                            call: ISessionCall<BLLockResult>,
+                            data: IResp<BLLockResult>
+                        ) {
+                            val result = data.getResult()
+                            if (result != null) {
+                                Log.d("=====", result.toString())
+                            }
+                            // Close lock reply
+//                                session.call(CommandManager.blCommand.lockReply()).execute()
+                        }
+                    })
+            }
+
+        })
+    }
+
+    override fun setErrorCod(message: String?) {
+        Toast.makeText(BaseContext.getContext(), message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun setErrorTrip(message: String?) {
+        Toast.makeText(BaseContext.getContext(), message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun mostrarFragment(date:String, point:String, time:String) {
+        btn_leerQr.setEnabled(false)
+//        btn_leerQr.setBackgroundColor(-0x777778)
         val TAG:String = "MyActivity"
         try {
+            var bundle:Bundle = Bundle()
+            bundle.putString("start_point", point)
+            bundle.putString("start_date", date)
+            bundle.putString("chronometer", localData.getRegister("CHRONOMETER_S"))
+            localData.register(point,"START_POINT")
+            localData.register(date, "START_DATE")
+
+            fragmentTrip1.arguments=bundle
             transaction = childFragmentManager.beginTransaction()
             transaction!!.replace(R.id.contenedorFragmentTrip, fragmentTrip1,null)
             transaction!!.addToBackStack(null)
@@ -324,10 +382,6 @@ class BikeTestActivity : Fragment() {
         } catch (excepcion: Exception) {
             Log.e(TAG, "error")
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        session.disConnect()
+//        fragmentTrip1.setData(data)
     }
 }

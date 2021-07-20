@@ -30,7 +30,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import retrofit2.http.Header;
 
 import static com.example.biciclik.BaseContext.BaseContext.getContext;
 

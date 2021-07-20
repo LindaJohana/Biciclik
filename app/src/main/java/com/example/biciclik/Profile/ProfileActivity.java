@@ -67,7 +67,6 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
         View view = inflater.inflate(R.layout.profile, container, false);
         initObjects(view);
         int requestCode = 200;
-        presenter=new ProfilePresenters(this);
         presenter.getProfilePresenter();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
@@ -96,6 +95,7 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
         buttonGuardar=view.findViewById(R.id.buttonCambios);
         edLastName=view.findViewById(R.id.edLastName);
         UrlSelfie="";
+        presenter=new ProfilePresenters(this);
     }
     public void cargarImagen(){
         final CharSequence[] opciones={"Tomar foto", "Cargar foto","Cancelar"};

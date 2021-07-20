@@ -10,7 +10,4 @@ public interface RegisterSuccessInterfaces {
     interface models{
 
     }
-    interface requests{
-
-    }
 }

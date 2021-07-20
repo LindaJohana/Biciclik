@@ -48,7 +48,7 @@
             android:layout_gravity="center"
             android:paddingRight="8dp">
             <TextView
-                android:id="@+id/txtPuntoIR"
+                android:id="@+id/txtPuntoInicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right" />
@@ -88,7 +88,7 @@
             android:layout_gravity="center"
             android:paddingRight="8dp">
             <TextView
-                android:id="@+id/txtHoraIR"
+                android:id="@+id/txtHoraInicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right" />
@@ -127,11 +127,16 @@
             android:gravity="right"
             android:layout_gravity="center"
             android:paddingRight="8dp">
-            <TextView
-                android:id="@+id/txtTiempoR"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right" />
+<!--            <TextView-->
+<!--                android:id="@+id/txtTiempoTrans"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="right" />-->
+            <Chronometer
+                android:id="@+id/txtTiempoTrans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
     </LinearLayout>
@@ -228,7 +233,7 @@
             android:gravity="right"
             android:layout_gravity="center"
             android:paddingRight="8dp">
-            <com.androidbuts.multispinnerfilter.SingleSpinnerSearch
+            <com.example.biciclik.utils.SpinnerCustom
                 android:id="@+id/singleItemSelectionSpinner"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
