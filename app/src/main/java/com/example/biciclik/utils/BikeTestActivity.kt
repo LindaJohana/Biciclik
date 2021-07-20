@@ -326,7 +326,7 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
                 Log.e("conecto", "conecto")
                 Handler().postDelayed({
                     unlock()
-                }, 2000)
+                }, 500)
 //                unlock()
             }
 
