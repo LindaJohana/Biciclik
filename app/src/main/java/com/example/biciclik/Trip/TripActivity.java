@@ -1,5 +1,6 @@
 package com.example.biciclik.Trip;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,10 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.biciclik.Home.HomeActivity;
+import com.example.biciclik.BaseContext.BaseContext;
+import com.example.biciclik.DrawerMain.DrawerActivities;
 import com.example.biciclik.R;
-import com.example.biciclik.TakeBici.TakeBici2Fragment;
+import com.example.biciclik.local_data.LocalData;
 import com.example.biciclik.objects.TripResponse;
+import com.example.biciclik.objects.TripResponseFinal;
 import com.example.biciclik.utils.BikeTestActivity;
 
 public class TripActivity extends Fragment implements TripInterfaces.activities {
@@ -24,17 +27,24 @@ public class TripActivity extends Fragment implements TripInterfaces.activities 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     TripPresenters presenter;
+    LocalData localData;
+    String home=null;
     TextView txtPuntoIR, txtHoraIR,txtTiempoR, txtDestonoR, txtPuntoER, txtHoraER, txtAhorroR, txtHuellaR;
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.trip, container, false);
         initObjects(view);
         Log.e("ONCREATE", "TRIP");
-        presenter.getTripPresenter();
+        presenter.getInfoTripPresenter();
 
         ButtonOkV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.sendStatusPresenter();
+                localData.CreateTrip();
+                Intent i = new Intent(BaseContext.getContext(), DrawerActivities.class );
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.putExtra("home",home);
+                startActivity(i);
             }
         });
         ButtonNo.setOnClickListener(new View.OnClickListener() {
@@ -61,17 +71,18 @@ public class TripActivity extends Fragment implements TripInterfaces.activities 
         ButtonOkV=view.findViewById(R.id.ButtonOkV);
         ButtonNo=view.findViewById(R.id.ButtonNo);
         presenter = new TripPresenters(this);
+        localData = new LocalData();
     }
 
     @Override
-    public void setTrip(TripResponse data) {
-        txtPuntoIR.setText(data.getStart_point().getName());
+    public void setTrip(TripResponseFinal data) {
+        txtPuntoIR.setText(data.getStart_detail().getName());
         txtHoraIR.setText(data.getStart_date());
         txtTiempoR.setText(data.getTime_elapsed());
         txtDestonoR.setText(data.getDestination());
-        txtPuntoER.setText(data.getDelivery_point().getName());
+        txtPuntoER.setText(data.getDelivery_detail().getName());
         txtHoraER.setText(data.getDelivery_date());
-        txtHuellaR.setText(String.valueOf(data.getUser().getCarbon_footprint()));
-        txtAhorroR.setText(String.valueOf(data.getUser().getEconomic_savings()));
+        txtHuellaR.setText(String.valueOf(data.getCarbon_footprint()));
+        txtAhorroR.setText(String.valueOf(data.getEconomic_savings()));
     }
 }

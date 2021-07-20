@@ -1,16 +1,19 @@
 package com.example.biciclik.Trip;
 
 import com.example.biciclik.objects.TripResponse;
+import com.example.biciclik.objects.TripResponseFinal;
 
 public interface TripInterfaces {
     interface activities{
-        void setTrip(TripResponse data);
+        void setTrip(TripResponseFinal data);
     }
     interface presenters{
-        void getTripPresenter();
-        void setTripPresenter(TripResponse data);
+        void getInfoTripPresenter();
+        void setInfoTripPresenter(TripResponseFinal data);
+        void sendStatusPresenter();
     }
     interface models{
-        void getTripModel(presenters presenter);
+        void getInfoTripModel(presenters presenter);
+        void sendStatusModel(presenters presenter);
     }
 }

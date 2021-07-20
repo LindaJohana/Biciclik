@@ -2,9 +2,8 @@ package com.example.biciclik.Trip;
 
 import android.util.Log;
 
-import com.example.biciclik.Profile.ProfileInterfaces;
-import com.example.biciclik.Profile.ProfileModels;
 import com.example.biciclik.objects.TripResponse;
+import com.example.biciclik.objects.TripResponseFinal;
 
 public class TripPresenters implements TripInterfaces.presenters{
     private TripInterfaces.activities view;
@@ -16,13 +15,18 @@ public class TripPresenters implements TripInterfaces.presenters{
     }
 
     @Override
-    public void getTripPresenter() {
+    public void getInfoTripPresenter() {
         Log.e("PRESENTER", "TRIP");
-        model.getTripModel(this);
+        model.getInfoTripModel(this);
     }
 
     @Override
-    public void setTripPresenter(TripResponse data) {
+    public void setInfoTripPresenter(TripResponseFinal data) {
         view.setTrip(data);
+    }
+
+    @Override
+    public void sendStatusPresenter() {
+        model.sendStatusModel(this);
     }
 }

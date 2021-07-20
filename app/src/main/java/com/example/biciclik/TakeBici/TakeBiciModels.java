@@ -158,7 +158,7 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
         request.addFormDataPart("delivery_date", null, RequestBody.create(MediaType.parse("text/plain"),date.getDate()));
         request.addFormDataPart("delivery_point", null, RequestBody.create(MediaType.parse("text/plain"),data.getDelivery_point()));
         MultipartBody body=request.build();
-        Call<TripResponse> call = homeApiAdapter.getApiService2().updateTrip(    localData.getRegister("ID_TRIP"),body);
+        Call<TripResponse> call = homeApiAdapter.getApiService2().updateTrip(localData.getRegister("ID_TRIP"),body);
         call.enqueue(new Callback<TripResponse>() {
             @Override
             public void onResponse(Call<TripResponse> call, Response<TripResponse> response) {

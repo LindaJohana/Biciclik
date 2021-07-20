@@ -87,7 +87,6 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
 
         if (!localData.getRegister("START_POINT").isEmpty()){
             mostrarFragment(localData.getRegister("START_DATE"),localData.getRegister("START_POINT"), localData.getRegister("CHRONOMETER_S"))
-            localData.CreateTrip();
         }
         return view
     }
@@ -301,7 +300,7 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
 
     override fun onDestroy() {
         super.onDestroy()
-        session.disConnect()
+//        session.disConnect()
     }
 
     override fun sesionCod(data: BikeData) {

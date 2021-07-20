@@ -11,6 +11,7 @@ import com.example.biciclik.objects.StatisticsData;
 import com.example.biciclik.objects.TokenResponse;
 import com.example.biciclik.objects.TravelTopData;
 import com.example.biciclik.objects.TripResponse;
+import com.example.biciclik.objects.TripResponseFinal;
 
 import java.util.ArrayList;
 
@@ -52,7 +53,6 @@ public interface ApiService {
     Call<MessageResponse> sendEmail(
             @Field("username") String username
     );
-
 
     @POST("api/user/")
 //    @Headers("content-type: multipart/form-data;")
@@ -126,7 +126,7 @@ public interface ApiService {
     );
 
     @GET("api/travel/{id}/")
-    Call<TripResponse>finalTrip(
+    Call<TripResponseFinal>finalTrip(
             @Path("id") String id
     );
 }

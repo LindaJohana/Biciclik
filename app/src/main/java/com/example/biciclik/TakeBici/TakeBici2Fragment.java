@@ -37,9 +37,12 @@ import com.example.biciclik.utils.KeyPairBoolDataCustom;
 import com.example.biciclik.utils.SpinnerCustom;
 import com.example.biciclik.utils.SpinnerListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fragment {
     SpinnerCustom singleSpinnerSearch;
@@ -50,6 +53,7 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
     Chronometer txtTiempoR;
     TakeBiciPresenters presenters;
     private String pointName;
+    private String pointName2;
     Button buttonOkV;
     LocalData localData;
     private Long chronStateSave;
@@ -73,8 +77,8 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
             Log.e("ONCREATE else TAKE2", localData.getRegister("CHRONOMETER_S"));
             setData(point, date, chrono);
         }
-        singleSpinnerSearch = (SpinnerCustom) view.findViewById(R.id.singleItemSelectionSpinner);
         presenters.getDeliveryPoint();
+        singleSpinnerSearch = (SpinnerCustom) view.findViewById(R.id.singleItemSelectionSpinner);
 //        final List<String> list = Arrays.asList(getResources().getStringArray(R.array.planets_array));
 //        final List<KeyPairBoolData> listArray0 = new ArrayList<>();
 //        for (int i = 0; i < list.size(); i++) {
@@ -99,6 +103,16 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
         buttonOkV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(destinoT.getText().toString().isEmpty()){
+                    destinoT.setError("Campo Vacio");
+                    destinoT.requestFocus();
+                    return;
+                }
+                if(pointName.isEmpty()){
+                    Toast.makeText(getContext(), "Punto de Entrega Vacio", Toast.LENGTH_SHORT).show();
+                    singleSpinnerSearch.requestFocus();
+                    return;
+                }
                 txtTiempoR.stop();
                 pauseoffset = SystemClock.elapsedRealtime() - txtTiempoR.getBase();
                 localData.register(txtTiempoR.getText().toString(),"CHRONOMETER");
@@ -108,7 +122,12 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
 //                Log.e("LOCALDATA", localData.getRegister("CHRONOMETER"));
                 Log.e("PAUSEOFFF", String.valueOf(pauseoffset));
                 localData.register(destinoT.getText().toString(), "DESTINO_TXT");
-                PatchTrip data=new PatchTrip(String.valueOf(pauseoffset), destinoT.getText().toString(), pointName);
+                SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
+                formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+                String dateString = formatter.format(new  Date (pauseoffset));
+//                String dateString = formatter.format(new Date(pauseoffset));
+//                String dateString=String.format("%1$tH:%1$tM:%1$tS.%1$tL", pauseoffset);
+                PatchTrip data=new PatchTrip(dateString, destinoT.getText().toString(), pointName);
                 presenters.setTripPresenter(data);
                 fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
@@ -148,6 +167,7 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
 //            txtTiempoR.setBase( txtTiempoR.getBase() + intervalOnPause );
             txtTiempoR.setBase(SystemClock.elapsedRealtime() - Long.parseLong(time));
             txtTiempoR.start();
+            destinoT.setText(localData.getRegister("DESTINO_TXT"));
         }
     }
 
@@ -167,6 +187,7 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
             @Override
             public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
                 pointName=selectedItem.getId();
+                pointName2=selectedItem.getName();
             }
             @Override
             public void onClear() {

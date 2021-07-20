@@ -83,7 +83,7 @@ public class RegisterModels implements RegisterInterfaces.models{
 
         MultipartBody body=request.build();
 
-        Call<ResponseBody> call = RegisterAdapter.getApiService2().sendInfo(body);
+        Call<ResponseBody> call = RegisterAdapter.getApiService().sendInfo(body);
         try {
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
