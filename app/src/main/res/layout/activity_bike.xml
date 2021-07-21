@@ -68,11 +68,11 @@
                 android:textColor="@color/white"
                 android:backgroundTint="@color/rojo"
                 android:layout_marginVertical="24dp"/>
-            <Button
-                android:id="@+id/buttonShutdown"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Shutdaown"/>
+<!--            <Button-->
+<!--                android:id="@+id/buttonShutdown"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Shutdaown"/>-->
 
             <TextView
                 android:id="@+id/prueba1"
