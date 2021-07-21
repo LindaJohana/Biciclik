@@ -59,8 +59,26 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                     localData.register(response.body().getId(), "IDBIKE");
                     localData.register(response.body().getActual_point().getId(), "POINTBIKE");
                     presenter.onSuccesCod(response.body());
+                    localData.registerrRetry(0);
                 }else {
                     Log.e("MODEL BIKE ERROR", "MODEL ERROR");
+
+                    if (localData.getRegisterRetry()==0){
+                        Log.e("primer if","RETRY=0");
+                        try {
+                            Thread.sleep(500);
+                            localData.registerrRetry(1);
+                            sendCodModel(presenter, cod);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Log.e("else","RETRY=1");
+                        localData.registerrRetry(0);
+                        localData.LogOutApp();
+                        presenter.login();
+                    }
+
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
                     try {
@@ -96,11 +114,23 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                     objects_list=response.body();
                     localData.register(objects_list.getId(), "ID_TRIP");
                     presenter.onSuccessTrip(objects_list);
+                    localData.registerrRetry(0);
                 }else {
                     Log.e("MODEL BIKE CREATE ERROR", "MODEL ERROR");
-                    if (response.raw().code()==401){
+                    if (localData.getRegisterRetry()==0){
+                        Log.e("primer if","RETRY=0");
+                        try {
+                            Thread.sleep(500);
+                            localData.registerrRetry(1);
+                            createTripModel(presenter);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Log.e("else","RETRY=1");
+                        localData.registerrRetry(0);
                         localData.LogOutApp();
-                        presenter.codelogin();
+                        presenter.login();
                     }
                 }
             }
@@ -122,7 +152,24 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                     PointsResponse objects_list = null;
                     objects_list=response.body();
                     presenter.setDeliveryPoint(objects_list.getResults());
+                    localData.registerrRetry(0);
                 }else {
+                    if (localData.getRegisterRetry()==0){
+                        Log.e("primer if","RETRY=0");
+                        try {
+                            Thread.sleep(500);
+                            localData.registerrRetry(1);
+                            getDeliveryPointModel(presenter);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Log.e("else","RETRY=1");
+                        localData.registerrRetry(0);
+                        localData.LogOutApp();
+                        presenter.login();
+                    }
+
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
                     try {
@@ -157,7 +204,24 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                 if (response.isSuccessful()){
                     TripResponse objects_list = null;
                     objects_list=response.body();
+                    localData.registerrRetry(0);
                 }else {
+
+                    if (localData.getRegisterRetry()==0){
+                        Log.e("primer if","RETRY=0");
+                        try {
+                            Thread.sleep(500);
+                            localData.registerrRetry(1);
+                            setTripModel(presenter, data);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Log.e("else","RETRY=1");
+                        localData.registerrRetry(0);
+                        localData.LogOutApp();
+                        presenter.login();
+                    }
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
                     try {

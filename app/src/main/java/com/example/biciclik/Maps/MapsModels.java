@@ -37,9 +37,24 @@ public class MapsModels implements MapsInterfaces.models{
                     objects_list = null;
                     objects_list=response.body();
                     Log.e("HOME", objects_list.getResults().toString());
+                    localData.registerrRetry(0);
                     presenter.onSuccessListPresenter(objects_list.getResults());
                 }else {
-
+                    if (localData.getRegisterRetry()==0){
+                        Log.e("primer if","RETRY=0");
+                        try {
+                            Thread.sleep(500);
+                            localData.registerrRetry(1);
+                            getListPointsModel(presenter);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Log.e("else","RETRY=1");
+                        localData.registerrRetry(0);
+                        localData.LogOutApp();
+                        presenter.login();
+                    }
                 }
             }
 

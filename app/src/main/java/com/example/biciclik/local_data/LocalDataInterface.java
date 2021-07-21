@@ -10,4 +10,6 @@ public interface LocalDataInterface {
     String getRefresh();
     String getAccess();
     void register(String data, String key);
+    void registerrRetry(int data);
+    int getRegisterRetry();
 }

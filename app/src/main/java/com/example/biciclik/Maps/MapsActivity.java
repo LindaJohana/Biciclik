@@ -1,5 +1,6 @@
 package com.example.biciclik.Maps;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,6 +17,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.biciclik.BaseContext.BaseContext;
+import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
 import com.example.biciclik.objects.PointData;
 import com.example.biciclik.objects.PuntosResponse;
@@ -81,5 +85,12 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
         mapsAdapter = new MapsAdapter(getContext(), results);
         recyclerPuntos.setAdapter(mapsAdapter);
         recyclerPuntos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+    }
+
+    @Override
+    public void lanzarLogin() {
+        Toast.makeText(BaseContext.getContext(), getString(R.string.expiroToken), Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+        startActivity(i);
     }
 }

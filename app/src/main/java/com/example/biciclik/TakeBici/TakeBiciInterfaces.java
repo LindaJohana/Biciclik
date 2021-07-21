@@ -18,6 +18,7 @@ public interface TakeBiciInterfaces {
         void setErrorCod(String message);
         void setErrorTrip(String message);
         void mostrarFragment(String date, String point, String time);
+        void lanzarLogin();
     }
     interface fragment{
         void setData(String point, String  date, String time);
@@ -37,6 +38,7 @@ public interface TakeBiciInterfaces {
         void setDeliveryPoint(ArrayList<PointData> points);
         void setTripPresenter(PatchTrip data);
         void onErrorSetTrip(String message);
+        void login();
     }
     interface models{
         void sendCodModel(presenters presenter, String cod);

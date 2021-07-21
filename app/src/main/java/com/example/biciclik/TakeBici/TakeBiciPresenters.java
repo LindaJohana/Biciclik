@@ -100,4 +100,9 @@ public class TakeBiciPresenters implements TakeBiciInterfaces.presenters{
         viewF.setErrorSetTrip(message);
     }
 
+    @Override
+    public void login() {
+        viewF.lanzarLogin();
+    }
+
 }

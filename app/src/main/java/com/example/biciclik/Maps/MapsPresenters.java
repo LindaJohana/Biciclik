@@ -23,4 +23,9 @@ public class MapsPresenters implements MapsInterfaces.presenters{
         view.setListPoints(results);
     }
 
+    @Override
+    public void login() {
+        view.lanzarLogin();
+    }
+
 }

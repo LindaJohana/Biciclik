@@ -29,4 +29,9 @@ public class TripPresenters implements TripInterfaces.presenters{
     public void sendStatusPresenter() {
         model.sendStatusModel(this);
     }
+
+    @Override
+    public void login() {
+        view.lanzarLogin();
+    }
 }

@@ -81,6 +81,18 @@ public class LocalData implements LocalDataInterface {
         preferences.edit().putString(key, data).apply();
     }
 
+    @Override
+    public void registerrRetry(int data) {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        preferences.edit().putInt("RETRY", data).apply();
+    }
+
+    public int getRegisterRetry() {
+        SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
+        final int data = preferences.getInt("RETRY", 0);
+        return data;
+    }
+
     public String getRegister(String key) {
         SharedPreferences preferences = BaseContext.getContext().getSharedPreferences("Biciclick", BaseContext.getContext().MODE_PRIVATE);
         final String data = preferences.getString(key, null);

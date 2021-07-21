@@ -16,20 +16,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.blikoon.qrcodescanner.QrCodeActivity
 import com.example.biciclik.BaseContext.BaseContext
+import com.example.biciclik.Login.LoginActivities
 import com.example.biciclik.R
 import com.example.biciclik.TakeBici.TakeBici2Fragment
 import com.example.biciclik.TakeBici.TakeBiciInterfaces
 import com.example.biciclik.TakeBici.TakeBiciPresenters
 import com.example.biciclik.local_data.LocalData
 import com.example.biciclik.objects.BikeData
-import com.example.biciclik.objects.TripResponse
 import com.omni.support.ble.BleModuleHelper
 import com.omni.support.ble.core.IResp
 import com.omni.support.ble.core.ISessionCall
 import com.omni.support.ble.core.NotifyCallback
 import com.omni.support.ble.core.SessionCallback
 import com.omni.support.ble.protocol.bike.model.BLLockResult
-import com.omni.support.ble.protocol.bike.model.BLShutdownResult
 import com.omni.support.ble.rover.CommandManager
 import com.omni.support.ble.session.SimpleSessionListener
 import com.omni.support.ble.session.sub.Bike3In1Session
@@ -182,8 +181,10 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (session.isConnect() == true){
-            session.disConnect()
+        if (session!=null){
+            if (session.isConnect() == true){
+                session.disConnect()
+            }
         }
 
     }
@@ -271,5 +272,11 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
             Log.e(TAG, "error")
         }
 //        fragmentTrip1.setData(data)
+    }
+
+    override fun lanzarLogin() {
+        Toast.makeText(BaseContext.getContext(), "Su sesio ha expirado, inicie sesion de nuevo", Toast.LENGTH_LONG).show()
+        val i = Intent(BaseContext.getContext(), LoginActivities::class.java)
+        startActivity(i)
     }
 }

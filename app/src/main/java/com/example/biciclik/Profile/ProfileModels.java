@@ -38,12 +38,26 @@ public class ProfileModels implements ProfileInterfaces.models{
                 if (response.isSuccessful()){
                     localData.register(response.body().getId(), "ID");
                     presenter.onSuccessProfile(response.body());
+                    localData.registerrRetry(0);
                 }else {
-                    if (response.raw().code()==401){
-                        localData.LogOutApp();
-                        presenter.codelogin();
-                    }
                     Log.e("GetProfile","ERROR");
+                    if (response.raw().code()==401){
+                        if (localData.getRegisterRetry()==0){
+                            Log.e("primer if","RETRY=0");
+                            try {
+                                Thread.sleep(500);
+                                localData.registerrRetry(1);
+                                getProfileModel(presenter);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            Log.e("else","RETRY=1");
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            presenter.codelogin();
+                        }
+                    }
                 }
             }
 
@@ -76,8 +90,27 @@ public class ProfileModels implements ProfileInterfaces.models{
             public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
                 if (response.isSuccessful()){
                     presenter.onSuccessUpdate(response.body());
+                    localData.registerrRetry(0);
                 }else {
                     Log.e("errorsito", response.errorBody().toString());
+
+                    if (response.raw().code()==401){
+                        if (localData.getRegisterRetry()==0){
+                            Log.e("primer if","RETRY=0");
+                            try {
+                                Thread.sleep(500);
+                                localData.registerrRetry(1);
+                                updateModel(presenter, changedUser, changedData);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            Log.e("else","RETRY=1");
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            presenter.codelogin();
+                        }
+                    }
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
                     try {

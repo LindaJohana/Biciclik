@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.biciclik.BaseContext.BaseContext;
 import com.example.biciclik.DrawerMain.DrawerActivities;
+import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
 import com.example.biciclik.local_data.LocalData;
 import com.example.biciclik.objects.TripResponse;
@@ -84,5 +86,12 @@ public class TripActivity extends Fragment implements TripInterfaces.activities 
         txtHoraER.setText(data.getDelivery_date());
         txtHuellaR.setText(String.valueOf(data.getCarbon_footprint()));
         txtAhorroR.setText(String.valueOf(data.getEconomic_savings()));
+    }
+
+    @Override
+    public void lanzarLogin() {
+        Toast.makeText(BaseContext.getContext(), getString(R.string.expiroToken), Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+        startActivity(i);
     }
 }

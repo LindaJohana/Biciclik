@@ -39,7 +39,24 @@ public class TripModels implements TripInterfaces.models{
                     TripResponseFinal objects_list = null;
                     objects_list=response.body();
                     presenter.setInfoTripPresenter(objects_list);
+                    localData.registerrRetry(0);
                 }else {
+                    if (localData.getRegisterRetry()==0){
+                        Log.e("primer if","RETRY=0");
+                        try {
+                            Thread.sleep(500);
+                            localData.registerrRetry(1);
+                            getInfoTripModel(presenter);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Log.e("else","RETRY=1");
+                        localData.registerrRetry(0);
+                        localData.LogOutApp();
+                        presenter.login();
+                    }
+
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
                     try {
@@ -70,7 +87,24 @@ public class TripModels implements TripInterfaces.models{
                 if (response.isSuccessful()){
                     TripResponse objects_list = null;
                     objects_list=response.body();
+                    localData.registerrRetry(0);
                 }else {
+                    if (localData.getRegisterRetry()==0){
+                        Log.e("primer if","RETRY=0");
+                        try {
+                            Thread.sleep(500);
+                            localData.registerrRetry(1);
+                            sendStatusModel(presenter);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Log.e("else","RETRY=1");
+                        localData.registerrRetry(0);
+                        localData.LogOutApp();
+                        presenter.login();
+                    }
+
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
                     try {

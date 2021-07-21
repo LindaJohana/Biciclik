@@ -61,4 +61,9 @@ public class HomePresenters implements HomeInterfaces.presenters {
     public void onErrorTravelStatistics(String message) {
         view.serErrorTravelStatistics(message);
     }
+
+    @Override
+    public void login() {
+        view.lanzarLogin();
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.biciclik.Home;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.biciclik.BaseContext.BaseContext;
+import com.example.biciclik.Login.LoginActivities;
 import com.example.biciclik.R;
 import com.example.biciclik.objects.PersonResponse;
 import com.example.biciclik.objects.StatisticsData;
@@ -121,6 +123,13 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         setupPieChart(pieChart1, String.valueOf(result.getTrips()));
         setupPieChart(pieChart2, String.valueOf(result.getEconomic_savings()));
         setupPieChart(pieChart3, String.valueOf(result.getCarbon_footprint()));
+    }
+
+    @Override
+    public void lanzarLogin() {
+        Toast.makeText(BaseContext.getContext(), getString(R.string.expiroToken), Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+        startActivity(i);
     }
 
     private void setupPieChart(PieChart pieChart, String result) {

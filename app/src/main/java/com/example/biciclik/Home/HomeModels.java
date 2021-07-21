@@ -37,7 +37,25 @@ public class HomeModels implements HomeInterfaces.models{
                     objects_list=response.body();
                     Log.e("HOME", objects_list.toString());
                     presenter.onSuccessTopCompany(objects_list);
+                    localData.registerrRetry(0);
                 }else {
+                    if (response.raw().code()==401){
+                        if (localData.getRegisterRetry()==0){
+                            Log.e("primer if","RETRY=0");
+                            try {
+                                Thread.sleep(500);
+                                localData.registerrRetry(1);
+                                TopCompanyModel(presenter);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            Log.e("else","RETRY=1");
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            presenter.login();
+                        }
+                    }
                     Log.e("else", "else home");
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -66,8 +84,26 @@ public class HomeModels implements HomeInterfaces.models{
                     ArrayList<Integer> object_list=null;
                     object_list= response.body();
                     presenter.onSuccessTravelMonth(object_list);
+                    localData.registerrRetry(0);
                 }else{
                     Log.e("else", "else home");
+                    if (response.raw().code()==401){
+                        if (localData.getRegisterRetry()==0){
+                            Log.e("primer if","RETRY=0");
+                            try {
+                                Thread.sleep(500);
+                                localData.registerrRetry(1);
+                                TravelMonthModel(presenter);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            Log.e("else","RETRY=1");
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            presenter.login();
+                        }
+                    }
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
                     try {
@@ -94,7 +130,26 @@ public class HomeModels implements HomeInterfaces.models{
             public void onResponse(Call<StatisticsData> call, Response<StatisticsData> response) {
                 if (response.isSuccessful()){
                     presenter.onSuccessTravelStatistics(response.body());
+                    localData.registerrRetry(0);
                 }else{
+                    if (response.raw().code()==401){
+                        if (localData.getRegisterRetry()==0){
+                            Log.e("primer if","RETRY=0");
+                            try {
+                                Thread.sleep(500);
+                                localData.registerrRetry(1);
+                                travelStatisticsModel(presenter);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            Log.e("else","RETRY=1");
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            presenter.login();
+                        }
+                    }
+
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
                     try {
