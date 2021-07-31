@@ -98,7 +98,7 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
         presenter=new ProfilePresenters(this);
     }
     public void cargarImagen(){
-        final CharSequence[] opciones={"Tomar foto", "Cargar foto","Cancelar"};
+        final CharSequence[] opciones={"Tomar foto","Cancelar"};
         final AlertDialog.Builder alertOptiones=new AlertDialog.Builder(getContext());
         alertOptiones.setTitle("seleccione una opción");
         alertOptiones.setItems(opciones, new DialogInterface.OnClickListener() {

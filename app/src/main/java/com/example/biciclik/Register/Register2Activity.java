@@ -164,7 +164,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
 
     public void cargarImagen(int num){
         buttonCapture=num;
-        final CharSequence[] opciones={"Tomar foto", "Cargar foto","Cancelar"};
+        final CharSequence[] opciones={"Tomar foto","Cancelar"};
         final AlertDialog.Builder alertOptiones=new AlertDialog.Builder(this);
         alertOptiones.setTitle("seleccione una opción");
         alertOptiones.setItems(opciones, new DialogInterface.OnClickListener() {
