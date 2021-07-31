@@ -119,9 +119,9 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             }
         });
         //url de los terminos y condiciones
-        texto.setSpan(new URLSpan("https://programmerclick.com/article/4125913791/"), 11, 33,0);
+        texto.setSpan(new URLSpan(getString(R.string.terminos)), 11, 33,0);
         texto.setSpan(new ForegroundColorSpan(Color.parseColor("#E74C3C")),11,33,0);
-        texto.setSpan(new URLSpan("https://programmerclick.com/article/4125913791/"), 39, 62,0);
+        texto.setSpan(new URLSpan(getString(R.string.cond)), 39, 62,0);
         texto.setSpan(new ForegroundColorSpan(Color.parseColor("#E74C3C")),39,62,0);
 
         Terminos.setMovementMethod(LinkMovementMethod.getInstance());

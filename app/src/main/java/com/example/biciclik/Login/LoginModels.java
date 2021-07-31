@@ -61,8 +61,10 @@ public class LoginModels implements LoginInterfaces.models {
                 public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                     if (response.isSuccessful()){
                         presenter.onSuccessLogin();
+                        Log.e("VERIFYTOKEN", localData.getAccess());
                     }else {
                         refreshToken(presenter, localData.getRefresh());
+                        Log.e("VERIFYTOKEN ELSE", localData.getAccess());
                     }
                 }
 

@@ -25,8 +25,8 @@
         </item>
         <item
             android:id="@+id/llamar"
-            android:icon="@drawable/ic_call"
-            android:title="Llamar a Biciclick">
+            android:icon="@drawable/ic_escribenos"
+            android:title="Escríbenos">
         </item>
         <item
             android:id="@+id/cerrar"
