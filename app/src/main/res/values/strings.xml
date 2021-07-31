@@ -77,6 +77,10 @@
     <string name="ButtonCambios">Guardar Cambios</string>
     <string name="HintPunto">Seleccione Punto</string>
     <string name="expiroToken">Su sesio ha expirado, inicie sesion de nuevo</string>
+    <string name="fotoTerminar">¿Deseas terminar tu viaje?</string>
+    <string name="aceptarTerminar">Aceptar</string>
+    <string name="cancelarTerminar">Cancelar</string>
+    <string name="infoFoto">Foto de la Bici en el punto</string>
 
 
     <string-array name="planets_array">

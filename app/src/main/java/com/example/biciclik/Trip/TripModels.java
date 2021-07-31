@@ -8,6 +8,7 @@ import com.example.biciclik.objects.TripResponse;
 import com.example.biciclik.objects.TripResponseFinal;
 import com.example.biciclik.utils.CustomErrorResponse;
 
+import java.io.File;
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -76,9 +77,13 @@ public class TripModels implements TripInterfaces.models{
     }
 
     @Override
-    public void sendStatusModel(TripInterfaces.presenters presenter) {
+    public void sendStatusModel(TripInterfaces.presenters presenter, String  UrlPhoto) {
         final MultipartBody.Builder request = new MultipartBody.Builder().setType(MultipartBody.FORM);
         request.addFormDataPart("status", null, RequestBody.create(MediaType.parse("text/plain"),"FINALIZED"));
+        if (!UrlPhoto.equals("")){
+            File filePhoto = new File(UrlPhoto);
+            request.addFormDataPart("photo",filePhoto.getName(),RequestBody.create(MediaType.parse("image/*"), filePhoto));
+        }
         MultipartBody body=request.build();
         Call<TripResponse> call = homeApiAdapter.getApiService2().updateTrip(localData.getRegister("ID_TRIP"),body);
         call.enqueue(new Callback<TripResponse>() {
@@ -88,13 +93,14 @@ public class TripModels implements TripInterfaces.models{
                     TripResponse objects_list = null;
                     objects_list=response.body();
                     localData.registerrRetry(0);
+                    presenter.home();
                 }else {
                     if (localData.getRegisterRetry()==0){
                         Log.e("primer if","RETRY=0");
                         try {
                             Thread.sleep(500);
                             localData.registerrRetry(1);
-                            sendStatusModel(presenter);
+                            sendStatusModel(presenter, UrlPhoto);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -118,7 +124,7 @@ public class TripModels implements TripInterfaces.models{
 
             @Override
             public void onFailure(Call<TripResponse> call, Throwable t) {
-
+                Log.e("ONfAIRULE", t.toString());
             }
         });
     }

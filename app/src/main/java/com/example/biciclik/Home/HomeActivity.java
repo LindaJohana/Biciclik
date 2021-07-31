@@ -142,7 +142,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         pieChart.setCenterText(result);
 //        Typeface iconFont = FontManager.getTypeface(BaseContext.getContext(), FontManager.FONTAWESOME);
 //        FontManager.markAsIconContainer(pieChart, iconFont);
-        pieChart.setCenterTextSize(12);
+//        pieChart.setCenterTextSize(12);
         pieChart.getDescription().setEnabled(false);
         Legend l = pieChart.getLegend();
         /*l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);

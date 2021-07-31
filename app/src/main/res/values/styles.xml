@@ -16,7 +16,7 @@
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/rojo</item>
         <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorAccent">@color/gris</item>
+        <item name="colorAccent">@color/black</item>
     </style>
     <style name="estiloletra">
         <item name="android:textColor">@color/black</item>
