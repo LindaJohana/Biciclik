@@ -181,12 +181,14 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (session!=null){
-            if (session.isConnect() == true){
-                session.disConnect()
+        try{
+            if (session!=null){
+                if (session.isConnect() == true){
+                    session.disConnect()
+                }
             }
+        }catch (exception:Exception){
         }
-
     }
 
     override fun sesionCod(data: BikeData) {

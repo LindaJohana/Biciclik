@@ -43,7 +43,7 @@ public class HomeModels implements HomeInterfaces.models{
                         if (localData.getRegisterRetry()==0){
                             Log.e("primer if","RETRY=0");
                             try {
-                                Thread.sleep(500);
+                                Thread.sleep(1000);
                                 localData.registerrRetry(1);
                                 TopCompanyModel(presenter);
                             } catch (InterruptedException e) {
@@ -87,23 +87,6 @@ public class HomeModels implements HomeInterfaces.models{
                     localData.registerrRetry(0);
                 }else{
                     Log.e("else", "else home");
-                    if (response.raw().code()==401){
-                        if (localData.getRegisterRetry()==0){
-                            Log.e("primer if","RETRY=0");
-                            try {
-                                Thread.sleep(500);
-                                localData.registerrRetry(1);
-                                TravelMonthModel(presenter);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }else {
-                            Log.e("else","RETRY=1");
-                            localData.registerrRetry(0);
-                            localData.LogOutApp();
-                            presenter.login();
-                        }
-                    }
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
                     try {
@@ -132,23 +115,6 @@ public class HomeModels implements HomeInterfaces.models{
                     presenter.onSuccessTravelStatistics(response.body());
                     localData.registerrRetry(0);
                 }else{
-                    if (response.raw().code()==401){
-                        if (localData.getRegisterRetry()==0){
-                            Log.e("primer if","RETRY=0");
-                            try {
-                                Thread.sleep(500);
-                                localData.registerrRetry(1);
-                                travelStatisticsModel(presenter);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }else {
-                            Log.e("else","RETRY=1");
-                            localData.registerrRetry(0);
-                            localData.LogOutApp();
-                            presenter.login();
-                        }
-                    }
 
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -162,7 +128,7 @@ public class HomeModels implements HomeInterfaces.models{
             }
             @Override
             public void onFailure(Call<StatisticsData> call, Throwable t) {
-
+                Log.e("ONFAIRULE HOME STADIST", t.toString());
             }
         });
     }
