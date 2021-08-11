@@ -81,6 +81,11 @@
     <string name="aceptarTerminar">Aceptar</string>
     <string name="cancelarTerminar">Cancelar</string>
     <string name="infoFoto">Foto de la Bici en el punto</string>
+    <string name="phone">https://api.whatsapp.com/send?phone=573166299222</string>
+    <string name="phone2">text=Invitation</string>
+    <string name="phone3">+573204463808</string>
+    <string name="terminos">https://programmerclick.com/article/4125913791/</string>
+    <string name="cond">https://programmerclick.com/article/4125913791/</string>
 
 
     <string-array name="planets_array">

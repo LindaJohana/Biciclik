@@ -1,8 +1,10 @@
 package com.example.biciclik.DrawerMain;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -143,9 +145,21 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.llamar){
-            String phoneNo="321456";
-            String dial = "tel:" + phoneNo;
-            startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
+//            Uri uri = Uri.parse("smsto:" + R.string.phone3);
+//            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+//            i.setPackage("com.whatsapp");
+//            startActivity(i);
+            Uri uri = Uri.parse(getString(R.string.phone)+"&"+getString(R.string.phone2));
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+//            Intent inten = new Intent("android.intent.action.MAIN");
+//            inten.setComponent(new ComponentName("com.whatsapp","com.whatsapp.Conversation"));
+//            inten.putExtra(String.valueOf(R.string.app_name), PhoneNumberUtils.stripSeparators(String.valueOf(R.string.phone))+"@s.whatsapp.net");
+//            startActivity(inten);
+//            sknsj
+//            String phoneNo="321456";
+//            String dial = "tel:" + phoneNo;
+//            startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
         }
         if(menuItem.getItemId()==R.id.cerrar){
             logOut();
