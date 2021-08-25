@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "211546822268",
+    "project_id": "biciclick",
+    "storage_bucket": "biciclick.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211546822268:android:70ffd1455cbd60cb4b5bf9",
+        "android_client_info": {
+          "package_name": "com.colombiagames.biciclick"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211546822268-gb4duiels5i08q52sf4kcuamp0cquaej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvOKylos5xZeqoAX2NJMd_NmCMZ7sJ1x0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211546822268-gb4duiels5i08q52sf4kcuamp0cquaej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

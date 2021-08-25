@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.biciclik">
+    package="com.colombiagames.biciclik">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -78,7 +78,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.biciclik.provider"
+            android:authorities="com.colombiagames.biciclik.provider"
             android:exported="false"
             android:grantUriPermissions="true">
 
