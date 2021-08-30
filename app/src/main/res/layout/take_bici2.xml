@@ -233,7 +233,7 @@
             android:gravity="right"
             android:layout_gravity="center"
             android:paddingRight="8dp">
-            <com.colombiagames.biciclik.utils.SpinnerCustom
+            <com.colombiagames.biciclick.utils.SpinnerCustom
                 android:id="@+id/singleItemSelectionSpinner"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"

@@ -12,7 +12,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.colombiagames.biciclik"
+        applicationId "com.colombiagames.biciclick"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
