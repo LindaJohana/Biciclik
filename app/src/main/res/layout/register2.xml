@@ -16,12 +16,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txt33"
                 style="@style/estiloletranegra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/TextViewRegistro" />
 
             <TextView
+                android:id="@+id/txt34"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/TextViewPaso23" />
@@ -41,6 +43,7 @@
         </LinearLayout>
     </LinearLayout>
     <TextView
+        android:id="@+id/txt35"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -133,6 +136,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="8dp">
         <TextView
+            android:id="@+id/txt36"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/TextViewTienesCuenta" />

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.biciclik">
+    package="com.colombiagames.biciclick">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature android:name="android.hardware.camera" android:required="true" />
@@ -28,6 +29,8 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
 
     <application
         android:name=".BaseContext.BaseContext"
@@ -78,7 +81,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.biciclik.provider"
+            android:authorities="com.colombiagames.biciclick.provider"
             android:exported="false"
             android:grantUriPermissions="true">
 

@@ -1,6 +1,6 @@
 <resources>
     <string name="cicla">&#xf200;</string>
-    <string name="app_name">Biciclik</string>
+    <string name="app_name">Biciclick</string>
     <string name="TextViewAcceso">Acceso</string>
     <string name="TextViewSaludo">Hola! Que bueno verte de nuevo</string>
     <string name="TextViewEmail">Email</string>
@@ -24,8 +24,8 @@
     <string name="TextViewTienesCuenta">Ya tienes una cuenta?</string>
     <string name="TextViewIngresa">Ingresa aqui</string>
     <string name="TextViewRegistroE">Registro Exitoso</string>
-    <string name="TextViewTextoRegistro">Ya estás listo para comenzar a utilizar
-        Biciclick la mejor forma de moverse en la ciudad.</string>
+    <string name="TextViewTextoRegistro">Ya estas registrado, en unos momentos uno de nuestros
+        asesores validara tu información y activara tu cuenta.</string>
     <string name="TextViewTextoRegistro2">Acércate a un punto Biciclik</string>
     <string name="ButtonVerPuntos">Ver puntos Biciclick</string>
     <string name="ButtonYaEstoy">Ya estoy frente a una Bici</string>

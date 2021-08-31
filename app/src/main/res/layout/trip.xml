@@ -6,6 +6,7 @@
     android:padding="40dp">
 
     <TextView
+        android:id="@+id/txt43"
         style="@style/estiloletra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +33,7 @@
             android:src="@drawable/maps"/>
 
         <TextView
-            android:id="@+id/txtPuntoI"
+            android:id="@+id/txt44"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -72,7 +73,7 @@
             android:src="@drawable/ic_event"/>
 
         <TextView
-            android:id="@+id/txtHoraI"
+            android:id="@+id/txt45"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -112,7 +113,7 @@
             android:src="@drawable/ic_time"/>
 
         <TextView
-            android:id="@+id/txtTiempo"
+            android:id="@+id/txt46"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -153,7 +154,7 @@
             android:src="@drawable/maps"/>
 
         <TextView
-            android:id="@+id/txtDestino"
+            android:id="@+id/txt47"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -194,7 +195,7 @@
             android:src="@drawable/maps"/>
 
         <TextView
-            android:id="@+id/txtPuntoE"
+            android:id="@+id/txt48"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -235,7 +236,7 @@
             android:src="@drawable/ic_event"/>
 
         <TextView
-            android:id="@+id/txtHoraE"
+            android:id="@+id/txt49"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -258,88 +259,88 @@
         </LinearLayout>
 
     </LinearLayout>
-    <View
-        android:id="@+id/dividerV7"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"/>
+<!--    <View-->
+<!--        android:id="@+id/dividerV7"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="?android:attr/listDivider"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginVertical="8dp">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginVertical="8dp">-->
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_monetization"/>
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_monetization"/>-->
 
-        <TextView
-            android:id="@+id/txtAhorro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:text="@string/TextViewAhorro"
-            android:layout_marginHorizontal="16dp"/>
+<!--        <TextView-->
+<!--            android:id="@+id/txtAhorro"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="@string/TextViewAhorro"-->
+<!--            android:layout_marginHorizontal="16dp"/>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right"
-            android:layout_gravity="center"
-            android:paddingRight="8dp">
-            <TextView
-                android:id="@+id/txtAhorroR"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right" />
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="right"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:paddingRight="8dp">-->
+<!--            <TextView-->
+<!--                android:id="@+id/txtAhorroR"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="right" />-->
+<!--        </LinearLayout>-->
 
-    </LinearLayout>
-    <View
-        android:id="@+id/dividerV8"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"/>
+<!--    </LinearLayout>-->
+<!--    <View-->
+<!--        android:id="@+id/dividerV8"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="?android:attr/listDivider"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginVertical="8dp">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginVertical="8dp">-->
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_nature"/>
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_nature"/>-->
 
-        <TextView
-            android:id="@+id/txtHuella"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:text="@string/TextViewHuella"
-            android:layout_marginHorizontal="16dp"/>
+<!--        <TextView-->
+<!--            android:id="@+id/txtHuella"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="@string/TextViewHuella"-->
+<!--            android:layout_marginHorizontal="16dp"/>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right"
-            android:layout_gravity="center"
-            android:paddingRight="8dp">
-            <TextView
-                android:id="@+id/txtHuellaR"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right" />
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="right"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:paddingRight="8dp">-->
+<!--            <TextView-->
+<!--                android:id="@+id/txtHuellaR"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="right" />-->
+<!--        </LinearLayout>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <Button
         android:id="@+id/ButtonOkV"

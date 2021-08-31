@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/txt37"
         style="@style/estiloletra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -142,6 +143,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/txt38"
         style="@style/estiloletra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -157,6 +159,7 @@
         android:background="?android:attr/listDivider" />
 
     <TextView
+        android:id="@+id/txt39"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/TextViewDestV"
@@ -176,6 +179,7 @@
             android:layout_gravity="center"/>
 
         <TextView
+            android:id="@+id/txt40"
             style="@style/estiloletra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -220,6 +224,7 @@
             android:layout_gravity="center"/>
 
         <TextView
+            android:id="@+id/txt41"
             style="@style/estiloletra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -233,7 +238,7 @@
             android:gravity="right"
             android:layout_gravity="center"
             android:paddingRight="8dp">
-            <com.example.biciclik.utils.SpinnerCustom
+            <com.colombiagames.biciclick.utils.SpinnerCustom
                 android:id="@+id/singleItemSelectionSpinner"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
@@ -251,6 +256,7 @@
         android:layout_marginBottom="8dp"/>
 
     <TextView
+        android:id="@+id/txt42"
         style="@style/estiloletra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
