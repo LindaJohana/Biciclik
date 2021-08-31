@@ -59,7 +59,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             TxtNombre=itemView.findViewById(R.id.txtNombre);
             TxtViajes=itemView.findViewById(R.id.txtViajes);
             imageSelfieT=itemView.findViewById(R.id.imageSelfieT);
-            Typeface fuente = Typeface.createFromAsset(my_context.getAssets(), "fonts/verdana.ttf");
+            Typeface fuente = Typeface.createFromAsset(BaseContext.getContext().getAssets(), "fonts/verdana.ttf");
             TxtNombre.setTypeface(fuente);
             TxtViajes.setTypeface(fuente);
         }

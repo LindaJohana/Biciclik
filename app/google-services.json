@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211546822268:android:81e8c8e9244905594b5bf9",
+        "android_client_info": {
+          "package_name": "com.colombiagames.biciclick"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211546822268-gb4duiels5i08q52sf4kcuamp0cquaej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvOKylos5xZeqoAX2NJMd_NmCMZ7sJ1x0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211546822268-gb4duiels5i08q52sf4kcuamp0cquaej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

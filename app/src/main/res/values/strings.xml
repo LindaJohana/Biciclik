@@ -1,4 +1,8 @@
 <resources>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="fcm_message">FCM Message</string>
+
     <string name="cicla">&#xf200;</string>
     <string name="app_name">Biciclick</string>
     <string name="TextViewAcceso">Acceso</string>
@@ -26,7 +30,7 @@
     <string name="TextViewRegistroE">Registro Exitoso</string>
     <string name="TextViewTextoRegistro">Ya estas registrado, en unos momentos uno de nuestros
         asesores validara tu información y activara tu cuenta.</string>
-    <string name="TextViewTextoRegistro2">Acércate a un punto Biciclik</string>
+    <string name="TextViewTextoRegistro2">Acércate a un punto Biciclick</string>
     <string name="ButtonVerPuntos">Ver puntos Biciclick</string>
     <string name="ButtonYaEstoy">Ya estoy frente a una Bici</string>
     <string name="TextViewTextoFoto">Ahora te pediremos 2 fotos para confirmar tu identidad</string>
