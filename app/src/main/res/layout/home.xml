@@ -8,6 +8,7 @@
     android:padding="40dp">
 
     <TextView
+        android:id="@+id/txt4"
         style="@style/estiloletra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,18 +29,21 @@
         android:layout_marginVertical="16dp"
         android:gravity="center">
         <TextView
+            android:id="@+id/txt5"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/TextViewTrips"
             android:gravity="center"/>
         <TextView
+            android:id="@+id/txt6"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/TextViewAhorro"
-            android:gravity="center"/>
+            android:gravity="center" />
         <TextView
+            android:id="@+id/txt7"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -68,6 +72,7 @@
             android:layout_height="match_parent"/>
     </LinearLayout>
     <TextView
+        android:id="@+id/txt8"
         style="@style/estiloletra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,6 +94,7 @@
         android:minHeight="200dp"/>
 
     <TextView
+        android:id="@+id/txt9"
         style="@style/estiloletra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

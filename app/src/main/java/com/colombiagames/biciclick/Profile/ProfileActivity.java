@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,7 +46,7 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
     CircleImageView FotoPerfil;
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA"};
     EditText nombre, telefono, email, direccion, edLastName;
-    TextView empresa;
+    TextView empresa, txt16, txt17, txt18, txt19, txt20, txt21, txt22;
     Button buttonGuardar;
     ProfilePresenters presenter;
     ProfileData changedDataA;
@@ -56,6 +57,24 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile, container, false);
         initObjects(view);
+
+        //letra verdana
+        Typeface fuente = Typeface.createFromAsset(getActivity().getAssets(), "fonts/verdana.ttf");
+        txt16.setTypeface(fuente);
+        txt17.setTypeface(fuente);
+        nombre.setTypeface(fuente);
+        txt18.setTypeface(fuente);
+        edLastName.setTypeface(fuente);
+        txt19.setTypeface(fuente);
+        telefono.setTypeface(fuente);
+        txt20.setTypeface(fuente);
+        email.setTypeface(fuente);
+        txt21.setTypeface(fuente);
+        empresa.setTypeface(fuente);
+        txt22.setTypeface(fuente);
+        direccion.setTypeface(fuente);
+        buttonGuardar.setTypeface(fuente);
+
         int requestCode = 200;
         presenter.getProfilePresenter();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -86,6 +105,13 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
         edLastName=view.findViewById(R.id.edLastName);
         UrlSelfie="";
         presenter=new ProfilePresenters(this);
+        txt16=view.findViewById(R.id.txt16);
+        txt17=view.findViewById(R.id.txt17);
+        txt18=view.findViewById(R.id.txt18);
+        txt19=view.findViewById(R.id.txt19);
+        txt20=view.findViewById(R.id.txt20);
+        txt21=view.findViewById(R.id.txt21);
+        txt22=view.findViewById(R.id.txt22);
     }
     public void cargarImagen(){
         final CharSequence[] opciones={"Tomar foto","Cancelar"};

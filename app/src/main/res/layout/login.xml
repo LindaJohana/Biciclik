@@ -18,19 +18,24 @@
         android:src="@drawable/logo_biciclick" />
 
     <TextView
+        android:id="@+id/txt10"
         style="@style/estiloletranegra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/TextViewAcceso" />
+        android:text="@string/TextViewAcceso"
+        android:textStyle="bold"
+        />
 
     <TextView
+        android:id="@+id/txt11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="32dp"
-        android:text="@string/TextViewSaludo" />
+        android:text="@string/TextViewSaludo"/>
 
     <TextView
+        android:id="@+id/txt12"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,10 +54,10 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="@string/HintEmail"
-            android:gravity="left"
-            />
+            android:gravity="left"/>
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
+        android:id="@+id/txt13"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -72,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="contraseña"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/ingresarAcceso"
@@ -90,7 +95,7 @@
             android:id="@+id/textViewOlvideC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/TextViewOlvideCont" />
+            android:text="@string/TextViewOlvideCont"/>
         <TextView
             style="@style/EstiloLetra"
             android:id="@+id/textViewRegistro"

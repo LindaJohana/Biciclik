@@ -1,6 +1,7 @@
 package com.colombiagames.biciclick.DrawerMain;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -56,6 +57,10 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         textViewUsuario=findViewById(R.id.textViewUsuarioD);
         textViewEmailD=findViewById(R.id.textViewEmailD);
 
+        //Letra verdana
+        Typeface fuente = Typeface.createFromAsset(getAssets(),"fonts/verdana.ttf");
+        textViewEmailD.setTypeface(fuente);
+        textViewUsuario.setTypeface(fuente);
         //onlcick navgation
         navigationView.setNavigationItemSelectedListener(this);
         presenter.profileHeaderPresenter();

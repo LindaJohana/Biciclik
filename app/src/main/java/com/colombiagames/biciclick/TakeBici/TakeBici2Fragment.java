@@ -1,6 +1,7 @@
 package com.colombiagames.biciclick.TakeBici;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,9 +38,10 @@ import java.util.TimeZone;
 public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fragment {
     SpinnerCustom singleSpinnerSearch;
     private static final String TAG = "TakeBici2";
-    TextView txtPuntoIR;
-    TextView txtHoraIR;
-    TextView destinoT;
+    TextView txtPuntoIR, txt37, txtPuntoI, txt38, txt39, txt40, txt41, txt42;
+    TextView txtHoraIR, txtHoraI;
+    TextView txtTiempo;
+    EditText destinoT;
     Chronometer txtTiempoR;
     TakeBiciPresenters presenters;
     private String pointName;
@@ -55,6 +58,24 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.take_bici2, container, false);
         initObjects(view);
+
+        //Letra verdana
+        Typeface fuente = Typeface.createFromAsset(getActivity().getAssets(), "fonts/verdana.ttf");
+        txt37.setTypeface(fuente);
+        txtPuntoIR.setTypeface(fuente);
+        txtPuntoI.setTypeface(fuente);
+        txtHoraI.setTypeface(fuente);
+        txtHoraIR.setTypeface(fuente);
+        txtTiempo.setTypeface(fuente);
+        txt38.setTypeface(fuente);
+        txt39.setTypeface(fuente);
+        txt40.setTypeface(fuente);
+        destinoT.setTypeface(fuente);
+        txt41.setTypeface(fuente);
+        txt42.setTypeface(fuente);
+        buttonOkV.setTypeface(fuente);
+
+
         Bundle bundle=this.getArguments();
         String point=bundle.getString("start_point");
         String date=bundle.getString("start_date");
@@ -130,15 +151,24 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
 
     private void initObjects(View view){
         txtPuntoIR = (TextView) view.findViewById(R.id.txtPuntoInicio);
+        txtPuntoI = (TextView) view.findViewById(R.id.txtPuntoI);
         txtHoraIR = (TextView) view.findViewById(R.id.txtHoraInicio);
+        txtHoraI = (TextView) view.findViewById(R.id.txtHoraI);
         txtTiempoR = (Chronometer) view.findViewById(R.id.txtTiempoTrans);
-        destinoT = (TextView) view.findViewById(R.id.destinoT);
+        txtTiempo = view.findViewById(R.id.txtTiempo);
+        destinoT = view.findViewById(R.id.destinoT);
         presenters=new TakeBiciPresenters(null, this);
         pointName="";
         buttonOkV = view.findViewById(R.id.ButtonOkV);
         localData = new LocalData();
         chronStateSave = 0L;
         pauseoffset = 0L;
+        txt37=view.findViewById(R.id.txt37);
+        txt38=view.findViewById(R.id.txt38);
+        txt39=view.findViewById(R.id.txt39);
+        txt40=view.findViewById(R.id.txt40);
+        txt41=view.findViewById(R.id.txt41);
+        txt42=view.findViewById(R.id.txt42);
     }
 
     @Override

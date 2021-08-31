@@ -3,6 +3,7 @@ package com.colombiagames.biciclick.ForgetPassword;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -25,6 +26,10 @@ public class ForgetPasswordActivity extends Activity implements ForgetPasswordIn
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forget_password);
         initObjects();
+        //Letra verdana
+        Typeface fuente = Typeface.createFromAsset(getAssets(),"fonts/verdana.ttf");
+        InputTextEmail.setTypeface(fuente);
+        ButtonRecordar.setTypeface(fuente);
         ButtonRecordar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

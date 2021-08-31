@@ -1,6 +1,7 @@
 package com.colombiagames.biciclick.Home;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             TxtNombre=itemView.findViewById(R.id.txtNombre);
             TxtViajes=itemView.findViewById(R.id.txtViajes);
             imageSelfieT=itemView.findViewById(R.id.imageSelfieT);
+            Typeface fuente = Typeface.createFromAsset(my_context.getAssets(), "fonts/verdana.ttf");
+            TxtNombre.setTypeface(fuente);
+            TxtViajes.setTypeface(fuente);
         }
     }
 }

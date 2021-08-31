@@ -1,6 +1,7 @@
 package com.colombiagames.biciclick.Maps;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,8 +36,8 @@ public class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 //        View view = inflater.inflate(R.layout.inicio_adapter,parent, false);
         View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.map1_adapter, null,false);
-        ViewHolder viewHolders = new ViewHolder(view);
         my_context = parent.getContext();
+        ViewHolder viewHolders = new ViewHolder(view);
         getLocation();
         return viewHolders;
     }
@@ -66,7 +67,7 @@ public class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.ViewHolder> {
         Location origen = new Location("GPS_PROVIDER");
         origen.setLatitude(latorigen);
         origen.setLongitude(lonorigen);
-        DecimalFormat formato = new DecimalFormat("#.00");
+        DecimalFormat formato = new DecimalFormat("#0.00");
         double distance=origen.distanceTo(location);
         holder.TxtPuntoIM.setText(formato.format(distance/1000)+" KM");
     }
@@ -82,6 +83,9 @@ public class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.ViewHolder> {
             super(itemView);
             TxtPuntoM=itemView.findViewById(R.id.txtPuntoM);
             TxtPuntoIM=itemView.findViewById(R.id.txtPuntoIM);
+            Typeface fuente = Typeface.createFromAsset(my_context.getAssets(), "fonts/verdana.ttf");
+            TxtPuntoM.setTypeface(fuente);
+            TxtPuntoIM.setTypeface(fuente);
         }
     }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA", "android.permission.CALL_PHONE"};
     HomePresenters presenter;
     int requestCode;
+    TextView txt4, txt5, txt6, txt7, txt8, txt9;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
@@ -56,6 +58,14 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
         }
+        Typeface fuente = Typeface.createFromAsset(getActivity().getAssets(), "fonts/verdana.ttf");
+        txt4.setTypeface(fuente);
+        txt5.setTypeface(fuente);
+        txt6.setTypeface(fuente);
+        txt7.setTypeface(fuente);
+        txt8.setTypeface(fuente);
+        txt9.setTypeface(fuente);
+
         presenter.TopCompanyPresenter();
         Typeface iconFont = FontManager.getTypeface(BaseContext.getContext(), FontManager.FONTAWESOME);
         presenter.TravelMonthPresenter();
@@ -75,6 +85,12 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         pieChart2 = view.findViewById(R.id.piechart2);
         pieChart3 = view.findViewById(R.id.piechart3);
         barChart=view.findViewById(R.id.barChart);
+        txt4=view.findViewById(R.id.txt4);
+        txt5=view.findViewById(R.id.txt5);
+        txt6=view.findViewById(R.id.txt6);
+        txt7=view.findViewById(R.id.txt7);
+        txt8=view.findViewById(R.id.txt8);
+        txt9=view.findViewById(R.id.txt9);
     }
     public void setupBar(ArrayList<Integer> results){
         ArrayList<BarEntry> entries = new ArrayList<>();

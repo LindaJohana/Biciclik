@@ -3,6 +3,7 @@ package com.colombiagames.biciclick.Register;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -29,7 +30,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
     SpinnerCustom singleSpinnerSearch;
     private static final String TAG = "Registro";
     public Button ButtonIngresar;
-    public TextView TextIngresa;
+    public TextView TextIngresa, txt23, txt24, txt25, txt26, txt27, txt28, txt29, txt30, txt31, txt32;
     Register1Data register1Data;
     UserData userData;
     public EditText InputFirtsName, InputSecondName, InputTextTelefono, InputTextEmailRegistro, InputTextDireccion, InputTextCont;
@@ -42,6 +43,28 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register1);
         initObjects();
+
+        //Letra verdana
+        Typeface fuente = Typeface.createFromAsset(getAssets(),"fonts/verdana.ttf");
+        txt23.setTypeface(fuente);
+        txt24.setTypeface(fuente);
+        txt25.setTypeface(fuente);
+        InputFirtsName.setTypeface(fuente);
+        txt26.setTypeface(fuente);
+        InputSecondName.setTypeface(fuente);
+        txt27.setTypeface(fuente);
+        InputTextTelefono.setTypeface(fuente);
+        txt28.setTypeface(fuente);
+        InputTextEmailRegistro.setTypeface(fuente);
+        txt29.setTypeface(fuente);
+        txt30.setTypeface(fuente);
+        InputTextDireccion.setTypeface(fuente);
+        txt31.setTypeface(fuente);
+        InputTextCont.setTypeface(fuente);
+        ButtonIngresar.setTypeface(fuente);
+        txt32.setTypeface(fuente);
+        TextIngresa.setTypeface(fuente);
+
         presenter.getCompanyPresenters();
         ButtonIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +126,16 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         presenter=new RegisterPresenters(this, null, null);
         companies = new ArrayList<CompanyData>();
         id_company="";
+        txt23=findViewById(R.id.txt23);
+        txt24=findViewById(R.id.txt24);
+        txt25=findViewById(R.id.txt25);
+        txt26=findViewById(R.id.txt26);
+        txt27=findViewById(R.id.txt27);
+        txt28=findViewById(R.id.txt28);
+        txt29=findViewById(R.id.txt29);
+        txt30=findViewById(R.id.txt30);
+        txt31=findViewById(R.id.txt31);
+        txt32=findViewById(R.id.txt32);
     }
     private boolean validarEmail(String email) {
         Pattern pattern = Patterns.EMAIL_ADDRESS;

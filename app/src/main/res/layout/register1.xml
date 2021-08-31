@@ -18,12 +18,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txt23"
                 style="@style/estiloletranegra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/TextViewRegistro" />
 
             <TextView
+                android:id="@+id/txt24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/TextViewPaso13" />
@@ -44,6 +46,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/txt25"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,6 +69,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/txt26"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,6 +92,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/txt27"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,6 +115,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/txt28"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -132,6 +138,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/txt29"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -147,6 +154,7 @@
         app:hintText="Selcciona una Empresa" />
 
     <TextView
+        android:id="@+id/txt30"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -169,6 +177,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/txt31"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -205,6 +214,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="4dp">
         <TextView
+            android:id="@+id/txt32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/TextViewTienesCuenta" />

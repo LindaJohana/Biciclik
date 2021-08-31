@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import com.colombiagames.biciclick.objects.LoginResponse;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivities extends AppCompatActivity implements LoginInterfaces.activities {
-    public TextView TextViewRegistro, TextViewOlvideC;
+    public TextView TextViewRegistro, TextViewOlvideC, txt10, txt11, txt12, txt13;
     public Button ButtonAcceso;
     TextInputEditText InputTextEmail,InputTextCont;
     LoginPresenters presenter;
@@ -31,6 +32,19 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         setContentView(R.layout.login);
         initObjects();
         verifyToken();
+
+        //fuente verdana
+        Typeface fuente = Typeface.createFromAsset(getAssets(),"fonts/verdana.ttf");
+        TextViewRegistro.setTypeface(fuente);
+        TextViewOlvideC.setTypeface(fuente);
+        txt10.setTypeface(fuente);
+        txt11.setTypeface(fuente);
+        txt12.setTypeface(fuente);
+        InputTextEmail.setTypeface(fuente);
+        txt13.setTypeface(fuente);
+        InputTextCont.setTypeface(fuente);
+        ButtonAcceso.setTypeface(fuente);
+
         TextViewRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,8 +80,12 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         ButtonAcceso=findViewById(R.id.ingresarAcceso);
         InputTextEmail=findViewById(R.id.inputTextEmail);
         InputTextCont=findViewById(R.id.inputTextCont);
-
+        txt10=findViewById(R.id.txt10);
+        txt11=findViewById(R.id.txt11);
+        txt12=findViewById(R.id.txt12);
+        txt13=findViewById(R.id.txt13);
     }
+
     public boolean ValidarAlfanumerico(String password){
         return password.matches("[a-zA-Z0-9 *]+$");
     }

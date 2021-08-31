@@ -1,12 +1,14 @@
 package com.colombiagames.biciclick.Maps;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,10 +37,17 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
     ArrayList<PuntosResponse> listPuntos;
     MapsPresenters presenter;
     private LocationCallback locationCallback;
+    TextView txt14, txt15;
     private String [] permissions = {"android.permission.ACCESS_COARSE_LOCATION","android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW"};
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map1, container, false);
         initObjects(view);
+
+        //letra verdana
+        Typeface fuente = Typeface.createFromAsset(getActivity().getAssets(), "fonts/verdana.ttf");
+        txt14.setTypeface(fuente);
+        txt15.setTypeface(fuente);
+
         int requestCode = 200;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
@@ -58,6 +67,8 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
         listPuntos=new ArrayList<PuntosResponse>();
         presenter = new MapsPresenters(this);
         recyclerPuntos=(RecyclerView) view.findViewById(R.id.recyclerPuntos);
+        txt14 = view.findViewById(R.id.txt14);
+        txt15 = view.findViewById(R.id.txt15);
     }
 
     public void mostrarFragment(){

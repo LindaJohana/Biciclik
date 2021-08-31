@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -45,6 +46,7 @@ public class TripActivity extends Fragment implements TripInterfaces.activities 
     FragmentTransaction fragmentTransaction;
     TripPresenters presenter;
     LocalData localData;
+    TextView txt43, txt44, txt45, txt46, txt47, txt48, txt49;
     String home=null;
     String currentPhotoPath, UrlPhoto;
     File sel=null;
@@ -54,7 +56,25 @@ public class TripActivity extends Fragment implements TripInterfaces.activities 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.trip, container, false);
         initObjects(view);
-        Log.e("ONCREATE", "TRIP");
+
+        //Letra verdana
+        Typeface fuente = Typeface.createFromAsset(getActivity().getAssets(), "fonts/verdana.ttf");
+        txt43.setTypeface(fuente);
+        txt44.setTypeface(fuente);
+        txt45.setTypeface(fuente);
+        txt46.setTypeface(fuente);
+        txt47.setTypeface(fuente);
+        txt48.setTypeface(fuente);
+        txt49.setTypeface(fuente);
+        txtPuntoIR.setTypeface(fuente);
+        txtHoraIR.setTypeface(fuente);
+        txtTiempoR.setTypeface(fuente);
+        txtDestonoR.setTypeface(fuente);
+        txtPuntoER.setTypeface(fuente);
+        txtHoraER.setTypeface(fuente);
+        ButtonOkV.setTypeface(fuente);
+        ButtonNo.setTypeface(fuente);
+
         presenter.getInfoTripPresenter();
 
         ButtonOkV.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +124,14 @@ public class TripActivity extends Fragment implements TripInterfaces.activities 
         presenter = new TripPresenters(this);
         localData = new LocalData();
         UrlPhoto ="";
+        txt43 = view.findViewById(R.id.txt43);
+        txt44 = view.findViewById(R.id.txt44);
+        txt45 = view.findViewById(R.id.txt45);
+        txt46 = view.findViewById(R.id.txt46);
+        txt47 = view.findViewById(R.id.txt47);
+        txt48 = view.findViewById(R.id.txt48);
+        txt49 = view.findViewById(R.id.txt49);
+
     }
 
     @Override

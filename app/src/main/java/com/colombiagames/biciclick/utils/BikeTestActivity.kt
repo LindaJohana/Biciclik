@@ -3,6 +3,7 @@ package com.colombiagames.biciclick.utils
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -11,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -36,6 +38,9 @@ import com.omni.support.ble.session.sub.Bike3In1Session
 class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
     private lateinit var session: Bike3In1Session
     private lateinit var btn_leerQr: Button
+    private lateinit var txt1: TextView
+    private lateinit var txt2: TextView
+    private lateinit var txt3: TextView
 //    private lateinit var buttonShutdown: Button
     /*private lateinit var btn_connect: Button
     private lateinit var btn_disconnect: Button
@@ -57,6 +62,15 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
         val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW", "android.permission.CAMERA", "android.permission.BLUETOOTH", "android.permission.BLUETOOTH_ADMIN")
         val requestCode = 200
 
+        //type text verdana
+        txt1=view.findViewById<TextView>(R.id.txt1)
+        txt2=view.findViewById<TextView>(R.id.txt2)
+        txt3=view.findViewById<TextView>(R.id.txt3)
+        txt1.setTypeface(Typeface.createFromAsset(txt1.context.assets, "fonts/verdana.ttf"))
+        txt2.setTypeface(Typeface.createFromAsset(txt2.context.assets, "fonts/verdana.ttf"))
+        txt3.setTypeface(Typeface.createFromAsset(txt3.context.assets, "fonts/verdana.ttf"))
+
+
         val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
         if (bluetoothAdapter == null) {
             // Device doesn't support Bluetooth
@@ -70,6 +84,7 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
         }
         localData= LocalData();
         btn_leerQr=view.findViewById<Button>(R.id.buttonQR)
+        btn_leerQr.setTypeface(Typeface.createFromAsset(btn_leerQr.context.assets, "fonts/verdana.ttf"))
 //        buttonShutdown=view.findViewById<Button>(R.id.buttonShutdown)
         /*btn_connect = view.findViewById<Button>(R.id.btn_connect)
         btn_disconnect = view.findViewById<Button>(R.id.btn_disconnect)

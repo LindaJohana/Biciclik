@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Register2Activity extends Activity implements RegisterInterfaces.activities2{
-    TextView TextSelfie, TextCedula, TextViewRegistro;
+    TextView TextSelfie, TextCedula, TextViewRegistro, txt33, txt34, txt35, txt36;
     ImageView Imageselfie, Imagecedulafront, Imagencedulaback;
     Button ButtonContinuar;
     TextView Terminos;
@@ -63,6 +64,19 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register2);
         initObjects();
+
+        //Letra verdana
+        Typeface fuente = Typeface.createFromAsset(getAssets(),"fonts/verdana.ttf");
+        txt33.setTypeface(fuente);
+        txt34.setTypeface(fuente);
+        txt35.setTypeface(fuente);
+        TextSelfie.setTypeface(fuente);
+        TextCedula.setTypeface(fuente);
+        Terminos.setTypeface(fuente);
+        ButtonContinuar.setTypeface(fuente);
+        txt36.setTypeface(fuente);
+        TextViewRegistro.setTypeface(fuente);
+
         int requestCode = 200;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
@@ -159,6 +173,10 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         }
         baseContext = new BaseContext();
         checkbox=findViewById(R.id.checkbox);
+        txt33=findViewById(R.id.txt33);
+        txt34=findViewById(R.id.txt34);
+        txt35=findViewById(R.id.txt35);
+        txt36=findViewById(R.id.txt36);
     }
 
     public void cargarImagen(int num){

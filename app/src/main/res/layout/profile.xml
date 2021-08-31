@@ -7,6 +7,7 @@
     android:padding="40dp">
 
     <TextView
+        android:id="@+id/txt16"
         style="@style/estiloletra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,6 +25,7 @@
         app:civ_border_color="@color/gris"
         android:layout_gravity="center"/>
     <TextView
+        android:id="@+id/txt17"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +36,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"/>
     <TextView
+        android:id="@+id/txt18"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,6 +47,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"/>
     <TextView
+        android:id="@+id/txt19"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,6 +59,7 @@
         android:layout_height="wrap_content"
         android:inputType="phone" />
     <TextView
+        android:id="@+id/txt20"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,6 +72,7 @@
         android:inputType="textEmailAddress"
         />
     <TextView
+        android:id="@+id/txt21"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,6 +85,7 @@
         android:layout_marginTop="8dp"
         android:text="holi"/>
     <TextView
+        android:id="@+id/txt22"
         style="@style/EstiloLetra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
