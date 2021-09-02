@@ -6,43 +6,43 @@ import com.google.gson.annotations.SerializedName;
 public class StatisticsData {
     @SerializedName("economic_savings")
     @Expose
-    private int economic_savings;
+    private String economic_savings;
 
     @SerializedName("carbon_footprint")
     @Expose
-    private int carbon_footprint;
+    private String carbon_footprint;
 
     @SerializedName("trips")
     @Expose
-    private int trips;
+    private String trips;
 
-    public StatisticsData(int economic_savings, int carbon_footprint, int trips) {
+    public StatisticsData(String economic_savings, String carbon_footprint, String trips) {
         this.economic_savings = economic_savings;
         this.carbon_footprint = carbon_footprint;
         this.trips = trips;
     }
 
-    public int getEconomic_savings() {
+    public String getEconomic_savings() {
         return economic_savings;
     }
 
-    public void setEconomic_savings(int economic_savings) {
+    public void setEconomic_savings(String economic_savings) {
         this.economic_savings = economic_savings;
     }
 
-    public int getCarbon_footprint() {
+    public String getCarbon_footprint() {
         return carbon_footprint;
     }
 
-    public void setCarbon_footprint(int carbon_footprint) {
+    public void setCarbon_footprint(String carbon_footprint) {
         this.carbon_footprint = carbon_footprint;
     }
 
-    public int getTrips() {
+    public String getTrips() {
         return trips;
     }
 
-    public void setTrips(int trips) {
+    public void setTrips(String trips) {
         this.trips = trips;
     }
 }

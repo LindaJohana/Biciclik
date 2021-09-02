@@ -73,7 +73,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         TextSelfie.setTypeface(fuente);
         TextCedula.setTypeface(fuente);
         Terminos.setTypeface(fuente);
-        ButtonContinuar.setTypeface(fuente);
         txt36.setTypeface(fuente);
         TextViewRegistro.setTypeface(fuente);
 
@@ -84,6 +83,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         //Terminos.setMovementMethod(LinkMovementMethod.getInstance());
         SpannableString texto= new SpannableString("Acepto los terminos y condiciones y la Politica de privacidad.");
         ButtonContinuar=findViewById(R.id.buttonContinuar);
+        ButtonContinuar.setTypeface(fuente);
 
         Imageselfie.setOnClickListener(new View.OnClickListener() {
             @Override

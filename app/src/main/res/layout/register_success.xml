@@ -11,46 +11,42 @@
         android:layout_height="60dp"
         android:background="@drawable/logo_biciclick"
         android:layout_gravity="right"/>
-    <TextView
-        style="@style/estiloletranegra"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/TextViewRegistroE"
-        android:gravity="center"
-        android:layout_marginTop="16dp"/>
-    <TextView
-        style="@style/EstiloLetra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/TextViewTextoRegistro"
-        android:layout_marginTop="24dp"/>
-    <TextView
-        style="@style/EstiloLetra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/TextViewTextoRegistro2"
-        android:paddingTop="6dp"/>
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@drawable/pinas"
-        android:layout_gravity="center"
-        android:layout_marginVertical="32dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            style="@style/estiloletranegra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/TextViewRegistroE"
+            android:gravity="center"
+            android:layout_marginTop="16dp"/>
+        <TextView
+            style="@style/EstiloLetra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/TextViewTextoRegistro"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"/>
 
-    <Button
-        android:id="@+id/buttonVerPuntos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/azulO"
-        android:text="@string/ButtonVerPuntos"
-        android:textColor="@color/white" />
-    <Button
-        android:id="@+id/buttonEstoy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/rojo"
-        android:text="@string/ButtonYaEstoy"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/white"/>
+        <Button
+            android:id="@+id/buttonVerPuntos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/azulO"
+            android:text="@string/ButtonVerPuntos"
+            android:textColor="@color/white" />
+<!--        <Button-->
+<!--            android:id="@+id/buttonEstoy"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="@color/rojo"-->
+<!--            android:text="@string/ButtonYaEstoy"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:textColor="@color/white"/>-->
+    </LinearLayout>
+
 
 </LinearLayout>

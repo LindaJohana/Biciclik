@@ -33,6 +33,7 @@ public class DrawerModels implements DrawerInterfaces.models {
             @Override
             public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
                 if (response.isSuccessful()){
+                    localData.register(response.body().getId(),"ID");
                     presenter.onSuccessProfileHeader(response.body());
                 }else {
                     if (response.raw().code()==401){

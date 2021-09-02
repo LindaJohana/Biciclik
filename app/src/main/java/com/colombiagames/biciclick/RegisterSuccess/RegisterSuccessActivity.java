@@ -8,10 +8,12 @@ import android.widget.Button;
 
 import com.colombiagames.biciclick.BaseContext.BaseContext;
 import com.colombiagames.biciclick.DrawerMain.DrawerActivities;
+import com.colombiagames.biciclick.Login.LoginActivities;
 import com.colombiagames.biciclick.R;
 
 public class RegisterSuccessActivity extends Activity implements RegisterSuccessInterfaces.activities {
-    Button buttonEstoy, buttonVerPuntos;
+//    Button buttonEstoy;
+    Button buttonVerPuntos;
     String bike=null;
     String point=null;
     @Override
@@ -19,21 +21,21 @@ public class RegisterSuccessActivity extends Activity implements RegisterSuccess
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_success);
         initObjects();
-        buttonEstoy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bike();
-            }
-        });
+//        buttonEstoy.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Bike();
+//            }
+//        });
         buttonVerPuntos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                points();
+                login();
             }
         });
     }
     private void initObjects(){
-        buttonEstoy=findViewById(R.id.buttonEstoy);
+//        buttonEstoy=findViewById(R.id.buttonEstoy);
         buttonVerPuntos=findViewById(R.id.buttonVerPuntos);
     }
     public void Bike() {
@@ -42,10 +44,9 @@ public class RegisterSuccessActivity extends Activity implements RegisterSuccess
         i.putExtra("bike",bike);
         startActivity(i);
     }
-    public void points(){
-        Intent i = new Intent(BaseContext.getContext(), DrawerActivities.class );
+    public void login(){
+        Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        i.putExtra("points",point);
         startActivity(i);
     }
 }

@@ -71,7 +71,7 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         actionBarDrawerToggle.syncState();
         Bundle extras = getIntent().getExtras();
         if (extras!=null) {
-            if (extras.containsKey("bike")) {
+            if (extras.containsKey("bikepush")) {
                 Bici();
             }
             if (extras.containsKey("home")) {

@@ -31,7 +31,7 @@
     <string name="TextViewTextoRegistro">Ya estas registrado, en unos momentos uno de nuestros
         asesores validara tu información y activara tu cuenta.</string>
     <string name="TextViewTextoRegistro2">Acércate a un punto Biciclick</string>
-    <string name="ButtonVerPuntos">Ver puntos Biciclick</string>
+    <string name="ButtonVerPuntos">Salir</string>
     <string name="ButtonYaEstoy">Ya estoy frente a una Bici</string>
     <string name="TextViewTextoFoto">Ahora te pediremos 2 fotos para confirmar tu identidad</string>
     <string name="TextViewSelfie">Tomate una foto selfie</string>

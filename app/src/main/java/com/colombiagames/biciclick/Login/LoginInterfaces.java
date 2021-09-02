@@ -13,12 +13,13 @@ public interface LoginInterfaces {
         void onErrorLogin(String message);
         void onSuccessLogin();
         void getToken();
-
+        void sendPushTokenPresenters();
     }
     interface models{
         void setLogin(LoginResponse login, presenters presenter);
         void getTokenModel(presenters presenter);
         void refreshToken(presenters presenter, String refresh);
+        void sendPushTokenModels();
     }
     /*interface requests {
         void setLogin(LoginResponse login, presenters presenter);

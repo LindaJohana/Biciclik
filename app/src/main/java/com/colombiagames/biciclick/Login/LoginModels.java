@@ -2,6 +2,7 @@ package com.colombiagames.biciclick.Login;
 
 import android.util.Log;
 
+import com.colombiagames.biciclick.Api.HomeApiAdapter;
 import com.colombiagames.biciclick.Api.LoginAdapter;
 import com.colombiagames.biciclick.local_data.LocalData;
 import com.colombiagames.biciclick.objects.LoginResponse;
@@ -10,6 +11,7 @@ import com.colombiagames.biciclick.utils.CustomErrorResponse;
 
 import java.io.IOException;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -93,6 +95,33 @@ public class LoginModels implements LoginInterfaces.models {
 
             @Override
             public void onFailure(Call<TokenResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void sendPushTokenModels() {
+        Call<ResponseBody> call = HomeApiAdapter.getApiService2().tokenPush(localData.getRegister("TOKENPUSH"));
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+
+                }else {
+                    CustomErrorResponse custom_error = new CustomErrorResponse();
+                    String response_user = "Intentalo nuevamente";
+                    try {
+                        response_user = custom_error.returnMessageError(response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Log.e("else", response_user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
 
             }
         });

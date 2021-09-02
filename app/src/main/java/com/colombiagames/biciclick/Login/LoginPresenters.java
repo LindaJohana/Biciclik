@@ -30,4 +30,9 @@ public class LoginPresenters implements LoginInterfaces.presenters {
     public void getToken() {
         model.getTokenModel(this);
     }
+
+    @Override
+    public void sendPushTokenPresenters() {
+        model.sendPushTokenModels();
+    }
 }

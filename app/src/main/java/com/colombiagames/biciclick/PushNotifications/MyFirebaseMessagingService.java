@@ -15,15 +15,23 @@ import androidx.core.app.NotificationCompat;
 
 import android.util.Log;
 
+import com.colombiagames.biciclick.Api.HomeApiAdapter;
+import com.colombiagames.biciclick.BaseContext.BaseContext;
+import com.colombiagames.biciclick.DrawerMain.DrawerActivities;
 import com.colombiagames.biciclick.Login.LoginActivities;
+import com.colombiagames.biciclick.Maps.MapsActivity;
 import com.colombiagames.biciclick.R;
+import com.colombiagames.biciclick.local_data.LocalData;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
+    LocalData localData;
     private static final String TAG = "MyFirebaseMsgService";
 
     /**
@@ -58,9 +66,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
 
+//            if (remoteMessage.getData().containsKey("Test single notification")) {
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use WorkManager.
-                scheduleJob();
+                if (remoteMessage.getData().get("Test single notification").equals("Test single notification")){
+
+                }
+//                scheduleJob();
             } else {
                 // Handle message within 10 seconds
                 handleNow();
@@ -75,6 +87,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
+//        if (remoteMessage.getNotification().getTitle().equals("Usuario verificado")){
+        if (remoteMessage.getNotification().getBody().equals("Test single notification")){
+//            sendNotification(remoteMessage.getNotification().getBody());
+            Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            i.putExtra("bikepush","bikepush");
+            startActivity(i);
+        }
     }
     // [END receive_message]
 
@@ -103,13 +123,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     /**
      * Schedule async work using WorkManager.
      */
-    private void scheduleJob() {
-        // [START dispatch_job]
-//        OneTimeWorkRequest work = new OneTimeWorkRequest.Builder(LoginActivities.class)
-//                .build();
-//        WorkManager.getInstance(this).beginWith(work).enqueue();
-//        // [END dispatch_job]
-    }
+//    private void scheduleJob() {
+//        // [START dispatch_job]
+////        OneTimeWorkRequest work = new OneTimeWorkRequest.Builder(LoginActivities.class)
+////                .build();
+////        WorkManager.getInstance(this).beginWith(work).enqueue();
+////        // [END dispatch_job]
+//    }
 
     /**
      * Handle time allotted to BroadcastReceivers.
@@ -127,7 +147,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      * @param token The new token.
      */
     private void sendRegistrationToServer(String token) {
-        // TODO: Implement this method to send token to your app server.
+        localData = new LocalData();
+        localData.register(token, "TOKENPUSH");
+        Log.e("TokenPush", token);
     }
 
     /**
@@ -136,6 +158,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      * @param messageBody FCM message body received.
      */
     private void sendNotification(String messageBody) {
+        Log.e("MENSAJE", messageBody);
         Intent intent = new Intent(this, LoginActivities.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,

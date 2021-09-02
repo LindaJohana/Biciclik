@@ -26,12 +26,15 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
     LoginPresenters presenter;
     LoginResponse login;
     String home=null;
+    Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         initObjects();
         verifyToken();
+        extras = getIntent().getExtras();
+
 
         //fuente verdana
         Typeface fuente = Typeface.createFromAsset(getAssets(),"fonts/verdana.ttf");
@@ -111,11 +114,17 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
 
     @Override
     public void lanzarPerfil() {
-
+//        presenter.sendPushTokenPresenters();
         Intent i = new Intent(BaseContext.getContext(), DrawerActivities.class );
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         i.putExtra("home",home);
         startActivity(i);
+        if (extras!=null&&extras.containsKey("bikepush")) {
+            Intent intent = new Intent(BaseContext.getContext(), DrawerActivities.class );
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.putExtra("bikepush","bikepush");
+            startActivity(intent);
+        }
     }
 
     public void verifyToken(){

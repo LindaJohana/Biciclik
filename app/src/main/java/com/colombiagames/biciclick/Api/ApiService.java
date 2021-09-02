@@ -129,4 +129,9 @@ public interface ApiService {
     Call<TripResponseFinal>finalTrip(
             @Path("id") String id
     );
+    @FormUrlEncoded
+    @POST("api/travel/")
+    Call<ResponseBody>tokenPush(
+            @Field("token") String token
+    );
 }
