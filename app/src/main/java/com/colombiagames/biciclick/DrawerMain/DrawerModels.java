@@ -50,4 +50,29 @@ public class DrawerModels implements DrawerInterfaces.models {
             }
         });
     }
+
+    @Override
+    public void verifiedModel(DrawerInterfaces.presenters presenter) {
+        Call<ProfileData> call = homeApiAdapter.getApiService2().profile();
+        call.enqueue(new Callback<ProfileData>() {
+            @Override
+            public void onResponse(Call<ProfileData> call, Response<ProfileData> response) {
+                if (response.isSuccessful()){
+                    presenter.verifiedSuccess(response.body().getVerified());
+                }else {
+                    if (response.raw().code()==401){
+                        localData.LogOutApp();
+                    }
+                    Log.e("drawer perfil","ERROR");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileData> call, Throwable t) {
+                Log.e("DRAWER PERFIL","FAILURE");
+            }
+        });
+    }
+
+
 }

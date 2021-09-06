@@ -105,28 +105,28 @@
                 android:maxLength="1"/>
 
         </LinearLayout>
+        <TextView
+            style="@style/EstiloLetra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Validacion" />
 
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/reloj_arena"
+            android:layout_gravity="center"/>
+        <TextView
+            style="@style/EstiloLetra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textValidacion" />
+        <TextView
+            android:id="@+id/phoneCall"
+            style="@style/EstiloLetra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/numberphone"
+            android:gravity="center"/>
     </LinearLayout>
-
-    <TextView
-        style="@style/EstiloLetra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="@string/Validacion" />
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/pinas"
-        android:layout_marginVertical="40dp"
-        android:visibility="gone"
-        android:layout_gravity="center"/>
-
-    <TextView
-        style="@style/EstiloLetra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="@string/textValidacion" />
 </LinearLayout>

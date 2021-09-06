@@ -114,7 +114,7 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
 
     @Override
     public void lanzarPerfil() {
-//        presenter.sendPushTokenPresenters();
+
         Intent i = new Intent(BaseContext.getContext(), DrawerActivities.class );
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         i.putExtra("home",home);

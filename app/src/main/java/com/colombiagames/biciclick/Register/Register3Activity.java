@@ -2,11 +2,13 @@ package com.colombiagames.biciclick.Register;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.colombiagames.biciclick.R;
@@ -14,11 +16,20 @@ import com.colombiagames.biciclick.RegisterSuccess.RegisterSuccessActivity;
 
 public class Register3Activity extends Activity implements RegisterInterfaces.activities3 {
     EditText D1, D2, D3, D4;
+    TextView phoneCall;
     RegisterPresenters presenter;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register3);
         initObjects();
+        phoneCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(getString(R.string.phone)+"&"+getString(R.string.phone2));
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         D1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -84,6 +95,7 @@ public class Register3Activity extends Activity implements RegisterInterfaces.ac
         D2=findViewById(R.id.digito2);
         D3=findViewById(R.id.digito3);
         D4=findViewById(R.id.digito4);
+        phoneCall=findViewById(R.id.phoneCall);
         presenter=new RegisterPresenters(null, null, this);
     }
     public void watcher(){

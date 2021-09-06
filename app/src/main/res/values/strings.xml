@@ -28,8 +28,8 @@
     <string name="TextViewTienesCuenta">Ya tienes una cuenta?</string>
     <string name="TextViewIngresa">Ingresa aqui</string>
     <string name="TextViewRegistroE">Registro Exitoso</string>
-    <string name="TextViewTextoRegistro">Ya estas registrado, en unos momentos uno de nuestros
-        asesores validara tu información y activara tu cuenta.</string>
+    <string name="TextViewTextoRegistro">Ya estas listo para comenzar a utilizar Biciclick
+         la mejor forma de moverte en la ciudad.</string>
     <string name="TextViewTextoRegistro2">Acércate a un punto Biciclick</string>
     <string name="ButtonVerPuntos">Salir</string>
     <string name="ButtonYaEstoy">Ya estoy frente a una Bici</string>
@@ -42,7 +42,8 @@
     <string name="TextViewCodigo">Ingresa el código que has recibido en tu celular</string>
     <string name="Validacion">Estamos validando tu información, esto puede tomar unos minutos.</string>
     <string name="textValidacion">si está tomando más tiempo o tienes alguna inquietud,
-    contactanos al...</string>
+    contactanos al:</string>
+    <string name="numberphone">+57 3002102030</string>
     <string name="Terminos">Acepto los Terminos y condiciones y la poliica de privacidad.</string>
     <string name="ButtonRecordarCont">Recordar contraseña</string>
     <string name="HintEmail">example@email.com</string>

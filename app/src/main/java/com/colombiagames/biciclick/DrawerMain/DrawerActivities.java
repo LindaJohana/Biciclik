@@ -23,6 +23,7 @@ import com.colombiagames.biciclick.Login.LoginActivities;
 import com.colombiagames.biciclick.Maps.MapsActivity;
 import com.colombiagames.biciclick.Profile.ProfileActivity;
 import com.colombiagames.biciclick.R;
+import com.colombiagames.biciclick.local_data.LocalData;
 import com.colombiagames.biciclick.objects.ProfileData;
 import com.colombiagames.biciclick.utils.BikeTestActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -43,6 +44,7 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
     DrawerPresenters presenter;
     CircleImageView drawerSelfie;
     TextView textViewUsuario, textViewEmailD;
+    LocalData localData;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,25 +65,19 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         textViewUsuario.setTypeface(fuente);
         //onlcick navgation
         navigationView.setNavigationItemSelectedListener(this);
-        presenter.profileHeaderPresenter();
+        presenter.verifiedPresenter();
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
-        Bundle extras = getIntent().getExtras();
-        if (extras!=null) {
-            if (extras.containsKey("bikepush")) {
-                Bici();
-            }
-            if (extras.containsKey("home")) {
-                inicio();
-            }
-            if (extras.containsKey("points")){
-                points();
-            }
-        }
+        //bh
+    }
 
+    @Override
+    protected void onResume() {
+        presenter.profileHeaderPresenter();
+        super.onResume();
     }
 
     private void points() {
@@ -173,6 +169,7 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
     }
     private void initObjects(){
         presenter=new DrawerPresenters(this);
+        localData=new LocalData();
     }
 
     @Override
@@ -196,5 +193,28 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         Toast.makeText(BaseContext.getContext(), getString(R.string.expiroToken), Toast.LENGTH_SHORT).show();
         Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
         startActivity(i);
+    }
+
+    @Override
+    public void verified(String verified) {
+        if (verified.equals("false")){
+            Toast.makeText(getContext(), "Aun no se encuentra verificado", Toast.LENGTH_SHORT).show();
+            localData.LogOutApp();
+            Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+            startActivity(i);
+        }else{
+            Bundle extras = getIntent().getExtras();
+            if (extras!=null) {
+                if (extras.containsKey("bikepush")) {
+                    Bici();
+                }
+                if (extras.containsKey("home")) {
+                    inicio();
+                }
+                if (extras.containsKey("points")){
+                    points();
+                }
+            }
+        }
     }
 }

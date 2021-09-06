@@ -30,4 +30,14 @@ public class DrawerPresenters implements DrawerInterfaces.presenters {
     public void codelogin() {
         view1.lanzarLogin();
     }
+
+    @Override
+    public void verifiedPresenter() {
+        model.verifiedModel(this);
+    }
+
+    @Override
+    public void verifiedSuccess(String verified) {
+        view1.verified(verified);
+    }
 }
