@@ -63,12 +63,12 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         ButtonAcceso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(InputTextEmail.getText().toString().equals("") || InputTextCont.getText().toString().equals("")){
+                if(InputTextEmail.getText().toString().equals("")){
                     Toast.makeText(getBaseContext(), "Campo Vacio", Toast.LENGTH_SHORT).show();
                     InputTextEmail.requestFocus();
                 }
-                if(ValidarAlfanumerico(InputTextCont.getText().toString())==false){
-                    Toast.makeText(getBaseContext(), "Campo especial", Toast.LENGTH_SHORT).show();
+                if(InputTextCont.getText().toString().equals("")){
+                    Toast.makeText(getBaseContext(), "Campo Vacio", Toast.LENGTH_SHORT).show();
                     InputTextCont.requestFocus();
                 }else
                 setLogin();
@@ -89,9 +89,9 @@ public class LoginActivities extends AppCompatActivity implements LoginInterface
         txt13=findViewById(R.id.txt13);
     }
 
-    public boolean ValidarAlfanumerico(String password){
-        return password.matches("[a-zA-Z0-9 *]+$");
-    }
+//    public boolean ValidarAlfanumerico(String password){
+//        return password.matches("[a-zA-Z0-9 *]+$");
+//    }
 
     public void lanzarRegistro(){
         Intent i = new Intent(BaseContext.getContext(), Register1Activity.class );

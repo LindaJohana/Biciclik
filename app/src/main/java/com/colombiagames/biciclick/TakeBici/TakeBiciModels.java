@@ -46,21 +46,25 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                     presenter.onSuccesCod(response.body());
                     localData.registerrRetry(0);
                 }else {
-                    Log.e("MODEL BIKE ERROR", "MODEL ERROR");
 
-                    if (localData.getRegisterRetry()==0){
-                        Log.e("primer if","RETRY=0");
+                    if (localData.getRegisterRetry()==0 || localData.getRegisterRetry()==1){
                         try {
                             Thread.sleep(500);
-                            localData.registerrRetry(1);
-                            sendCodModel(presenter, cod);
+                            if (localData.getRegisterRetry()==0){
+                                localData.registerrRetry(1);
+                                sendCodModel(presenter, cod);
+                            }else {
+                                localData.registerrRetry(2);
+                                sendCodModel(presenter, cod);
+                            }
+
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }else {
-                        Log.e("else","RETRY=1");
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
 
@@ -115,6 +119,7 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                         Log.e("else","RETRY=1");
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
                 }
@@ -152,6 +157,7 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                         Log.e("else","RETRY=1");
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
 

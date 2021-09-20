@@ -32,7 +32,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = inflater.inflate(R.layout.inicio_adapter,parent, false);
         View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.home_adapter, null,false);
         ViewHolder viewHolders = new ViewHolder(view);
         my_context = parent.getContext();

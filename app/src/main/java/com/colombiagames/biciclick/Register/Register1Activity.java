@@ -123,7 +123,7 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
         InputTextEmailRegistro=findViewById(R.id.inputTextEmailRegistro);
         InputTextDireccion=findViewById(R.id.inputTextDireccion);
         InputTextCont=findViewById(R.id.inputTextCont);
-        presenter=new RegisterPresenters(this, null, null);
+        presenter=new RegisterPresenters(this, null, null, null);
         companies = new ArrayList<CompanyData>();
         id_company="";
         txt23=findViewById(R.id.txt23);
@@ -168,13 +168,10 @@ public class Register1Activity extends Activity implements RegisterInterfaces.ac
             public void onItemsSelected(KeyPairBoolDataCustom selectedItem) {
                 id_company=selectedItem.getId();
             }
-
             @Override
             public void onClear() {
-
             }
         });
-
     }
 
     public void lanzarLogin(View view){

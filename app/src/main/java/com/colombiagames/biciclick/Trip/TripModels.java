@@ -42,19 +42,23 @@ public class TripModels implements TripInterfaces.models{
                     presenter.setInfoTripPresenter(objects_list);
                     localData.registerrRetry(0);
                 }else {
-                    if (localData.getRegisterRetry()==0){
-                        Log.e("primer if","RETRY=0");
+                    if (localData.getRegisterRetry()==0 || localData.getRegisterRetry()==1){
                         try {
                             Thread.sleep(500);
-                            localData.registerrRetry(1);
-                            getInfoTripModel(presenter);
+                            if (localData.getRegisterRetry()==0){
+                                localData.registerrRetry(1);
+                                getInfoTripModel(presenter);
+                            }else {
+                                localData.registerrRetry(2);
+                                getInfoTripModel(presenter);
+                            }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }else {
-                        Log.e("else","RETRY=1");
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
 
@@ -96,7 +100,6 @@ public class TripModels implements TripInterfaces.models{
                     presenter.home();
                 }else {
                     if (localData.getRegisterRetry()==0){
-                        Log.e("primer if","RETRY=0");
                         try {
                             Thread.sleep(500);
                             localData.registerrRetry(1);
@@ -105,9 +108,9 @@ public class TripModels implements TripInterfaces.models{
                             e.printStackTrace();
                         }
                     }else {
-                        Log.e("else","RETRY=1");
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
 
@@ -124,7 +127,7 @@ public class TripModels implements TripInterfaces.models{
 
             @Override
             public void onFailure(Call<TripResponse> call, Throwable t) {
-                Log.e("ONfAIRULE", t.toString());
+
             }
         });
     }

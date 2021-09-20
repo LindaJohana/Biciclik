@@ -1,5 +1,8 @@
 package com.colombiagames.biciclick.Register;
 
+import android.widget.Toast;
+
+import com.colombiagames.biciclick.BaseContext.BaseContext;
 import com.colombiagames.biciclick.objects.CompanyData;
 import com.colombiagames.biciclick.objects.Register1Data;
 import com.colombiagames.biciclick.objects.Register2Data;
@@ -13,13 +16,16 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     RegisterInterfaces.activities1 view1;
     RegisterInterfaces.activities2 view2;
     RegisterInterfaces.activities3 view3;
+    RegisterInterfaces.activities4 view4;
     RegisterModels model;
 
     public RegisterPresenters(RegisterInterfaces.activities1 view1,
-                              RegisterInterfaces.activities2 view2, RegisterInterfaces.activities3 view3) {
+                              RegisterInterfaces.activities2 view2, RegisterInterfaces.activities3 view3,
+                              RenewPhotos view4) {
         this.view1 = view1;
         this.view2= view2;
         this.view3=view3;
+        this.view4=view4;
         this.model=new RegisterModels();
     }
 
@@ -89,4 +95,22 @@ public class RegisterPresenters implements RegisterInterfaces.presenters{
     public void onSuccessCod() {
         view3.lanzarExitoso(null);
     }
+
+    @Override
+    public void renewPhotosPresenter(Register2Data photos) {
+        model.renewPhotosModel(this, photos);
+    }
+
+    @Override
+    public void onErrorPhoto(String message) {
+        Toast.makeText(BaseContext.getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSuccessPhoto() {
+        Toast.makeText(BaseContext.getContext(), "Tu información se ha actualizado correctamente", Toast.LENGTH_SHORT).show();
+        view4.lanzarlogin();
+    }
+
+
 }

@@ -14,6 +14,7 @@ public interface HomeInterfaces {
         void serErrorTravelStatistics(String message);
         void travelStatisticsResults(StatisticsData result);
         void lanzarLogin();
+        void lanzarloginsinT();
     }
     interface presenters{
         void TopCompanyPresenter();
@@ -26,10 +27,13 @@ public interface HomeInterfaces {
         void onSuccessTravelStatistics(StatisticsData results);
         void onErrorTravelStatistics(String message);
         void login();
+        void sendTokenPushPresenter(String tokenpush);
+        void onErrorLogout();
     }
     interface models{
         void TopCompanyModel(presenters presenter);
         void TravelMonthModel(presenters presenter);
         void travelStatisticsModel(presenters presenter);
+        void sendtokenpushModel(String tokenpush, presenters presenter);
     }
 }

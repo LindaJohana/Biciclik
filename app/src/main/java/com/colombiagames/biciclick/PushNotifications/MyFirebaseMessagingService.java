@@ -21,6 +21,7 @@ import com.colombiagames.biciclick.DrawerMain.DrawerActivities;
 import com.colombiagames.biciclick.Login.LoginActivities;
 import com.colombiagames.biciclick.Maps.MapsActivity;
 import com.colombiagames.biciclick.R;
+import com.colombiagames.biciclick.Register.Register2Activity;
 import com.colombiagames.biciclick.local_data.LocalData;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -66,17 +67,23 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
 
-//            if (remoteMessage.getData().containsKey("Test single notification")) {
-            if (/* Check if data needs to be processed by long running job */ true) {
-                // For long-running tasks (10 seconds or more) use WorkManager.
-                if (remoteMessage.getData().get("Test single notification").equals("Test single notification")){
-
-                }
-//                scheduleJob();
-            } else {
-                // Handle message within 10 seconds
-                handleNow();
-            }
+////            if (remoteMessage.getData().containsKey("Test single notification")) {
+////            if (/* Check if data needs to be processed by long running job */ true) {
+//                // For long-running tasks (10 seconds or more) use WorkManager.
+//
+////                    Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+////                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+////                    i.putExtra("bikepush","bikepush");
+////                    startActivity(i);
+////                    Intent i = new Intent(BaseContext.getContext(), Register2Activity.class );
+////                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+////                    startActivity(i);
+//                }
+////                scheduleJob();
+//            } else {
+//                // Handle message within 10 seconds
+//                handleNow();
+//            }
 
         }
 
@@ -88,12 +95,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
 //        if (remoteMessage.getNotification().getTitle().equals("Usuario verificado")){
-        if (remoteMessage.getNotification().getBody().equals("Test single notification")){
+        if (remoteMessage.getNotification().getBody().equals("Acabamos de activarte, pero recuerda llenar el codigo de seguirdad para usar la app")){
 //            sendNotification(remoteMessage.getNotification().getBody());
-            Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            i.putExtra("bikepush","bikepush");
-            startActivity(i);
+//            Intent i = new Intent(BaseContext.getContext(), Register2Activity.class );
+//            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//            i.putExtra("bikepush","bikepush");
+//            startActivity(i);
+//            Intent i = new Intent(BaseContext.getContext(), Register2Activity.class );
+//            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//            startActivity(i);
         }
     }
     // [END receive_message]
@@ -149,7 +159,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private void sendRegistrationToServer(String token) {
         localData = new LocalData();
         localData.register(token, "TOKENPUSH");
-        Log.e("TokenPush", token);
     }
 
     /**
@@ -158,7 +167,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      * @param messageBody FCM message body received.
      */
     private void sendNotification(String messageBody) {
-        Log.e("MENSAJE", messageBody);
         Intent intent = new Intent(this, LoginActivities.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,

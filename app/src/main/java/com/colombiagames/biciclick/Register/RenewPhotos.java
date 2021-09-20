@@ -17,6 +17,7 @@ import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -27,7 +28,6 @@ import android.widget.Toast;
 import androidx.core.content.FileProvider;
 
 import com.colombiagames.biciclick.BaseContext.BaseContext;
-import com.colombiagames.biciclick.DrawerMain.DrawerActivities;
 import com.colombiagames.biciclick.Login.LoginActivities;
 import com.colombiagames.biciclick.R;
 import com.colombiagames.biciclick.local_data.LocalData;
@@ -40,12 +40,16 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Register2Activity extends Activity implements RegisterInterfaces.activities2{
+public class RenewPhotos extends Activity implements RegisterInterfaces.activities4{
+
     TextView TextSelfie, TextCedula, TextViewRegistro, txt33, txt34, txt35, txt36;
     ImageView Imageselfie, Imagecedulafront, Imagencedulaback;
     Button ButtonContinuar;
     TextView Terminos;
     CheckBox checkbox;
+    public final int REQUEST_IMAGE1 = 11;
+    public final int REQUEST_IMAGE2 = 22;
+    public final int REQUEST_IMAGE3 = 33;
     public final int REQUEST_PHOTO1 = 44;
     public final int REQUEST_PHOTO2 = 55;
     public final int REQUEST_PHOTO3 = 66;
@@ -62,6 +66,10 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register2);
         initObjects();
+        if (getIntent().getExtras() != null){
+            localData.register(getIntent().getExtras().getString("profile_id"), "PUSHSELFIEID");
+            Log.e("msn", getIntent().getExtras().getString("profile_id"));
+        }
         //Letra verdana
         Typeface fuente = Typeface.createFromAsset(getAssets(),"fonts/verdana.ttf");
         txt33.setTypeface(fuente);
@@ -118,13 +126,13 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                     Toast.makeText(getBaseContext(),"Aceptar Terminos y Condiciones",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                register2();
+                registerphotos();
             }
         });
         TextViewRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lanzarLogin(null);
+                lanzarlogin();
             }
         });
         //url de los terminos y condiciones
@@ -144,35 +152,41 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         Imagecedulafront=findViewById(R.id.imagecedulafront);
         Imagencedulaback=findViewById(R.id.imagecedulaback);
         TextViewRegistro=findViewById(R.id.textViewRegistro2);
-        presenter=new RegisterPresenters(null, this, null, null);
+        presenter=new RegisterPresenters(null, null, null, this);
         UrlSelfie="";
         UrlFront="";
         UrlBack="";
         localData=new LocalData();
-        if (!localData.getRegister("SELFIE").equals("")){
-            File fileSelfie = new File(localData.getRegister("SELFIE"));
-            File fileFront = new File(localData.getRegister("DOCUMENT_FRONT_PHOTO"));
-            File fileBack = new File(localData.getRegister("DOCUMENT_BACK_PHOTO"));
-
-            String filePath1 = fileSelfie.getPath();
-            Bitmap bitmap1 = BitmapFactory.decodeFile(filePath1);
-            Imageselfie.setImageBitmap(bitmap1);
-            UrlSelfie = fileSelfie.getAbsolutePath();
-            String filePath2 = fileFront.getPath();
-            Bitmap bitmap2 = BitmapFactory.decodeFile(filePath2);
-            Imagecedulafront.setImageBitmap(bitmap2);
-            UrlFront = fileFront.getAbsolutePath();
-            String filePath3 = fileBack.getPath();
-            Bitmap bitmap3 = BitmapFactory.decodeFile(filePath3);
-            Imagencedulaback.setImageBitmap(bitmap3);
-            UrlBack = fileBack.getAbsolutePath();
-        }
+//        if (!localData.getRegister("SELFIE").equals("")){
+//            File fileSelfie = new File(localData.getRegister("SELFIE"));
+//            File fileFront = new File(localData.getRegister("DOCUMENT_FRONT_PHOTO"));
+//            File fileBack = new File(localData.getRegister("DOCUMENT_BACK_PHOTO"));
+//
+//            String filePath1 = fileSelfie.getPath();
+//            Bitmap bitmap1 = BitmapFactory.decodeFile(filePath1);
+//            Imageselfie.setImageBitmap(bitmap1);
+//            UrlSelfie = fileSelfie.getAbsolutePath();
+//            String filePath2 = fileFront.getPath();
+//            Bitmap bitmap2 = BitmapFactory.decodeFile(filePath2);
+//            Imagecedulafront.setImageBitmap(bitmap2);
+//            UrlFront = fileFront.getAbsolutePath();
+//            String filePath3 = fileBack.getPath();
+//            Bitmap bitmap3 = BitmapFactory.decodeFile(filePath3);
+//            Imagencedulaback.setImageBitmap(bitmap3);
+//            UrlBack = fileBack.getAbsolutePath();
+//        }
         baseContext = new BaseContext();
         checkbox=findViewById(R.id.checkbox);
         txt33=findViewById(R.id.txt33);
         txt34=findViewById(R.id.txt34);
         txt35=findViewById(R.id.txt35);
         txt36=findViewById(R.id.txt36);
+    }
+    @Override
+    public void lanzarlogin() {
+        Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 
     public void cargarImagen(int num){
@@ -187,6 +201,10 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                     abrircamara(num);
                     return;
                 }
+//                if (opciones[i].equals("Cargar foto")){
+//                    //subirFoto(num);
+//                    return;
+//                }
                 if (opciones[i].equals("Cancelar")){
                     dialog.dismiss();
                     return;
@@ -209,10 +227,10 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                     Uri photoURI = FileProvider.getUriForFile(this,
                             "com.colombiagames.biciclick.provider",
                             photoFile);
-//                    i.putExtra("path_image", photoURI.toString());
                     startActivityForResult(i, REQUEST_PHOTO1);
                     return;
                 }
+
             }
             if (num==2){
                 File photoFile = null;
@@ -224,7 +242,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                     Uri photoURI = FileProvider.getUriForFile(this,
                             "com.colombiagames.biciclick.provider",
                             photoFile);
-//                    i.putExtra("path_image", photoURI.toString());
                     startActivityForResult(i, REQUEST_PHOTO2);
                     return;
                 }
@@ -239,7 +256,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                     Uri photoURI = FileProvider.getUriForFile(this,
                             "com.colombiagames.biciclick.provider",
                             photoFile);
-//                    i.putExtra("path_image", photoURI.toString());
                     startActivityForResult(i, REQUEST_PHOTO3);
                     return;
                 }
@@ -256,7 +272,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             try (FileOutputStream out = new FileOutputStream(currentPhotoPath)){
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 out.flush();
-                out.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -272,7 +287,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             try (FileOutputStream out = new FileOutputStream(currentPhotoPath)){
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 out.flush();
-                out.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -288,7 +302,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
             try (FileOutputStream out = new FileOutputStream(currentPhotoPath)){
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 out.flush();
-                out.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -299,7 +312,6 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         }
     }
 
-
     public File createImage() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -309,24 +321,13 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-        // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getPath();
         return image;
     }
-    public void lanzarRegistro3(View view){
-        Toast.makeText(getBaseContext(), "Usuario Creado Correctamente", Toast.LENGTH_LONG).show();
-        Intent i = new Intent(this, Register3Activity.class );
-        startActivity(i);
-    }
-    public void lanzarLogin(View view){
-        Intent i = new Intent(this, LoginActivities.class );
-        startActivity(i);
-    }
 
-    @Override
-    public void register2() {
+    public void registerphotos() {
         register2Data=new Register2Data(UrlSelfie, UrlFront, UrlBack);
-        presenter.register2Presenters(register2Data);
+        presenter.renewPhotosPresenter(register2Data);
     }
     public void setError(String message) {
         Toast.makeText(getBaseContext(), message, 900-0).show();

@@ -66,4 +66,14 @@ public class HomePresenters implements HomeInterfaces.presenters {
     public void login() {
         view.lanzarLogin();
     }
+
+    @Override
+    public void sendTokenPushPresenter(String tokenpush) {
+        model.sendtokenpushModel(tokenpush, this);
+    }
+
+    @Override
+    public void onErrorLogout() {
+
+    }
 }

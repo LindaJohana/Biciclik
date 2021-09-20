@@ -24,7 +24,6 @@ import java.util.List;
 
 public class Maps extends SupportMapFragment implements OnMapReadyCallback {
 
-    private ActivityMapsBinding binding;
     private List<PointData> point;
     private List<String> locations;
     private GpsTracker gpsTracker;
@@ -51,13 +50,7 @@ public class Maps extends SupportMapFragment implements OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-//    public void puntos(ArrayList<PointData> puntos){
-//        locations=new ArrayList<>();
-//        for (int i=0;i< puntos.size();i++){
-//            locations.add(puntos.get(i).getLocation());
-//            Log.e("FOR", locations.get(i));
-//        }
-//    }
+
     public void getLocation(){
         gpsTracker = new GpsTracker(getContext());
         if(gpsTracker.canGetLocation()){
@@ -75,7 +68,6 @@ public class Maps extends SupportMapFragment implements OnMapReadyCallback {
         locations=new ArrayList<>();
         for (int i=0;i< point.size();i++){
             locations.add(point.get(i).getLocation());
-            Log.e("FOR", locations.get(i));
         }
         Location origen = new Location("GPS_PROVIDER");
         origen.setLatitude(latorigen);
@@ -99,12 +91,4 @@ public class Maps extends SupportMapFragment implements OnMapReadyCallback {
             }
         });
     }
-    /*public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }*/
 }

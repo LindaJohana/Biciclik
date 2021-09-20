@@ -14,7 +14,6 @@ import retrofit2.Response;
 public class ForgetPasswordModels implements ForgetPasswordInterfaces.models{
     private ForgetPasswordInterfaces.models model;
     private ForgetPasswordAdapter forgetAdapter;
-    //private ForgetPasswordRequests request;
 
     public ForgetPasswordModels() {
         this.model = model;

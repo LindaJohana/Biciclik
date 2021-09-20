@@ -20,15 +20,15 @@ public class Token {
             @Override
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if (response.isSuccessful()){
-                    Log.e("TOKENNNNN", "REFRESHtOKEN");
                     localData.SaveToken(localData.getRefresh(),response.body().getAccess());
                 }else {
                     localData.LogOutApp();
+                    localData.register("", "ID_REGISTER_PUSH");
                 }
             }
             @Override
             public void onFailure(Call<TokenResponse> call, Throwable t) {
-                Log.e("FAIRULE TOKEN", t.toString());
+
             }
         });
     }

@@ -118,7 +118,6 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.perfil){
-            //menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new ProfileActivity());
@@ -126,7 +125,6 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.bici){
-            //menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new BikeTestActivity());
@@ -134,7 +132,6 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.mapa){
-            //menuItem.setChecked(true);
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container,new MapsActivity());
@@ -142,27 +139,12 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
             fragmentTransaction.commit();
         }
         if(menuItem.getItemId()==R.id.llamar){
-//            Uri uri = Uri.parse("smsto:" + R.string.phone3);
-//            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
-//            i.setPackage("com.whatsapp");
-//            startActivity(i);
             Uri uri = Uri.parse(getString(R.string.phone)+"&"+getString(R.string.phone2));
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
-//            Intent inten = new Intent("android.intent.action.MAIN");
-//            inten.setComponent(new ComponentName("com.whatsapp","com.whatsapp.Conversation"));
-//            inten.putExtra(String.valueOf(R.string.app_name), PhoneNumberUtils.stripSeparators(String.valueOf(R.string.phone))+"@s.whatsapp.net");
-//            startActivity(inten);
-//            sknsj
-//            String phoneNo="321456";
-//            String dial = "tel:" + phoneNo;
-//            startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
         }
         if(menuItem.getItemId()==R.id.cerrar){
-            logOut();
-            Intent i = new Intent(this, LoginActivities.class );
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
+            presenter.logoutPushPresenter();
         }
         drawerLayout.closeDrawers();
         return false;
@@ -175,6 +157,9 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
     @Override
     public void logOut() {
         presenter.logOutPresenters();
+        Intent i = new Intent(this, LoginActivities.class );
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 
     @Override
@@ -196,13 +181,8 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
     }
 
     @Override
-    public void verified(String verified) {
-        if (verified.equals("false")){
-            Toast.makeText(getContext(), "Aun no se encuentra verificado", Toast.LENGTH_SHORT).show();
-            localData.LogOutApp();
-            Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
-            startActivity(i);
-        }else{
+    public void verified(String verified, String active) {
+        if (verified.equals("true") && active.equals("true")){
             Bundle extras = getIntent().getExtras();
             if (extras!=null) {
                 if (extras.containsKey("bikepush")) {
@@ -215,6 +195,12 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
                     points();
                 }
             }
+        }else{
+            Toast.makeText(getContext(), "Aun no se encuentra verificado", Toast.LENGTH_SHORT).show();
+            localData.LogOutApp();
+            localData.register("", "ID_REGISTER_PUSH");
+            Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+            startActivity(i);
         }
     }
 }

@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.colombiagames.biciclick.BaseContext.BaseContext;
 import com.colombiagames.biciclick.Login.LoginActivities;
 import com.colombiagames.biciclick.R;
+import com.colombiagames.biciclick.local_data.LocalData;
 import com.colombiagames.biciclick.objects.PersonResponse;
 import com.colombiagames.biciclick.objects.StatisticsData;
 import com.colombiagames.biciclick.objects.TravelTopData;
@@ -44,6 +45,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
     public PieChart pieChart3;
     public BarChart barChart;
     private HomeAdapter inicioAdapter;
+    LocalData localData;
     RecyclerView recyclerView;
     ArrayList<PersonResponse> listPersons;
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA", "android.permission.CALL_PHONE"};
@@ -67,13 +69,13 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         txt9.setTypeface(fuente);
 
         presenter.TopCompanyPresenter();
+        presenter.sendTokenPushPresenter(localData.getRegister("TOKENPUSH"));
         Typeface iconFont = FontManager.getTypeface(BaseContext.getContext(), FontManager.FONTAWESOME);
         presenter.TravelMonthPresenter();
         loadPieChartData(pieChart1,0xFF66FFCC);
         loadPieChartData(pieChart2,0xFFE74C3C);
         loadPieChartData(pieChart3,0xFF3399FF);
         presenter.travelStatisticsPresenter();
-
         return view;
     }
     private void initObjects(View view){
@@ -91,6 +93,7 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         txt7=view.findViewById(R.id.txt7);
         txt8=view.findViewById(R.id.txt8);
         txt9=view.findViewById(R.id.txt9);
+        localData = new LocalData();
     }
     public void setupBar(ArrayList<Integer> results){
         ArrayList<BarEntry> entries = new ArrayList<>();
@@ -112,9 +115,6 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         barChart.getAxisLeft().setDrawLabels(true);
         barChart.getAxisRight().setDrawLabels(false);
         barChart.setVisibleXRangeMaximum((float) 7.0);
-
-
-        //barChart.setDrawGridBackground(false);
         barChart.getAxisLeft().setDrawGridLines(false);
         barChart.getXAxis().setDrawGridLines(false);
         barChart.getAxisRight().setDrawGridLines(false);
@@ -143,26 +143,23 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
     public void lanzarLogin() {
         Toast.makeText(BaseContext.getContext(), getString(R.string.expiroToken), Toast.LENGTH_SHORT).show();
         Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+    }
+
+    @Override
+    public void lanzarloginsinT() {
+        Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }
 
     private void setupPieChart(PieChart pieChart, String result) {
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleRadius(70);
-
-        //pieChart.setUsePercentValues(true);
-//        pieChart.setEntryLabelTextSize(12);
-//        pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setCenterText(result);
-//        Typeface iconFont = FontManager.getTypeface(BaseContext.getContext(), FontManager.FONTAWESOME);
-//        FontManager.markAsIconContainer(pieChart, iconFont);
-//        pieChart.setCenterTextSize(12);
         pieChart.getDescription().setEnabled(false);
         Legend l = pieChart.getLegend();
-        /*l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        l.setOrientation(Legend.LegendOrientation.VERTICAL);*/
-        //l.setDrawInside(false);
         l.setEnabled(false);
     }
     public void loadPieChartData(PieChart pieChart, int color) {
@@ -172,23 +169,12 @@ public class HomeActivity extends Fragment implements HomeInterfaces.activities{
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(color);
         colors.add(0xffc5c6c8);
-        /*for (int color: ColorTemplate.MATERIAL_COLORS) {
-            colors.add(color);
-        }
-        for (int color: ColorTemplate.VORDIPLOM_COLORS) {
-            colors.add(color);
-        }*/
         PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setColors(colors);
         PieData data = new PieData(dataSet);
         data.setDrawValues(false);
         data.setValueFormatter(new PercentFormatter(pieChart));
-        /*data.setValueTextSize(12f);
-        data.setValueTextColor(Color.BLACK);*/
-//        Typeface iconFont = FontManager.getTypeface(BaseContext.getContext(), FontManager.FONTAWESOME);
-//        FontManager.markAsIconContainer(pieChart, iconFont);
         pieChart.setData(data);
-//        pieChart.invalidate();
         pieChart.animateY(1400, Easing.EaseInOutQuad);
     }
     public void TopCompanyPersons(ArrayList<TravelTopData> results){

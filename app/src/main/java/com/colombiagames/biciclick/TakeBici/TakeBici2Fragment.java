@@ -89,27 +89,7 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
         }
         presenters.getDeliveryPoint();
         singleSpinnerSearch = (SpinnerCustom) view.findViewById(R.id.singleItemSelectionSpinner);
-//        final List<String> list = Arrays.asList(getResources().getStringArray(R.array.planets_array));
-//        final List<KeyPairBoolData> listArray0 = new ArrayList<>();
-//        for (int i = 0; i < list.size(); i++) {
-//            KeyPairBoolData h = new KeyPairBoolData();
-//            h.setId(i + 1);
-//            h.setName(list.get(i));
-//            h.setSelected(false);
-//            listArray0.add(h);
-//        }
-//        singleSpinnerSearch.setSearchEnabled(true);
-//        singleSpinnerSearch.setSearchHint("Selecciona la ubicacion");
-//        singleSpinnerSearch.setItems(listArray0, new SingleSpinnerListener() {
-//            @Override
-//            public void onItemsSelected(KeyPairBoolData selectedItem) {
-//                Log.i(TAG, "Selected Item : " + selectedItem.getName());
-//            }
-//            @Override
-//            public void onClear() {
-//                Toast.makeText(getContext(), "Limpiar item", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
         buttonOkV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,24 +99,19 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
                     return;
                 }
                 if(pointName.isEmpty()){
-                    Toast.makeText(getContext(), "Punto de Entrega Vacio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Punto de Entrega Vacio", Toast.LENGTH_SHORT).show();
                     singleSpinnerSearch.requestFocus();
                     return;
                 }
                 txtTiempoR.stop();
                 pauseoffset = SystemClock.elapsedRealtime() - txtTiempoR.getBase();
                 localData.register(txtTiempoR.getText().toString(),"CHRONOMETER");
-//                chronStateSave= SystemClock.elapsedRealtime();
-//                localData.register(chronStateSave.toString(), "CHRONOMETER_S");
                 localData.register(String.valueOf(pauseoffset), "CHRONOMETER_S");
-//                Log.e("LOCALDATA", localData.getRegister("CHRONOMETER"));
                 Log.e("PAUSEOFFF", String.valueOf(pauseoffset));
                 localData.register(destinoT.getText().toString(), "DESTINO_TXT");
                 SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
                 formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                 String dateString = formatter.format(new  Date (pauseoffset));
-//                String dateString = formatter.format(new Date(pauseoffset));
-//                String dateString=String.format("%1$tH:%1$tM:%1$tS.%1$tL", pauseoffset);
                 PatchTrip data=new PatchTrip(dateString, destinoT.getText().toString(), pointName);
                 presenters.setTripPresenter(data);
                 fragmentManager = getActivity().getSupportFragmentManager();

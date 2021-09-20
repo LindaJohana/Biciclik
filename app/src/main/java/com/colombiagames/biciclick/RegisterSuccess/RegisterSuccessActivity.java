@@ -12,7 +12,6 @@ import com.colombiagames.biciclick.Login.LoginActivities;
 import com.colombiagames.biciclick.R;
 
 public class RegisterSuccessActivity extends Activity implements RegisterSuccessInterfaces.activities {
-//    Button buttonEstoy;
     Button buttonVerPuntos;
     String bike=null;
     String point=null;
@@ -21,12 +20,6 @@ public class RegisterSuccessActivity extends Activity implements RegisterSuccess
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_success);
         initObjects();
-//        buttonEstoy.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Bike();
-//            }
-//        });
         buttonVerPuntos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,7 +28,6 @@ public class RegisterSuccessActivity extends Activity implements RegisterSuccess
         });
     }
     private void initObjects(){
-//        buttonEstoy=findViewById(R.id.buttonEstoy);
         buttonVerPuntos=findViewById(R.id.buttonVerPuntos);
     }
     public void Bike() {

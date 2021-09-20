@@ -63,10 +63,8 @@ public class LoginModels implements LoginInterfaces.models {
                 public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                     if (response.isSuccessful()){
                         presenter.onSuccessLogin();
-                        Log.e("VERIFYTOKEN", localData.getAccess());
                     }else {
                         refreshToken(presenter, localData.getRefresh());
-                        Log.e("VERIFYTOKEN ELSE", localData.getAccess());
                     }
                 }
 
@@ -86,10 +84,10 @@ public class LoginModels implements LoginInterfaces.models {
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if (response.isSuccessful()){
                     localData.SaveToken(refresh,response.body().getAccess());
-                    Log.e("LOGINNNNNNN", "REFRESHtOKEN");
                     presenter.onSuccessLogin();
                 }else {
                     localData.LogOutApp();
+                    localData.register("", "ID_REGISTER_PUSH");
                 }
             }
 
@@ -100,30 +98,4 @@ public class LoginModels implements LoginInterfaces.models {
         });
     }
 
-    @Override
-    public void sendPushTokenModels() {
-        Call<ResponseBody> call = HomeApiAdapter.getApiService2().tokenPush(localData.getRegister("TOKENPUSH"));
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()){
-
-                }else {
-                    CustomErrorResponse custom_error = new CustomErrorResponse();
-                    String response_user = "Intentalo nuevamente";
-                    try {
-                        response_user = custom_error.returnMessageError(response.errorBody().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Log.e("else", response_user);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-            }
-        });
-    }
 }

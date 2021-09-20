@@ -125,17 +125,12 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
                 }else {
                     dialog.dismiss();
                 }
-//                else {
-//                    if (opciones[i].equals("Cargar foto")){
-//                        subirFoto();
-//                    }
             }
         });
         alertOptiones.show();
     }
 
     public final int REQUEST_IMAGE_CAPTURE = 1;
-    public final int REQUEST_IMAGE = 2;
     public void capturePhoto() {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(intent.resolveActivity(getActivity().getPackageManager())!=null){
@@ -149,7 +144,6 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
                 Uri photoURI = FileProvider.getUriForFile(getContext(),
                         "com.colombiagames.biciclick.provider",
                         photoFile);
-                //                    i.putExtra("path_image", photoURI.toString());
                 startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
             }
         }
@@ -163,7 +157,6 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
             try (FileOutputStream out = new FileOutputStream(currentPhotoPath)){
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 out.flush();
-                out.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -172,12 +165,6 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
             UrlSelfie = currentPhotoPath;
         }
     }
-//    public void subirFoto(){
-//        Intent intent=new Intent(Intent.ACTION_PICK,
-//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        intent.setType("image/");
-//        startActivityForResult(intent.createChooser(intent, "seleccione"), REQUEST_IMAGE);
-//    }
     public File createImage() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -187,7 +174,6 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-        // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getPath();
         return image;
     }

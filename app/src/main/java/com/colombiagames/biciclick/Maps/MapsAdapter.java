@@ -23,7 +23,6 @@ public class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.ViewHolder> {
     LayoutInflater inflater;
     Context my_context;
     private GpsTracker gpsTracker;
-    Location origen;
     private double latorigen, lonorigen;
 
     public MapsAdapter(Context context, ArrayList<PointData> list) {
@@ -34,7 +33,6 @@ public class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = inflater.inflate(R.layout.inicio_adapter,parent, false);
         View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.map1_adapter, null,false);
         my_context = parent.getContext();
         ViewHolder viewHolders = new ViewHolder(view);

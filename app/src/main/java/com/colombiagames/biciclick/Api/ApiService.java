@@ -4,9 +4,11 @@ package com.colombiagames.biciclick.Api;
 import com.colombiagames.biciclick.objects.BikeData;
 import com.colombiagames.biciclick.objects.CompanyResponse;
 import com.colombiagames.biciclick.objects.MessageResponse;
+import com.colombiagames.biciclick.objects.ObjectPush;
 import com.colombiagames.biciclick.objects.PointData;
 import com.colombiagames.biciclick.objects.PointsResponse;
 import com.colombiagames.biciclick.objects.ProfileData;
+import com.colombiagames.biciclick.objects.RegisterUserNew;
 import com.colombiagames.biciclick.objects.StatisticsData;
 import com.colombiagames.biciclick.objects.TokenResponse;
 import com.colombiagames.biciclick.objects.TravelTopData;
@@ -19,6 +21,7 @@ import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -56,7 +59,7 @@ public interface ApiService {
 
     @POST("api/user/")
 //    @Headers("content-type: multipart/form-data;")
-    Call<ResponseBody> sendInfo(
+    Call<RegisterUserNew> sendInfo(
             @Body MultipartBody file
     );
 
@@ -130,8 +133,20 @@ public interface ApiService {
             @Path("id") String id
     );
     @FormUrlEncoded
-    @POST("api/travel/")
-    Call<ResponseBody>tokenPush(
-            @Field("token") String token
+    @POST("api/user/change-gcm/")
+    Call<ProfileData>tokenPush(
+            @Field("registration_id") String registration_id,
+            @Field("type_notification") String type_notification
+    );
+    @FormUrlEncoded
+    @PATCH("/api/device/gcm/{registration_id}/")
+    Call<ResponseBody>logoutPush(
+            @Path("registration_id") String registration_id,
+            @Field("active") Boolean active
+    );
+    @PATCH("/api/device/gcm/{registration_id}/")
+    Call<ResponseBody>devicepatch(
+            @Field("registration_id") String registration_id,
+            @Field("id") int id
     );
 }

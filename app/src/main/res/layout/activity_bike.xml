@@ -38,13 +38,17 @@
                 android:text="@string/TextViewInstuciones"
                 android:layout_marginVertical="16dp"/>
 
-            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:id="@+id/Youtube_player_view"
-                app:videoId="aw_cmzF_uZY"
+<!--            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView-->
+<!--                android:id="@+id/Youtube_player_view"-->
+<!--                app:videoId="aw_cmzF_uZY"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:autoPlay="false"-->
+<!--                app:showYouTubeButton="true" />-->
+            <pl.droidsonroids.gif.GifImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:autoPlay="false"
-                app:showYouTubeButton="true" />
+                android:layout_height="300dp"
+                android:src="@drawable/bicigif"/>
 
             <TextView
                 android:id="@+id/txt3"

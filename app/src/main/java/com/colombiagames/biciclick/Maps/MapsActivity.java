@@ -36,7 +36,6 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
     Fragment mapsActivity;
     ArrayList<PuntosResponse> listPuntos;
     MapsPresenters presenter;
-    private LocationCallback locationCallback;
     TextView txt14, txt15;
     private String [] permissions = {"android.permission.ACCESS_COARSE_LOCATION","android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW"};
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
@@ -57,10 +56,6 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
         locationRequest.setFastestInterval(5000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         presenter.getListPointsPresenter();
-//        mapsActivity=new Maps();
-//        map=new Maps();
-//        getChildFragmentManager().beginTransaction().commit();
-//        mostrarFragment();
         return view;
     }
     private void initObjects(View view){
@@ -78,7 +73,7 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
             transaction.addToBackStack(null);
             transaction.commit();
         }catch (Exception excepcion){
-            Log.e(TAG, "error");
+
         }
     }
 
@@ -88,7 +83,6 @@ public class MapsActivity extends Fragment implements MapsInterfaces.activities 
         map=new Maps(results);
         getChildFragmentManager().beginTransaction().commit();
         mostrarFragment();
-//        map.puntos(results);
         mapsAdapter = new MapsAdapter(getContext(), results);
         recyclerPuntos.setAdapter(mapsAdapter);
         recyclerPuntos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

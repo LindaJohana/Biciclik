@@ -41,13 +41,6 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
     private lateinit var txt1: TextView
     private lateinit var txt2: TextView
     private lateinit var txt3: TextView
-//    private lateinit var buttonShutdown: Button
-    /*private lateinit var btn_connect: Button
-    private lateinit var btn_disconnect: Button
-    private lateinit var btn_unlock: Button
-    private lateinit var btn_info: Button
-    private lateinit var btn_shutdown: Button
-    private lateinit var btn_get_log: Button*/
     var REQUEST_CODE_QR=20
     var transaction: FragmentTransaction? = null
     lateinit var fragmentTrip1: TakeBici2Fragment
@@ -85,13 +78,6 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
         localData= LocalData();
         btn_leerQr=view.findViewById<Button>(R.id.buttonQR)
         btn_leerQr.setTypeface(Typeface.createFromAsset(btn_leerQr.context.assets, "fonts/verdana.ttf"))
-//        buttonShutdown=view.findViewById<Button>(R.id.buttonShutdown)
-        /*btn_connect = view.findViewById<Button>(R.id.btn_connect)
-        btn_disconnect = view.findViewById<Button>(R.id.btn_disconnect)
-        btn_unlock = view.findViewById<Button>(R.id.btn_unlock)
-        btn_info = view.findViewById<Button>(R.id.btn_info)
-        btn_shutdown = view.findViewById<Button>(R.id.btn_shutdown)
-        btn_get_log = view.findViewById<Button>(R.id.btn_get_log)*/
         fragmentTrip1 = TakeBici2Fragment()
         //initListener()
         btn_leerQr.setOnClickListener {
@@ -132,7 +118,7 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
 //                    Log.e("LEYO EL CODIGO", lectura)
 //                }
                 if (lectura != null) {
-                    Log.e("LEYO EL CODIGO",lectura)
+
                 }
                 presenter.sendCodPresenter(lectura)
             }

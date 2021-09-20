@@ -40,21 +40,24 @@ public class ProfileModels implements ProfileInterfaces.models{
                     presenter.onSuccessProfile(response.body());
                     localData.registerrRetry(0);
                 }else {
-                    Log.e("GetProfile","ERROR");
                     if (response.raw().code()==401){
-                        if (localData.getRegisterRetry()==0){
-                            Log.e("primer if","RETRY=0");
+                        if (localData.getRegisterRetry()==0 || localData.getRegisterRetry()==1){
                             try {
                                 Thread.sleep(500);
-                                localData.registerrRetry(1);
-                                getProfileModel(presenter);
+                                if (localData.getRegisterRetry()==0){
+                                    localData.registerrRetry(1);
+                                    getProfileModel(presenter);
+                                }else {
+                                    localData.registerrRetry(2);
+                                    getProfileModel(presenter);
+                                }
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
                         }else {
-                            Log.e("else","RETRY=1");
                             localData.registerrRetry(0);
                             localData.LogOutApp();
+                            localData.register("", "ID_REGISTER_PUSH");
                             presenter.codelogin();
                         }
                     }
@@ -63,7 +66,7 @@ public class ProfileModels implements ProfileInterfaces.models{
 
             @Override
             public void onFailure(Call<ProfileData> call, Throwable t) {
-                Log.e("GetProfile","FAILURE");
+
             }
         });
     }
@@ -76,7 +79,6 @@ public class ProfileModels implements ProfileInterfaces.models{
         request.addFormDataPart("user.first_name", null, RequestBody.create(MediaType.parse("text/plain"),changedUser.getFirst_name()));
         request.addFormDataPart("user.last_name", null, RequestBody.create(MediaType.parse("text/plain"),changedUser.getLast_name()));
         request.addFormDataPart("user.email", null, RequestBody.create(MediaType.parse("text/plain"),changedUser.getEmail()));
-//        request.addFormDataPart("user.username", null, RequestBody.create(MediaType.parse("text/plain"),changedUser.getEmail()));
         request.addFormDataPart("phone_number", null, RequestBody.create(MediaType.parse("text/plain"),changedData.getPhone_number()));
         request.addFormDataPart("address", null, RequestBody.create(MediaType.parse("text/plain"),changedData.getAddress()));
         if (!changedData.getSelfie().equals("")){
@@ -92,11 +94,8 @@ public class ProfileModels implements ProfileInterfaces.models{
                     presenter.onSuccessUpdate(response.body());
                     localData.registerrRetry(0);
                 }else {
-                    Log.e("errorsito", response.errorBody().toString());
-
                     if (response.raw().code()==401){
                         if (localData.getRegisterRetry()==0){
-                            Log.e("primer if","RETRY=0");
                             try {
                                 Thread.sleep(500);
                                 localData.registerrRetry(1);
@@ -105,9 +104,9 @@ public class ProfileModels implements ProfileInterfaces.models{
                                 e.printStackTrace();
                             }
                         }else {
-                            Log.e("else","RETRY=1");
                             localData.registerrRetry(0);
                             localData.LogOutApp();
+                            localData.register("", "ID_REGISTER_PUSH");
                             presenter.codelogin();
                         }
                     }
@@ -123,7 +122,7 @@ public class ProfileModels implements ProfileInterfaces.models{
             }
             @Override
             public void onFailure(Call<ProfileData> call, Throwable t) {
-                Log.e("FAILURE", t.toString());
+
             }
         });
     }

@@ -31,6 +31,9 @@ public interface RegisterInterfaces {
         void verify();
         void setError(String message);
     }
+    interface activities4{
+        void lanzarlogin();
+    }
     interface presenters{
         void register1Presenters(UserData userData, Register1Data register1Data);
         void register2Presenters(Register2Data register2Data);
@@ -43,16 +46,15 @@ public interface RegisterInterfaces {
         void verifyPresenter(String token);
         void onErrorPresenterCod(String message);
         void onSuccessCod();
+        void renewPhotosPresenter(Register2Data photos);
+        void onErrorPhoto(String message);
+        void onSuccessPhoto();
     }
     interface models{
         void register1Model(UserData userData, Register1Data register1Data, presenters presenter);
         void register2Model(Register2Data register2Data, presenters presenter);
         void getCompanyModel(presenters presenter);
         void verifyModel(String token, presenters presenters);
-
-    }
-    interface requests{
-        void register1Request(presenters presenter);
-        void getCompanyRequest(presenters presenter);
+        void renewPhotosModel(presenters presenter, Register2Data photos);
     }
 }

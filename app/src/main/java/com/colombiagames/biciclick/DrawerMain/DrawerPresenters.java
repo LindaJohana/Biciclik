@@ -37,7 +37,17 @@ public class DrawerPresenters implements DrawerInterfaces.presenters {
     }
 
     @Override
-    public void verifiedSuccess(String verified) {
-        view1.verified(verified);
+    public void verifiedSuccess(String verified, String active) {
+        view1.verified(verified, active);
+    }
+
+    @Override
+    public void logoutPushPresenter() {
+        model.logoutPushModel(this);
+    }
+
+    @Override
+    public void onSuccessLogoutPush() {
+        view1.logOut();
     }
 }
