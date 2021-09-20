@@ -23,6 +23,7 @@ public class Token {
                     localData.SaveToken(localData.getRefresh(),response.body().getAccess());
                 }else {
                     localData.LogOutApp();
+                    Log.e("TOKEN", "REFRESHTOKEN");
                     localData.register("", "ID_REGISTER_PUSH");
                 }
             }

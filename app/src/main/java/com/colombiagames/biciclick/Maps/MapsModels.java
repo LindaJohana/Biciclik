@@ -54,6 +54,7 @@ public class MapsModels implements MapsInterfaces.models{
                     }else {
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        Log.e("mapsmodels", "getlist");
                         localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }

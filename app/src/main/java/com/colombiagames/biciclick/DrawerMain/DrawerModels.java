@@ -28,6 +28,7 @@ public class DrawerModels implements DrawerInterfaces.models {
     @Override
     public void logOutModels(DrawerInterfaces.presenters presenter) {
         localData.LogOutApp();
+        Log.e("DRAVERMODELS", "logoutmodels");
         localData.register("", "ID_REGISTER_PUSH");
     }
 
@@ -40,10 +41,29 @@ public class DrawerModels implements DrawerInterfaces.models {
                 if (response.isSuccessful()){
                     localData.register(response.body().getId(),"ID");
                     presenter.onSuccessProfileHeader(response.body());
+                    localData.registerrRetry(0);
                 }else {
                     if (response.raw().code()==401){
-                        localData.LogOutApp();
-                        presenter.codelogin();
+                        if (localData.getRegisterRetry()==0 || localData.getRegisterRetry()==1){
+                            try {
+                                Thread.sleep(1000);
+                                if (localData.getRegisterRetry()==0){
+                                    localData.registerrRetry(1);
+                                    profileHeaderModel(presenter);
+                                }else {
+                                    localData.registerrRetry(2);
+                                    profileHeaderModel(presenter);
+                                }
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            Log.e("drawermodels", "profilelogout");
+                            presenter.codelogin();
+                        }
                     }
                 }
             }
@@ -64,9 +84,30 @@ public class DrawerModels implements DrawerInterfaces.models {
                     ProfileData objects_list = null;
                     objects_list=response.body();
                     presenter.verifiedSuccess(objects_list.getVerified(), objects_list.getActive());
+                    localData.registerrRetry(0);
                 }else {
                     if (response.raw().code()==401){
-                        localData.LogOutApp();
+                        if (localData.getRegisterRetry()==0 || localData.getRegisterRetry()==1){
+                            try {
+                                Thread.sleep(1000);
+                                if (localData.getRegisterRetry()==0){
+                                    localData.registerrRetry(1);
+                                    verifiedModel(presenter);
+                                }else {
+                                    localData.registerrRetry(2);
+                                    verifiedModel(presenter);
+                                    logoutPushModel(presenter);
+                                }
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            Log.e("drawermodels", "verifiedlogout");
+                            presenter.codelogin();
+                        }
                     }
                 }
             }
@@ -85,6 +126,7 @@ public class DrawerModels implements DrawerInterfaces.models {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
                     presenter.onSuccessLogoutPush();
+                    localData.registerrRetry(0);
                 }else {
                     if (response.raw().code()==401){
                         if (localData.getRegisterRetry()==0 || localData.getRegisterRetry()==1){
@@ -104,6 +146,7 @@ public class DrawerModels implements DrawerInterfaces.models {
                         }else {
                             localData.registerrRetry(0);
                             localData.LogOutApp();
+                            Log.e("DRAWER MODELS", "logoutpushm");
                             presenter.codelogin();
                         }
                     }

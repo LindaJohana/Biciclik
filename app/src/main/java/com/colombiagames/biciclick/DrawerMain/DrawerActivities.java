@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -198,6 +199,7 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         }else{
             Toast.makeText(getContext(), "Aun no se encuentra verificado", Toast.LENGTH_SHORT).show();
             localData.LogOutApp();
+            Log.e("DRAWERACTIVITIES", "noverificado");
             localData.register("", "ID_REGISTER_PUSH");
             Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
             startActivity(i);

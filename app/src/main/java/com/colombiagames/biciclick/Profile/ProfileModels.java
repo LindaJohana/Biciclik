@@ -57,6 +57,7 @@ public class ProfileModels implements ProfileInterfaces.models{
                         }else {
                             localData.registerrRetry(0);
                             localData.LogOutApp();
+                            Log.e("PROFILEMODELS", "getprofile");
                             localData.register("", "ID_REGISTER_PUSH");
                             presenter.codelogin();
                         }
@@ -106,6 +107,7 @@ public class ProfileModels implements ProfileInterfaces.models{
                         }else {
                             localData.registerrRetry(0);
                             localData.LogOutApp();
+                            Log.e("profilemodels", "update");
                             localData.register("", "ID_REGISTER_PUSH");
                             presenter.codelogin();
                         }

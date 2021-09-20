@@ -61,6 +61,7 @@ public class HomeModels implements HomeInterfaces.models{
                         }else {
                             localData.registerrRetry(0);
                             localData.LogOutApp();
+                            Log.e("homemodels", "topclogout");
                             localData.register("", "ID_REGISTER_PUSH");
                             presenter.login();
                         }

@@ -63,6 +63,7 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                         }
                     }else {
                         localData.registerrRetry(0);
+                        Log.e("takebicimodels", "sendlogout");
                         localData.LogOutApp();
                         localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
@@ -89,7 +90,6 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
     @Override
     public void createTripModel(TakeBiciInterfaces.presenters presenter){
         DDate date=new DDate();
-        Log.e("MODEL DE CREAR TRIP", "MODELLL");
         CreateTripData data=new CreateTripData(localData.getRegister("ID"), localData.getRegister("IDBIKE"),
                 localData.getRegister("POINTBIKE"), date.getDate(),"INITIATED");
         Call<TripResponse> call = homeApiAdapter.getApiService2().createTrip(data.getUser(), data.getBike(),
@@ -119,6 +119,7 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                         Log.e("else","RETRY=1");
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        Log.e("takebicimodels", "createlogout");
                         localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
@@ -157,6 +158,7 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                         Log.e("else","RETRY=1");
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        Log.e("takebicimodels", "deliverylogout");
                         localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
@@ -210,6 +212,7 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                     }else {
                         Log.e("else","RETRY=1");
                         localData.registerrRetry(0);
+                        Log.e("takebicimodels", "settriplogout");
                         localData.LogOutApp();
                         presenter.login();
                     }

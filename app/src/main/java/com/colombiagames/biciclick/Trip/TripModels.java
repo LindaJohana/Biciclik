@@ -58,6 +58,7 @@ public class TripModels implements TripInterfaces.models{
                     }else {
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        Log.e("tripmodels", "getinfologout");
                         localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
@@ -110,6 +111,7 @@ public class TripModels implements TripInterfaces.models{
                     }else {
                         localData.registerrRetry(0);
                         localData.LogOutApp();
+                        Log.e("tripmodels", "statuslogout");
                         localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
