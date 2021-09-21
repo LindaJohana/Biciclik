@@ -57,7 +57,6 @@ public class ProfileModels implements ProfileInterfaces.models{
                         }else {
                             localData.registerrRetry(0);
                             localData.LogOutApp();
-                            Log.e("PROFILEMODELS", "getprofile");
                             localData.register("", "ID_REGISTER_PUSH");
                             presenter.codelogin();
                         }
@@ -80,7 +79,7 @@ public class ProfileModels implements ProfileInterfaces.models{
         request.addFormDataPart("user.first_name", null, RequestBody.create(MediaType.parse("text/plain"),changedUser.getFirst_name()));
         request.addFormDataPart("user.last_name", null, RequestBody.create(MediaType.parse("text/plain"),changedUser.getLast_name()));
         request.addFormDataPart("user.email", null, RequestBody.create(MediaType.parse("text/plain"),changedUser.getEmail()));
-        request.addFormDataPart("phone_number", null, RequestBody.create(MediaType.parse("text/plain"),changedData.getPhone_number()));
+//        request.addFormDataPart("phone_number", null, RequestBody.create(MediaType.parse("text/plain"),changedData.getPhone_number()));
         request.addFormDataPart("address", null, RequestBody.create(MediaType.parse("text/plain"),changedData.getAddress()));
         if (!changedData.getSelfie().equals("")){
             File fileSelfie = new File(changedData.getSelfie());
@@ -107,7 +106,6 @@ public class ProfileModels implements ProfileInterfaces.models{
                         }else {
                             localData.registerrRetry(0);
                             localData.LogOutApp();
-                            Log.e("profilemodels", "update");
                             localData.register("", "ID_REGISTER_PUSH");
                             presenter.codelogin();
                         }

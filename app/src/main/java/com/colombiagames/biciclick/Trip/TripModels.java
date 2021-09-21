@@ -31,7 +31,6 @@ public class TripModels implements TripInterfaces.models{
 
     @Override
     public void getInfoTripModel(TripInterfaces.presenters presenter) {
-        Log.e("MODEL", "TRIP");
         Call<TripResponseFinal> call=homeApiAdapter.getApiService2().finalTrip(localData.getRegister("ID_TRIP"));
         call.enqueue(new Callback<TripResponseFinal>() {
             @Override
@@ -58,7 +57,6 @@ public class TripModels implements TripInterfaces.models{
                     }else {
                         localData.registerrRetry(0);
                         localData.LogOutApp();
-                        Log.e("tripmodels", "getinfologout");
                         localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }
@@ -70,13 +68,12 @@ public class TripModels implements TripInterfaces.models{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    Log.e("MODEL ERROR TRIP", response_user);
                 }
             }
 
             @Override
             public void onFailure(Call<TripResponseFinal> call, Throwable t) {
-                Log.e("ONFAIRULE", t.toString());
+
             }
         });
     }
@@ -111,7 +108,6 @@ public class TripModels implements TripInterfaces.models{
                     }else {
                         localData.registerrRetry(0);
                         localData.LogOutApp();
-                        Log.e("tripmodels", "statuslogout");
                         localData.register("", "ID_REGISTER_PUSH");
                         presenter.login();
                     }

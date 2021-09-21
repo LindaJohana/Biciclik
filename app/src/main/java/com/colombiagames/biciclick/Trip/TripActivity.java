@@ -184,7 +184,7 @@ public class TripActivity extends Fragment implements TripInterfaces.activities 
             presenter.sendStatusPresenter(UrlPhoto);
 //            presenter.FinalImagePresenter(UrlSelfie);
         }else{
-            Log.e("ELSE DE PHOTO RESULT",currentPhotoPath);
+            Log.d("ELSE DE PHOTO RESULT",currentPhotoPath);
         }
     }
 

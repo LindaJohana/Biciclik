@@ -28,7 +28,6 @@ public class DrawerModels implements DrawerInterfaces.models {
     @Override
     public void logOutModels(DrawerInterfaces.presenters presenter) {
         localData.LogOutApp();
-        Log.e("DRAVERMODELS", "logoutmodels");
         localData.register("", "ID_REGISTER_PUSH");
     }
 
@@ -61,7 +60,6 @@ public class DrawerModels implements DrawerInterfaces.models {
                         }else {
                             localData.registerrRetry(0);
                             localData.LogOutApp();
-                            Log.e("drawermodels", "profilelogout");
                             presenter.codelogin();
                         }
                     }
@@ -105,7 +103,6 @@ public class DrawerModels implements DrawerInterfaces.models {
                         }else {
                             localData.registerrRetry(0);
                             localData.LogOutApp();
-                            Log.e("drawermodels", "verifiedlogout");
                             presenter.codelogin();
                         }
                     }
@@ -146,7 +143,6 @@ public class DrawerModels implements DrawerInterfaces.models {
                         }else {
                             localData.registerrRetry(0);
                             localData.LogOutApp();
-                            Log.e("DRAWER MODELS", "logoutpushm");
                             presenter.codelogin();
                         }
                     }

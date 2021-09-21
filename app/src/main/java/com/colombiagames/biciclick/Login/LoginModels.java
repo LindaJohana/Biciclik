@@ -88,7 +88,6 @@ public class LoginModels implements LoginInterfaces.models {
                 }else {
                     localData.LogOutApp();
                     localData.register("", "ID_REGISTER_PUSH");
-                    Log.e("lOGINmODELS", "refreshtoken");
                 }
             }
 

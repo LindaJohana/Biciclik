@@ -15,7 +15,6 @@ public class TripPresenters implements TripInterfaces.presenters{
 
     @Override
     public void getInfoTripPresenter() {
-        Log.e("PRESENTER", "TRIP");
         model.getInfoTripModel(this);
     }
 

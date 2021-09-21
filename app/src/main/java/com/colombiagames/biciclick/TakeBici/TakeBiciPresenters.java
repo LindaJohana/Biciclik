@@ -29,7 +29,6 @@ public class TakeBiciPresenters implements TakeBiciInterfaces.presenters{
 
     @Override
     public void sendCodPresenter(String cod) {
-        Log.e("BIKE PRESENTER", "PRESENTER");
         model.sendCodModel(this, cod);
     }
 
@@ -45,7 +44,6 @@ public class TakeBiciPresenters implements TakeBiciInterfaces.presenters{
 
     @Override
     public void createTripPresenter() {
-        Log.e("PRESENTER DE CREAT", "MOSTRAR");
         model.createTripModel(this);
     }
 

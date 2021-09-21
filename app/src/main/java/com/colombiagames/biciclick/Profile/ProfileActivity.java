@@ -45,8 +45,8 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileActivity extends Fragment implements ProfileInterfaces.activities{
     CircleImageView FotoPerfil;
     private String [] permissions = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION", "android.permission.READ_PHONE_STATE", "android.permission.SYSTEM_ALERT_WINDOW","android.permission.CAMERA"};
-    EditText nombre, telefono, email, direccion, edLastName;
-    TextView empresa, txt16, txt17, txt18, txt19, txt20, txt21, txt22;
+    EditText nombre, email, direccion, edLastName;
+    TextView empresa, telefono, txt16, txt17, txt18, txt19, txt20, txt21, txt22;
     Button buttonGuardar;
     ProfilePresenters presenter;
     ProfileData changedDataA;
@@ -179,7 +179,7 @@ public class ProfileActivity extends Fragment implements ProfileInterfaces.activ
     }
     public void guardarCambios(){
         changedUserA=new UserData(nombre.getText().toString(), edLastName.getText().toString(),email.getText().toString());
-        changedDataA=new ProfileData(changedUserA, telefono.getText().toString(),direccion.getText().toString(), UrlSelfie);
+        changedDataA=new ProfileData(changedUserA,direccion.getText().toString(), UrlSelfie);
         presenter.updatePresenter(changedUserA, changedDataA);
     }
 

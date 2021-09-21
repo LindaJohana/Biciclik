@@ -199,7 +199,6 @@ public class DrawerActivities extends AppCompatActivity implements NavigationVie
         }else{
             Toast.makeText(getContext(), "Aun no se encuentra verificado", Toast.LENGTH_SHORT).show();
             localData.LogOutApp();
-            Log.e("DRAWERACTIVITIES", "noverificado");
             localData.register("", "ID_REGISTER_PUSH");
             Intent i = new Intent(BaseContext.getContext(), LoginActivities.class );
             startActivity(i);

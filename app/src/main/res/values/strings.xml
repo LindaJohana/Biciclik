@@ -57,6 +57,7 @@
     <string name="TextViewTopE">Top Empresa</string>
     <string name="TextViewPerfil">Mi Perfil</string>
     <string name="TextViewViaje">Tu Viaje</string>
+    <string name="TextViewTuViaje">Tu viaje ha comenzado, vuelve con nosotros cuando lo termines</string>
     <string name="TextViewPuntoI">Punto de Inicio</string>
     <string name="TextViewHoraI">Hora de Inicio</string>
     <string name="TextViewTiempo">Tiempo Transcurrido</string>
@@ -74,7 +75,7 @@
     <string name="TextVierLeer">Leer QR</string>
     <string name="TextViewDest">Destino de tu Viaje</string>
     <string name="TextViewDestV">Para poder medir tu ahorro económico y tu
-        huella de carbono, cuentanos cual es tu destino de viaje</string>
+        huella de carbono, cuentanos cual es tu destino de viaje.</string>
     <string name="HintEscribe">Escribe la Ubicación</string>
     <string name="TextViewEntregar">Entregar Bici</string>
     <string name="ButtonTerminar">Terminar Viaje</string>

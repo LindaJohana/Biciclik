@@ -34,40 +34,42 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
 
     @Override
     public void sendCodModel(TakeBiciInterfaces.presenters presenter, String cod) {
-        Log.e("MODEL BIKE", "MODEL");
         Call<BikeData> call = homeApiAdapter.getApiService2().bikeUnlock(cod);
         call.enqueue(new Callback<BikeData>() {
             @Override
             public void onResponse(Call<BikeData> call, Response<BikeData> response) {
                 if (response.isSuccessful()){
-                    Log.e("SUCCESSFUL CODIGO", response.body().getMac_lock());
                     localData.register(response.body().getId(), "IDBIKE");
                     localData.register(response.body().getActual_point().getId(), "POINTBIKE");
                     presenter.onSuccesCod(response.body());
                     localData.registerrRetry(0);
                 }else {
-
-                    if (localData.getRegisterRetry()==0 || localData.getRegisterRetry()==1){
-                        try {
-                            Thread.sleep(500);
-                            if (localData.getRegisterRetry()==0){
-                                localData.registerrRetry(1);
-                                sendCodModel(presenter, cod);
-                            }else {
-                                localData.registerrRetry(2);
-                                sendCodModel(presenter, cod);
-                            }
-
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }else {
-                        localData.registerrRetry(0);
-                        Log.e("takebicimodels", "sendlogout");
-                        localData.LogOutApp();
-                        localData.register("", "ID_REGISTER_PUSH");
-                        presenter.login();
+                    if (response.raw().code()==404){
+                        presenter.onErrorCod("Bici no encontrada");
                     }
+                    if (response.raw().code()==401){
+                        if (localData.getRegisterRetry()==0 || localData.getRegisterRetry()==1){
+                            try {
+                                Thread.sleep(500);
+                                if (localData.getRegisterRetry()==0){
+                                    localData.registerrRetry(1);
+                                    sendCodModel(presenter, cod);
+                                }else {
+                                    localData.registerrRetry(2);
+                                    sendCodModel(presenter, cod);
+                                }
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            localData.register("", "ID_REGISTER_PUSH");
+                            presenter.login();
+                        }
+                    }
+
 
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -82,7 +84,7 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
 
             @Override
             public void onFailure(Call<BikeData> call, Throwable t) {
-                Log.e("MODEL BIKE FAIRULE", "MODEL FAIRULE");
+
             }
         });
     }
@@ -98,30 +100,27 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
             @Override
             public void onResponse(Call<TripResponse> call, Response<TripResponse> response) {
                 if (response.isSuccessful()){
-                    Log.e("ISSUCCESSFUL", "CREATE TRIP");
                     TripResponse objects_list = null;
                     objects_list=response.body();
                     localData.register(objects_list.getId(), "ID_TRIP");
                     presenter.onSuccessTrip(objects_list);
                     localData.registerrRetry(0);
                 }else {
-                    Log.e("MODEL BIKE CREATE ERROR", "MODEL ERROR");
-                    if (localData.getRegisterRetry()==0){
-                        Log.e("primer if","RETRY=0");
-                        try {
-                            Thread.sleep(500);
-                            localData.registerrRetry(1);
-                            createTripModel(presenter);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                    if (response.raw().code()==401){
+                        if (localData.getRegisterRetry()==0){
+                            try {
+                                Thread.sleep(500);
+                                localData.registerrRetry(1);
+                                createTripModel(presenter);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            localData.register("", "ID_REGISTER_PUSH");
+                            presenter.login();
                         }
-                    }else {
-                        Log.e("else","RETRY=1");
-                        localData.registerrRetry(0);
-                        localData.LogOutApp();
-                        Log.e("takebicimodels", "createlogout");
-                        localData.register("", "ID_REGISTER_PUSH");
-                        presenter.login();
                     }
                 }
             }
@@ -145,22 +144,21 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                     presenter.setDeliveryPoint(objects_list.getResults());
                     localData.registerrRetry(0);
                 }else {
-                    if (localData.getRegisterRetry()==0){
-                        Log.e("primer if","RETRY=0");
-                        try {
-                            Thread.sleep(500);
-                            localData.registerrRetry(1);
-                            getDeliveryPointModel(presenter);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                    if (response.raw().code()==401){
+                        if (localData.getRegisterRetry()==0){
+                            try {
+                                Thread.sleep(500);
+                                localData.registerrRetry(1);
+                                getDeliveryPointModel(presenter);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            localData.register("", "ID_REGISTER_PUSH");
+                            presenter.login();
                         }
-                    }else {
-                        Log.e("else","RETRY=1");
-                        localData.registerrRetry(0);
-                        localData.LogOutApp();
-                        Log.e("takebicimodels", "deliverylogout");
-                        localData.register("", "ID_REGISTER_PUSH");
-                        presenter.login();
                     }
 
                     CustomErrorResponse custom_error = new CustomErrorResponse();
@@ -199,22 +197,20 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
                     objects_list=response.body();
                     localData.registerrRetry(0);
                 }else {
-
-                    if (localData.getRegisterRetry()==0){
-                        Log.e("primer if","RETRY=0");
-                        try {
-                            Thread.sleep(500);
-                            localData.registerrRetry(1);
-                            setTripModel(presenter, data);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                    if (response.raw().code()==401){
+                        if (localData.getRegisterRetry()==0){
+                            try {
+                                Thread.sleep(500);
+                                localData.registerrRetry(1);
+                                setTripModel(presenter, data);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            localData.registerrRetry(0);
+                            localData.LogOutApp();
+                            presenter.login();
                         }
-                    }else {
-                        Log.e("else","RETRY=1");
-                        localData.registerrRetry(0);
-                        Log.e("takebicimodels", "settriplogout");
-                        localData.LogOutApp();
-                        presenter.login();
                     }
                     CustomErrorResponse custom_error = new CustomErrorResponse();
                     String response_user = "Intentalo nuevamente";
@@ -229,7 +225,7 @@ public class TakeBiciModels implements TakeBiciInterfaces.models{
 
             @Override
             public void onFailure(Call<TripResponse> call, Throwable t) {
-                Log.e("ONFAIRULE", t.toString());
+
             }
         });
     }

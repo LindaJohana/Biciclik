@@ -60,9 +60,8 @@ public class ProfileData {
     @Expose
     private String active;
 
-    public ProfileData(UserData user, String phone_number, String address, String selfie) {
+    public ProfileData(UserData user, String address, String selfie) {
         this.user = user;
-        this.phone_number = phone_number;
         this.address = address;
         this.selfie = selfie;
     }

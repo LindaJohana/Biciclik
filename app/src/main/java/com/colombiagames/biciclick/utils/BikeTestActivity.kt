@@ -135,7 +135,6 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
                     ) {
                         val isSuccess = data.getResult() ?: false
                         if(isSuccess) {
-                            Log.e("SUCCESS", "SUCCESS")
                             session.disConnect()
                             //peticion crear-mostrar fragment
                             presenter.createTripPresenter()
@@ -193,7 +192,6 @@ class BikeTestActivity : Fragment(), TakeBiciInterfaces.activities {
     }
 
     override fun sesionCod(data: BikeData) {
-        Log.e("ENTRO AL METODO", "SESIONCOD")
         session = Bike3In1Session.Builder()
                 //"E3:1D:F1:0F:33:5B"
             .address(data.getMac_lock())//Replace your mac address

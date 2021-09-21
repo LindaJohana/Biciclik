@@ -61,7 +61,8 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
 
         //Letra verdana
         Typeface fuente = Typeface.createFromAsset(getActivity().getAssets(), "fonts/verdana.ttf");
-        txt37.setTypeface(fuente);
+        Typeface fuenteB = Typeface.createFromAsset(getActivity().getAssets(), "fonts/VerdanaBold.ttf");
+        txt37.setTypeface(fuenteB);
         txtPuntoIR.setTypeface(fuente);
         txtPuntoI.setTypeface(fuente);
         txtHoraI.setTypeface(fuente);
@@ -81,10 +82,8 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
         String date=bundle.getString("start_date");
         String chrono=bundle.getString("chronometer");
         if (chrono.equals("")){
-            Log.e("ONCREATE IF TAKE2", localData.getRegister("CHRONOMETER_S"));
             setData(point, date, "");
         }else {
-            Log.e("ONCREATE else TAKE2", localData.getRegister("CHRONOMETER_S"));
             setData(point, date, chrono);
         }
         presenters.getDeliveryPoint();
@@ -107,7 +106,6 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
                 pauseoffset = SystemClock.elapsedRealtime() - txtTiempoR.getBase();
                 localData.register(txtTiempoR.getText().toString(),"CHRONOMETER");
                 localData.register(String.valueOf(pauseoffset), "CHRONOMETER_S");
-                Log.e("PAUSEOFFF", String.valueOf(pauseoffset));
                 localData.register(destinoT.getText().toString(), "DESTINO_TXT");
                 SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
                 formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -151,12 +149,10 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
         txtPuntoIR.setText(point);
         txtHoraIR.setText(date);
         if (time.equals("")){
-            Log.e("IF CHRONOMETER2", time);
 //            long systemCurrTime = SystemClock.elapsedRealtime();
             txtTiempoR.setBase(SystemClock.elapsedRealtime()-pauseoffset);
             txtTiempoR.start();
         }else {
-            Log.e("ELSE CHRONOMETER2", time);
             long intervalOnPause = (SystemClock.elapsedRealtime() - Long.parseLong(time));
 //            txtTiempoR.setBase( txtTiempoR.getBase() + intervalOnPause );
             txtTiempoR.setBase(SystemClock.elapsedRealtime() - Long.parseLong(time));
