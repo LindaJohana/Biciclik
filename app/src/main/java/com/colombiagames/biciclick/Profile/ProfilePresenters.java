@@ -37,7 +37,7 @@ public class ProfilePresenters implements ProfileInterfaces.presenters{
 
     @Override
     public void onSuccessUpdate(ProfileData data) {
-        Toast.makeText(BaseContext.getContext(), "Se modifico con exito su información", Toast.LENGTH_SHORT).show();
+        Toast.makeText(BaseContext.getContext(), "Se modificó con éxito su información", Toast.LENGTH_SHORT).show();
         view.setProfile(data);
     }
 

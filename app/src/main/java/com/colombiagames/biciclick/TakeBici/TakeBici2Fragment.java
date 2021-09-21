@@ -98,7 +98,7 @@ public class TakeBici2Fragment extends Fragment implements TakeBiciInterfaces.fr
                     return;
                 }
                 if(pointName.isEmpty()){
-                    Toast.makeText(getContext(),"Punto de Entrega Vacio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Punto de Entrega Vacío", Toast.LENGTH_SHORT).show();
                     singleSpinnerSearch.requestFocus();
                     return;
                 }

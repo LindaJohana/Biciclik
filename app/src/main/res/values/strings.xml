@@ -6,11 +6,11 @@
     <string name="cicla">&#xf200;</string>
     <string name="app_name">Biciclick</string>
     <string name="TextViewAcceso">Acceso</string>
-    <string name="TextViewSaludo">Hola! Que bueno verte de nuevo</string>
+    <string name="TextViewSaludo">¡Hola! Qué bueno verte de nuevo.</string>
     <string name="TextViewEmail">Email</string>
     <string name="TextViewContraseña">Contraseña</string>
     <string name="ButtonIngresar">Ingresar</string>
-    <string name="TextViewOlvideCont">Olvide mi contraseña?</string>
+    <string name="TextViewOlvideCont">Olvidé mi contraseña</string>
     <string name="TextViewRegistro">Registro</string>
     <string name="TextViewPaso13">Paso 1 de 3</string>
     <string name="TextViewName">Name</string>
@@ -25,16 +25,16 @@
     <string name="TextInputEmpresa">Selecciona tu empresa</string>
     <string name="TextViewDireccion">Dirección</string>
     <string name="TextInputDireccion">Tu dirección de residencia</string>
-    <string name="TextViewTienesCuenta">Ya tienes una cuenta?</string>
-    <string name="TextViewIngresa">Ingresa aqui</string>
+    <string name="TextViewTienesCuenta">¿Ya tienes una cuenta?</string>
+    <string name="TextViewIngresa">Ingresa aquí</string>
     <string name="TextViewRegistroE">Registro Exitoso</string>
-    <string name="TextViewTextoRegistro">Ya estas listo para comenzar a utilizar Biciclick
+    <string name="TextViewTextoRegistro">Ya estás listo para comenzar a utilizar Biciclick,
          la mejor forma de moverte en la ciudad.</string>
     <string name="TextViewTextoRegistro2">Acércate a un punto Biciclick</string>
     <string name="ButtonVerPuntos">Salir</string>
     <string name="ButtonYaEstoy">Ya estoy frente a una Bici</string>
-    <string name="TextViewTextoFoto">Ahora te pediremos 2 fotos para confirmar tu identidad</string>
-    <string name="TextViewSelfie">Tomate una foto selfie</string>
+    <string name="TextViewTextoFoto">Ahora te pediremos 2 fotos para confirmar tu identidad.</string>
+    <string name="TextViewSelfie">Tómate una foto selfie</string>
     <string name="TextViewCedula">Toma una foto de tu cédula.</string>
     <string name="TextViewPaso23">Paso 2 de 3</string>
     <string name="ButtonContinuar">Continuar</string>
@@ -44,7 +44,7 @@
     <string name="textValidacion">si está tomando más tiempo o tienes alguna inquietud,
     contactanos al:</string>
     <string name="numberphone">+57 3214492810</string>
-    <string name="Terminos">Acepto los Terminos y condiciones y la poliica de privacidad.</string>
+    <string name="Terminos">Acepto los términos y condiciones y la política de privacidad.</string>
     <string name="ButtonRecordarCont">Recordar contraseña</string>
     <string name="HintEmail">example@email.com</string>
     <string name="ButtonRecordar">Recordar</string>
@@ -75,7 +75,7 @@
     <string name="TextVierLeer">Leer QR</string>
     <string name="TextViewDest">Destino de tu Viaje</string>
     <string name="TextViewDestV">Para poder medir tu ahorro económico y tu
-        huella de carbono, cuentanos cual es tu destino de viaje.</string>
+        huella de carbono, cuéntanos cuál es tu destino de viaje.</string>
     <string name="HintEscribe">Escribe la Ubicación</string>
     <string name="TextViewEntregar">Entregar Bici</string>
     <string name="ButtonTerminar">Terminar Viaje</string>

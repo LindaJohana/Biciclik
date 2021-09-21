@@ -31,7 +31,7 @@
         <item
             android:id="@+id/cerrar"
             android:icon="@drawable/ic_walk"
-            android:title="Cerrar Sesion">
+            android:title="Cerrar Sesión">
         </item>
     </menu>
 </item>

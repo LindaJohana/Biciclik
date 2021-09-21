@@ -77,7 +77,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
         }
-        SpannableString texto= new SpannableString("Acepto los terminos y condiciones y la Politica de privacidad.");
+        SpannableString texto= new SpannableString("Acepto los términos y condiciones y la política de privacidad.");
         ButtonContinuar=findViewById(R.id.buttonContinuar);
         ButtonContinuar.setTypeface(fuente);
 
@@ -107,15 +107,15 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
                     return;
                 }
                 if (UrlFront.isEmpty()){
-                    Toast.makeText(getBaseContext(),"Agregar foto frontal de la cedula",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(),"Agregar foto frontal de la cédula",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (UrlBack.isEmpty()){
-                    Toast.makeText(getBaseContext(),"Agregar foto del respaldo de la cedula",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(),"Agregar foto del respaldo de la cédula",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!checkbox.isChecked()){
-                    Toast.makeText(getBaseContext(),"Aceptar Terminos y Condiciones",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(),"Aceptar términos y condiciones",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 register2();
@@ -179,7 +179,7 @@ public class Register2Activity extends Activity implements RegisterInterfaces.ac
         buttonCapture=num;
         final CharSequence[] opciones={"Tomar foto","Cancelar"};
         final AlertDialog.Builder alertOptiones=new AlertDialog.Builder(this);
-        alertOptiones.setTitle("seleccione una opción");
+        alertOptiones.setTitle("Seleccione una opción");
         alertOptiones.setItems(opciones, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
