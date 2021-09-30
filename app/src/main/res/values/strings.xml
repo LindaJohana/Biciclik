@@ -50,7 +50,7 @@
     <string name="ButtonRecordar">Recordar</string>
     <string name="open">open</string>
     <string name="close">close</string>
-    <string name="server">https://biciclick.loducode.com</string>
+    <string name="server">https://app.biciclick.co</string>
 <!--    <string name="server">http://172.16.1.9</string>-->
     <string name="TextViewInicio">Inicio - Uso Biciclick</string>
     <string name="TextViewViajesgraph">Viajes de Mes</string>
@@ -91,8 +91,8 @@
     <string name="phone">https://api.whatsapp.com/send?phone=573214492810</string>
     <string name="phone2">text=Invitation</string>
     <string name="phone3">+573214492810</string>
-    <string name="terminos">https://programmerclick.com/article/4125913791/</string>
-    <string name="cond">https://programmerclick.com/article/4125913791/</string>
+    <string name="terminos">https://app.biciclick.co/terms/</string>
+    <string name="cond">https://app.biciclick.co/politic/</string>
 
 
     <string-array name="planets_array">
