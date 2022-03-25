@@ -15,8 +15,8 @@ android {
         applicationId "com.colombiagames.biciclick"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -68,5 +68,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation "com.google.android.gms:play-services:8.3.0"
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
-
+    implementation 'commons-io:commons-io:2.4'
 }
